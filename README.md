@@ -2,7 +2,7 @@
 
 A multiplayer party game by Shawn Salat, Carey Johnson, Matt Wojick and Qui Huang.
 
-### Backend Setup
+### Backend Skeleton Setup
 
 Set up Apollo server on top of express/node server
 
