@@ -4,16 +4,23 @@ A multiplayer party game by Shawn Salat, Carey Johnson, Matt Wojick and Qui Huan
 
 ### Backend Setup
 
-Backend
-
 Set up Apollo server on top of express/node server
+
+
 Set up GraphQL typeDefs (configure querys and models)
+
+
 Set up graphQL resolvers (configure what graphql query returns)
+
 Configure websockets or graphql subscriptions 
 
+
 NPM packages:
+
 `npm init`
+
 `npm install —save babel-cli babel-preset-env babel-watch express  graphql graphql-tools apollo-server-express`
+
 
 files: 
 
@@ -43,4 +50,3 @@ app.use('/graphiql', graphiqlExpress({
 }));
 app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
 app.listen(4000, () => console.log('Express server running on port 4000'));`
-
