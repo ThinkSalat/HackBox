@@ -40,17 +40,18 @@ package.json add
   }`
 
 server.js = 
-`import express from 'express';
-import bodyParser from 'body-parser';
-import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
-import schema from './schema';
-const app = express();
-app.use('/graphiql', graphiqlExpress({
-    endpointURL: '/graphql'
-}));
-app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
-app.listen(4000, () => console.log('Express server running on port 4000'));`
-<<<<<<< HEAD
-=======
 
->>>>>>> 41c188a35ec13aeb85ec02fe9c2ff341b6ca762a
+    import express from 'express';
+    import bodyParser from 'body-parser';
+    import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+    import schema from './schema';
+    
+    const app = express();
+    
+    app.use('/graphiql', graphiqlExpress({
+        endpointURL: '/graphql'
+    }));
+    
+    app.use('/graphql', bodyParser.json(), graphqlExpress(    {schema}));
+    
+    app.listen(4000, () => console.log('Express server     running on port 4000'));
