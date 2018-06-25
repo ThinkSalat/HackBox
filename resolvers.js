@@ -1,3 +1,4 @@
+import { Room } from './models';
 const n = null;
 
 const resolvers = {
@@ -5,16 +6,16 @@ const resolvers = {
     rooms: () => Room.find()
   },
   Mutation: {
-    createRoom: async (n, { code }) => {
+     createRoom: (_, { code }) => {
       const room = new Room({ code });
-      await room.save();
+       room.save();
       return room;
     },
-    removeRoom: async (n, { id }) => {
-      await Room.findByIdAndRemove(id);
+    removeRoom: (_, { id }) => {
+       Room.findByIdAndRemove(id);
       return true;
     }
   }
-}
+};
 
 export default resolvers;
