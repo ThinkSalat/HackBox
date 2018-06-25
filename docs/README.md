@@ -42,12 +42,12 @@ Mongoose - ORM for MongoDB - validations etc
 
 
 ### Wireframes
-![HomeScreen](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Hackbox.png?raw=true)
-![Lobby](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Player%20Lobby.png?raw=true)
-![Player Promt](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Player%20Prompt.png?raw=true)
-![Player Voting](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Player%20Voting%20Screen.png?raw=true)
-![Host Result Screen](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Host%20result%20screen.png?raw=true)
-![Host Gameover](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Host%20Gameover.png?raw=true)
+! [HomeScreen](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Hackbox.png?raw=true)
+! [Lobby](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Player%20Lobby.png?raw=true)
+! [Player Promt](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Player%20Prompt.png?raw=true)
+! [Player Voting](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Player%20Voting%20Screen.png?raw=true)
+! [Host Result Screen](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Host%20result%20screen.png?raw=true)
+! [Host Gameover](https://github.com/ThinkSalat/HackBox/blob/master/docs/wireframes/Host%20Gameover.png?raw=true)
 
 ## Group Members and Work Breakdown
 
