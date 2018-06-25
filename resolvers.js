@@ -1,18 +1,21 @@
 import { Room } from './models';
 const n = null;
 
+require("babel-polyfill");
+
+
 const resolvers = {
   Query: {
     rooms: () => Room.find()
   },
   Mutation: {
-     createRoom: (_, { code }) => {
+     createRoom: async (_, { code }) => {
       const room = new Room({ code });
-       room.save();
+      await room.save();
       return room;
     },
-    removeRoom: (_, { id }) => {
-       Room.findByIdAndRemove(id);
+    removeRoom: async (_, { id }) => {
+      await Room.findByIdAndRemove(id);
       return true;
     }
   }
