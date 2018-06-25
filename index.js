@@ -1,5 +1,5 @@
-const { GraphQLServer } = require('graphql-yoga');
-const mongoose = require('mongoose');
+import { GraphQLServer } from 'graphql-yoga';
+import mongoose from 'mongoose';
 mongoose.connect('mongodb://localhost/test');
 
 import typeDefs from './schema';
