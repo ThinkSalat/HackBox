@@ -21,8 +21,8 @@ const typeDefs = `
     addPlayer(code: String!, username: String!): Room
   }
   type Subscription {
-  joinedRoom(roomId: ID!): Room
-}
+    joinedRoom(roomId: ID!): Room
+  }
 `;
 
 export default typeDefs;
