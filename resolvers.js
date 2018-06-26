@@ -1,6 +1,5 @@
 import { Room, Player } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
-import { Subscription } from 'react-apollo';
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
@@ -34,19 +33,15 @@ const resolvers = {
         { code }, 
         {$push: { players: player }}
       );
-      pubsub.publish(JOINED_ROOM, { joinedRoom: room })
+      console.log(room.code);
+      pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
+      pubsub.publish("lobby", { lobby: room })
       return room;
     }
   },
   Subscription: {
     joinedRoom: {
-      subscribe: withFilter( 
-        () => pubsub.asyncIterator(JOINED_ROOM), 
-        (payload, variables, context) => {
-          return variables.code
-          return payload.joinedRoom.code == code
-        }
-      )
+      subscribe: (_, { code }) => pubsub.asyncIterator(`${JOINED_ROOM}.${code}`),
     }
   }
 }

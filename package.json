@@ -4,6 +4,7 @@
   "description": "Multiplayer party game ala Apples to Apples/Cards Against Humanity/JackBox.tv",
   "main": "index.js",
   "dependencies": {
+    "@axelspringer/graphql-google-pubsub": "^1.0.8",
     "apollo-boost": "^0.1.10",
     "apollo-server-express": "^1.3.6",
     "babel-cli": "^6.26.0",
