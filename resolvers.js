@@ -23,24 +23,21 @@ const resolvers = {
       return true;
     },
 
+
+
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
-      console.log(room);
-      
-      // const player = new Player({ username });
-      // await Room.findByIdAndUpdate(roomId, 
-      //   {$push: { players: player }},
-      //   {safe: true, upsert: true},
-      //   function(err, room) {
-      //     if (err) {
-      //       console.log(err);
-      //     } else {
-      //       return room;
-      //     }
-      //   }
-      // );
-    },
+      const player = new Player({ username });
+
+      await Room.update(
+        { code }, 
+        {$push: { players: player }}
+      );
+      return room;
+    }
+
   }
+
 };
 
 export default resolvers;

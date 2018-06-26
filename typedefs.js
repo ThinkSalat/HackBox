@@ -18,7 +18,7 @@ const typeDefs = `
     removeRoom(id: ID!): Boolean
     updateRoom(id: ID!, code: String!): Boolean
     
-    addPlayer(code: String!, username: String!): Boolean
+    addPlayer(code: String!, username: String!): Room
   }
 `;
 
