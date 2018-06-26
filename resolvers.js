@@ -35,6 +35,7 @@ const resolvers = {
         { code }, 
         {$push: { players: player }}
       );
+      pubsub.publish(JOINED_ROOM, room)
       return room;
     }
   },
