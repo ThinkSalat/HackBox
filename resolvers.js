@@ -35,13 +35,13 @@ const resolvers = {
         { code }, 
         {$push: { players: player }}
       );
-      pubsub.publish(JOINED_ROOM, room)
+      pubsub.publish(JOINED_ROOM, { joinedRoom: room})
       return room;
     }
   },
   Subscription: {
     joinedRoom: {
-      subscribe: roomId => pubsub.asyncIterator(JOINED_ROOM),
+      subscribe: code => pubsub.asyncIterator(JOINED_ROOM),
     },
   },
 };
