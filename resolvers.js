@@ -35,15 +35,21 @@ const resolvers = {
         { code }, 
         {$push: { players: player }}
       );
-      pubsub.publish(JOINED_ROOM, { joinedRoom: room})
+      pubsub.publish(JOINED_ROOM, { joinedRoom: room })
       return room;
     }
   },
   Subscription: {
     joinedRoom: {
-      subscribe: code => pubsub.asyncIterator(JOINED_ROOM),
-    },
-  },
-};
+      subscribe: withFilter( 
+        () => pubsub.asyncIterator(JOINED_ROOM), 
+        (payload, variables, context) => {
+          return variables.code
+          return payload.joinedRoom.code == code
+        }
+      )
+    }
+  }
+}
 
 export default resolvers;
