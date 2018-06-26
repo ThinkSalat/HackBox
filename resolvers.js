@@ -1,8 +1,12 @@
 import { Room } from './models';
+import { PubSub, withFilter } from 'graphql - subscriptions';
+import { Subscription } from 'react-apollo';
 const n = null;
 
 require("babel-polyfill");
 
+const pubsub = new PubSub();
+const JOINED_ROOM = 'JOINED_ROOM';
 
 const resolvers = {
   Query: {
@@ -18,7 +22,12 @@ const resolvers = {
       await Room.findByIdAndRemove(id);
       return true;
     }
-  }
+  },
+  Subscription: {
+      joinedRoom: {
+      subscribe: () => pubsub.asyncIterator(JOINED_ROOM),
+    },
+  },
 };
 
 export default resolvers;

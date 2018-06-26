@@ -11,6 +11,10 @@ const typeDefs = `
   type Mutation {
     createRoom(code: String!): Room
     removeRoom(id: ID!): Boolean
+
+  }
+  type Subscription {
+    joinedRoom(roomId: ID!): Room
   }
 `;
 
