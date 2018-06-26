@@ -27,9 +27,6 @@ const resolvers = {
       await Room.findByIdAndUpdate(id, { code })
       return true;
     },
-
-
-
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
       const player = new Player({ username });
@@ -38,6 +35,7 @@ const resolvers = {
         { code }, 
         {$push: { players: player }}
       );
+      pubsub.publish(JOINED_ROOM, room)
       return room;
     }
   },
