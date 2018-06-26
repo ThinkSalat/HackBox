@@ -10,7 +10,6 @@ require("babel-polyfill");
 const resolvers = {
   Query: {
     rooms: () => Room.find(),
-    players: () => Player.find(),
     findRoom: (_, { code }) => Room.findOne({ code })
   },
   Mutation: {

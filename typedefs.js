@@ -1,7 +1,6 @@
 const typeDefs = `
   type Query {
     rooms: [Room],
-    players: [Player],
     findRoom(code: String): Room
   }
   type Room {
