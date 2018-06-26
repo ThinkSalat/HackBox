@@ -39,7 +39,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "babel-watch index.js"
+    "start": "babel-watch index.js"
   },
   "repository": {
     "type": "git",
