@@ -11,6 +11,7 @@ const typeDefs = `
   type Player {
     id: ID!
     username: String!
+    score: Int
   }
   type Mutation {
     createRoom(code: String!): Room
