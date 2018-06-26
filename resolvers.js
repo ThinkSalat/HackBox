@@ -1,5 +1,5 @@
 import { Room, Player } from './models';
-import { PubSub, withFilter } from 'graphql - subscriptions';
+import { PubSub, withFilter } from 'graphql-subscriptions';
 import { Subscription } from 'react-apollo';
 
 const pubsub = new PubSub();
