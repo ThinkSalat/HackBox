@@ -41,7 +41,7 @@ const resolvers = {
   },
   Subscription: {
     joinedRoom: {
-      subscribe: () => pubsub.asyncIterator(JOINED_ROOM),
+      subscribe: roomId => pubsub.asyncIterator(JOINED_ROOM),
     },
   },
 };
