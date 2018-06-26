@@ -10,7 +10,6 @@ require("babel-polyfill");
 const resolvers = {
   Query: {
     rooms: () => Room.find(),
-    players: () => Player.find(),
     findRoom: (_, { code }) => Room.findOne({ code })
   },
   Mutation: {
@@ -29,7 +28,7 @@ const resolvers = {
     },
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
-      const player = new Player({ username });
+      const player = new Player({ username, score: 0 });
 
       await Room.update(
         { code }, 

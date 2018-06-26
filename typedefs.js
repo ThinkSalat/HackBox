@@ -1,7 +1,6 @@
 const typeDefs = `
   type Query {
     rooms: [Room],
-    players: [Player],
     findRoom(code: String): Room
   }
   type Room {
@@ -12,6 +11,7 @@ const typeDefs = `
   type Player {
     id: ID!
     username: String!
+    score: Int
   }
   type Mutation {
     createRoom(code: String!): Room
