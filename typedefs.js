@@ -20,7 +20,7 @@ const typeDefs = `
     addPlayer(code: String!, username: String!): Room
   }
   type Subscription {
-    joinedRoom(roomId: ID!): Room
+    joinedRoom(code: String!): Room
   }
 `;
 

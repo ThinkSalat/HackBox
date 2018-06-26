@@ -9,7 +9,7 @@ import resolvers from './resolvers';
 const options = {
   port: 4000,
   endpoint: '/graphql',
-  subscriptions: '/subscriptions',
+  subscriptions: '/graphql',
   playground: '/playground',
 }
 
