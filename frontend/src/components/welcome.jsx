@@ -73,7 +73,15 @@ class Welcome extends Component {
 
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    let code = `AAAA`;
+    // let ar = ['AAAA', 'BBBB', 'CCCC'];
+    // let code = ar[Math.floor(Math.random() * ar.length)];
+
+    // for (let index = 0; index < 4; index++) {
+    //   const element = array[index];
+    // }
+    let code = "AAAA"
+    
+
     await this.props.createRoom({
       variables: {
         code
@@ -126,14 +134,13 @@ class Welcome extends Component {
     }
 
     // console.log(this.props.data.rooms[0].players)
-    console.log(this.props.data.rooms)
+    // console.log(this.props.data.rooms)
     // console.log(this.state);
     
 
     return(
 
       <div>
-
 
       <button onClick={this.createRoom}>Create Room</button>
 
