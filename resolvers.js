@@ -3,6 +3,8 @@ import { PubSub, withFilter } from 'graphql-subscriptions';
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
+const CREATED_ROOM = 'CREATED_ROOM';
+const REMOVED_ROOM = 'REMOVED_ROOM';
 
 require("babel-polyfill");
 
@@ -21,10 +23,12 @@ const resolvers = {
     createRoom: async (_, { code }) => {
       const room = new Room({ code });
       await room.save();
+      pubsub.publish(CREATED_ROOM, { createdRoom: room })
       return room;
     },
     removeRoom: async (_, { id }) => {
       await Room.findByIdAndRemove(id);
+      pubsub.publish(REMOVED_ROOM, { removedRoom: true })
       return true;
     },
     updateRoom: async (_, { id, code }) => {
@@ -45,7 +49,13 @@ const resolvers = {
   Subscription: {
     joinedRoom: {
       subscribe: (_, { code }) => pubsub.asyncIterator(`${JOINED_ROOM}.${code}`),
-    }
+    },
+    createdRoom: {
+      subscribe: () => pubsub.asyncIterator(CREATED_ROOM)
+    },
+    removedRoom: {
+      subscribe: () => pubsub.asyncIterator(REMOVED_ROOM)
+    }    
   }
 }
 
