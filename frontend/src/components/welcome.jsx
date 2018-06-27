@@ -98,21 +98,21 @@ class Welcome extends Component {
 
       <div style={{margin: '0 300px'}}>
 
+      <button onClick={this.createRoom}>Create Room</button>
+      <br/>
       <TextField
         onChange={this.handleChange("code")}
         value={code}
         label="code"
         margin="normal"
       />
-      <button onClick={this.createRoom}>Create Room</button>
-      
-      <br/>
       <TextField
         onChange={this.handleChange("username")}
         value={username}
         label="username"
         margin="normal"
       />
+
       <button onClick={this.addPlayer}>Join Room</button>
 
 
