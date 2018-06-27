@@ -1,61 +1,19 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-
-
-//Will parse the query using gql
-import gql from 'graphql-tag';
 //need to bind with component
 import {graphql, compose} from 'react-apollo';
 
-const RoomsQuery = gql`{
-  rooms {
-    id
-    code
-    players {
-      id
-      username
-      score
-    }
-  }
-}
-`;
+import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-const CreateRoomMutation = gql`
-  mutation($code: String!) {
-    createRoom(code: $code) {
-      id
-      code
-      players {
-        id
-      }
-    }
-  }
-`;
-
-const AddPlayerMutation = gql`
-  mutation($code: String!, $username: String!) {
-    addPlayer(code: $code, username: $username) {
-      id
-      code
-      players {
-        id
-        username
-        score
-      }
-    }
-  }
-`;
-
-const RemoveRoomMutation = gql`
-  mutation($id: ID!) {
-    removeRoom(id: $id)
-  }
-`;
+import { 
+  RoomsQuery,
+  CreateRoomMutation, 
+  AddPlayerMutation,
+  RemoveRoomMutation
+} from './gql_query';
 
 class Welcome extends Component {
 
@@ -129,19 +87,12 @@ class Welcome extends Component {
   }
 
   render() {
-
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
-
     
     if (loading) {
       return null;
     }
-
-    // console.log(this.props.data.rooms[0].players)
-    // console.log(this.props.data.rooms)
-    // console.log(this.state);
-    
 
     return(
 
@@ -165,7 +116,6 @@ class Welcome extends Component {
       <button onClick={this.addPlayer}>Join Room</button>
 
 
-
       <List>
         {rooms.map(room => (
           <ListItem
@@ -184,7 +134,6 @@ class Welcome extends Component {
         ))}
       </List>
 
-      
 
       </div>
     );
