@@ -1,6 +1,5 @@
 import { GraphQLServer } from 'graphql-yoga';
 import mongoose from 'mongoose';
-// mongoose.connect('mongodb://localhost/test');
 mongoose.connect('mongodb://hackbox:hackbox2018@ds117701.mlab.com:17701/hackbox');
 
 import typeDefs from './typedefs';

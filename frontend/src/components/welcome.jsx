@@ -32,6 +32,18 @@ const CreateRoomMutation = gql`
       code
       players {
         id
+      }
+    }
+  }
+`;
+
+const AddPlayerMutation = gql`
+  mutation($code: String!, $username: String!) {
+    addPlayer(code: $code, username: $username) {
+      id
+      code
+      players {
+        id
         username
         score
       }
@@ -59,6 +71,8 @@ class Welcome extends Component {
 
   createRoom = async () => {
 
+    const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
     let code = `AAAA`;
     await this.props.createRoom({
       variables: {
@@ -71,6 +85,16 @@ class Welcome extends Component {
         data.rooms.unshift(createRoom)
         // Write our data back to the cache.
         store.writeQuery({ query: RoomsQuery, data });
+      }
+    })
+  }
+
+
+  addPlayer = async () => {
+    await this.props.addPlayer({
+      variables: {
+        code: this.state.code,
+        username: this.state.username
       }
     })
   }
@@ -95,11 +119,14 @@ class Welcome extends Component {
 
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
+
     
     if (loading) {
       return null;
     }
 
+    // console.log(this.props.data.rooms[0].players)
+    console.log(this.props.data.rooms)
     // console.log(this.state);
     
 
@@ -124,7 +151,7 @@ class Welcome extends Component {
         margin="normal"
       />
 
-      <button onClick={this.joinRoom}>Join Room</button>
+      <button onClick={this.addPlayer}>Join Room</button>
 
       <List>
         {rooms.map(room => (
@@ -155,4 +182,5 @@ export default compose (
   graphql(RoomsQuery),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
+  graphql(AddPlayerMutation, {name: "addPlayer"}),
 )(Welcome);
