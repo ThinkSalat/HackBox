@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 //need to bind with component
 import {graphql, compose} from 'react-apollo';
 
@@ -23,7 +22,9 @@ class Welcome extends Component {
   }
 
   handleChange(field) {
-    return (e) => this.setState({[field]: e.currentTarget.value.toUpperCase()});
+    return (e) => this.setState({
+      [field]: e.currentTarget.value.toUpperCase()
+    });
   };
 
   getRandomCode() {
@@ -38,11 +39,11 @@ class Welcome extends Component {
 
   createRoom = async () => {
     let code = this.getRandomCode();
-    
+
     if (!code) {
       return null;
     }
-
+    
     await this.props.createRoom({
       variables: {
         code
@@ -50,8 +51,7 @@ class Welcome extends Component {
       update: (store, { data: { createRoom } }) => {
         // Read the data from our cache for this query.
         const data = store.readQuery({ query: RoomsQuery });
-        // Add our comment from the mutation to the end.
-        data.rooms.unshift(createRoom)
+        data.rooms.unshift(createRoom);
         // Write our data back to the cache.
         store.writeQuery({ query: RoomsQuery, data });
       }
@@ -60,12 +60,11 @@ class Welcome extends Component {
     this.setState({code: ""});
   }
 
-
-  addPlayer = async () => {
+  addPlayer = async (code, username) => {
     await this.props.addPlayer({
       variables: {
-        code: this.state.code,
-        username: this.state.username
+        code,
+        username
       }
     })
   }
@@ -78,8 +77,7 @@ class Welcome extends Component {
       update: (store) => {
         // Read the data from our cache for this query.
         const data = store.readQuery({ query: RoomsQuery });
-        // Add our comment from the mutation to the end.
-        data.rooms = data.rooms.filter(x => x.id !== room.id)
+        data.rooms = data.rooms.filter(x => x.id !== room.id);
         // Write our data back to the cache.
         store.writeQuery({ query: RoomsQuery, data });
       }
@@ -98,42 +96,39 @@ class Welcome extends Component {
 
       <div style={{margin: '0 300px'}}>
 
-      <button onClick={this.createRoom}>Create Room</button>
-      <br/>
-      <TextField
-        onChange={this.handleChange("code")}
-        value={code}
-        label="Room Code"
-        inputProps={{ maxLength: 4 }}
+        <button onClick={this.createRoom}>Create Room</button>
+        <br/>
+        <TextField
+          onChange={this.handleChange("code")}
+          value={code}
+          label="Room Code"
+          inputProps={{ maxLength: 4 }}
+          />
+        <TextField
+          onChange={this.handleChange("username")}
+          value={username}
+          label="Username"
+          inputProps={{ maxLength: 12 }}
         />
-      <TextField
-        onChange={this.handleChange("username")}
-        value={username}
-        label="Username"
-        inputProps={{ maxLength: 12 }}
-      />
 
-      <button onClick={this.addPlayer}>Join Room</button>
+        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
 
 
-      <List>
-        {rooms.map(room => (
-          <ListItem
-          key={room.id}
-          role={undefined}
-          dense
-          button
-          >
-          <ListItemText primary={`${room.code}: players: ${room.players.length}`} />
-
+        <List>
+          {rooms.map(room => (
+            <ListItem
+            key={room.id}
+            role={undefined}
+            dense
+            button
+            >
+              <ListItemText primary={`${room.code}: ${room.players.length} players`} />
               <button onClick={() => this.removeRoom(room)}>
                 remove
               </button>
-
-          </ListItem>
-        ))}
-      </List>
-
+            </ListItem>
+          ))}
+        </List>
 
       </div>
     );
