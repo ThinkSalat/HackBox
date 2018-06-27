@@ -1,61 +1,18 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-
-
-//Will parse the query using gql
-import gql from 'graphql-tag';
 //need to bind with component
 import {graphql, compose} from 'react-apollo';
 
-const RoomsQuery = gql`{
-  rooms {
-    id
-    code
-    players {
-      id
-      username
-      score
-    }
-  }
-}
-`;
+import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-const CreateRoomMutation = gql`
-  mutation($code: String!) {
-    createRoom(code: $code) {
-      id
-      code
-      players {
-        id
-      }
-    }
-  }
-`;
-
-const AddPlayerMutation = gql`
-  mutation($code: String!, $username: String!) {
-    addPlayer(code: $code, username: $username) {
-      id
-      code
-      players {
-        id
-        username
-        score
-      }
-    }
-  }
-`;
-
-const RemoveRoomMutation = gql`
-  mutation($id: ID!) {
-    removeRoom(id: $id)
-  }
-`;
+import { 
+  RoomsQuery,
+  CreateRoomMutation, 
+  AddPlayerMutation,
+  RemoveRoomMutation
+} from './gql_query';
 
 class Welcome extends Component {
 
@@ -65,23 +22,28 @@ class Welcome extends Component {
   }
 
   handleChange(field) {
-    return (e) => this.setState({[field]: e.currentTarget.value});
+    return (e) => this.setState({
+      [field]: e.currentTarget.value.toUpperCase()
+    });
   };
 
-
-  createRoom = async () => {
-
+  getRandomCode() {
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // let ar = ['AAAA', 'BBBB', 'CCCC'];
-    // let code = ar[Math.floor(Math.random() * ar.length)];
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      code += alpha[Math.floor(Math.random() * alpha.length)];
+    }
+    return code;
+  }
 
-    // for (let index = 0; index < 4; index++) {
-    //   const element = array[index];
-    // }
-    let code = "AAAA"
+  createRoom = async () => {
+    let code = this.getRandomCode();
+
+    if (!code) {
+      return null;
+    }
     
-
     await this.props.createRoom({
       variables: {
         code
@@ -89,20 +51,20 @@ class Welcome extends Component {
       update: (store, { data: { createRoom } }) => {
         // Read the data from our cache for this query.
         const data = store.readQuery({ query: RoomsQuery });
-        // Add our comment from the mutation to the end.
-        data.rooms.unshift(createRoom)
+        data.rooms.unshift(createRoom);
         // Write our data back to the cache.
         store.writeQuery({ query: RoomsQuery, data });
       }
-    })
+    });
+
+    this.setState({code: ""});
   }
 
-
-  addPlayer = async () => {
+  addPlayer = async (code, username) => {
     await this.props.addPlayer({
       variables: {
-        code: this.state.code,
-        username: this.state.username
+        code,
+        username
       }
     })
   }
@@ -115,8 +77,7 @@ class Welcome extends Component {
       update: (store) => {
         // Read the data from our cache for this query.
         const data = store.readQuery({ query: RoomsQuery });
-        // Add our comment from the mutation to the end.
-        data.rooms = data.rooms.filter(x => x.id !== room.id)
+        data.rooms = data.rooms.filter(x => x.id !== room.id);
         // Write our data back to the cache.
         store.writeQuery({ query: RoomsQuery, data });
       }
@@ -124,61 +85,50 @@ class Welcome extends Component {
   }
 
   render() {
-
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
-
     
     if (loading) {
       return null;
     }
 
-    // console.log(this.props.data.rooms[0].players)
-    // console.log(this.props.data.rooms)
-    // console.log(this.state);
-    
-
     return(
 
-      <div>
+      <div style={{margin: '0 300px'}}>
 
-      <button onClick={this.createRoom}>Create Room</button>
+        <button onClick={this.createRoom}>Create Room</button>
+        <br/>
+        <TextField
+          onChange={this.handleChange("code")}
+          value={code}
+          label="Room Code"
+          inputProps={{ maxLength: 4 }}
+          />
+        <TextField
+          onChange={this.handleChange("username")}
+          value={username}
+          label="Username"
+          inputProps={{ maxLength: 12 }}
+        />
 
-      <TextField
-        onChange={this.handleChange("username")}
-        value={username}
-        label="username"
-        margin="normal"
-      />
+        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
 
-      <TextField
-        onChange={this.handleChange("code")}
-        value={code}
-        label="code"
-        margin="normal"
-      />
 
-      <button onClick={this.addPlayer}>Join Room</button>
-
-      <List>
-        {rooms.map(room => (
-          <ListItem
-          key={room.id}
-          role={undefined}
-          dense
-          button
-          >
-          <ListItemText primary={`${room.code}: players: ${room.players.length}`} />
-            <ListItemSecondaryAction>
+        <List>
+          {rooms.map(room => (
+            <ListItem
+            key={room.id}
+            role={undefined}
+            dense
+            button
+            >
+              <ListItemText primary={`${room.code}: ${room.players.length} players`} />
               <button onClick={() => this.removeRoom(room)}>
                 remove
               </button>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
-      </List>
-
-      
+            </ListItem>
+          ))}
+        </List>
 
       </div>
     );
