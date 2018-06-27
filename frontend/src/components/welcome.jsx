@@ -73,14 +73,14 @@ class Welcome extends Component {
 
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // let ar = ['AAAA', 'BBBB', 'CCCC'];
-    // let code = ar[Math.floor(Math.random() * ar.length)];
+    let ar = ['AAAA', 'BBBB', 'CCCC'];
+    let code = ar[Math.floor(Math.random() * ar.length)];
 
     // for (let index = 0; index < 4; index++) {
     //   const element = array[index];
     // }
-    let code = "AAAA"
-    
+    // let code = "AAAA"
+
 
     await this.props.createRoom({
       variables: {
@@ -128,7 +128,7 @@ class Welcome extends Component {
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
 
-    
+
     if (loading) {
       return null;
     }
@@ -136,7 +136,7 @@ class Welcome extends Component {
     // console.log(this.props.data.rooms[0].players)
     // console.log(this.props.data.rooms)
     // console.log(this.state);
-    
+
 
     return(
 
@@ -178,7 +178,7 @@ class Welcome extends Component {
         ))}
       </List>
 
-      
+
 
       </div>
     );
