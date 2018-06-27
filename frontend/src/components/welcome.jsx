@@ -20,13 +20,36 @@ class Welcome extends Component {
 
   state = {
     username: "",
-    code: ""
+    code: "",
+    subbed: false
   }
 
   componentDidMount() {
-    this.subscribeToNewPlayers("AAAA");
-    
+    // this.subscribeToNewPlayers("AAAA");
   }
+
+  componentWillReceiveProps({data: {rooms}}) {
+    console.log("receive props", rooms);
+
+    if (rooms !== undefined && !this.state.subbed) {
+      console.log("SUBBED")
+      rooms.forEach((rm) => {
+        this.subscribeToNewPlayers(rm.code)
+      })
+
+      this.setState({subbed: true});
+    }
+
+  }
+  
+  // componentWillUpdate() {
+  //   console.log("will update", this.props.data.rooms);
+  // }
+  
+  // componentDidUpdate() {
+  //   console.log("did update", this.props.data.rooms);
+
+  // }  
 
 
   handleChange(field) {
@@ -65,6 +88,8 @@ class Welcome extends Component {
       }
     });
 
+    this.subscribeToNewPlayers(code)
+
     this.setState({code: ""});
   }
 
@@ -75,6 +100,7 @@ class Welcome extends Component {
         username
       }
     })
+
   }
 
   removeRoom = async (room) => {
@@ -104,14 +130,19 @@ class Welcome extends Component {
           return previous;
         }
 
-
       }
     })
   }
 
   render() {
+
+    // console.log("rendered", this.props.data.rooms, undefined === this.props.data.rooms);
+
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
+
+
+
     
     if (loading) {
       return null;
