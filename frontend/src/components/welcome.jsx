@@ -80,7 +80,9 @@ class Welcome extends Component {
 
   componentDidMount() {
     this.subscribeToNewPlayers("AAAA");
+    
   }
+
 
   handleChange(field) {
     return (e) => this.setState({[field]: e.currentTarget.value});
