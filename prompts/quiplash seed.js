@@ -3815,34 +3815,6 @@
   {
   "text": "Come on and slam, and welcome to the _.",
   "pick": 1
-  },
-  {
-  "text": "The Creatures' next member is _.",
-  "pick": 1
-  },
-  {
-  "text": "Tehsmarty loves the smell of _ in the morning.",
-  "pick": 1
-  },
-  {
-  "text": "ZeRoyalViking's up and coming game company, \"ZEA\" accredits their success to _.",
-  "pick": 1
-  },
-  {
-  "text": "I AM THE _ CZAR!!!",
-  "pick": 1
-  },
-  {
-  "text": "In this week's gauntlet, ChilledChaos challenges Tehsmarty to _.",
-  "pick": 1
-  },
-  {
-  "text": "In this week's gauntlet, Tehsmarty challenges ChilledChaos to _.",
-  "pick": 1
-  },
-  {
-  "text": "It took hours to edit _ into the video.",
-  "pick": 1
   }]
 
 
@@ -3863,7 +3835,7 @@ const CardSchema = new mongoose.Schema({
         Card.create({
           prompt: card.text,
           cardType: "Quiplash"
-        })
+        }).catch( err => console.log(err))
       }
     })
   })
