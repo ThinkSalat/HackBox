@@ -1,7 +1,8 @@
 const typeDefs = `
   type Query {
     rooms: [Room],
-    findRoom(code: String): Room
+    findRoom(code: String): Room,
+    findCards(cardType: String!, numCards: Int!): [Card]
   }
   type Room {
     id: ID!
