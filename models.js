@@ -2,7 +2,9 @@ import mongoose, {Schema} from 'mongoose';
 
 const CardSchema = new Schema({
   text: String,
-  numPrompts: {type: Number, default: 1}
+  prompt: String,
+  cardType: String,
+  numPrompts: Number
 })
 
 const PlayerSchema = new Schema({
