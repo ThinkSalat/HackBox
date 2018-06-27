@@ -24,29 +24,15 @@ class Welcome extends Component {
     subbed: false
   }
 
-  // findRoomId(code) {
-  //   this.props.data.rooms.forEach((room) => {
-  //     if (room.code === code) {
-  //       return room.id;
-  //     }
-  //   })
-  //   return null;
-  // }
-
   componentWillReceiveProps({data: {rooms}}) {
-    console.log("receive props", rooms);
-
-    if (rooms !== undefined && !this.state.subbed) {
-      console.log("SUBBED")
+    if (rooms && !this.state.subbed) {
       rooms.forEach((rm) => {
         this.subscribeToNewPlayers(rm.code)
       })
 
       this.setState({subbed: true});
     }
-
   }
-
 
   handleChange(field) {
     return (e) => this.setState({
@@ -121,7 +107,6 @@ class Welcome extends Component {
         code: code
       },
       updateQuery: (previous, { subscriptionData }) => {
-
         if (!subscriptionData.data) {
           return previous;
         }
@@ -131,10 +116,8 @@ class Welcome extends Component {
   }
 
   render() {
-
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
-
     
     if (loading) {
       return null;
@@ -160,7 +143,6 @@ class Welcome extends Component {
         />
 
         <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
-
 
         <List>
           {rooms.map(room => (
