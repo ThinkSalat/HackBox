@@ -46,3 +46,17 @@ export const RemoveRoomMutation = gql`
     removeRoom(id: $id)
   }
 `;
+
+export const NewPlayerSubscription = gql`
+  subscription onJoinedRoom($code: String!){
+    joinedRoom(code: $code) {
+      id
+      code
+      players {
+        id
+        username
+        score
+      }
+    }
+  }
+`;

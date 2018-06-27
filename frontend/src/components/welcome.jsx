@@ -11,8 +11,10 @@ import {
   RoomsQuery,
   CreateRoomMutation, 
   AddPlayerMutation,
-  RemoveRoomMutation
+  RemoveRoomMutation,
+  NewPlayerSubscription
 } from './gql_query';
+
 
 class Welcome extends Component {
 
@@ -20,6 +22,12 @@ class Welcome extends Component {
     username: "",
     code: ""
   }
+
+  componentDidMount() {
+    this.subscribeToNewPlayers("AAAA");
+    
+  }
+
 
   handleChange(field) {
     return (e) => this.setState({
@@ -84,6 +92,23 @@ class Welcome extends Component {
     })
   }
 
+  subscribeToNewPlayers = (code) => {
+    this.props.roomsQuery.subscribeToMore({
+      document: NewPlayerSubscription,
+      variables: {
+        code: code
+      },
+      updateQuery: (previous, { subscriptionData }) => {
+        // debugger;
+        if (!subscriptionData.data) {
+          return previous;
+        }
+
+
+      }
+    })
+  }
+
   render() {
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
@@ -137,6 +162,7 @@ class Welcome extends Component {
 
 export default compose (
   graphql(RoomsQuery),
+  graphql(RoomsQuery, {name: "roomsQuery"}),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),
