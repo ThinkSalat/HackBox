@@ -15,8 +15,10 @@ const PlayerSchema = new Schema({
 const RoomSchema = new Schema({
   players: [PlayerSchema],
   code: { type: String, unique: true },
+  deck: [CardSchema],
+  numRounds: {type: Number, default: 3}
 });
 
-export const Room = mongoose.model("Room", RoomSchema)
 export const Card = mongoose.model("Card", CardSchema)
 export const Player = mongoose.model("Player", PlayerSchema)
+export const Room = mongoose.model("Room", RoomSchema)
