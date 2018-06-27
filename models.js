@@ -7,7 +7,7 @@ const PlayerSchema = new Schema({
 
 const RoomSchema = new Schema({
   players: [PlayerSchema],
-  code: String
+  code: { type: String, unique: true },
 });
 
 export const Room = mongoose.model("Room", RoomSchema);

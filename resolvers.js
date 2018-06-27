@@ -33,9 +33,9 @@ const resolvers = {
         { code }, 
         {$push: { players: player }}
       );
-      console.log(room.code);
+      // console.log(room.code);
       pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
-      pubsub.publish("lobby", { lobby: room })
+      // pubsub.publish("lobby", { lobby: room })
       return room;
     }
   },
