@@ -23,7 +23,7 @@ class Welcome extends Component {
   }
 
   handleChange(field) {
-    return (e) => this.setState({[field]: e.currentTarget.value});
+    return (e) => this.setState({[field]: e.currentTarget.value.toUpperCase()});
   };
 
   getRandomCode() {
@@ -103,14 +103,14 @@ class Welcome extends Component {
       <TextField
         onChange={this.handleChange("code")}
         value={code}
-        label="code"
-        margin="normal"
-      />
+        label="Room Code"
+        inputProps={{ maxLength: 4 }}
+        />
       <TextField
         onChange={this.handleChange("username")}
         value={username}
-        label="username"
-        margin="normal"
+        label="Username"
+        inputProps={{ maxLength: 12 }}
       />
 
       <button onClick={this.addPlayer}>Join Room</button>
