@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 
 
@@ -68,19 +68,22 @@ class Welcome extends Component {
     return (e) => this.setState({[field]: e.currentTarget.value});
   };
 
-
-  createRoom = async () => {
-
+  getRandomCode() {
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // let ar = ['AAAA', 'BBBB', 'CCCC'];
-    // let code = ar[Math.floor(Math.random() * ar.length)];
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      code += alpha[Math.floor(Math.random() * alpha.length)];
+    }
+    return code;
+  }
 
-    // for (let index = 0; index < 4; index++) {
-    //   const element = array[index];
-    // }
-    let code = "AAAA"
+  createRoom = async () => {
+    let code = this.getRandomCode();
     
+    if (!code) {
+      return null;
+    }
 
     await this.props.createRoom({
       variables: {
@@ -94,7 +97,9 @@ class Welcome extends Component {
         // Write our data back to the cache.
         store.writeQuery({ query: RoomsQuery, data });
       }
-    })
+    });
+
+    this.setState({code: ""});
   }
 
 
@@ -140,16 +145,7 @@ class Welcome extends Component {
 
     return(
 
-      <div>
-
-      <button onClick={this.createRoom}>Create Room</button>
-
-      <TextField
-        onChange={this.handleChange("username")}
-        value={username}
-        label="username"
-        margin="normal"
-      />
+      <div style={{margin: '0 300px'}}>
 
       <TextField
         onChange={this.handleChange("code")}
@@ -157,8 +153,18 @@ class Welcome extends Component {
         label="code"
         margin="normal"
       />
-
+      <button onClick={this.createRoom}>Create Room</button>
+      
+      <br/>
+      <TextField
+        onChange={this.handleChange("username")}
+        value={username}
+        label="username"
+        margin="normal"
+      />
       <button onClick={this.addPlayer}>Join Room</button>
+
+
 
       <List>
         {rooms.map(room => (
@@ -169,11 +175,11 @@ class Welcome extends Component {
           button
           >
           <ListItemText primary={`${room.code}: players: ${room.players.length}`} />
-            <ListItemSecondaryAction>
+
               <button onClick={() => this.removeRoom(room)}>
                 remove
               </button>
-            </ListItemSecondaryAction>
+
           </ListItem>
         ))}
       </List>
