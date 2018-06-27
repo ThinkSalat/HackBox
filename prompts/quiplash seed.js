@@ -1,5 +1,5 @@
-{
-  "cards": [
+
+ const cards =  [
     {
   "text": "Why can't I sleep at night?",
   "pick": 1
@@ -3845,4 +3845,25 @@
   "pick": 1
   }]
 
-}
+
+const mongoose = require('mongoose');
+
+const CardSchema = new mongoose.Schema({
+  prompt: String,
+  cardType: String
+})
+
+ const Card = mongoose.model("Card", CardSchema)
+
+  mongoose.connect('mongodb://hackbox:hackbox2018@ds117701.mlab.com:17701/hackbox');
+  mongoose.connection.once('open', function() {
+    cards.forEach( card => {
+      console.log(card.text);
+      if (card.pick === 1) {
+        Card.create({
+          prompt: card.text,
+          cardType: "Quiplash"
+        })
+      }
+    })
+  })

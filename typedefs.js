@@ -7,13 +7,15 @@ const typeDefs = `
     id: ID!
     code: String!
     numRounds: Int!
-    Deck: [Card]
+    deck: [Card]
     players: [Player]
   }
   type Card {
     id: ID!
-    text: String!
-    numPrompts: Int!
+    text: String
+    prompt: String
+    cardType: String
+    numPrompts: Int
   }
   type Player {
     id: ID!

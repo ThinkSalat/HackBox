@@ -1,6 +1,5 @@
 import { Room, Player, Card } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
-import sampleSize from 'lodash/sampleSize';
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
@@ -27,8 +26,9 @@ const resolvers = {
       return true;
     },
     buildQuiplashDeck: async (_, { code, numCards }) => {
-      deck = sampleSize(Card.find({pick: 1}), numCards)
-      await room.set({ deck });
+      const room = Room.findOne({ code });
+      const deck = Card.find({cardType: "Quiplash"})
+      await  Room.update({ code }, { $push: {deck}})
       return room;
     },
     addPlayer: async (_, { code, username }) => {
