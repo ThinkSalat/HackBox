@@ -1,0 +1,6 @@
+// From frontend folder, use this to watch for scss changes:
+// sass --watch src/scss/Master.scss:src/css/Master.css
+
+@import "main/variables";
+@import "main/index";
+@import "main/App";
