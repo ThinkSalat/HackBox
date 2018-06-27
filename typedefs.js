@@ -6,17 +6,25 @@ const typeDefs = `
   type Room {
     id: ID!
     code: String!
+    numRounds: Int!
+    Deck: [Card]
     players: [Player]
+  }
+  type Card {
+    id: ID!
+    text: String!
+    numPrompts: Int!
   }
   type Player {
     id: ID!
     username: String!
-    score: Int
+    score: Int!
   }
   type Mutation {
     createRoom(code: String!): Room
     removeRoom(id: ID!): Boolean
     updateRoom(id: ID!, code: String!): Boolean
+    buildQuiplashDeck(code: String!, numCards: Int!): Room
     addPlayer(code: String!, username: String!): Room
   }
   type Subscription {
