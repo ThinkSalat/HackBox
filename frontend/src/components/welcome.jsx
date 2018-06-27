@@ -24,33 +24,15 @@ class Welcome extends Component {
     subbed: false
   }
 
-  componentDidMount() {
-    // this.subscribeToNewPlayers("AAAA");
-  }
-
   componentWillReceiveProps({data: {rooms}}) {
-    console.log("receive props", rooms);
-
-    if (rooms !== undefined && !this.state.subbed) {
-      console.log("SUBBED")
+    if (rooms && !this.state.subbed) {
       rooms.forEach((rm) => {
         this.subscribeToNewPlayers(rm.code)
       })
 
       this.setState({subbed: true});
     }
-
   }
-  
-  // componentWillUpdate() {
-  //   console.log("will update", this.props.data.rooms);
-  // }
-  
-  // componentDidUpdate() {
-  //   console.log("did update", this.props.data.rooms);
-
-  // }  
-
 
   handleChange(field) {
     return (e) => this.setState({
@@ -125,7 +107,6 @@ class Welcome extends Component {
         code: code
       },
       updateQuery: (previous, { subscriptionData }) => {
-        // debugger;
         if (!subscriptionData.data) {
           return previous;
         }
@@ -135,14 +116,8 @@ class Welcome extends Component {
   }
 
   render() {
-
-    // console.log("rendered", this.props.data.rooms, undefined === this.props.data.rooms);
-
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
-
-
-
     
     if (loading) {
       return null;
@@ -168,7 +143,6 @@ class Welcome extends Component {
         />
 
         <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
-
 
         <List>
           {rooms.map(room => (
