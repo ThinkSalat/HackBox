@@ -1,4 +1,4 @@
-import { Room, Player } from './models';
+import { Room, Player, Card } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
 
 const pubsub = new PubSub();
@@ -25,17 +25,20 @@ const resolvers = {
       await Room.findByIdAndUpdate(id, { code })
       return true;
     },
+    buildQuiplashDeck: async (_, { code, numCards }) => {
+      const room = Room.findOne({ code });
+      const deck = Card.find({cardType: "Quiplash"})
+      await  Room.update({ code }, { $push: {deck}})
+      return room;
+    },
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
       const player = new Player({ username, score: 0 });
-
       await Room.update(
         { code }, 
         {$push: { players: player }}
       );
-      // console.log(room.code);
       pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
-      // pubsub.publish("lobby", { lobby: room })
       return room;
     }
   },
