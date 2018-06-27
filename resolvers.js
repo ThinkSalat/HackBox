@@ -10,12 +10,7 @@ const resolvers = {
   Query: {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
-    findCards: (_, { cardType, numCards }) => {
-      // return  Card.find({ cardType })
-      const cards = Card.find({cardType})
-      return cards
-      // return shuffle(cards).slice(0,numCards)
-    }
+    findCards: async (_, { cardType, numCards }) => Card.find({cardType}).limit(numCards)
   },
   Mutation: {
     createRoom: async (_, { code }) => {
@@ -51,23 +46,11 @@ const resolvers = {
 
 export default resolvers;
 
-// Fisher-Yates Shuffle taken from SO https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
-function shuffle(array) {
-  let counter = array.length;
-
-  // While there are elements in the array
-  while (counter > 0) {
-      // Pick a random index
-      let index = Math.floor(Math.random() * counter);
-
-      // Decrease counter by 1
-      counter--;
-
-      // And swap the last element with it
-      let temp = array[counter];
-      array[counter] = array[index];
-      array[index] = temp;
+//fisher-yates shuffle from so
+const shuffle = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
   }
-
   return array;
 }
