@@ -1,5 +1,6 @@
-import { Room, Player } from './models';
+import { Room, Player, Card } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
+import sampleSize from 'lodash/sampleSize';
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
@@ -25,17 +26,19 @@ const resolvers = {
       await Room.findByIdAndUpdate(id, { code })
       return true;
     },
+    buildQuiplashDeck: async (_, { code, numCards }) => {
+      deck = sampleSize(Card.find({pick: 1}), numCards)
+      await room.set({ deck });
+      return room;
+    },
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
       const player = new Player({ username, score: 0 });
-
       await Room.update(
         { code }, 
         {$push: { players: player }}
       );
-      console.log(room.code);
       pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
-      pubsub.publish("lobby", { lobby: room })
       return room;
     }
   },
