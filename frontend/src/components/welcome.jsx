@@ -57,11 +57,29 @@ const RemoveRoomMutation = gql`
   }
 `;
 
+const NewPlayerSubscription = gql`
+  subscription onJoinedRoom($code: String!){
+    joinedRoom(code: $code) {
+      id
+      code
+      players {
+        id
+        username
+        score
+      }
+    }
+  }
+`;
+
 class Welcome extends Component {
 
   state = {
     username: "",
     code: ""
+  }
+
+  componentDidMount() {
+    this.subscribeToNewPlayers("AAAA");
   }
 
   handleChange(field) {
@@ -71,9 +89,9 @@ class Welcome extends Component {
 
   createRoom = async () => {
 
-    const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    let ar = ['AAAA', 'BBBB', 'CCCC'];
+    let ar = ['AAAA'];
     let code = ar[Math.floor(Math.random() * ar.length)];
 
     // for (let index = 0; index < 4; index++) {
@@ -123,6 +141,23 @@ class Welcome extends Component {
     })
   }
 
+  subscribeToNewPlayers = (code) => {
+    this.props.roomsQuery.subscribeToMore({
+      document: NewPlayerSubscription,
+      variables: {
+        code: code
+      },
+      updateQuery: (previous, { subscriptionData }) => {
+        // debugger;
+        if (!subscriptionData.data) {
+          return previous;
+        }
+
+
+      }
+    })
+  }
+
   render() {
 
     const {data: {loading, rooms}} = this.props;
@@ -132,6 +167,7 @@ class Welcome extends Component {
     if (loading) {
       return null;
     }
+
 
     // console.log(this.props.data.rooms[0].players)
     // console.log(this.props.data.rooms)
@@ -187,6 +223,7 @@ class Welcome extends Component {
 
 export default compose (
   graphql(RoomsQuery),
+  graphql(RoomsQuery, {name: "roomsQuery"}),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),

@@ -10,16 +10,15 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 
-import { split } from 'apollo-client-preset';
+import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
 
-  
 //send graphQL requests to this location
 const httpLink = new HttpLink({ 
   uri: `http://localhost:4000/graphql`,
-  credentials: 'same-origin' 
+  credentials: 'same-origin'
 })
 
 //subscriptions get sent through websocket connection (ws)
