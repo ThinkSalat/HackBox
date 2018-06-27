@@ -24,9 +24,14 @@ class Welcome extends Component {
     subbed: false
   }
 
-  componentDidMount() {
-    // this.subscribeToNewPlayers("AAAA");
-  }
+  // findRoomId(code) {
+  //   this.props.data.rooms.forEach((room) => {
+  //     if (room.code === code) {
+  //       return room.id;
+  //     }
+  //   })
+  //   return null;
+  // }
 
   componentWillReceiveProps({data: {rooms}}) {
     console.log("receive props", rooms);
@@ -41,15 +46,6 @@ class Welcome extends Component {
     }
 
   }
-  
-  // componentWillUpdate() {
-  //   console.log("will update", this.props.data.rooms);
-  // }
-  
-  // componentDidUpdate() {
-  //   console.log("did update", this.props.data.rooms);
-
-  // }  
 
 
   handleChange(field) {
@@ -100,7 +96,7 @@ class Welcome extends Component {
         username
       }
     })
-
+    // this.props.location.history.push(`/rooms/${code}`)
   }
 
   removeRoom = async (room) => {
@@ -125,7 +121,7 @@ class Welcome extends Component {
         code: code
       },
       updateQuery: (previous, { subscriptionData }) => {
-        // debugger;
+
         if (!subscriptionData.data) {
           return previous;
         }
@@ -136,12 +132,8 @@ class Welcome extends Component {
 
   render() {
 
-    // console.log("rendered", this.props.data.rooms, undefined === this.props.data.rooms);
-
     const {data: {loading, rooms}} = this.props;
     const {username, code} = this.state;
-
-
 
     
     if (loading) {
