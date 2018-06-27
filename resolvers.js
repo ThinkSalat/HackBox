@@ -12,7 +12,7 @@ const resolvers = {
   Query: {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
-    findCards: async (_, { cardType, numCards }) => Card.find({cardType}).limit(numCards)
+    findCards: (_, { cardType, numCards }) => Card.aggregate().match({ cardType }).sample(numCards),
   },
   Mutation: {
     createRoom: async (_, { code }) => {
