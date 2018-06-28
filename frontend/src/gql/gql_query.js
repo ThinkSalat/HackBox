@@ -9,7 +9,13 @@ export const ROOM = `
     username
     score
   }
-`
+`;
+
+export const FindRoomQuery = gql`{
+  findRoom(code: $code){
+    code
+  }
+}`;
 
 export const RoomsQuery = gql`{
   rooms {

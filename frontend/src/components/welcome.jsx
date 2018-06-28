@@ -11,7 +11,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 
 import { 
-  RoomsQuery
+  RoomsQuery,
+  FindRoomQuery
 } from '../gql/gql_query';
 
 import {
@@ -120,7 +121,7 @@ class Welcome extends Component {
     for (let i = 0; i < 4; i++) {
       code += alpha[Math.floor(Math.random() * alpha.length)];
     }
-    if (this.props.FindRoomQuery) return this.getRandomCode();
+    // if (this.props.FindRoomQuery) return this.getRandomCode();
     return code;
   }
 
