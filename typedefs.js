@@ -11,6 +11,7 @@ const typeDefs = `
     gameType: String!
     deck: [Card]
     players: [Player]
+    playerDeck: [Card]
   }
   type Card {
     id: ID!
