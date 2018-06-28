@@ -4,8 +4,8 @@ import gql from 'graphql-tag';
 import {ROOM} from './gql_types';
 
 export const CreateRoomMutation = gql`
-  mutation($code: String!) {
-    createRoom(code: $code) {
+  mutation($code: String!, $numRounds: Int!, $gameType: String!) {
+    createRoom(code: $code, numRounds: $numRounds, gameType: $gameType) {
       ${ROOM}
     }
   }

@@ -15,8 +15,8 @@ const resolvers = {
     findCards: (_, { cardType, numCards }) => Card.aggregate().match({ cardType }).sample(numCards),
   },
   Mutation: {
-    createRoom: async (_, { code }) => {
-      const room = new Room({ code });
+    createRoom: async (_, { code, numRounds, gameType }) => {
+      const room = new Room({ code, numRounds, gameType });
       await room.save();
       pubsub.publish(CREATED_ROOM, { createdRoom: room })
       return room;

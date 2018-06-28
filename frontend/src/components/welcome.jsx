@@ -32,7 +32,9 @@ class Welcome extends Component {
   state = {
     username: "",
     code: "",
-    subbed: false
+    subbed: false,
+    gameType: "A2A",
+    numRounds: 5
   }
 
   componentDidMount() {
@@ -77,10 +79,11 @@ class Welcome extends Component {
       return null;
     }
 
-    
     await this.props.createRoom({
       variables: {
-        code
+        code,
+        numRounds: this.state.numRounds,
+        gameType: this.state.gameType
       }
     });
 
@@ -128,7 +131,7 @@ class Welcome extends Component {
         if (!subscriptionData.data) {
           return previous;
         }
-        // debugger;
+
         let newRooms = [ subscriptionData.data.createdRoom, ...previous.rooms];
 
         let result = {

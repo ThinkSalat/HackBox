@@ -5,7 +5,7 @@ const typeDefs = `
     findCards(cardType: String!, numCards: Int!): [Card]
   }
   type Room {
-    id: ID!
+    id: ID
     code: String!
     numRounds: Int!
     gameType: String!
@@ -26,7 +26,7 @@ const typeDefs = `
     hand: [Card]
   }
   type Mutation {
-    createRoom(code: String!): Room
+    createRoom(code: String!, numRounds: Int!, gameType: String!): Room
     removeRoom(id: ID!): Boolean
     updateRoom(id: ID!, code: String!): Boolean
     buildDeck(code: String!, cardType: String!, numCards: Int!): Room
