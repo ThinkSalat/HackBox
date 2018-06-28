@@ -37,7 +37,7 @@ const typeDefs = `
   type Subscription {
     joinedRoom(code: String!): Room
     createdRoom: Room
-    removedRoom: Boolean
+    removedRoom: String
   }
 `;
 

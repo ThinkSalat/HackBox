@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import logo from './logo.svg';
 import Welcome from './components/welcome';
@@ -13,11 +13,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to HackBox</h1>
         </header>
-        <br/>
-        <div>
-          <Route exact path='/' component={Welcome} />
-          <Route path='/room/:code' component={Lobby} />
-        </div>
+
+        <Switch>
+          <Route path="/room/:code" component={Lobby} />
+          <Route path="/" component={Welcome} />
+        </Switch>
+
       </div>
     );
   }

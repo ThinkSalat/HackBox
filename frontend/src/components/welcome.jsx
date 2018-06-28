@@ -9,14 +9,22 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+
 import { 
-  RoomsQuery,
+  RoomsQuery
+} from '../gql/gql_query';
+
+import {
   CreateRoomMutation, 
   AddPlayerMutation,
-  RemoveRoomMutation,
+  RemoveRoomMutation
+} from '../gql/gql_mutation';
+
+import {
   NewPlayerSubscription,
-  NewRoomSubscription
-} from './gql_query';
+  NewRoomSubscription,
+  RemoveRoomSubscription
+} from '../gql/gql_subscription';
 
 
 class Welcome extends Component {
@@ -29,11 +37,16 @@ class Welcome extends Component {
 
   componentDidMount() {
     this.subscribeToNewRooms();
+    this.subscribeToRemoveRooms();
   }
 
-  componentWillReceiveProps({data: {rooms}}) {
-    if (rooms && !this.state.subbed) {
-      rooms.forEach((rm) => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== '/') {
+      this.props.history.push('/');
+    }
+
+    if (nextProps.data.rooms && !this.state.subbed) {
+      nextProps.data.rooms.forEach((rm) => {
         this.subscribeToNewPlayers(rm.code)
       })
 
@@ -70,8 +83,6 @@ class Welcome extends Component {
       }
     });
 
-    
-
     this.setState({code: ""});
   }
 
@@ -91,13 +102,6 @@ class Welcome extends Component {
     await this.props.removeRoom({
       variables: {
         id: room.id
-      },
-      update: (store) => {
-        // Read the data from our cache for this query.
-        const data = store.readQuery({ query: RoomsQuery });
-        data.rooms = data.rooms.filter(x => x.id !== room.id);
-        // Write our data back to the cache.
-        store.writeQuery({ query: RoomsQuery, data });
       }
     })
   }
@@ -133,7 +137,28 @@ class Welcome extends Component {
         this.subscribeToNewPlayers(subscriptionData.data.createdRoom.code)
 
         return result;
+      }
+    })
+  }
 
+  subscribeToRemoveRooms = () => {
+    this.props.roomsQuery.subscribeToMore({
+      document: RemoveRoomSubscription,
+      updateQuery: (previous, { subscriptionData }) => {
+        if (!subscriptionData.data) {
+          return previous;
+        }
+
+        let newRooms = previous.rooms.filter((rm) => {
+          return subscriptionData.data.removedRoom !== rm.id
+        })
+
+        let result = {
+          ...previous,
+          rooms: newRooms
+        }
+
+        return result;
       }
     })
   }
