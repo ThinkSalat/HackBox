@@ -9,6 +9,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
 
 import { 
   RoomsQuery
@@ -26,13 +29,17 @@ import {
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
 
+const defaultGame = "Quiplash";
+const defaultRounds = 3;
 
 class Welcome extends Component {
 
   state = {
     username: "",
     code: "",
-    subbed: false
+    subbed: false,
+    gameType: defaultGame,
+    numRounds: defaultRounds
   }
 
   // React Class Component functions
@@ -62,56 +69,21 @@ class Welcome extends Component {
     });
   };
 
-  render() {
-    const {data: {loading, rooms}} = this.props;
-    const {username, code} = this.state;
-    
-    if (loading) {
-      return null;
+  handleGameSelect = (gameType) => {
+    let val = defaultGame;
+    if (gameType !== null) {
+      val = gameType.value;
     }
-
-    return(
-
-      <div style={{margin: '0 300px'}}>
-
-        <button onClick={this.createRoom}>Create Room</button>
-        <br/>
-        <TextField
-          onChange={this.handleChange("code")}
-          value={code}
-          label="Room Code"
-          inputProps={{ maxLength: 4 }}
-          />
-        <TextField
-          onChange={this.handleChange("username")}
-          value={username}
-          label="Username"
-          inputProps={{ maxLength: 12 }}
-        />
-
-        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
-
-        <List>
-          {rooms.map(room => (
-            <ListItem
-            key={room.id}
-            role={undefined}
-            dense
-            button
-            >
-              <ListItemText primary={`${room.code}: ${room.players.length} players`} />
-              <button onClick={() => this.removeRoom(room)}>
-                remove
-              </button>
-            </ListItem>
-          ))}
-        </List>
-
-      </div>
-    );
+    this.setState({ gameType: val });
   }
-  
-  // Graphql Queries and helpers
+
+  handleRoundsSelect = (numRounds) => {
+    let val = defaultRounds;
+    if (numRounds !== null) {
+      val = numRounds.value;
+    }
+    this.setState({ numRounds: val });
+  }
 
   getRandomCode() {
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -120,7 +92,7 @@ class Welcome extends Component {
     for (let i = 0; i < 4; i++) {
       code += alpha[Math.floor(Math.random() * alpha.length)];
     }
-    if (this.props.FindRoomQuery) return this.getRandomCode();
+    // if (this.props.FindRoomQuery) return this.getRandomCode();
     return code;
   }
 
@@ -131,7 +103,9 @@ class Welcome extends Component {
     
     this.props.createRoom({
       variables: {
-        code
+        code,
+        numRounds: this.state.numRounds,
+        gameType: this.state.gameType
       }
     });
   }
@@ -224,10 +198,86 @@ class Welcome extends Component {
     })
   }
 
+  render() {
+    const {data: {loading, rooms}} = this.props;
+    const {username, code, gameType, numRounds} = this.state;
+
+    
+    if (loading) {
+      return null;
+    }
+
+    return(
+
+      <div style={{margin: '0 100px'}}>
+
+        <Select
+          className="select-game"
+          value={gameType}
+          clearable={false}
+          onChange={this.handleGameSelect}
+          options={[
+            { value: 'Quiplash', label: 'Quiplash' },
+            { value: 'A2A', label: 'Apples to Apples' },
+            { value: 'CAH', label: 'Cards Against Humanity' },
+          ]}
+        />
+
+        <Select
+          className="select-rounds"
+          value={numRounds}
+          clearable={false}
+          onChange={this.handleRoundsSelect}
+          options={[
+            { value: 1, label: '1' },
+            { value: 2, label: '2' },
+            { value: 3, label: '3' },
+            { value: 4, label: '4' },
+            { value: 5, label: '5' },
+          ]}
+        />
+
+        <button onClick={this.createRoom}>Create Room</button>
+
+        <br/>
+
+        <TextField
+          onChange={this.handleChange("code")}
+          value={code}
+          label="Room Code"
+          inputProps={{ maxLength: 4 }}
+          />
+        <TextField
+          onChange={this.handleChange("username")}
+          value={username}
+          label="Username"
+          inputProps={{ maxLength: 12 }}
+        />
+
+        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
+
+        <List>
+          {rooms.map(room => (
+            <ListItem
+            key={room.id}
+            role={undefined}
+            dense
+            button
+            >
+              <ListItemText primary={`${room.code}: ${room.players.length} players, ${room.gameType}, ${room.numRounds}r`} />
+              <button onClick={() => this.removeRoom(room)}>
+                remove
+              </button>
+            </ListItem>
+          ))}
+        </List>
+
+      </div>
+    );
+  }
 }
 
 export default compose (
-  graphql(FindRoomQuery),
   graphql(RoomsQuery),
   graphql(RoomsQuery, {name: "roomsQuery"}),
   graphql(CreateRoomMutation, {name: "createRoom"}),

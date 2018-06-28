@@ -6,7 +6,7 @@ const typeDefs = `
   }
   
   type Room {
-    id: ID!
+    id: ID
     code: String!
     numRounds: Int!
     gameType: String!
