@@ -1,0 +1,12 @@
+.single-room {
+  .player-list {
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+
+    li {
+      margin: 0 20px;
+    }
+  }
+}
