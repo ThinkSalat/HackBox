@@ -23,7 +23,7 @@ const resolvers = {
     },
     removeRoom: async (_, { id }) => {
       await Room.findByIdAndRemove(id);
-      pubsub.publish(REMOVED_ROOM, { removedRoom: true })
+      pubsub.publish(REMOVED_ROOM, { removedRoom: id })
       return true;
     },
     updateRoom: async (_, { id, code }) => {
