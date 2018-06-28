@@ -30,6 +30,11 @@ const resolvers = {
       await Room.findByIdAndUpdate(id, { code })
       return true;
     },
+    buildDeck: async (_, {code, cardType,numCards}) => {
+      const deck = Card.aggregate().match({ cardType }).sample(numCards)
+      return await Room.findOneAndUpdate({ code }, { $set: { deck }})
+      // return Room.findOne({code})
+    },
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
       const player = new Player({ username, score: 0 });
@@ -55,12 +60,3 @@ const resolvers = {
 }
 
 export default resolvers;
-
-//fisher-yates shuffle from so
-const shuffle = array => {
-  for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
