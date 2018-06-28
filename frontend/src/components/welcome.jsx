@@ -12,7 +12,8 @@ import {
   CreateRoomMutation, 
   AddPlayerMutation,
   RemoveRoomMutation,
-  NewPlayerSubscription
+  NewPlayerSubscription,
+  NewRoomSubscription
 } from './gql_query';
 
 
@@ -22,6 +23,10 @@ class Welcome extends Component {
     username: "",
     code: "",
     subbed: false
+  }
+
+  componentDidMount() {
+    this.subscribeToNewRooms();
   }
 
   componentWillReceiveProps({data: {rooms}}) {
@@ -60,17 +65,10 @@ class Welcome extends Component {
     await this.props.createRoom({
       variables: {
         code
-      },
-      update: (store, { data: { createRoom } }) => {
-        // Read the data from our cache for this query.
-        const data = store.readQuery({ query: RoomsQuery });
-        data.rooms.unshift(createRoom);
-        // Write our data back to the cache.
-        store.writeQuery({ query: RoomsQuery, data });
       }
     });
 
-    this.subscribeToNewPlayers(code)
+    
 
     this.setState({code: ""});
   }
@@ -110,6 +108,27 @@ class Welcome extends Component {
         if (!subscriptionData.data) {
           return previous;
         }
+      }
+    })
+  }
+
+  subscribeToNewRooms = () => {
+    this.props.roomsQuery.subscribeToMore({
+      document: NewRoomSubscription,
+      updateQuery: (previous, { subscriptionData }) => {
+        if (!subscriptionData.data) {
+          return previous;
+        }
+        let newRooms = [ subscriptionData.data.createdRoom, ...previous.rooms];
+
+        let result = {
+          ...previous,
+          rooms: newRooms
+        }
+
+        this.subscribeToNewPlayers(subscriptionData.data.createdRoom.code)
+
+        return result;
 
       }
     })

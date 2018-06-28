@@ -62,8 +62,8 @@ export const NewPlayerSubscription = gql`
 `;
 
 export const NewRoomSubscription = gql`
-  subscription onJoinedRoom($code: String!){
-    joinedRoom(code: $code) {
+  subscription onCreatedRoom {
+    createdRoom {
       id
       code
       players {
