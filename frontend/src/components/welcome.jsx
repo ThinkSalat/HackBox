@@ -99,13 +99,8 @@ class Welcome extends Component {
     if (!code) {
       return null;
     }
-<<<<<<< HEAD
-
-    await this.props.createRoom({
-=======
     
     this.props.createRoom({
->>>>>>> master
       variables: {
         code,
         numRounds: this.state.numRounds,

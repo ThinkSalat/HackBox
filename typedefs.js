@@ -28,11 +28,7 @@ const typeDefs = `
     hand: [Card]
   }
   type Mutation {
-<<<<<<< HEAD
-    createRoom(code: String!, numRounds: Int!, gameType: String!): Room
-=======
     createRoom(code: String!, gameType: String, numRounds: Int): Room
->>>>>>> master
     removeRoom(id: ID!): Boolean
     updateRoom(id: ID!, code: String!): Boolean
     buildDeck(code: String!, cardType: String!, numCards: Int!): Room
