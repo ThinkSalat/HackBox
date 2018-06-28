@@ -93,38 +93,52 @@ class Welcome extends Component {
     return code;
   }
 
-  createRoom = async () => {
+  createRoom = () => {
     let code = this.getRandomCode();
 
     if (!code) {
       return null;
     }
+<<<<<<< HEAD
 
     await this.props.createRoom({
+=======
+    
+    this.props.createRoom({
+>>>>>>> master
       variables: {
         code,
         numRounds: this.state.numRounds,
         gameType: this.state.gameType
       }
     });
-
-    this.setState({code: ""});
   }
 
-  addPlayer = async (code, username) => {
-    await this.props.addPlayer({
+  addPlayer = () => {
+    let { code, username } = this.state;
+    if (!code || !username) {
+      return null;
+    }
+    
+    const { rooms } = this.props.data;
+    let room = rooms.filter(room => room.code === code);
+    if (!room.length) {
+      this.setState({code: "", username: ""});
+      return null;
+    }
+
+    this.props.history.push(`/room/${code}`);
+    
+    this.props.addPlayer({
       variables: {
         code,
         username
       }
     })
-
-    this.setState({code: '', username: ''});
-    this.props.history.push(`/room/${code}`)
   }
 
-  removeRoom = async (room) => {
-    await this.props.removeRoom({
+  removeRoom = room => {
+    this.props.removeRoom({
       variables: {
         id: room.id
       }

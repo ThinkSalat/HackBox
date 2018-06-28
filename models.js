@@ -4,7 +4,8 @@ const CardSchema = new Schema({
   text: String,
   prompt: String,
   cardType: String,
-  numPrompts: Number
+  numPrompts: Number,
+  flavorText: String
 });
 
 const PlayerSchema = new Schema({
@@ -17,6 +18,7 @@ const RoomSchema = new Schema({
   players: [PlayerSchema],
   code: { type: String, unique: true },
   deck: [CardSchema],
+  playerDeck: [CardSchema],
   numRounds: {type: Number, default: 3},
   gameType: {type: String, default: "CAH"}
 });
