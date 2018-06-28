@@ -9,15 +9,22 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+
 import { 
-  RoomsQuery,
+  RoomsQuery
+} from '../gql/gql_query';
+
+import {
   CreateRoomMutation, 
   AddPlayerMutation,
-  RemoveRoomMutation,
+  RemoveRoomMutation
+} from '../gql/gql_mutation';
+
+import {
   NewPlayerSubscription,
   NewRoomSubscription,
-  FindRoomQuery
-} from './gql_query';
+  RemoveRoomSubscription
+} from '../gql/gql_subscription';
 
 
 class Welcome extends Component {
@@ -32,11 +39,16 @@ class Welcome extends Component {
 
   componentDidMount() {
     this.subscribeToNewRooms();
+    this.subscribeToRemoveRooms();
   }
 
-  componentWillReceiveProps({data: {rooms}}) {
-    if (rooms && !this.state.subbed) {
-      rooms.forEach((rm) => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== '/') {
+      this.props.history.push('/');
+    }
+
+    if (nextProps.data.rooms && !this.state.subbed) {
+      nextProps.data.rooms.forEach((rm) => {
         this.subscribeToNewPlayers(rm.code)
       })
 
@@ -112,43 +124,45 @@ class Welcome extends Component {
     return code;
   }
 
-  createRoom = async () => {
+  createRoom = () => {
     let code = this.getRandomCode();
 
     if (!code) return null;
     
-    await this.props.createRoom({
+    this.props.createRoom({
       variables: {
         code
       }
     });
-
-    this.setState({code: ""});
   }
 
-  addPlayer = async (code, username) => {
-    await this.props.addPlayer({
+  addPlayer = () => {
+    let { code, username } = this.state;
+    if (!code || !username) {
+      return null;
+    }
+    
+    const { rooms } = this.props.data;
+    let room = rooms.filter(room => room.code === code);
+    if (!room.length) {
+      this.setState({code: "", username: ""});
+      return null;
+    }
+
+    this.props.history.push(`/room/${code}`);
+    
+    this.props.addPlayer({
       variables: {
         code,
         username
       }
     })
-
-    this.setState({code: '', username: ''});
-    this.props.history.push(`/room/${code}`)
   }
 
-  removeRoom = async (room) => {
-    await this.props.removeRoom({
+  removeRoom = room => {
+    this.props.removeRoom({
       variables: {
         id: room.id
-      },
-      update: (store) => {
-        // Read the data from our cache for this query.
-        const data = store.readQuery({ query: RoomsQuery });
-        data.rooms = data.rooms.filter(x => x.id !== room.id);
-        // Write our data back to the cache.
-        store.writeQuery({ query: RoomsQuery, data });
       }
     })
   }
@@ -184,7 +198,28 @@ class Welcome extends Component {
         this.subscribeToNewPlayers(subscriptionData.data.createdRoom.code)
 
         return result;
+      }
+    })
+  }
 
+  subscribeToRemoveRooms = () => {
+    this.props.roomsQuery.subscribeToMore({
+      document: RemoveRoomSubscription,
+      updateQuery: (previous, { subscriptionData }) => {
+        if (!subscriptionData.data) {
+          return previous;
+        }
+
+        let newRooms = previous.rooms.filter((rm) => {
+          return subscriptionData.data.removedRoom !== rm.id
+        })
+
+        let result = {
+          ...previous,
+          rooms: newRooms
+        }
+
+        return result;
       }
     })
   }
