@@ -8,7 +8,7 @@ const REMOVED_ROOM = 'REMOVED_ROOM';
 
 require("babel-polyfill");
 
-const resolvers = {
+const resolvers = { 
   Query: {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
@@ -31,9 +31,8 @@ const resolvers = {
       return true;
     },
     buildDeck: async (_, {code, cardType,numCards}) => {
-      const deck = Card.aggregate().match({ cardType }).sample(numCards)
+      const deck = await Card.aggregate().match({ cardType }).sample(numCards).exec()
       return await Room.findOneAndUpdate({ code }, { $set: { deck }})
-      // return Room.findOne({code})
     },
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });

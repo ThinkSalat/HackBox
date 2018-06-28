@@ -9,7 +9,6 @@ const CardSchema = new Schema({
 
 const PlayerSchema = new Schema({
   username: String,
-  // username: {type: String, unique: true},
   score: {type: Number, default: 0}
 });
 
