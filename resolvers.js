@@ -46,6 +46,9 @@ const resolvers = {
     },
     addPlayerHand: async (_, {code, username, numCards}) => {
       const room = Room.findOne({code});
+      const cardType =  room.gameType === "CAH" ? "CAHWhiteCard" : "A2ARedCard"
+      const cards = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+
       const player = room.players.filter(player => player.username === username);
       const cards = Card.aggregate().match({ cardType }).sample(numCards);
       await player.hand.concat(cards)

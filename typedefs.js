@@ -8,6 +8,7 @@ const typeDefs = `
     id: ID!
     code: String!
     numRounds: Int!
+    gameType: String!
     deck: [Card]
     players: [Player]
   }
