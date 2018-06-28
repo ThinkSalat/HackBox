@@ -31,7 +31,7 @@ const typeDefs = `
     updateRoom(id: ID!, code: String!): Boolean
     buildDeck(code: String!, cardType: String!, numCards: Int!): Room
     addPlayer(code: String!, username: String!): Room
-    addPlayerHand(code: String!, username: String!, numCards: Int!): Player
+    addPlayerHand(code: String!, username: String!, numCards: Int!): Room
   }
   type Subscription {
     joinedRoom(code: String!): Room
