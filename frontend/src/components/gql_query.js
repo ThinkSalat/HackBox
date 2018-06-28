@@ -15,6 +15,13 @@ export const RoomsQuery = gql`{
 }
 `;
 
+export const FindRoomQuery = gql`{
+  findRoom(code: $code) {
+    code
+  }
+}
+`;
+
 export const CreateRoomMutation = gql`
   mutation($code: String!) {
     createRoom(code: $code) {

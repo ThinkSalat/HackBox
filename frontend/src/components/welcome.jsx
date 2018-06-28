@@ -15,7 +15,8 @@ import {
   AddPlayerMutation,
   RemoveRoomMutation,
   NewPlayerSubscription,
-  NewRoomSubscription
+  NewRoomSubscription,
+  FindRoomQuery
 } from './gql_query';
 
 
@@ -26,6 +27,8 @@ class Welcome extends Component {
     code: "",
     subbed: false
   }
+
+  // React Class Component functions
 
   componentDidMount() {
     this.subscribeToNewRooms();
@@ -47,6 +50,57 @@ class Welcome extends Component {
     });
   };
 
+  render() {
+    const {data: {loading, rooms}} = this.props;
+    const {username, code} = this.state;
+    
+    if (loading) {
+      return null;
+    }
+
+    return(
+
+      <div style={{margin: '0 300px'}}>
+
+        <button onClick={this.createRoom}>Create Room</button>
+        <br/>
+        <TextField
+          onChange={this.handleChange("code")}
+          value={code}
+          label="Room Code"
+          inputProps={{ maxLength: 4 }}
+          />
+        <TextField
+          onChange={this.handleChange("username")}
+          value={username}
+          label="Username"
+          inputProps={{ maxLength: 12 }}
+        />
+
+        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
+
+        <List>
+          {rooms.map(room => (
+            <ListItem
+            key={room.id}
+            role={undefined}
+            dense
+            button
+            >
+              <ListItemText primary={`${room.code}: ${room.players.length} players`} />
+              <button onClick={() => this.removeRoom(room)}>
+                remove
+              </button>
+            </ListItem>
+          ))}
+        </List>
+
+      </div>
+    );
+  }
+  
+  // Graphql Queries and helpers
+
   getRandomCode() {
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -54,23 +108,20 @@ class Welcome extends Component {
     for (let i = 0; i < 4; i++) {
       code += alpha[Math.floor(Math.random() * alpha.length)];
     }
+    if (this.props.FindRoomQuery) return this.getRandomCode();
     return code;
   }
 
   createRoom = async () => {
     let code = this.getRandomCode();
 
-    if (!code) {
-      return null;
-    }
+    if (!code) return null;
     
     await this.props.createRoom({
       variables: {
         code
       }
     });
-
-    
 
     this.setState({code: ""});
   }
@@ -138,57 +189,10 @@ class Welcome extends Component {
     })
   }
 
-  render() {
-    const {data: {loading, rooms}} = this.props;
-    const {username, code} = this.state;
-    
-    if (loading) {
-      return null;
-    }
-
-    return(
-
-      <div style={{margin: '0 300px'}}>
-
-        <button onClick={this.createRoom}>Create Room</button>
-        <br/>
-        <TextField
-          onChange={this.handleChange("code")}
-          value={code}
-          label="Room Code"
-          inputProps={{ maxLength: 4 }}
-          />
-        <TextField
-          onChange={this.handleChange("username")}
-          value={username}
-          label="Username"
-          inputProps={{ maxLength: 12 }}
-        />
-
-        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
-
-        <List>
-          {rooms.map(room => (
-            <ListItem
-            key={room.id}
-            role={undefined}
-            dense
-            button
-            >
-              <ListItemText primary={`${room.code}: ${room.players.length} players`} />
-              <button onClick={() => this.removeRoom(room)}>
-                remove
-              </button>
-            </ListItem>
-          ))}
-        </List>
-
-      </div>
-    );
-  }
 }
 
 export default compose (
+  graphql(FindRoomQuery),
   graphql(RoomsQuery),
   graphql(RoomsQuery, {name: "roomsQuery"}),
   graphql(CreateRoomMutation, {name: "createRoom"}),

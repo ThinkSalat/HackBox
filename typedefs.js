@@ -4,6 +4,7 @@ const typeDefs = `
     findRoom(code: String): Room,
     findCards(cardType: String!, numCards: Int!): [Card]
   }
+  
   type Room {
     id: ID!
     code: String!
@@ -13,6 +14,7 @@ const typeDefs = `
     players: [Player]
     playerDeck: [Card]
   }
+  
   type Card {
     id: ID!
     text: String
@@ -21,12 +23,14 @@ const typeDefs = `
     numPrompts: Int
     flavorText: String
   }
+  
   type Player {
     id: ID!
     username: String!
     score: Int!
     hand: [Card]
   }
+  
   type Mutation {
     createRoom(code: String!, gameType: String, numRounds: Int): Room
     removeRoom(id: ID!): Boolean
@@ -35,11 +39,13 @@ const typeDefs = `
     addPlayer(code: String!, username: String!): Room
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
   }
+  
   type Subscription {
     joinedRoom(code: String!): Room
     createdRoom: Room
     removedRoom: Boolean
   }
+  
 `;
 
 export default typeDefs;
