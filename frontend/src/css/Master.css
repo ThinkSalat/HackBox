@@ -3,6 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif; }
 
+.lobby {
+  display: flex;
+  flex-flow: column;
+  align-items: center; }
+  .lobby .room-option {
+    width: 200px; }
+  .lobby .room-list {
+    list-style: none; }
+    .lobby .room-list li {
+      display: inline-block;
+      margin: 10px; }
+
 .App {
   text-align: center; }
 
