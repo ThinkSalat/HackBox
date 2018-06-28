@@ -35,22 +35,25 @@ const resolvers = {
       return await Room.findOneAndUpdate({ code }, { $set: { deck }})
     },
     addPlayer: async (_, { code, username }) => {
+      let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
+      if (usernameTaken) {
+        usernameTaken = "Username taken"
+      } else {
+        const player = new Player({ username, score: 0 });
+        await Room.update(
+          { code }, 
+          {$push: { players: player }}
+        );
+      }
       const room = Room.findOne({ code });
-      const player = new Player({ username, score: 0 });
-      await Room.update(
-        { code }, 
-        {$push: { players: player }}
-      );
-      pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
+      pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room, usernameTaken })
       return room;
     },
-    addPlayerHand: async (_, {code, username, numCards}) => {
-      const room = Room.findOne({code});
-      const cardType =  room.gameType === "CAH" ? "CAHWhiteCard" : "A2ARedCard"
+    addPlayerHand: async (_, {code, username, numCards, cardType}) => {
       const cards = await Card.aggregate().match({ cardType }).sample(numCards).exec()
       return await Room.findOneAndUpdate(
-        {code, "players.username": player.username},
-        {$concat: {"players.$.hand": cards}})
+        {code, "players.username": username},
+        {$push: {"players.$.hand": cards}})
     }
   },
   Subscription: {
