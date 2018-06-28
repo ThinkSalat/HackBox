@@ -54,6 +54,10 @@ const resolvers = {
       return await Room.findOneAndUpdate(
         {code, "players.username": username},
         {$push: {"players.$.hand": cards}})
+    },
+    addPlayerScore: async(_, {code, username, points}) => {
+      return await Room.findOneAndUpdate({ code, "players.username": username},
+       { $inc: { "players.$.score": points }}) 
     }
   },
   Subscription: {
