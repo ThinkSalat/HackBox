@@ -8,7 +8,7 @@ const REMOVED_ROOM = 'REMOVED_ROOM';
 
 require("babel-polyfill");
 
-const resolvers = {
+const resolvers = { 
   Query: {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
@@ -29,6 +29,10 @@ const resolvers = {
     updateRoom: async (_, { id, code }) => {
       await Room.findByIdAndUpdate(id, { code })
       return true;
+    },
+    buildDeck: async (_, {code, cardType,numCards}) => {
+      const deck = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+      return await Room.findOneAndUpdate({ code }, { $set: { deck }})
     },
     addPlayer: async (_, { code, username }) => {
       const room = Room.findOne({ code });
@@ -61,5 +65,3 @@ const resolvers = {
 }
 
 export default resolvers;
-
-//fisher-yates shuffle from so

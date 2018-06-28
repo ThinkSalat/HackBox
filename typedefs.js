@@ -28,7 +28,7 @@ const typeDefs = `
     createRoom(code: String!): Room
     removeRoom(id: ID!): Boolean
     updateRoom(id: ID!, code: String!): Boolean
-    buildQuiplashDeck(code: String!, numCards: Int!): Room
+    buildDeck(code: String!, cardType: String!, numCards: Int!): Room
     addPlayer(code: String!, username: String!): Room
     addPlayerHand(code: String!, username: String!, numCards: Int!): Player
   }
