@@ -1,3823 +1,4 @@
 
- const cards =  [
-    {
-  "text": "Why can't I sleep at night?",
-  "pick": 1
-  },
-  {
-  "text": "I got 99 problems but _ ain't one.",
-  "pick": 1
-  },
-  {
-  "text": "What's a girl's best friend?",
-  "pick": 1
-  },
-  {
-  "text": "What's that smell?",
-  "pick": 1
-  },
-  {
-  "text": "This is the way the world ends / This is the way the world ends / Not with a bang but with _.",
-  "pick": 1
-  },
-  {
-  "text": "What is Batman's guilty pleasure?",
-  "pick": 1
-  },
-  {
-  "text": "TSA guidelines now prohibit _ on airplanes.",
-  "pick": 1
-  },
-  {
-  "text": "What ended my last relationship?",
-  "pick": 1
-  },
-  {
-  "text": "MTV's new reality show features eight washed-up celebrities living with _.",
-  "pick": 1
-  },
-  {
-  "text": "I drink to forget _.",
-  "pick": 1
-  },
-  {
-  "text": "I'm sorry, Professor, but I couldn't complete my homework because of _.",
-  "pick": 1
-  },
-  {
-  "text": "Alternative medicine is now embracing the curative powers of _.",
-  "pick": 1
-  },
-  {
-  "text": "What's that sound?",
-  "pick": 1
-  },
-  {
-  "text": "What's the next Happy Meal&reg; toy?",
-  "pick": 1
-  },
-  {
-  "text": "It's a pity that kids these days are all getting involved with _.",
-  "pick": 1
-  },
-  {
-  "text": "In the new Disney Channel Original Movie, Hannah Montana struggles with _ for the first time.",
-  "pick": 1
-  },
-  {
-  "text": "_. That's how I want to die.",
-  "pick": 1
-  },
-  {
-  "text": "What does Dick Cheney prefer?",
-  "pick": 1
-  },
-  {
-  "text": "What's the most emo?",
-  "pick": 1
-  },
-  {
-  "text": "Instead of coal, Santa now gives the bad children _.",
-  "pick": 1
-  },
-  {
-  "text": "Next from J.K. Rowling: Harry Potter and the Chamber of _.",
-  "pick": 1
-  },
-  {
-  "text": "A romantic, candlelit dinner would be incomplete without _.",
-  "pick": 1
-  },
-  {
-  "text": "White people like _.",
-  "pick": 1
-  },
-  {
-  "text": "_. Betcha can't have just one!",
-  "pick": 1
-  },
-  {
-  "text": "War!<br><br>What is it good for?",
-  "pick": 1
-  },
-  {
-  "text": "BILLY MAYS HERE FOR _.",
-  "pick": 1
-  },
-  {
-  "text": "_. High five, bro.",
-  "pick": 1
-  },
-  {
-  "text": "During sex, I like to think about _.",
-  "pick": 1
-  },
-  {
-  "text": "What did I bring back from Mexico?",
-  "pick": 1
-  },
-  {
-  "text": "What are my parents hiding from me?",
-  "pick": 1
-  },
-  {
-  "text": "What will always get you laid?",
-  "pick": 1
-  },
-  {
-  "text": "What would grandma find disturbing, yet oddly charming?",
-  "pick": 1
-  },
-  {
-  "text": "What did the U.S. airdrop to the children of Afghanistan?",
-  "pick": 1
-  },
-  {
-  "text": "What helps Obama unwind?",
-  "pick": 1
-  },
-  {
-  "text": "What's there a ton of in heaven?",
-  "pick": 1
-  },
-  {
-  "text": "Major League Baseball has banned _ for giving players an unfair advantage.",
-  "pick": 1
-  },
-  {
-  "text": "When I am a billionaire, I shall erect a 50-foot statue to commemorate _.",
-  "pick": 1
-  },
-  {
-  "text": "What's the new fad diet?",
-  "pick": 1
-  },
-  {
-  "text": "When I am the President of the United States, I will create the Department of _.",
-  "pick": 1
-  },
-  {
-  "text": "_. It's a trap!",
-  "pick": 1
-  },
-  {
-  "text": "How am I maintaining my relationship status?",
-  "pick": 1
-  },
-  {
-  "text": "What will I bring back in time to convince people that I am a powerful wizard?",
-  "pick": 1
-  },
-  {
-  "text": "While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on _.",
-  "pick": 1
-  },
-  {
-  "text": "Coming to Broadway this season, _: The Musical.",
-  "pick": 1
-  },
-  {
-  "text": "What's my secret power?",
-  "pick": 1
-  },
-  {
-  "text": "What gives me uncontrollable gas?",
-  "pick": 1
-  },
-  {
-  "text": "But before I kill you, Mr. Bond, I must show you _.",
-  "pick": 1
-  },
-  {
-  "text": "What never fails to liven up the party?",
-  "pick": 1
-  },
-  {
-  "text": "What am I giving up for Lent?",
-  "pick": 1
-  },
-  {
-  "text": "What do old people smell like? ",
-  "pick": 1
-  },
-  {
-  "text": "The class field trip was completely ruined by _.",
-  "pick": 1
-  },
-  {
-  "text": "When Pharaoh remained unmoved, Moses called down a plague of _.",
-  "pick": 1
-  },
-  {
-  "text": "I do not know with which weapons World War III will be fought, but World War IV will be fought with _.",
-  "pick": 1
-  },
-  {
-  "text": "What's Teach for America using to inspire inner city students to succeed?",
-  "pick": 1
-  },
-  {
-  "text": "In Michael Jackson's final moments, he thought about _.",
-  "pick": 1
-  },
-  {
-  "text": "Why do I hurt all over?",
-  "pick": 1
-  },
-  {
-  "text": "Studies show that lab rats navigate mazes 50% faster after being exposed to _.",
-  "pick": 1
-  },
-  {
-  "text": "Why am I sticky?",
-  "pick": 1
-  },
-  {
-  "text": "What's my anti-drug?",
-  "pick": 1
-  },
-  {
-  "text": "And the Academy Award for _ goes to _.",
-  "pick": 2
-  },
-  {
-  "text": "For my next trick, I will pull _ out of _.",
-  "pick": 2
-  },
-  {
-  "text": "_: Good to the last drop.",
-  "pick": 1
-  },
-  {
-  "text": "What did Vin Diesel eat for dinner?",
-  "pick": 1
-  },
-  {
-  "text": "_: kid-tested, mother-approved.",
-  "pick": 1
-  },
-  {
-  "text": "What gets better with age?",
-  "pick": 1
-  },
-  {
-  "text": "I never truly understood _ until I encountered _.",
-  "pick": 2
-  },
-  {
-  "text": "Rumor has it that Vladimir Putin's favorite delicacy is _ stuffed with _.",
-  "pick": 2
-  },
-  {
-  "text": "Lifetime&reg; presents _, the story of _.",
-  "pick": 2
-  },
-  {
-  "text": "Make a haiku.",
-  "pick": 3
-  },
-  {
-  "text": "In M. Night Shyamalan's new movie, Bruce Willis discovers that _ had really been _ all along.",
-  "pick": 2
-  },
-  {
-  "text": "_ is a slippery slope that leads to _.",
-  "pick": 2
-  },
-  {
-  "text": "In a world ravaged by _, our only solace is _.",
-  "pick": 2
-  },
-  {
-  "text": "That's right, I killed _. How, you ask? _.",
-  "pick": 2
-  },
-  {
-  "text": "When I was tripping on acid, _ turned into _.",
-  "pick": 2
-  },
-  {
-  "text": "_ + _ = _.",
-  "pick": 3
-  },
-  {
-  "text": "What's the next superhero/sidekick duo?",
-  "pick": 2
-  },
-  {
-  "text": "Dear Abby,<br><br>I'm having some trouble with _ and would like your advice.",
-  "pick": 1
-  },
-  {
-  "text": "After the earthquake, Sean Penn brought _ to the people of Haiti.",
-  "pick": 1
-  },
-  {
-  "text": "In L.A. County Jail, word is you can trade 200 cigarettes for _.",
-  "pick": 1
-  },
-  {
-  "text": "Maybe she's born with it. Maybe it's _.",
-  "pick": 1
-  },
-  {
-  "text": "Life for American Indians was forever changed when the White Man introduced them to _.",
-  "pick": 1
-  },
-  {
-  "text": "Next on ESPN2, the World Series of _.",
-  "pick": 1
-  },
-  {
-  "text": "Step 1: _. Step 2: _. Step 3: Profit.",
-  "pick": 2
-  },
-  {
-  "text": "Here is the church<br>Here is the steeple<br>Open the doors<br>And there is _.",
-  "pick": 1
-  },
-  {
-  "text": "How did I lose my virginity?",
-  "pick": 1
-  },
-  {
-  "text": "During his childhood, Salvador Dal&iacute; produced hundreds of paintings of _.",
-  "pick": 1
-  },
-  {
-  "text": "In 1,000 years, when paper money is a distant memory, how will we pay for goods and services?",
-  "pick": 1
-  },
-  {
-  "text": "What don't you want to find in your Kung Pao chicken?",
-  "pick": 1
-  },
-  {
-  "text": "The Smithsonian Museum of Natural History has just opened an exhibit on _.",
-  "pick": 1
-  },
-  {
-  "text": "Daddy, why is Mommy crying?",
-  "pick": 1
-  },
-  {
-  "text": "What brought the orgy to a grinding halt?",
-  "pick": 1
-  },
-  {
-  "text": "When I pooped, what came out of my butt?",
-  "pick": 1
-  },
-  {
-  "text": "In the distant future, historians will agree that _ marked the beginning of America's decline.",
-  "pick": 1
-  },
-  {
-  "text": "What's the gift that keeps on giving?",
-  "pick": 1
-  },
-  {
-  "text": "This season on Man vs. Wild, Bear Grylls must survive in the depths of the Amazon with only _ and his wits.",
-  "pick": 1
-  },
-  {
-  "text": "Michael Bay's new three-hour action epic pits _ against _.",
-  "pick": 2
-  },
-  {
-  "text": "And I would have gotten away with it, too, if it hadn't been for _!",
-  "pick": 1
-  },
-  {
-  "text": "In a pinch, _ can be a suitable substitute for _.",
-  "pick": 2
-  },
-  {
-  "text": "What has been making life difficult at the nudist colony?",
-  "pick": 1
-  },
-  {
-  "text": "Science will never explain the origin of _.",
-  "pick": 1
-  },
-  {
-  "text": "In Rome, there are whisperings that the Vatican has a secret room devoted to _.",
-  "pick": 1
-  },
-  {
-  "text": "I learned the hard way that you can't cheer up a grieving friend with _.",
-  "pick": 1
-  },
-  {
-  "text": "When all else fails, I can always masturbate to _.",
-  "pick": 1
-  },
-  {
-  "text": "An international tribunal has found _ guilty of _.",
-  "pick": 2
-  },
-  {
-  "text": "In its new tourism campaign, Detroit proudly proclaims that it has finally eliminated _.",
-  "pick": 1
-  },
-  {
-  "text": "In his new self-produced album, Kanye West raps over the sounds of _.",
-  "pick": 1
-  },
-  {
-  "text": "The socialist governments of Scandinavia have declared that access to _ is a basic human right.",
-  "pick": 1
-  },
-  {
-  "text": "He who controls _ controls the world.",
-  "pick": 1
-  },
-  {
-  "text": "Dear Sir or Madam, We regret to inform you that the Office of _ has denied your request for _.",
-  "pick": 2
-  },
-  {
-  "text": "The CIA now interrogates enemy agents by repeatedly subjecting them to _.",
-  "pick": 1
-  },
-  {
-  "text": "_ would be woefully incomplete without _.",
-  "pick": 2
-  },
-  {
-  "text": "During his midlife crisis, my dad got really into _.",
-  "pick": 1
-  },
-  {
-  "text": "Before I run for president, I must destroy all evidence of my involvement with _.",
-  "pick": 1
-  },
-  {
-  "text": "My new favorite porn star is Joey \"_\" McGee.",
-  "pick": 1
-  },
-  {
-  "text": "In his newest and most difficult stunt, David Blaine must escape from _.",
-  "pick": 1
-  },
-  {
-  "text": "This is your captain speaking. Fasten your seatbelts and prepare for _.",
-  "pick": 1
-  },
-  {
-  "text": "My mom freaked out when she looked at my browser history and found _.com/_.",
-  "pick": 2
-  },
-  {
-  "text": "The Five Stages of Grief: denial, anger, bargaining, _, acceptance.",
-  "pick": 1
-  },
-  {
-  "text": "Members of New York's social elite are paying thousands of dollars just to experience _.",
-  "pick": 1
-  },
-  {
-  "text": "I went from _ to _, all thanks to _.",
-  "pick": 3
-  },
-  {
-  "text": "Little Miss Muffet Sat on a tuffet, Eating her curds and _.",
-  "pick": 1
-  },
-  {
-  "text": "This month's Cosmo: \"Spice up your sex life by bringing _ into the bedroom.\"",
-  "pick": 1
-  },
-  {
-  "text": "If God didn't want us to enjoy _, he wouldn't have given us _.",
-  "pick": 2
-  },
-  {
-  "text": "My country, 'tis of thee, sweet land of _.",
-  "pick": 1
-  },
-  {
-  "text": "After months of debate, the Occupy Wall Street General Assembly could only agree on \"More _!\"",
-  "pick": 1
-  },
-  {
-  "text": "I spent my whole life working toward _, only to have it ruined by _.",
-  "pick": 2
-  },
-  {
-  "text": "Next time on Dr. Phil: How to talk to your child about _.",
-  "pick": 1
-  },
-  {
-  "text": "Only two things in life are certain: death and _.",
-  "pick": 1
-  },
-  {
-  "text": "Everyone down on the ground! We don't want to hurt anyone. We're just here for _.",
-  "pick": 1
-  },
-  {
-  "text": "The healing process began when I joined a support group for victims of _.",
-  "pick": 1
-  },
-  {
-  "text": "The votes are in, and the new high school mascot is _.",
-  "pick": 1
-  },
-  {
-  "text": "Charades was ruined for me forever when my mom had to act out _.",
-  "pick": 1
-  },
-  {
-  "text": "Before _, all we had was _.",
-  "pick": 2
-  },
-  {
-  "text": "Tonight on 20/20: What you don't know about _ could kill you.",
-  "pick": 1
-  },
-  {
-  "text": "You haven't truly lived until you've experienced _ and _ at the same time.",
-  "pick": 2
-  },
-  {
-  "text": "Hey baby, come back to my place and I'll show you _.",
-  "pick": 1
-  },
-  {
-  "text": "My gym teacher got fired for adding _ to the obstacle course.",
-  "pick": 1
-  },
-  {
-  "text": "Finally! A service that delivers _ right to your door.",
-  "pick": 1
-  },
-  {
-  "text": "To prepare for his upcoming role, Daniel Day-Lewis immersed himself in the world of _.",
-  "pick": 1
-  },
-  {
-  "text": "My life is ruled by a vicious cycle of _ and _.",
-  "pick": 2
-  },
-  {
-  "text": "During high school, I never really fit in until I found _ club.",
-  "pick": 1
-  },
-  {
-  "text": "Money can't buy me love, but it can buy me _.",
-  "pick": 1
-  },
-  {
-  "text": "Listen, son. If you want to get involved with _, I won't stop you. Just steer clear of _.",
-  "pick": 2
-  },
-  {
-  "text": "A successful job interview begins with a firm handshake and ends with _.",
-  "pick": 1
-  },
-  {
-  "text": "Call the law offices of Goldstein &amp; Goldstein, because no one should have to tolerate _ in the workplace.",
-  "pick": 1
-  },
-  {
-  "text": "Lovin' you is easy 'cause you're _.",
-  "pick": 1
-  },
-  {
-  "text": "The blind date was going horribly until we discovered our shared interest in _.",
-  "pick": 1
-  },
-  {
-  "text": "What left this stain on my couch?",
-  "pick": 1
-  },
-  {
-  "text": "Turns out that _-Man was neither the hero we needed nor wanted.",
-  "pick": 1
-  },
-  {
-  "text": "After months of practice with _, I think I'm finally ready for _.",
-  "pick": 2
-  },
-  {
-  "text": "In the seventh circle of Hell, sinners must endure _ for all eternity.",
-  "pick": 1
-  },
-  {
-  "text": "As part of his daily regimen, Anderson Cooper sets aside 15 minutes for _.",
-  "pick": 1
-  },
-  {
-  "text": "When you get right down to it, _ is just _.",
-  "pick": 2
-  },
-  {
-  "text": "Having problems with _? Try _!",
-  "pick": 2
-  },
-  {
-  "text": "And what did <i>you</i> bring for show and tell?",
-  "pick": 1
-  },
-  {
-  "text": "I'm not like the rest of you. I'm too rich and busy for _.",
-  "pick": 1
-  },
-  {
-  "text": "With enough time and pressure, _ will turn into _.",
-  "pick": 2
-  },
-  {
-  "text": "_: Hours of fun. Easy to use. Perfect for _!",
-  "pick": 2
-  },
-  {
-  "text": "_. Awesome in theory, kind of a mess in practice.",
-  "pick": 1
-  },
-  {
-  "text": "As part of his contract, Prince won't perform without _ in his dressing room.",
-  "pick": 1
-  },
-  {
-  "text": "Man, this is bullshit. Fuck _.",
-  "pick": 1
-  },
-  {
-  "text": "Dear Leader Kim Jong-un,<br>our village praises your infinite wisdom with a humble offering of _.",
-  "pick": 1
-  },
-  {
-  "text": "_ may pass, but _ will last forever.",
-  "pick": 2
-  },
-  {
-  "text": "She's up all night for good fun.<br>I'm up all night for _.",
-  "pick": 1
-  },
-  {
-  "text": "Alright, bros. Our frat house is condemned, and all the hot slampieces are over at Gamma Phi. The time has come to commence Operation _.",
-  "pick": 1
-  },
-  {
-  "text": "The Japanese have developed a smaller, more efficient version of _.",
-  "pick": 1
-  },
-  {
-  "text": "In return for my soul, the Devil promised me _, but all I got was _.",
-  "pick": 2
-  },
-  {
-  "text": "You guys, I saw this crazy movie last night. It opens on _, and then there's some stuff about _, and then it ends with _.",
-  "pick": 3
-  },
-  {
-  "text": "_ will never be the same after _.",
-  "pick": 2
-  },
-  {
-  "text": "Wes Anderson's new film tells the story of a precocious child coming to terms with _.",
-  "pick": 1
-  },
-  {
-  "text": "In the beginning, there was _.<br>And the Lord said, \"Let there be _.\"",
-  "pick": 2
-  },
-  {
-  "text": "What's fun until it gets weird?",
-  "pick": 1
-  },
-  {
-  "text": "We never did find _, but along the way we sure learned a lot about _.",
-  "pick": 2
-  },
-  {
-  "text": "You've seen the bearded lady!<br>You've seen the ring of fire!<br>Now, ladies and gentlemen, feast your eyes upon _!",
-  "pick": 1
-  },
-  {
-  "text": "How am I compensating for my tiny penis?",
-  "pick": 1
-  },
-  {
-  "text": "I'm sorry, sir, but we don't allow _ at the country club.",
-  "pick": 1
-  },
-  {
-  "text": "2 AM in the city that never sleeps. The door swings open and <i>she</i> walks in, legs up to here. Something in her eyes tells me she's looking for _.",
-  "pick": 1
-  },
-  {
-  "text": "As king, how will I keep the peasants in line?",
-  "pick": 1
-  },
-  {
-  "text": "Oprah's book of the month is \"_ For _: A Story of Hope.\"",
-  "pick": 2
-  },
-  {
-  "text": "Do <i>not</i> fuck with me! I am literally _ right now.",
-  "pick": 1
-  },
-  {
-  "text": "Adventure.<br>Romance.<br>_.<br><br>From Paramount Pictures, \"_.\"",
-  "pick": 2
-  },
-  {
-  "text": "I am become _, destroyer of _!",
-  "pick": 2
-  },
-  {
-  "text": "It lurks in the night. It hungers for flesh. This summer, no one is safe from _.",
-  "pick": 1
-  },
-  {
-  "text": "If you can't handle _, you'd better stay away from _.",
-  "pick": 2
-  },
-  {
-  "text": "This is the prime of my life. I'm young, hot, and full of _.",
-  "pick": 1
-  },
-  {
-  "text": "I'm pretty sure I'm high right now, because I'm absolutely mesmerized by _.",
-  "pick": 1
-  },
-  {
-  "text": "This year's hottest album is \"_\" by _.",
-  "pick": 2
-  },
-  {
-  "text": "Every step towards _ gets me a little closer to _.",
-  "pick": 2
-  },
-  {
-  "text": "Forget everything you know about _, because now we've supercharged it with _!",
-  "pick": 2
-  },
-  {
-  "text": "Honey, I have a new role-play I want to try tonight! You can be _, and I'll be _.",
-  "pick": 2
-  },
-  {
-  "text": "Do the Dew &reg; with our most extreme flavor yet! Get ready for Mountain Dew _!",
-  "pick": 1
-  },
-  {
-  "text": "Armani suit: $1,000. Dinner for two at that swanky restaurant: $300. The look on her face when you surprise her with _: priceless.",
-  "pick": 1
-  },
-  {
-  "text": "In his new action comedy, Jackie Chan must fend off ninjas while also dealing with _.",
-  "pick": 1
-  },
-  {
-  "text": "Well what do you have to say for yourself, Casey? This is the third time you've been sent to the principal's office for _.",
-  "pick": 1
-  },
-  {
-  "text": "Here at the Academy for Gifted Children, we allow students to explore _ at their own pace.",
-  "pick": 1
-  },
-  {
-  "text": "Heed my voice, mortals! I am the god of _, and I will not tolerate _!",
-  "pick": 2
-  },
-  {
-  "text": "I don't mean to brag, but they call me the Michael Jordan of _.",
-  "pick": 1
-  },
-  {
-  "text": "Why am I broke?",
-  "pick": 1
-  },
-  {
-  "text": "Help me doctor, I've got _ in my butt!",
-  "pick": 1
-  },
-  {
-  "text": "Hi MTV! My name is Kendra, I live in Malibu, I'm into _, and I love to have a good time.",
-  "pick": 1
-  },
-  {
-  "text": "Patient presents with _. Likely a result of _.",
-  "pick": 2
-  },
-  {
-  "text": "Life's pretty tough in the fast lane. That's why I never leave the house without _.",
-  "pick": 1
-  },
-  {
-  "text": "What's making things awkward in the sauna?",
-  "pick": 1
-  },
-  {
-  "text": "Get ready for the movie of the summer! One cop plays by the book. The other's only interested in one thing: _.",
-  "pick": 1
-  },
-  {
-  "text": "Having the worst day EVER. #_",
-  "pick": 1
-  },
-  {
-  "text": "In his farewell address, George Washington famously warned Americans about the dangers of _.",
-  "pick": 1
-  },
-  {
-  "text": "Don't forget! Beginning this week, Casual Friday will officially become \"_ Friday.\"",
-  "pick": 1
-  },
-  {
-  "text": "What killed my boner?",
-  "pick": 1
-  },
-  {
-  "text": "Yo' mama so fat she _!",
-  "pick": 1
-  },
-  {
-  "text": "Well if _ is good enough for _, it's good enough for me.",
-  "pick": 2
-  },
-  {
-  "text": "Hi, this is Jim from accounting. We noticed a $1,200 charge labeled \"_\". Can you explain?",
-  "pick": 1
-  },
-  {
-  "text": "Do you lack energy? Does it sometimes feel like the whole world is _? Zoloft.&reg;",
-  "pick": 1
-  },
-  {
-  "text": "WHOOO! God damn I love _!",
-  "pick": 1
-  },
-  {
-  "text": "Now in bookstores: \"The Audacity of _\", by Barack Obama.",
-  "pick": 1
-  },
-  {
-  "text": "And today's soup is Cream of _.",
-  "pick": 1
-  },
-  {
-  "pick": 1,
-  "text": "I work my ass off all day for this family, and this is what I come home to? _!?"
-  },
-  {
-  "pick": 1,
-  "text": "I have a strict policy. First date, dinner. Second date, kiss. Third date, _."
-  },
-  {
-  "pick": 1,
-  "text": "When I was a kid, we used to play Cowboys and _."
-  },
-  {
-  "pick": 1,
-  "text": "This is America. If you don't work hard, you don't succeed. I don't care if you're black, white, purple, or _."
-  },
-  {
-  "pick": 1,
-  "text": "You Won't Believe These 15 Hilarious _ Bloopers!"
-  },
-  {
-  "pick": 1,
-  "text": "James is a lonely boy. But when he discovers a secret door in his attic, he meets a magical new friend: _."
-  },
-  {
-  "pick": 1,
-  "text": "Don't worry kid. It gets better. I've been living with _ for 20 years."
-  },
-  {
-  "pick": 1,
-  "text": "My grandfather worked his way up from nothing. When he came to this country, all he had was the shoes on his feet and _."
-  },
-  {
-  "pick": 1,
-  "text": "Behind every powerful man is _."
-  },
-  {
-  "pick": 1,
-  "text": "You are not alone. Millions of Americans struggle with _ every day."
-  },
-  {
-  "pick": 1,
-  "text": "Come to Dubai, where you can relax in our world famous spas, experience the nightlife, or simply enjoy _ by the poolside."
-  },
-  {
-  "pick": 1,
-  "text": "\"This is madness.\" \"No, THIS IS _!\""
-  },
-  {
-  "pick": 1,
-  "text": "Listen Gary, I like you. But if you want that corner office, you're going to have to show me _."
-  },
-  {
-  "pick": 1,
-  "text": "I went to the desert and ate of the peyote cactus. Turns out my spirit animal is _."
-  },
-  {
-  "pick": 1,
-  "text": "And would you like those buffalo wings mild, hot, or _?"
-  },
-  {
-  "pick": 1,
-  "text": "The six things I could never do without: oxygen, Facebook, chocolate, Netflix, friends, and _ LOL!"
-  },
-  {
-  "pick": 1,
-  "text": "Why won't you make love to me anymore? Is it _?"
-  },
-  {
-  "pick": 1,
-  "text": "Puberty is a time of change. You might notice hair growing in new places. You might develop an interest in _. This is normal."
-  },
-  {
-  "pick": 1,
-  "text": "I'm sorry, Mrs. Chen, but there was nothing we could do. At 4:15 this morning, your son succumbed to _."
-  },
-  {
-  "pick": 1,
-  "text": "I'm Miss Tennessee, and if I could make the world better by changing one thing, I would get rid of _."
-  },
-  {
-  "pick": 1,
-  "text": "Tonight we will have sex. And afterwards, If you'd like, a little bit of _."
-  },
-  {
-  "pick": 1,
-  "text": "Everybody join hands and close your eyes. Do you sense that? That's the presence of _ in this room."
-  },
-  {
-  "pick": 1,
-  "text": "To become a true Yanomamo warrior, you must prove that you can withstand _ without crying out."
-  },
-  {
-  "pick": 1,
-  "text": "Y'all ready to get this thing started? I'm Nick Cannon, and this is America's Got _."
-  },
-  {
-  "pick": 1,
-  "text": "If you had to describe the Card Czar, using only one of the cards in your hand, which one would it be?"
-  },
-  {
-  "pick": 2,
-  "text": "_ be all like _."
-  },
-  {
-  "pick": 1,
-  "text": "Art isn't just a painting in a stuffy museum. Art is alive. Art is _."
-  },
-  {
-  "pick": 1,
-  "text": "As reparations for slavery, all African Americans will receive _."
-  },
-  {
-  "pick": 1,
-  "text": "As Teddy Roosevelt said, the four manly virtues are honor, temperance, industry, and _."
-  },
-  {
-  "pick": 1,
-  "text": "Best you go back where you came from, now. We don't take too kindly to _ in these parts."
-  },
-  {
-  "pick": 1,
-  "text": "CNN breaking news! Scientists discover _."
-  },
-  {
-  "pick": 1,
-  "text": "Coming to Red Lobster&reg; this month, _."
-  },
-  {
-  "pick": 1,
-  "text": "Congratulations! You have been selected for our summer internship program. While we are unable to offer a salary, we can offer you _."
-  },
-  {
-  "pick": 1,
-  "text": "Dance like there's nobody watching, love like you'll never be hurt, and live like you're _."
-  },
-  {
-  "pick": 1,
-  "text": "Errbody in the club _."
-  },
-  {
-  "pick": 1,
-  "text": "Feeling so grateful! #amazing #mylife #_."
-  },
-  {
-  "pick": 1,
-  "text": "Girls just wanna have _."
-  },
-  {
-  "pick": 1,
-  "text": "Google Calendar alert: _ in 10 minutes."
-  },
-  {
-  "pick": 1,
-  "text": "I don't believe in God. I believe in _."
-  },
-  {
-  "pick": 1,
-  "text": "I got rhythm, I've got music, I've got _. Who could ask for anything more?"
-  },
-  {
-  "pick": 1,
-  "text": "I may not be much to look at, but I fuck like _."
-  },
-  {
-  "pick": 1,
-  "text": "I tell you, it was a non-stop fuckfest. When it was over, my asshole looked like _."
-  },
-  {
-  "pick": 1,
-  "text": "I'll take the BBQ bacon burger with friend egg and fuck it how about _."
-  },
-  {
-  "pick": 1,
-  "text": "I'm sorry, sir, but your insurance plan doesn't cover injuries caused by _."
-  },
-  {
-  "pick": 1,
-  "text": "I've had a horrible vision, father. I saw mountains crumbling, stars falling from the sky. I saw _."
-  },
-  {
-  "pick": 1,
-  "text": "If at first you don't succeed, try _."
-  },
-  {
-  "pick": 1,
-  "text": "In the 1950s, psychologists prescribed _ as a cure for homosexually."
-  },
-  {
-  "pick": 1,
-  "text": "LSD + _ = really bad time."
-  },
-  {
-  "pick": 1,
-  "text": "\"Mom's to-do list:<br/>- Buy Groceries.<br/>- Clean up _.<br/>- Soccer Practice.\""
-  },
-  {
-  "pick": 1,
-  "text": "Most Americans would not vote for a candidate who is openly _."
-  },
-  {
-  "pick": 1,
-  "text": "No, no, no, no, no, no, NO! I will NOT let _ ruin this wedding."
-  },
-  {
-  "pick": 1,
-  "text": "Oh no! Siri, how do I fix _?"
-  },
-  {
-  "pick": 1,
-  "text": "One more thing. Watch out for Big Mike. They say he killed a man with _."
-  },
-  {
-  "pick": 1,
-  "text": "Ooo, daddy like _."
-  },
-  {
-  "pick": 1,
-  "text": "Poor Brandon, still living in his parent's basement. I heard he never got over _."
-  },
-  {
-  "pick": 1,
-  "text": "Run, run, as fast as you can! You can't catch me, I'm _!"
-  },
-  {
-  "pick": 1,
-  "text": "She's a lady in the streets, _ in the sheets."
-  },
-  {
-  "pick": 1,
-  "text": "She's just one of the guys, you know? She likes beer, and football, and _."
-  },
-  {
-  "pick": 1,
-  "text": "Son, take it from someone who's been around the block a few times. Nothin' puts her in the mood like _."
-  },
-  {
-  "pick": 1,
-  "text": "Summer lovin', had me a blast. _, happened so fast."
-  },
-  {
-  "pick": 1,
-  "text": "\"The top Google auto-complete results for \"Barack Obama\":</br>- Barack Obama Height.</br>- Barack Obama net worth.</br>- Barack Obama _.\""
-  },
-  {
-  "pick": 1,
-  "text": "Then the princess kissed the frog, and all of a sudden the frog was _!"
-  },
-  {
-  "pick": 1,
-  "text": "There is no God. It's just _ and then you die."
-  },
-  {
-  "pick": 1,
-  "text": "This Friday at the Liquid Lunge, it's _ Night! Ladies drink free."
-  },
-  {
-  "pick": 1,
-  "text": "We do not shake with our left hands in this country. That is the hand we use for _."
-  },
-  {
-  "pick": 1,
-  "text": "Well if _ is a crime, then lock me up!"
-  },
-  {
-  "pick": 1,
-  "text": "Well, shit. My eyes ain't so good, but I'll eat my own boot if that ain't _!"
-  },
-  {
-  "pick": 1,
-  "text": "What are all those whales singing about?"
-  },
-  {
-  "pick": 1,
-  "text": "What sucks balls?"
-  },
-  {
-  "pick": 1,
-  "text": "What totally destroyed my asshole?"
-  },
-  {
-  "pick": 1,
-  "text": "What turned me into a Republican?"
-  },
-  {
-  "pick": 1,
-  "text": "What will end racism once and for all?"
-  },
-  {
-  "pick": 1,
-  "text": "What's a total waste of Hillary Clinton's time?"
-  },
-  {
-  "pick": 1,
-  "text": "What's about to take dance floor to the next level?"
-  },
-  {
-  "pick": 1,
-  "text": "What's the gayest?"
-  },
-  {
-  "pick": 1,
-  "text": "What's the most problematic?"
-  },
-  {
-  "pick": 1,
-  "text": "Why am I laughing and crying and taking off my clothes?"
-  },
-  {
-  "pick": 1,
-  "text": "With a one-time gift of just $10, you can save this child from _."
-  },
-  {
-  "pick": 1,
-  "text": "You know who else liked _? Hitler."
-  },
-  {
-  "pick": 1,
-  "text": "You won't believe what's in my pussy. It's _."
-  },
-  {
-  "text": "Siskel and Ebert have panned _ as \"poorly conceived\" and \"sloppily executed.\"",
-  "pick": 1
-  },
-  {
-  "text": "Up next on Nickelodeon: \"Clarissa Explains _.\"",
-  "pick": 1
-  },
-  {
-  "text": "Believe it or not, Jim Carrey can do a dead-on impression of _.",
-  "pick": 1
-  },
-  {
-  "text": "It's Morphin' Time! Mastadon! Pterodactyl! Triceratops! Sabertooth Tiger! _!",
-  "pick": 1
-  },
-  {
-  "text": "I'm a bitch, I'm a lover, I'm a child, I'm _.",
-  "pick": 1
-  },
-  {
-  "text": "How did Stella get her groove back?",
-  "pick": 1
-  },
-  {
-  "text": "Tonight on SNICK: \"Are You Afraid of _?\"",
-  "pick": 1
-  },
-  {
-  "pick": 1,
-  "text": "And in the end, the dragon was not evil; he just wanted _."
-  },
-  {
-  "pick": 2,
-  "text": "Critics are raving about HBO's new <i>Game of Thrones</i> spin-off, \"_ of _.\""
-  },
-  {
-  "pick": 1,
-  "text": "Having tired of poetry and music, the immortal elves now fill their days with _."
-  },
-  {
-  "pick": 1,
-  "text": "Legend tells of a princess who has been asleep for a thousand years and can only be awoken by _."
-  },
-  {
-  "pick": 1,
-  "text": "Who blasphemes and bubbles at the center of all infinity, whose name no lips dare speak aloud, and who gnaws hungrily in inconceivable, unlighted chambers beyond time?"
-  },
-  {
-  "pick": 1,
-  "text": "Your father was a powerful wizard, Harry. Before he died, he left you something very precious: _."
-  },
-  {
-  "pick": 1,
-  "text": "I'm Bobby Flay, and if you can't stand _, get out of the kitchen!"
-  },
-  {
-  "pick": 1,
-  "text": "It's not delivery. It's _."
-  },
-  {
-  "pick": 1,
-  "text": "Aw babe, your burps smell like _!"
-  },
-  {
-  "pick": 1,
-  "text": "Don't miss Rachel Ray's hit new show, <i>Cooking with _</i>."
-  },
-  {
-  "pick": 1,
-  "text": "Excuse me, waiter. Could take this back? This soup tastes like _."
-  },
-  {
-  "pick": 1,
-  "text": "Now on Netflix: <i>Jiro Dreams of _</i>."
-  },
-  {
-  "pick": 2,
-  "text": "In line with our predictions, we find a robust correlation between _ and _ (p&gt;.05)."
-  },
-  {
-  "pick": 1,
-  "text": "In what's being hailed as a major breakthrough, scientists have synthesized _ in the lab."
-  },
-  {
-  "pick": 1,
-  "text": "A study published in Nature this week found that _ is good for you in small doses."
-  },
-  {
-  "pick": 2,
-  "text": "In an attempt to recreate conditions just after the Big Bang, physicists at the LHC are observing collisions between _ and _."
-  },
-  {
-  "pick": 1,
-  "text": "What really killed the dinosaurs?"
-  },
-  {
-  "pick": 1,
-  "text": "Hey there, Young Scientists! Put on your labcoats and strap on your safety goggles, because today we're learning about _!"
-  },
-  {
-  "pick": 2,
-  "text": "Today on MythBusters, we found out how long _ can withstand _."
-  },
-  {
-  "pick": 1,
-  "text": "Don't worry, Penny! Go Go Gadget _!"
-  },
-  {
-  "pick": 2,
-  "text": "I need you like _ needs _."
-  },
-  {
-  "pick": 1,
-  "text": "I'm just gonna stay in tonight. You know, Netflix and _."
-  },
-  {
-  "pick": 1,
-  "text": "Nothing says \"I love you\" like _."
-  },
-  {
-  "pick": 2,
-  "text": "Such _. Very _. Wow."
-  },
-  {
-  "pick": 1,
-  "text": "This app is basically Tinder, but for _."
-  },
-  {
-  "pick": 1,
-  "text": "TRIGGER WARNING: _."
-  },
-  {
-  "pick": 1,
-  "text": "What did I nickname my genitals?"
-  },
-  {
-  "pick": 1,
-  "text": "You guys, you can buy _ on the dark web."
-  },
-  {
-  "pick": 1,
-  "text": "Donald Trump has nominated _ for his VP."
-  },
-  {
-  "pick": 1,
-  "text": "In 2019, Donald Trump eliminated our national parks to make room for _."
-  },
-  {
-  "pick": 1,
-  "text": "Donald Trump's first act as president was to outlaw _."
-  },
-  {
-  "text": "After blacking out during New Year's Eve, I was awoken by _.",
-  "pick": 1
-  },
-  {
-  "text": "This holiday season, Tim Allen must overcome his fear of _ to save Christmas.",
-  "pick": 1
-  },
-  {
-  "text": "Jesus is _.",
-  "pick": 1
-  },
-  {
-  "text": "Every Christmas, my uncle gets drunk and tells the story about _.",
-  "pick": 1
-  },
-  {
-  "text": "What keeps me warm during the cold, cold winter?",
-  "pick": 1
-  },
-  {
-  "text": "On the third day of Christmas, my true love gave to me: three French hens, two turtle doves, and _.",
-  "pick": 1
-  },
-  {
-  "text": "Wake up, America. Christmas is under attack by secular liberals and their _.",
-  "pick": 1
-  },
-  {
-  "text": "Here's what you can expect for the new year.<br>Out: _.<br>In: _.",
-  "pick": 2
-  },
-  {
-  "text": "Revealed:<br>Why He Really Resigned!<br>Pope Benedict's Secret Struggle with _!",
-  "pick": 1
-  },
-  {
-  "text": "GREETINGS HUMANS<br><br>I AM _ BOT<br><br>EXECUTING PROGRAM",
-  "pick": 1
-  },
-  {
-  "text": "Kids these days with their iPods and their Internet. In my day, all we needed to pass the time was _.",
-  "pick": 1
-  },
-  {
-  "text": "Because they are forbidden from masturbating, Mormons channel their repressed sexual energy into _.",
-  "pick": 1
-  },
-  {
-  "text": "Blessed are you, Lord our God, creator of the universe, who has granted us _.",
-  "pick": 1
-  },
-  {
-  "text": "But wait, there's more! If you order _ in the next 15 minutes, we'll throw in _ absolutely free!",
-  "pick": 2
-  },
-  {
-  "text": "What's the one thing that makes an elf instantly ejaculate?",
-  "pick": 1
-  },
-  {
-  "text": "I really hope my grandmother doesn't ask me to explain _ again.",
-  "pick": 1
-  },
-  {
-  "text": "A wise man said, \"Everything is about sex. Except sex. Sex is about _.\"",
-  "pick": 1
-  },
-  {
-  "text": "Our relationship is strictly professional. Let's not complicate things with _.",
-  "pick": 1
-  },
-  {
-  "text": "Corruption. Betrayal. _. Coming soon to Netflix, \"House of _.\"",
-  "pick": 2
-  },
-  {
-  "text": "Because you enjoyed _, we thought you'd like _.",
-  "pick": 2
-  },
-  {
-  "text": "I can't believe Netflix is using _ to promote House of Cards.",
-  "pick": 1
-  },
-  {
-  "text": "We're not like other news organizations. Here at Slugline, we welcome _ in the office. ",
-  "pick": 1
-  },
-  {
-  "text": "I'm not going to lie. I despise _. There, I said it.",
-  "pick": 1
-  },
-  {
-  "text": "Cancel all my meetings. We've got a situation with _ that requires my immediate attention.",
-  "pick": 1
-  },
-  {
-  "text": "If you need him to, Remy Danton can pull some strings and get you _, but it'll cost you.",
-  "pick": 1
-  },
-  {
-  "pick": 1,
-  "text": "<b>Absurd</b><br/><small>ridiculous, senseless, foolish</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Addictive</b><br/><small>obsessive, consuming, captivating</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Adorable</b><br/><small>lovable, charming, delightful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Aged</b><br/><small>old, ancient, mature</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>American</b><br/><small>U.S. Citizen, Yankee, Apple Pie</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Ancient</b><br/><small>elderly, old, antique</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Animated</b><br/><small>lively, exuberant, spirited</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Annoying</b><br/><small>irritating, bothersome, teasing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Appetizing</b><br/><small>appealing, tasty, flavorful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Arrogant</b><br/><small>egotistical, overconfident, conceited</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Awesome</b><br/><small>amazing, remarkable, majestic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Awkward</b><br/><small>clumsy, bumbling, uncoordinated</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Believable</b><br/><small>trustworthy, credible, convincing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Bogus</b><br/><small>fraudulent, phony, insincere</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Boisterous</b><br/><small>loud, rambunctious, rowdy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Bold</b><br/><small>daring, brave, courageous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Boring</b><br/><small>dull, tedious, monotonous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Bright</b><br/><small>brilliant, radiant, shiny</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Brilliant</b><br/><small>dazzling, gleaming, intelligent</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Busy</b><br/><small>occupied, meddlesome, engrossed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Calm</b><br/><small>peaceful, tranquil, placid</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Casual</b><br/><small>easygoing, blase, nonchalant</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Charismatic</b><br/><small>alluring, magnetic, charming</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Charming</b><br/><small>captivating, enchanting, fascinating</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cheesy</b><br/><small>trashy, tawdry, far-fetched</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Chewy</b><br/><small>gummy, rubbery, stringy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Chunky</b><br/><small>lumpy, chubby, bumpy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Classic</b><br/><small>timeless, definitive, vintage</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Clean</b><br/><small>washed, pure, tidy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Clueless</b><br/><small>unaware, oblivious, ignorant</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cold</b><br/><small>chilly, icy, aloof</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Colorful</b><br/><small>vivid, brilliant, kaleidoscopic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Comfortable</b><br/><small>cozy, snug, restful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Comical</b><br/><small>funny, hilarious, amusing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Complicated</b><br/><small>difficult, complex, involved</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Confused</b><br/><small>muddled, bewildered, perplexed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cool</b><br/><small>chilly, hip, cold-blooded</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Corrupt</b><br/><small>dishonest, underhanded, shady</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cosmic</b><br/><small>limitless, planetary, far out</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cosmopolitan</b><br/><small>sophisticated, urbane, well-informed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Courageous</b><br/><small>brave, gallant, dauntless</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cowardly</b><br/><small>fearful, afraid, spineless</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cranky</b><br/><small>crabby, cantankerous, grouchy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Crazed</b><br/><small>insane, wild, deranged</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Crazy</b><br/><small>insane, bizarre, wacky</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Creative</b><br/><small>imaginative, artistic, original</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Creepy</b><br/><small>frightening, slithering, scary</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cruel</b><br/><small>mean, harsh, merciless</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cuddly</b><br/><small>loving, tender, huggable</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Cute</b><br/><small>pretty, perky, delightful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dainty</b><br/><small>delicate, fragile, thin</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dangerous</b><br/><small>risky, chancy, hazardous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dead</b><br/><small>deceased, expired, unresponsive</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Deadly</b><br/><small>fatal, lethal, murderous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Delicate</b><br/><small>dainty, tender, elegant</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Delicious</b><br/><small>tasty, pleasing, appetizing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Delightful</b><br/><small>pleasing, enjoyable, charming</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Demanding</b><br/><small>difficult, exacting, bothersome</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Depressing</b><br/><small>dismal, gloomy, sad</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Desperate</b><br/><small>frantic, headlong, reckless</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dignified</b><br/><small>stately, honorable, distinguished</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dirty</b><br/><small>unclean, soiled, impure</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Distinguished</b><br/><small>dignified, extraordinary, acclaimed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Disturbing</b><br/><small>unsettling, troubling, worrisome</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dramatic</b><br/><small>exciting, sensational, theatrical</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dreamy</b><br/><small>fanciful, whimsical, heavenly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dull</b><br/><small>boring, stupid, blunt</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Dysfunctional</b><br/><small>impaired, damaged, maladjusted</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Earthy</b><br/><small>unrefined, natural, crude</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Easy</b><br/><small>effortless, gentle, promiscuous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Eccentric</b><br/><small>peculiar, odd, bizarre</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Elitist</b><br/><small>snobbish, arrogant, smug</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Emotional</b><br/><small>passionate, moving, volatile</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Eternal</b><br/><small>timeless, immortal, perpetual</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>European</b><br/><small>of Europe, from Europe, about Europe</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Exciting</b><br/><small>thrilling, breathtaking, arousing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Exhausting</b><br/><small>weakening, tiring, draining</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Expensive</b><br/><small>costly, valuable, exorbitant</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Explosive</b><br/><small>bursting, blasting, dangerous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Exquisite</b><br/><small>excellent, refined, flawless</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Extreme</b><br/><small>exceptional, superlative, radical</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fabulous</b><br/><small>marvelous, wonderful, incredible</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fake</b><br/><small>unreal, counterfeit, deceptive</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fancy</b><br/><small>showy, ornate, decorated</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fantastic</b><br/><small>awesome, outrageous, imaginary</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Feminine</b><br/><small>womanly, ladylike, unmanly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Filthy</b><br/><small>dirty, foul, unclean</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Flirtatious</b><br/><small>brazen, saucy, forward</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Foreign</b><br/><small>alien, unfamiliar, exotic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fragrant</b><br/><small>aromatic, odorous, perfumed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Frazzled</b><br/><small>exhausted, frayed, worn</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fresh</b><br/><small>new, original, good</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Friendly</b><br/><small>affectionate, comforting, welcoming</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Frightening</b><br/><small>scary, horrifying, awesome</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Frivolous</b><br/><small>trivial, silly, shallow</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Funky</b><br/><small>groovy, psychedelic, hip</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Funny</b><br/><small>amusing, comic, odd</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Furious</b><br/><small>angry, raging, wild</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Fuzzy</b><br/><small>downy, unclear, furry</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Glamorous</b><br/><small>beautiful, dazzling, stylish</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Glitzy</b><br/><small>flashy, showy, gaudy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Global</b><br/><small>world-wide, spherical, universal</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Glorious</b><br/><small>magnificent, delightful, splendid</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Goody-Goody</b><br/><small>sweet, well-behaved, virtuous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Graceful</b><br/><small>elegant, supple, limber</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Handsome</b><br/><small>attractive, elegant, fine</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Hardworking</b><br/><small>industrious, diligent, busy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Harmful</b><br/><small>hurtful, unhealthy, damaging</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Haunting</b><br/><small>unforgettable, bewitching, unearthly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Healthy</b><br/><small>hearty, robust, wholesome</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Heartless</b><br/><small>insensitive, cruel, uncaring</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Hilarious</b><br/><small>funny, witty, amusing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Honorable</b><br/><small>honest, just, virtuous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Hopeless</b><br/><small>pessimistic, desperate, downhearted</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Horrifying</b><br/><small>offensive, abominable, disgusting</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Hostile</b><br/><small>antagonistic, aggressive, warlike</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Hot</b><br/><small>blazing, heated, spicy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Idiotic</b><br/><small>foolish, dumb, moronic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Important</b><br/><small>significant, substantial, momentous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Industrious</b><br/><small>diligent, busy, hard-working</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Influential</b><br/><small>powerful, prominent, important</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Innocent</b><br/><small>guiltless, pure, naive</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Insane</b><br/><small>psychotic, deranged, mad</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Inspirational</b><br/><small>exhilarating, inspiring, stimulating</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Insulting</b><br/><small>offending, discourteous, rude</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Intelligent</b><br/><small>bright, smart, brainy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Intense</b><br/><small>extreme, passionate, strained</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Irresistible</b><br/><small>overpowering, overwhelming, compelling</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Irritating</b><br/><small>annoying, troublesome, provoking</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Juicy</b><br/><small>drippy, luscious, tantalizing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Lazy</b><br/><small>lifeless, apathetic, weary</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Legendary</b><br/><small>famous, distinctive, prominent</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Loud</b><br/><small>noisy, boisterous, deafening</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Lovable</b><br/><small>adorable, endearing, cuddly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Lucky</b><br/><small>fortunate, serendipitous, favored</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Luscious</b><br/><small>delicious, savory, juicy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Luxurious</b><br/><small>opulent, lavish, sumptuous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Magical</b><br/><small>enchanting, miraculous, marvelous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Manly</b><br/><small>masculine, virile, strong</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Masculine</b><br/><small>male, manly, virile</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Meek</b><br/><small>shy, mild, timid</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Melodramatic</b><br/><small>theatrical, sensational, showy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Mischievous</b><br/><small>naughty, prankish, sly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Miserable</b><br/><small>wretched, pitiful, forlorn</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Misunderstood</b><br/><small>not grasped, not learned, not absorbed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Mysterious</b><br/><small>secretive, puzzling, strange</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Mystical</b><br/><small>spiritual, secretive, esoteric</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Naive</b><br/><small>unsophisticated, childlike, simple</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Nasty</b><br/><small>mean, inclement, offensive</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Natural</b><br/><small>pure, simple, unadorned</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Neat</b><br/><small>tidy, orderly, cool</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Neglected</b><br/><small>ignored, disregarded, rejected</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Nerdy</b><br/><small>unhip, uncool, dorky</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Normal</b><br/><small>usual, common, ordinary</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Obnoxious</b><br/><small>offensive, repulsive, annoying</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Odd</b><br/><small>different, eccentric, bizarre</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Offensive</b><br/><small>insulting, vulgar, attacking</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Ordinary</b><br/><small>usual, common, plain</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Organic</b><br/><small>natural, clean, biological</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Outrageous</b><br/><small>shocking, scandalous, disgraceful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Overwhelming</b><br/><small>exhaustive, breathtaking, monumental</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Painful</b><br/><small>hurtful, agonizing, unbearable</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Pathetic</b><br/><small>pitiful, distressing, heart-rending</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Patriotic</b><br/><small>nationalistic, loyal, public-spirited</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Peaceful</b><br/><small>serene, restful, calm</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Perfect</b><br/><small>faultless, consummate, exact</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Philosophical</b><br/><small>thoughtful, contemplative, wise</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Phony</b><br/><small>false, artificial, imitation</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Playful</b><br/><small>fun, frisky, entertaining</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Popular</b><br/><small>well-liked, accepted, preferred</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Powerful</b><br/><small>strong, forceful, robust</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Primitive</b><br/><small>prehistoric, primal, uncivilized</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Principled</b><br/><small>conscientious, ethical, scrupulous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Profound</b><br/><small>deep, wise, thoughtful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Puffy</b><br/><small>swollen, billowy, bloated</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Pure</b><br/><small>innocent, unadulterated, chaste</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Quiet</b><br/><small>peaceful, silent, calm</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Radiant</b><br/><small>shining, glowing, sparkling</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Radical</b><br/><small>unconventional, revolutionary, extreme</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Rare</b><br/><small>scarce, unusual, half-cooked</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Realistic</b><br/><small>authentic, lifelike, reasonable</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Refined</b><br/><small>well-bred, purified, cultivated</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Refreshing</b><br/><small>brisk, invigorating, rejuvenating</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Relaxing</b><br/><small>restful, calming, peaceful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Repulsive</b><br/><small>disgusting, offensive, foul</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Responsible</b><br/><small>accountable, obligated, mature</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Revolutionary</b><br/><small>innovative, rebellious, radical</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Rich</b><br/><small>wealthy, affluent, moneyed</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Ridiculous</b><br/><small>preposterous, absurd, ludicrous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Risky</b><br/><small>hazardous, daring, speculative</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Rough</b><br/><small>scratchy, uneven, jagged</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Saintly</b><br/><small>virtuous, angelic, divine</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sappy</b><br/><small>gooey, mushy, romantic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Scary</b><br/><small>frightening, absurd, ugly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Scenic</b><br/><small>picturesque, dramatic, panoramic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Selfish</b><br/><small>stingy, greedy, miserly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Senseless</b><br/><small>meaningless, absurd, foolish</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sensitive</b><br/><small>susceptible, sympathetic, tender</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sensual</b><br/><small>tactile, pleasing, sexual</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sexy</b><br/><small>arousing, appealing, seductive</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Shallow</b><br/><small>superficial, trivial, not deep</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sharp</b><br/><small>pointed, keen, acute</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Shiny</b><br/><small>reflective, gleaming, polished</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Shocking</b><br/><small>frightening, electrifying, startling</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Shy</b><br/><small>bashful, timid, cautious</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Silly</b><br/><small>goofy, absurd, nonsensical</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Smart</b><br/><small>intelligent, stylish, witty</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Smelly</b><br/><small>stinky, odorous, rank</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Smooth</b><br/><small>even, level, flat</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Snappy</b><br/><small>stylish, trendy, fast</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Soft</b><br/><small>malleable, pliable, mushy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Speedy</b><br/><small>quick, rapid, fast</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Spicy</b><br/><small>flavorable, tangy, hot</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Spiritual</b><br/><small>religious, inspired, supernatural</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Spooky</b><br/><small>scary, weird, ghostly</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Spunky</b><br/><small>perky, lively, spirited</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Squeaky Clean</b><br/><small>pure, immaculate, unapproachable</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Stereotyped</b><br/><small>pigeonholed, caricatured, characterized</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Stunning</b><br/><small>astonishing, staggering, astounding</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sultry</b><br/><small>sweltering, humid, sensual</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Sweet</b><br/><small>sugary, caring, good</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Swift</b><br/><small>quick, speedy, expeditious</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Talented</b><br/><small>gifted, clever, skillful</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Tame</b><br/><small>subdued, gentle, trained</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Technological</b><br/><small>scientific, futuristic, mechanical</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Temperamental</b><br/><small>moody, irritable, short-tempered</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Timeless</b><br/><small>classic, ageless, well-established</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Touchy-Feely</b><br/><small>affectionate, tactile, huggy</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Tough</b><br/><small>strong, firm, difficult</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Trustworthy</b><br/><small>honest, reliable, unfailing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Twisted</b><br/><small>distorted, warped, perverted</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unbelievable</b><br/><small>incredible, far-fetched, impossible</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unforgettable</b><br/><small>notable, impressive, remarkable</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unhealthy</b><br/><small>risky, sickly, dangerous</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unnatural</b><br/><small>abnormal, artificial, bizarre</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unreal</b><br/><small>imaginary, illusionary, unbelievable</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unscrupulous</b><br/><small>unethical, corrupt, unprincipled</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Unusual</b><br/><small>rare, odd, uncommon</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Useless</b><br/><small>worthless, ineffective, unneeded</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Violent</b><br/><small>furious, vicious, destructive</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Virtuous</b><br/><small>worthy, righteous, chaste</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Visionary</b><br/><small>idealistic, prophetic, far-seeing</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Weird</b><br/><small>abnormal, peculiar, odd</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Wicked</b><br/><small>evil, corrupt, depraved</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Wild</b><br/><small>untamed, savage, ferocious</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Witty</b><br/><small>clever, humorous, cunning</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Woebegone</b><br/><small>dismal, sorrowful, bummed out</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Worldly</b><br/><small>experienced, sophisticated, materialistic</small>"
-  },
-  {
-  "pick": 1,
-  "text": "<b>Zany</b><br/><small>crazy, funny, wacky</small>"
-  },
-  {
-  "pick": 1,
-  "text": "9-1-1, what's your emergency?"
-  },
-  {
-  "pick": 1,
-  "text": "_, just for a second. Just to see how it feels."
-  },
-  {
-  "pick": 1,
-  "text": "_, you da real MVP."
-  },
-  {
-  "pick": 1,
-  "text": "_: Ain't nobody got time for that!"
-  },
-  {
-  "pick": 1,
-  "text": "_: boil 'em, mash 'em, stick 'em in a stew!"
-  },
-  {
-  "pick": 1,
-  "text": "_: I volunteer as tribute!"
-  },
-  {
-  "pick": 1,
-  "text": "_: it's magically delicious."
-  },
-  {
-  "pick": 1,
-  "text": "_: Just another way that God shows us he loves us."
-  },
-  {
-  "pick": 1,
-  "text": "_: Just girly things."
-  },
-  {
-  "pick": 1,
-  "text": "_: Just sayin'."
-  },
-  {
-  "pick": 1,
-  "text": "_: not even once."
-  },
-  {
-  "pick": 1,
-  "text": "_: Provided by the management for your protection."
-  },
-  {
-  "pick": 1,
-  "text": "_: Your ideas are intriguing to me and I wish to subscribe to your newsletter."
-  },
-  {
-  "pick": 1,
-  "text": "_? That's what <i>she</i> said."
-  },
-  {
-  "pick": 1,
-  "text": "A new Russian dash-cam video shows _, right there in the middle of the street!"
-  },
-  {
-  "pick": 2,
-  "text": "A wild _ appears! You used _! It's super effective!"
-  },
-  {
-  "pick": 1,
-  "text": "According to a new UN treaty, _ now qualifies as a weapon of mass destruction."
-  },
-  {
-  "pick": 2,
-  "text": "An ounce of _ is worth a pound of _."
-  },
-  {
-  "pick": 3,
-  "text": "Ancient Chinese proverb say: _ is just _ without _."
-  },
-  {
-  "pick": 1,
-  "text": "Apple&reg; has announced a new device that promises to revolutionize the way we think about _."
-  },
-  {
-  "pick": 1,
-  "text": "Audiences at Sundance were traumatized by Lars von Trier's controversial new film, &quot;_.&quot;"
-  },
-  {
-  "pick": 1,
-  "text": "Before I got laid off, I never pictured a career in _."
-  },
-  {
-  "pick": 3,
-  "text": "Bentley's&reg; latest ultra-high-end luxury sedan comes complete with _, _ and _."
-  },
-  {
-  "pick": 1,
-  "text": "Bowing to years of pressure, the Washington Redskins have officially been renamed the Washington _."
-  },
-  {
-  "pick": 1,
-  "text": "Coming soon from Pixar: &quot;_&quot;."
-  },
-  {
-  "pick": 1,
-  "text": "Dear Dan Savage, Please help. I am unable to achieve orgasm without _."
-  },
-  {
-  "pick": 2,
-  "text": "Dear, your father and I found _ and _ in your bedroom. I'm shocked, and frankly just a <i>little</i> disappointed."
-  },
-  {
-  "pick": 1,
-  "text": "During the lunch meeting, we were shocked to hear the boss reveal her obsession with _."
-  },
-  {
-  "pick": 1,
-  "text": "Ever since &quot;the incident,&quot; every time I close my eyes, I still see _."
-  },
-  {
-  "pick": 1,
-  "text": "Experts say that without careful management and conservation, _ will disappear within our liefetimes."
-  },
-  {
-  "pick": 1,
-  "text": "From the people who brough you <i>Sharktopus</i> and <i>Sharknado</i>, Syfy's&reg; next horror film combines sharks with _."
-  },
-  {
-  "pick": 1,
-  "text": "From the producers of Shark Week... Coming this fall, _ Week."
-  },
-  {
-  "pick": 1,
-  "text": "Fuddruckers&reg; is secretly testing a burger made with _."
-  },
-  {
-  "pick": 1,
-  "text": "Gentleman, I'm sure you're wondering why I asked you here this evening. It's a long story, but it all began with _."
-  },
-  {
-  "pick": 1,
-  "text": "Go-Go-Gadget _!"
-  },
-  {
-  "pick": 2,
-  "text": "Good news, everyone! I'm giving a TED Talk on the subject of how _ will transform _."
-  },
-  {
-  "pick": 1,
-  "text": "Having abandoned his pleas for a return to the gold standard, Ron Paul is now promoting a _-based economy."
-  },
-  {
-  "pick": 1,
-  "text": "Hey man, you gonna come check out my shown tonight? My new band is called &quot;_.&quot;"
-  },
-  {
-  "pick": 1,
-  "text": "How did I get this restraining order?"
-  },
-  {
-  "pick": 1,
-  "text": "How did I get through college?"
-  },
-  {
-  "pick": 1,
-  "text": "How did I hurt my back?"
-  },
-  {
-  "pick": 1,
-  "text": "How did I spend my inheritance?"
-  },
-  {
-  "pick": 1,
-  "text": "How did my grandparents make it through the Great Depression?"
-  },
-  {
-  "pick": 2,
-  "text": "I am _. I speak for _."
-  },
-  {
-  "pick": 1,
-  "text": "I am become _, the destroyer of worlds."
-  },
-  {
-  "pick": 1,
-  "text": "I do declare, in times of distress I have always relied on _."
-  },
-  {
-  "pick": 1,
-  "text": "I do wish the newspapers hadn't mentioned _ in grandpa's obituary."
-  },
-  {
-  "pick": 1,
-  "text": "I don't care <i>what</i> people say, _ is <i>not</i> a crime."
-  },
-  {
-  "pick": 3,
-  "text": "I got some strange looks in the checkout line when the cashier noticed _, _ and _ in my cart."
-  },
-  {
-  "pick": 3,
-  "text": "I have this recurring dream where I'm _, and I'm giving _ to _."
-  },
-  {
-  "pick": 1,
-  "text": "I have to admit... it took me a while to agree to it, but incorporating _ into our wedding ceremony is a decision I will never regret."
-  },
-  {
-  "pick": 1,
-  "text": "I quit my job as a bartender the night some jackass left me _ as a tip."
-  },
-  {
-  "pick": 1,
-  "text": "I think I need to take Fluffums to puppy training: he has this terrible habit of _."
-  },
-  {
-  "pick": 3,
-  "text": "I was once sent to the HR department for an incident involving _, _, and (allegedly) _."
-  },
-  {
-  "pick": 1,
-  "text": "I wish it were something simple &mdash; like peanuts or shellfish &mdash; but my doctor tells me I'm actually allergic to _."
-  },
-  {
-  "pick": 2,
-  "text": "I'm gonna go build my own theme park! With _! And _!"
-  },
-  {
-  "pick": 1,
-  "text": "I'm so hungry I could eat _."
-  },
-  {
-  "pick": 2,
-  "text": "I've designed a spaceship powered by the energy released when you combine_ and _."
-  },
-  {
-  "pick": 1,
-  "text": "If laughter is the best medicine, the second best is _."
-  },
-  {
-  "pick": 1,
-  "text": "If people wouldn't be so quick to judge, I would give _ to the person on my left in a heartbeat."
-  },
-  {
-  "pick": 1,
-  "text": "If you wanna be my lover, you gotta get with _."
-  },
-  {
-  "pick": 1,
-  "text": "If you want a picture of the future, imagine a boot stamping on _ &mdash; forever."
-  },
-  {
-  "pick": 2,
-  "text": "In a groundbreaking experiment, _ has given birth to _."
-  },
-  {
-  "pick": 1,
-  "text": "In a move that has Hollywood insiders baffled, the producers of American Idol have decided to replace host Ryan Seacrest with _."
-  },
-  {
-  "pick": 1,
-  "text": "In a new novel by Nicholas Sparks, a young girl tragically falls in love with _."
-  },
-  {
-  "pick": 1,
-  "text": "In his final interview, Robin Williams discussed his private battle with _."
-  },
-  {
-  "pick": 1,
-  "text": "In my opinion, _ is grounds for justifiable homicide."
-  },
-  {
-  "pick": 1,
-  "text": "In Valhalla, it is said that all brave warriors are given _."
-  },
-  {
-  "pick": 1,
-  "text": "It took seven years in a remote Tibetan monastery, but I finally learned the art of _."
-  },
-  {
-  "pick": 1,
-  "text": "Like Midas reborn, everything she touches turns to _."
-  },
-  {
-  "pick": 1,
-  "text": "Michelle Obama outraged conservatives when she implied that _ maybe wasn't such a bad thing."
-  },
-  {
-  "pick": 1,
-  "text": "My psychic warns that my future is filled with _."
-  },
-  {
-  "pick": 1,
-  "text": "My tour of the White House radically escalated when Secret Service caught a glimpse of _ in my bag."
-  },
-  {
-  "pick": 2,
-  "text": "Netflix's&reg; new original series is a sitcom based around _ and _."
-  },
-  {
-  "pick": 1,
-  "text": "Now that he has retired, Pope Benedict can finally devote time to his true passion: _."
-  },
-  {
-  "pick": 1,
-  "text": "Oh my God! They killed _! You bastards!"
-  },
-  {
-  "pick": 1,
-  "text": "Oh, so you think you're too good for us now, little &quot;Miss _!&quot;"
-  },
-  {
-  "pick": 1,
-  "text": "Old Willy used to be just like you or me, before _ got ahold of him."
-  },
-  {
-  "pick": 1,
-  "text": "Ooooooohh yeah, baby you know what I like. Gimmie _."
-  },
-  {
-  "pick": 2,
-  "text": "PornHub.com's single most popular video features _ and _."
-  },
-  {
-  "pick": 1,
-  "text": "Rumor is, Kim Jong-un is executing prisoners with _."
-  },
-  {
-  "pick": 1,
-  "text": "Scientists have discovered the true cause of autism: _."
-  },
-  {
-  "pick": 2,
-  "text": "So then he says, &quot;If you want to make this relationship work, you need to give up _ and _.&quot; As. If."
-  },
-  {
-  "pick": 1,
-  "text": "Sweet, I just got a Groupon for _."
-  },
-  {
-  "pick": 1,
-  "text": "Thank you Mario! But _ is in another castle!"
-  },
-  {
-  "pick": 2,
-  "text": "Thanks to _, I now have a crippling fear of _."
-  },
-  {
-  "pick": 1,
-  "text": "The best part of waking up is _."
-  },
-  {
-  "pick": 1,
-  "text": "The last three items on my &quot;bucket list&quot;:"
-  },
-  {
-  "pick": 2,
-  "text": "The night before a blizzard, always stock up on _ and _."
-  },
-  {
-  "pick": 1,
-  "text": "The NSA wants to talk to me about an email I sent out containing these key phrases:"
-  },
-  {
-  "pick": 1,
-  "text": "The restaurant was nice, but I was surprised to see _ on the menu."
-  },
-  {
-  "pick": 1,
-  "text": "The road to hell is paved with _."
-  },
-  {
-  "pick": 1,
-  "text": "There's a new anime about four magical high school students and their adventures with _."
-  },
-  {
-  "pick": 2,
-  "text": "This bottle of 1961 Ch&acirc;teau Cheval Blanc has notes of _ and _."
-  },
-  {
-  "pick": 2,
-  "text": "This film has been rated &quot;NC-17&quot; for graphic depictions of _ and _."
-  },
-  {
-  "pick": 3,
-  "text": "Three bullet points from my OKCupid&reg; profile: _, _, and most importantly, _."
-  },
-  {
-  "pick": 1,
-  "text": "Today, Amazon.com&reg; received a patent on _."
-  },
-  {
-  "pick": 1,
-  "text": "Tonight on &quot;My Super Sweet 16,&quot; Stephani's parents give her _."
-  },
-  {
-  "pick": 2,
-  "text": "Tonight on &quot;Supernatural,&quot; Sam and Dean are forced to confront _ using only _."
-  },
-  {
-  "pick": 2,
-  "text": "Topping this week's non-fiction best-sellers: &quot;_ : the art of living with _.&quot;"
-  },
-  {
-  "pick": 2,
-  "text": "Ultimate Deathmatch: _ vs. _."
-  },
-  {
-  "pick": 1,
-  "text": "Utah is considering the legalization of _."
-  },
-  {
-  "pick": 1,
-  "text": "WANTED: a clean, well-lit place for _."
-  },
-  {
-  "pick": 1,
-  "text": "What <i>exactly</i> is up my ass?"
-  },
-  {
-  "pick": 1,
-  "text": "What <i>really</i> gave Superman his powers?"
-  },
-  {
-  "pick": 1,
-  "text": "What do I have rotting away in a storage unit?"
-  },
-  {
-  "pick": 1,
-  "text": "What do we want? _!<br><br>When do we want it? Now!"
-  },
-  {
-  "pick": 1,
-  "text": "What made me this way?"
-  },
-  {
-  "pick": 1,
-  "text": "What should I be for Halloween?"
-  },
-  {
-  "pick": 1,
-  "text": "What was one of the rejected flavors for Bertie Bott's Every Flavour Beans&trade;?"
-  },
-  {
-  "pick": 1,
-  "text": "What will they carve on my tombstone?"
-  },
-  {
-  "pick": 1,
-  "text": "What's my safe word?"
-  },
-  {
-  "pick": 1,
-  "text": "What's this town's best-kept secret?"
-  },
-  {
-  "pick": 3,
-  "text": "When I'm dating somebody, I can overlook _ and _, but _ is a deal-breaker."
-  },
-  {
-  "pick": 1,
-  "text": "When I've serious fucked up and need to make amends, what can I give my significant other to show them I am truly remorseful?"
-  },
-  {
-  "pick": 1,
-  "text": "When you play the Game Of _, you win or you die."
-  },
-  {
-  "pick": 1,
-  "text": "While officially still frowned on, _ is now permitted in the U.S. armed forces."
-  },
-  {
-  "pick": 1,
-  "text": "Who will be first against the wall when the revolution comes?"
-  },
-  {
-  "pick": 1,
-  "text": "Who's <i>really</i> to blame?"
-  },
-  {
-  "pick": 2,
-  "text": "Who's got _, _, and two thumbs? This guy!"
-  },
-  {
-  "pick": 1,
-  "text": "Why won't anyone sit with me?"
-  },
-  {
-  "pick": 1,
-  "text": "Why won't they let me in Chuck E. Cheese's&reg; anymore?"
-  },
-  {
-  "pick": 1,
-  "text": "William Shatner's shocking new autobiography is titled &quot;_: The Final Frontier.&quot;"
-  },
-  {
-  "pick": 2,
-  "text": "Yea, though I walk through the valley of _, I will fear no _."
-  },
-  {
-  "pick": 1,
-  "text": "Yes, it is I, the world's most dangerous supervillain: Baron Von _!"
-  },
-  {
-  "pick": 2,
-  "text": "You got your _ in my _!"
-  },
-  {
-  "pick": 1,
-  "text": "You have my sword. &quot;And you have my bow.&quot; &quot;And <i>my</i> _!&quot;"
-  },
-  {
-  "pick": 1,
-  "text": "You people are sick! There's <i>nothing</i> funny about _."
-  },
-  {
-  "pick": 1,
-  "text": "What's the most common obstacle to consummating a marriage on one's wedding night?"
-  },
-  {
-  "pick": 1,
-  "text": "What will the groom think of when he first sees the bride on their wedding day?"
-  },
-  {
-  "pick": 1,
-  "text": "What was the happiest memory from the honeymoon?"
-  },
-  {
-  "pick": 1,
-  "text": "What should every couple incorporate into their first dance?"
-  },
-  {
-  "pick": 1,
-  "text": "In a marriage, whatever the question is, the answer is always _."
-  },
-  {
-  "pick": 1,
-  "text": "First comes love, then comes marriage, then comes _."
-  },
-  {
-  "pick": 1,
-  "text": "If you like it, then you should put _ on it."
-  },
-  {
-  "pick": 1,
-  "text": "What's a sure sign of a healthy marriage?"
-  },
-  {
-  "pick": 1,
-  "text": "True love means _."
-  },
-  {
-  "pick": 1,
-  "text": "She's not just my wife. She's also _."
-  },
-  {
-  "pick": 1,
-  "text": "Consider including _ in your vows."
-  },
-  {
-  "pick": 1,
-  "text": "What's the #1 cause of wedding day jitters?"
-  },
-  {
-  "pick": 1,
-  "text": "What the fuck is your problem?"
-  },
-  {
-  "pick": 1,
-  "text": "What's the best way to spice up your marriage after years of monotony?"
-  },
-  {
-  "pick": 2,
-  "text": "It's not _ that puts strain on a relationship, it's _."
-  },
-  {
-  "pick": 1,
-  "text": "Love is patient, love is kind. Love is _."
-  },
-  {
-  "pick": 1,
-  "text": "Marriage is a lot of work, which mainly consists of _."
-  },
-  {
-  "pick": 2,
-  "text": "Marriage: the end of _ and the beginning of _."
-  },
-  {
-  "pick": 1,
-  "text": "_ doesn't count as cheating."
-  },
-  {
-  "pick": 1,
-  "text": "What was your favorite wedding photo of?"
-  },
-  {
-  "pick": 1,
-  "text": "_: grounds for divorce in all 50 states."
-  },
-  {
-  "pick": 1,
-  "text": "Along with something borrowed and something blue, be sure to take _ with you down the aisle."
-  },
-  {
-  "pick": 2,
-  "text": "The only thing worse than _ at a wedding is _."
-  },
-  {
-  "pick": 1,
-  "text": "What's the secret to a long and happy marriage?"
-  },
-  {
-  "pick": 1,
-  "text": "Nothing gets a wedding reception fired up like _."
-  },
-  {
-  "pick": 1,
-  "text": "What will be the best thing about the couple's married sex life?"
-  },
-  {
-  "pick": 1,
-  "text": "The first five years are the hardest. After that, it's all _."
-  },
-  {
-  "pick": 1,
-  "text": "Make sure you have _ and the rest will take care of itself."
-  },
-  {
-  "pick": 1,
-  "text": "The first issue the couple tackles in marriage counseling will be _."
-  },
-  {
-  "pick": 1,
-  "text": "Nothing says \"fulfilling life-long commitment\" like _."
-  },
-  {
-  "pick": 1,
-  "text": "It's trendy to include _ in your wedding these days."
-  },
-  {
-  "pick": 1,
-  "text": "Every wedding toast should include at least one mention of _."
-  },
-  {
-  "pick": 1,
-  "text": "What's the only thing sexier than confidence?"
-  },
-  {
-  "pick": 1,
-  "text": "The word \"husband\" comes from the Latin word for _."
-  },
-  {
-  "pick": 1,
-  "text": "Between the champagne toast and the cake-cutting, there was _."
-  },
-  {
-  "pick": 1,
-  "text": "_. A sure-fire cure for the seven-year itch."
-  },
-  {
-  "pick": 1,
-  "text": "_. A wedding gift you'll cherish forever."
-  },
-  {
-  "pick": 1,
-  "text": "In a committed adult relationship, _ goes a long way."
-  },
-  {
-  "pick": 1,
-  "text": "Studies show that married people are much more likely than single people to have _."
-  },
-  {
-  "pick": 1,
-  "text": "What unique detail did the bride's dress include?"
-  },
-  {
-  "pick": 1,
-  "text": "Being married means having the freedom to embrace _."
-  },
-  {
-  "pick": 1,
-  "text": "The wedding cake was shaped like _."
-  },
-  {
-  "pick": 1,
-  "text": "What's the groom hiding in his underwear?"
-  },
-  {
-  "pick": 1,
-  "text": "The ceremony ended with _."
-  },
-  {
-  "pick": 1,
-  "text": "The couple has a wonderful life filled with _ ahead of them."
-  },
-  {
-  "pick": 1,
-  "text": "There's nothing more romantic than _."
-  },
-  {
-  "pick": 1,
-  "text": "A healthy long-term sex life is built on _."
-  },
-  {
-  "pick": 1,
-  "text": "What's the couple's favorite shared hobby?"
-  },
-  {
-  "pick": 1,
-  "text": "Instead of a garter toss, try _."
-  },
-  {
-  "pick": 1,
-  "text": "How did you celebrate your first anniversary?"
-  },
-  {
-  "pick": 1,
-  "text": "What saved your marriage?"
-  },
-  {
-  "pick": 1,
-  "text": "Their first fight as a married couple was about _."
-  },
-  {
-  "pick": 1,
-  "text": "The proposal featured _."
-  },
-  {
-  "pick": 1,
-  "text": "What's a favorite pastime of the family you're marrying into?"
-  },
-  {
-  "pick": 1,
-  "text": "What did the rehearsal dinner taste like?"
-  },
-  {
-  "text": "Real men watch _.",
-  "pick": 1
-  },
-  {
-  "text": "So wait, _ was actually _? Wow, I didn't see that one coming!",
-  "pick": 2
-  },
-  {
-  "text": "Whenever I'm splashed with cold water, I turn into _.",
-  "pick": 1
-  },
-  {
-  "text": "No matter how you look at it, ultimately _ is responsible for _.",
-  "pick": 2
-  },
-  {
-  "text": "_. That is my fetish.",
-  "pick": 1
-  },
-  {
-  "text": "_ is camping my lane.",
-  "pick": 1
-  },
-  {
-  "text": "Vegeta, what does the scouter say?",
-  "pick": 1
-  },
-  {
-  "text": "Who the hell do you think I am?!",
-  "pick": 1
-  },
-  {
-  "text": "On the next episode of Dragon Ball Z, Goku has a fierce battle with _.",
-  "pick": 1
-  },
-  {
-  "text": "Who let the dogs out?",
-  "pick": 1
-  },
-  {
-  "text": "In his next movie, Will Smith saves the world from _.",
-  "pick": 1
-  },
-  {
-  "text": "_ and _ are the new hot couple.",
-  "pick": 2
-  },
-  {
-  "text": "When North Korea gets _, it will be the end of the world.",
-  "pick": 1
-  },
-  {
-  "text": "Plan a three course meal.",
-  "pick": 3
-  },
-  {
-  "text": "Tastes like _.",
-  "pick": 1
-  },
-  {
-  "text": "Hey guys, check out my _ montage!",
-  "pick": 1
-  },
-  {
-  "text": "What will Xyzzy take over the world with?",
-  "pick": 1
-  },
-  {
-  "text": "Dustin Browder demands more _ in StarCraft&reg;.",
-  "pick": 1
-  },
-  {
-  "text": "Welcome to my secret lair on _.",
-  "pick": 1
-  },
-  {
-  "text": "Truly and without question, _ is the manliest of all men.",
-  "pick": 1
-  },
-  {
-  "text": "WANTED: $50,000,000,000 reward for the apprehension of_.",
-  "pick": 1
-  },
-  {
-  "text": "People die when they are _.",
-  "pick": 1
-  },
-  {
-  "text": "Okay, I'll admit it. I would totally go gay for _.",
-  "pick": 1
-  },
-  {
-  "text": "_.tumblr.com",
-  "pick": 1
-  },
-  {
-  "text": "_. Goddammit, Japan.",
-  "pick": 1
-  },
-  {
-  "text": "All your _ are belong to us",
-  "pick": 1
-  },
-  {
-  "text": "Digimon! Digivolve to: _-mon!",
-  "pick": 1
-  },
-  {
-  "text": "What will YouTube add in its next unneeded update?",
-  "pick": 1
-  },
-  {
-  "text": "I have never in my life laughed harder than the first time I watched _.",
-  "pick": 1
-  },
-  {
-  "text": "Who's an asshole?",
-  "pick": 1
-  },
-  {
-  "text": "Ladies and gentlemen, I give you _... COVERED IN BEES!!!",
-  "pick": 1
-  },
-  {
-  "text": "Sorry Mario, but _ is in another castle.",
-  "pick": 1
-  },
-  {
-  "text": "There are guilty pleasures. And then there's _.",
-  "pick": 1
-  },
-  {
-  "text": "_ for president!",
-  "pick": 1
-  },
-  {
-  "text": "_ is a lie.",
-  "pick": 1
-  },
-  {
-  "text": "Have fun, don't be _.",
-  "pick": 1
-  },
-  {
-  "text": "Don't get mad, get _.",
-  "pick": 1
-  },
-  {
-  "text": "When it comes to Japanese cuisine, there's simply nothing better than _.",
-  "pick": 1
-  },
-  {
-  "text": "After I saw _, I needed _.",
-  "pick": 2
-  },
-  {
-  "text": "I'm an expert on _.",
-  "pick": 1
-  },
-  {
-  "text": "Just announced: The brand new anime adaptation of _, starring _ as the voice of _.",
-  "pick": 3
-  },
-  {
-  "text": "_ is the only thing that matters.",
-  "pick": 1
-  },
-  {
-  "text": "Cunnilungus and psychiatry brought us to _.",
-  "pick": 1
-  },
-  {
-  "text": "We'll always have _.",
-  "pick": 1
-  },
-  {
-  "text": "OH MY GOD THIS IS THE GREATEST _ I'VE EVER SEEN IN MY LIFE!",
-  "pick": 1
-  },
-  {
-  "text": "And the award for the filthiest scene in an adult film goes to \"5 women and _.\"",
-  "pick": 1
-  },
-  {
-  "text": "What mildy annoyed you today?",
-  "pick": 1
-  },
-  {
-  "text": "The seldomly mentioned 4th little pig built his house out of _.",
-  "pick": 1
-  },
-  {
-  "text": "Let's all rock out to the sounds of _.",
-  "pick": 1
-  },
-  {
-  "text": "No one wants to see your _.",
-  "pick": 1
-  },
-  {
-  "text": "\"Why Grandma\", said Little Red Riding Hood, \"What big _ you have!\"",
-  "pick": 1
-  },
-  {
-  "text": "_ uses _. It is SUPER EFFECTIVE!",
-  "pick": 2
-  },
-  {
-  "text": "It's difficult to explain to friends and family why I know so much about _.",
-  "pick": 1
-  },
-  {
-  "text": "Who knew I'd be able to make a living off of _?",
-  "pick": 1
-  },
-  {
-  "text": "Take _, it will last longer.",
-  "pick": 1
-  },
-  {
-  "text": "I finally realized I hit rock bottom when I started digging through dumpsters for _.",
-  "pick": 1
-  },
-  {
-  "text": "Long story short, I ended up with _ in my ass.",
-  "pick": 1
-  },
-  {
-  "text": "At first I couldn't understand _, but now it's my biggest kink.",
-  "pick": 1
-  },
-  {
-  "text": "_ is my worst habit.",
-  "pick": 1
-  },
-  {
-  "text": "What do I keep hidden in the crawlspace?",
-  "pick": 1
-  },
-  {
-  "text": "It's the end of _ as we know it.",
-  "pick": 1
-  },
-  {
-  "text": "I watch movies just to see if I can find a Big Lipped _ Moment.",
-  "pick": 1
-  },
-  {
-  "text": "Go-Go-Gadget, _!",
-  "pick": 1
-  },
-  {
-  "text": "Everything's better with _.",
-  "pick": 1
-  },
-  {
-  "text": "And it is said his ghost still wanders these halls, forever searching for his lost _.",
-  "pick": 1
-  },
-  {
-  "text": "What have you accomplished today?",
-  "pick": 1
-  },
-  {
-  "text": "What would you taste like?",
-  "pick": 1
-  },
-  {
-  "text": "The best part of waking up is _ in your cup.",
-  "pick": 1
-  },
-  {
-  "text": "Why are you frothing with rage?",
-  "pick": 1
-  },
-  {
-  "text": "What made you happy today?",
-  "pick": 1
-  },
-  {
-  "text": "Why are there six _ when there are only four _?",
-  "pick": 2
-  },
-  {
-  "text": "My _ is too big!",
-  "pick": 1
-  },
-  {
-  "text": "Best drink ever: One part _, three parts _, and a splash of _.",
-  "pick": 3
-  },
-  {
-  "text": "_ makes me uncomfortable.",
-  "pick": 1
-  },
-  {
-  "text": "The primitive villagers were both shocked and amazed when I showed them _.",
-  "pick": 1
-  },
-  {
-  "text": "Stop, drop, and _.",
-  "pick": 1
-  },
-  {
-  "text": "_ is the root of all evil.",
-  "pick": 1
-  },
-  {
-  "text": "Think before you _.",
-  "pick": 1
-  },
-  {
-  "text": "The road to success is paved with _.",
-  "pick": 1
-  },
-  {
-  "text": "And on his farm he had _, E-I-E-I-O!",
-  "pick": 1
-  },
-  {
-  "text": "A wild _ appeared! It used _!",
-  "pick": 2
-  },
-  {
-  "text": "What is your mating call?",
-  "pick": 1
-  },
-  {
-  "text": "The Himalayas are filled with many perils, such as _.",
-  "pick": 1
-  },
-  {
-  "text": "There's _ in my soup.",
-  "pick": 1
-  },
-  {
-  "text": "What is the worst thing anyone could say in front of the police?",
-  "pick": 1
-  },
-  {
-  "text": "The sad truth is, that at the edge of the universe, there is nothing but _.",
-  "pick": 1
-  },
-  {
-  "text": "What is the saddest thing you've ever seen?",
-  "pick": 1
-  },
-  {
-  "text": "If life gives you _, make _.",
-  "pick": 2
-  },
-  {
-  "text": "What is your favorite book?",
-  "pick": 1
-  },
-  {
-  "text": "Who needs a bidet when you have _?",
-  "pick": 1
-  },
-  {
-  "text": "Kill it with _!",
-  "pick": 1
-  },
-  {
-  "text": "The Xbox One's DRM policy isn't half as bad as _.",
-  "pick": 1
-  },
-  {
-  "text": "TotalBiscuit's top hat is actually _. ",
-  "pick": 1
-  },
-  {
-  "text": "Best game of 2013? _, of course.",
-  "pick": 1
-  },
-  {
-  "text": "I'M-A FIRIN' MAH _!",
-  "pick": 1
-  },
-  {
-  "text": "How do you get your dog to stop humping your leg?",
-  "pick": 1
-  },
-  {
-  "text": "_ sounds like a great alternative rock band.",
-  "pick": 1
-  },
-  {
-  "text": "_. Everything else is uncivilized.",
-  "pick": 1
-  },
-  {
-  "text": "Of my entire collection, my most prized possession is _.",
-  "pick": 1
-  },
-  {
-  "text": "_! You know, for kids.",
-  "pick": 1
-  },
-  {
-  "text": "Mom, I swear! Despite its name, _ is NOT a porno!",
-  "pick": 1
-  },
-  {
-  "text": "The government of Japan recently passed a law that effectively forbids all forms of _.",
-  "pick": 1
-  },
-  {
-  "text": "I can't believe I spent most of my paycheck on _.",
-  "pick": 1
-  },
-  {
-  "text": "_ is the greatest Canadian.",
-  "pick": 1
-  },
-  {
-  "text": "I write slash fanfiction pairing _ with _.",
-  "pick": 2
-  },
-  {
-  "text": "_? It's a DLC item.",
-  "pick": 1
-  },
-  {
-  "text": "Oh god, I can't believe we ate _ at PAX.",
-  "pick": 1
-  },
-  {
-  "text": "Only in Korea can you see _.",
-  "pick": 1
-  },
-  {
-  "text": "Alcoholic games of Clue&reg; lead to _.",
-  "pick": 1
-  },
-  {
-  "text": "_ is the name of my _ cover band.",
-  "pick": 2
-  },
-  {
-  "text": "The Holy Trinity: _, _, and _!",
-  "pick": 3
-  },
-  {
-  "text": "Praise _!",
-  "pick": 1
-  },
-  {
-  "text": "What doesn't work that way?",
-  "pick": 1
-  },
-  {
-  "text": "What can you always find in between the couch cushions?",
-  "pick": 1
-  },
-  {
-  "text": "What the fuck is wrong with you?",
-  "pick": 1
-  },
-  {
-  "text": "What is the next great Kickstarter project?",
-  "pick": 1
-  },
-  {
-  "text": "What is the meaning of life?",
-  "pick": 1
-  },
-  {
-  "text": "My life for _!",
-  "pick": 1
-  },
-  {
-  "text": "When I was a kid, all we had in Lunchables were three _ and _.",
-  "pick": 2
-  },
-  {
-  "text": "On its last dying breath, _ sent out a cry for help. A bunch of _ heard the cry.",
-  "pick": 2
-  },
-  {
-  "text": "With Democrats and Republicans in a dead heat, the election was snatched by _ party.",
-  "pick": 1
-  },
-  {
-  "text": "Who would have guessed that the alien invasion would be easily thwarted by _.",
-  "pick": 1
-  },
-  {
-  "text": "If you could fuck anyone in the world, who would you choose?",
-  "pick": 1
-  },
-  {
-  "text": "Technology improves every day. One day soon, surfing the web will be replaced by _.",
-  "pick": 1
-  },
-  {
-  "text": "Despite our Administration's best efforts, we are still incapable of _.",
-  "pick": 1
-  },
-  {
-  "text": "At camp, we'd scare each other by telling stories about _ around the fire.",
-  "pick": 1
-  },
-  {
-  "text": "Choosy Moms Choose _.",
-  "pick": 1
-  },
-  {
-  "text": "The reason I go to church is to learn about _.",
-  "pick": 1
-  },
-  {
-  "text": "Show me on _, where he _.",
-  "pick": 2
-  },
-  {
-  "text": "I wouldn't _ you with _.",
-  "pick": 2
-  },
-  {
-  "text": "All attempts at _, have met with failure and crippling economic sanctions.",
-  "pick": 1
-  },
-  {
-  "text": "Eating _ gave me _.",
-  "pick": 2
-  },
-  {
-  "text": "What's a paladin?",
-  "pick": 1
-  },
-  {
-  "text": "One of these days i'm just gonna shit my _.",
-  "pick": 1
-  },
-  {
-  "text": "You need to _ your asshole, it's vital to this operation.",
-  "pick": 1
-  },
-  {
-  "text": "I'm sorry Timmy, but I must _ you.",
-  "pick": 1
-  },
-  {
-  "text": "Knowing Chilled's knowledge with Minecraft, he'll probably use _ on _ in his next video.",
-  "pick": 2
-  },
-  {
-  "text": "In his new Co-op work SSoHPKC will be playing _ with _.",
-  "pick": 2
-  },
-  {
-  "text": "My name is-a _ and i likea da _.",
-  "pick": 2
-  },
-  {
-  "text": "GTA shenanigans would not be GTA shenanigans without Seananners dropping _ on _.",
-  "pick": 2
-  },
-  {
-  "text": "Two Best Friends Play _.",
-  "pick": 1
-  },
-  {
-  "text": "On this episode of PKA Woody and Wings talk about _.",
-  "pick": 1
-  },
-  {
-  "text": "Oh great, _ is doing another _ game LP.",
-  "pick": 2
-  },
-  {
-  "text": "Bro's Angels. We _ hard.",
-  "pick": 1
-  },
-  {
-  "text": "In today's Driftor in-depth episode we shall look at _.",
-  "pick": 1
-  },
-  {
-  "text": "Only Totalbiscuit would spend an hour long video discussing _.",
-  "pick": 1
-  },
-  {
-  "text": "Last Thursday, Riorach was identified in public and she proceeded to _.",
-  "pick": 1
-  },
-  {
-  "text": "What did Pewdiepie overreact to on his channel today?",
-  "pick": 1
-  },
-  {
-  "text": "This time on Brutalmoose's Top 10, his guest was _.",
-  "pick": 1
-  },
-  {
-  "text": "When Sp00n finally removed his horsemask on the livestream, we saw _.",
-  "pick": 1
-  },
-  {
-  "text": "I give this game a rating of _.",
-  "pick": 1
-  },
-  {
-  "text": "What did Mitch or Bajan Canadian find in the fridge today?",
-  "pick": 1
-  },
-  {
-  "text": "In _ We Trust.",
-  "pick": 1
-  },
-  {
-  "text": "What did Criken do this time to break ARMA III? ",
-  "pick": 1
-  },
-  {
-  "text": "What was the big prize this time around at the Thrown Controllers panel?",
-  "pick": 1
-  },
-  {
-  "text": "In the next episode of Press Heart to Continue: Dodger talks about _.",
-  "pick": 1
-  },
-  {
-  "text": "But Beardman! Why do you think that _?",
-  "pick": 1
-  },
-  {
-  "text": "And here we have _. Strike it's weakness for MASSIVE damage!",
-  "pick": 1
-  },
-  {
-  "text": "Pewdiepie's going to play _!?",
-  "pick": 1
-  },
-  {
-  "text": "Smarty's darkest fear is _.",
-  "pick": 1
-  },
-  {
-  "text": "GaLmHD is so pro at almost every game he plays yet he can`t play_!",
-  "pick": 1
-  },
-  {
-  "text": "The comment section was nothing but _ arguing about _.",
-  "pick": 2
-  },
-  {
-  "text": "_, the one you want to get DDoS'd",
-  "pick": 1
-  },
-  {
-  "text": "Come on and slam, and welcome to the _.",
-  "pick": 1
-  }]
-
-
 const mongoose = require('mongoose');
 
 const CardSchema = new mongoose.Schema({
@@ -3829,13 +10,1011 @@ const CardSchema = new mongoose.Schema({
 
   mongoose.connect('mongodb://hackbox:hackbox2018@ds117701.mlab.com:17701/hackbox');
   mongoose.connection.once('open', function() {
-    cards.forEach( card => {
-      console.log(card.text);
-      if (card.pick === 1) {
+    qlps.forEach( p => {
+      console.log(p.prompt);
         Card.create({
-          prompt: card.text,
+          prompt: p.prompt,
           cardType: "Quiplash"
         }).catch( err => console.log(err))
-      }
     })
   })
+
+  const qlps = [{"x":false,"id":22000,"prompt":"A weird thing for the letters in your alphabet soup to suddenly spell out"},
+{"x":false,"id":22003,"prompt":"A great prank to play on a pizza delivery guy"},
+{"x":false,"id":22006,"prompt":"The most surprising thing you could find in the glove box of a rental car"},
+{"x":false,"id":22009,"prompt":"Four-leaf clovers are lucky. But if you find a five-leaf clover..."},
+{"x":false,"id":21973,"prompt":"The only job you would do for free"},
+{"x":false,"id":21958,"prompt":"The most German-sounding word you can invent"},
+{"x":false,"id":21959,"prompt":"The worst name for a country music singer"},
+{"x":false,"id":21957,"prompt":"It would be really weird to have a bobblehead doll of <BLANK>"},
+{"x":false,"id":21966,"prompt":"If you can\u2019t say anything nice..."},
+{"x":false,"id":21940,"prompt":"The title of Bob Saget\u2019s biopic"},
+{"x":false,"id":21945,"prompt":"The perfect time to wear stilts"},
+{"x":false,"id":21927,"prompt":"Little-known fact: In a lifetime, the average person will <BLANK> over 1,000 times while sleeping"},
+{"x":false,"id":21922,"prompt":"A rejected name for tater tots"},
+{"x":false,"id":21933,"prompt":"On the seventh day, God rested. On the eighth day, he <BLANK>"},
+{"x":false,"id":21929,"prompt":"A weird reason to have your car recalled"},
+{"x":false,"id":21908,"prompt":"You should always wear a helmet when <BLANK>"},
+{"x":false,"id":21916,"prompt":"Few remember Michelangelo\u2019s <i>Mona Lisa 2<\/i> which was a painting of <BLANK>"},
+{"x":false,"id":21912,"prompt":"Something a kangaroo might search for on Google"},
+{"x":false,"id":21894,"prompt":"A bad substitute for a surfboard"},
+{"x":false,"id":21890,"prompt":"Where would you live if you were two inches tall?"},
+{"x":false,"id":21900,"prompt":"What to do when a really tall person sits in front of you at the movie theater"},
+{"x":false,"id":21882,"prompt":"An entry in teenage Tarzan\u2019s diary: \u201cToday, I <BLANK>\u201d"},
+{"x":false,"id":21883,"prompt":"The absolute best place to hide your house key"},
+{"x":false,"id":21879,"prompt":"A strange place to go to while wearing a ski mask"},
+{"x":false,"id":21865,"prompt":"What those giant Easter Island heads are thinking"},
+{"x":false,"id":21866,"prompt":"So, how do you like it?"},
+{"x":false,"id":21857,"prompt":"What ruined Hannibal \u201cThe Cannibal\u201d Lecter\u2019s credit score?"},
+{"x":false,"id":21856,"prompt":"What the lamest Transformer would morph into"},
+{"x":false,"id":21861,"prompt":"You would gladly give money to someone on the street if they asked \u201cCan you spare some change so I can <BLANK>?\u201d"},
+{"x":false,"id":21850,"prompt":"SPOILER ALERT: The big plot twist in <i>The Sisterhood of the Traveling Pants 7<\/i> is that the pants <BLANK>"},
+{"x":false,"id":21849,"prompt":"You know you\u2019re a spoiled brat when your tree house has a <BLANK>"},
+{"x":false,"id":21853,"prompt":"What King Kong is most self-conscious about"},
+{"x":false,"id":21840,"prompt":"The only reason to ever play a banjo"},
+{"x":false,"id":21841,"prompt":"The big conspiracy that nobody even suspects is <BLANK>"},
+{"x":false,"id":21846,"prompt":"How Jonah passed the time stuck inside a giant fish"},
+{"x":false,"id":21847,"prompt":"Something that the Keebler Elves chant during a strike"},
+{"x":false,"id":21835,"prompt":"The title of the most popular TV show in North Korea, probably"},
+{"x":false,"id":21839,"prompt":"A quick way to annoy Pat Sajak while playing <i>Wheel of Fortune<\/i>"},
+{"x":false,"id":21825,"prompt":"The title of a National Public Radio show that would put you to sleep the quickest"},
+{"x":false,"id":21830,"prompt":"Where the missing sock in the dryer ends up going"},
+{"x":false,"id":21823,"prompt":"The worst part about being seven feet tall"},
+{"x":false,"id":21817,"prompt":"A really weird protest sign would be \u201cEnd <BLANK> Now!\u201d"},
+{"x":false,"id":21818,"prompt":"How you can tell your new, all-vegetable diet is working"},
+{"x":false,"id":21814,"prompt":"If Cap\u2019n Crunch ever gets court-martialed, it\u2019ll probably be because he..."},
+{"x":false,"id":21808,"prompt":"Where in the world is Carmen Sandiego? "},
+{"x":false,"id":21809,"prompt":"The name of a band in which every member plays the spoons"},
+{"x":false,"id":21804,"prompt":"A little-known use for ear wax"},
+{"x":false,"id":21802,"prompt":"The type of life they\u2019ll probably find on Mars"},
+{"x":false,"id":21796,"prompt":"The name of a board game for players age 70 & older "},
+{"x":false,"id":21792,"prompt":"Bob the Builder probably wouldn\u2019t be as popular with children if he were Bob the <BLANK>"},
+{"x":false,"id":21790,"prompt":"The worst thing to do when a bear is right next to you"},
+{"x":false,"id":21786,"prompt":"Unlike \u201cMaverick\u201d or \u201cIceman,\u201d a really bad Air Force fighter pilot name would be <BLANK>"},
+{"x":false,"id":21784,"prompt":"It would\u2019ve been a much different movie if instead of \u201cPhone home,\u201d E.T. kept saying, \u201c<BLANK>\u201d"},
+{"x":false,"id":21780,"prompt":"A weird way to dry your hair"},
+{"x":false,"id":21776,"prompt":"A new name for the U.S. Congress "},
+{"x":false,"id":21770,"prompt":"What Adam thought when he first met Eve"},
+{"x":false,"id":21765,"prompt":"What do ceramic garden gnomes do at night?"},
+{"x":false,"id":21761,"prompt":"A mystery that Sherlock Holmes could never solve: The Case of the <BLANK>"},
+{"x":false,"id":21731,"prompt":"The real secret to a happy marriage is..."},
+{"x":false,"id":21733,"prompt":"A rejected name for the game Yahtzee"},
+{"x":false,"id":21739,"prompt":"The best thing to blurt out in order to ruin a beautiful sunset"},
+{"x":false,"id":21736,"prompt":"A mobster\u2019s pet peeve"},
+{"x":false,"id":21740,"prompt":"You know you\u2019re comfortable in a relationship when you ask your significant other to <BLANK>"},
+{"x":false,"id":21747,"prompt":"The best line to say when you come out of a 10-year coma "},
+{"x":false,"id":21750,"prompt":"The real reason Mr. Clean is grinning"},
+{"x":false,"id":21752,"prompt":"The best name to give an ugly baby"},
+{"x":false,"id":21757,"prompt":"The first thing Abraham Lincoln would do if he came back from the dead"},
+{"x":false,"id":21696,"prompt":"Come up with a <i>TMZ<\/i> celebrity headline from five years in the future"},
+{"x":false,"id":21697,"prompt":"What the roller coaster attendant is actually saying during his mumbled preamble before the ride"},
+{"x":false,"id":21698,"prompt":"An ad slogan for cardboard: \u201cNow with more <BLANK>\u201d "},
+{"x":false,"id":21702,"prompt":"The most annoying person in a movie theater would <BLANK>"},
+{"x":false,"id":21705,"prompt":"A rejected Monopoly game piece "},
+{"x":false,"id":21706,"prompt":"A terrible sign-off line for a newscaster"},
+{"x":false,"id":21710,"prompt":"A good sign that you may be a ghost"},
+{"x":false,"id":21712,"prompt":"The creepiest thing to whisper in somebody\u2019s ear as you\u2019re hugging them"},
+{"x":false,"id":21714,"prompt":"A better name for the ukulele"},
+{"x":false,"id":21719,"prompt":"What happens when Wile E. Coyote finally catches The Road Runner?"},
+{"x":false,"id":21718,"prompt":"What the Queen\u2019s Guard is secretly thinking as they just stand there"},
+{"x":false,"id":21721,"prompt":"The worst part about having a mustache"},
+{"x":true,"id":21720,"prompt":"An awkward thing to hear from the person pooping in the bathroom stall next to you"},
+{"x":false,"id":21723,"prompt":"A quick way to save money on grocery bills"},
+{"x":false,"id":21726,"prompt":"A good sign you\u2019re never going to be a professional football player"},
+{"x":false,"id":21671,"prompt":"The worst Viking: Eric the <BLANK>"},
+{"x":false,"id":21668,"prompt":"How they really select the next Pope"},
+{"x":false,"id":21667,"prompt":"The name of a new cologne inspired by celebrity chef Guy Fieri"},
+{"x":false,"id":21664,"prompt":"A great way to quickly get out of credit card debt"},
+{"x":false,"id":21678,"prompt":"The worst upstairs neighbors would be people that <BLANK>"},
+{"x":false,"id":21676,"prompt":"The weirdest message your cat could write out to you in its litter box"},
+{"x":false,"id":21677,"prompt":"A good nickname for your abs"},
+{"x":false,"id":21684,"prompt":"The lesser-known sequel to <i>Old Yeller<\/i>: <i>Old Yeller 2: <BLANK><\/i>"},
+{"x":false,"id":21680,"prompt":"A horrible pick-up line"},
+{"x":false,"id":21692,"prompt":"The best way to keep a co-worker from stealing your lunch"},
+{"x":false,"id":21691,"prompt":"The least scary horror movie: <i>Night of the <BLANK><\/i>"},
+{"x":false,"id":21690,"prompt":"The worst thing to find when you move into a new house"},
+{"x":false,"id":21689,"prompt":"The worst carnival prize you could win"},
+{"x":false,"id":21636,"prompt":"The most unusual environmental cause is \u201c<BLANK> the Whales\u201d"},
+{"x":false,"id":21637,"prompt":"The only thing worse than standing in a really long line is standing in a really long line for <BLANK>"},
+{"x":false,"id":21633,"prompt":"You wake up 100 years in the future and are shocked to find <BLANK>"},
+{"x":false,"id":21646,"prompt":"A weird thing for a preacher to say to end every sermon"},
+{"x":false,"id":21643,"prompt":"A rejected tourism slogan for Des Moines, Iowa: \u201cHome of the <BLANK>\u201d"},
+{"x":false,"id":21653,"prompt":"A forgotten book in the classic Harry Potter series: <i>Harry Potter and the <BLANK><\/i>"},
+{"x":false,"id":21652,"prompt":"The weirdest thing a restroom attendant could offer you"},
+{"x":false,"id":21654,"prompt":"The worst Thanksgiving Day balloon would be a giant, inflatable <BLANK>"},
+{"x":false,"id":21648,"prompt":"The big, crazy twist at the end of the next M. Night Shamalayan movie: He was <BLANK> the whole time!"},
+{"x":false,"id":21660,"prompt":"Most people know it as The Big Apple, but a lesser-known nickname for New York is The Big <BLANK>"},
+{"x":false,"id":21657,"prompt":"The next best thing to chew when you\u2019re out of gum"},
+{"x":false,"id":21608,"prompt":"You know you\u2019re in a very weird fast food restaurant when the cashier asks, \u201cDo you want <BLANK> with that?\u201d"},
+{"x":false,"id":21614,"prompt":"It\u2019s not the heat. It\u2019s not the humidity. It\u2019s the <BLANK>"},
+{"x":false,"id":21613,"prompt":"It\u2019s incredibly rude to <BLANK> with your mouth open"},
+{"x":false,"id":21607,"prompt":"You never have a <BLANK> when you need one"},
+{"x":false,"id":21627,"prompt":"<i>The Empire Strikes Back<\/i> would\u2019ve been ruined if Darth Vader said \u201cLuke, I am <BLANK>\u201d"},
+{"x":false,"id":21624,"prompt":"The worst 1960s teen movie was definitely <i><BLANK> Beach<\/i>"},
+{"x":false,"id":21628,"prompt":"The most disgusting breakfast cereal: <BLANK> Flakes"},
+{"x":false,"id":21619,"prompt":"In the next big sports scandal, we\u2019ll find out that <BLANK>"},
+{"x":false,"id":21617,"prompt":"Worse than global warming, the real threat to humanity is global <BLANK>"},
+{"x":false,"id":21620,"prompt":"Forget dogs. What is really man\u2019s best friend?"},
+{"x":false,"id":21621,"prompt":"How you can tell it\u2019s a doctor\u2019s first day on the job"},
+{"x":false,"id":21545,"prompt":"The worst name for an all-girl band"},
+{"x":false,"id":21544,"prompt":"A bad thing to say to your date\u2019s parents"},
+{"x":false,"id":21543,"prompt":"Pitch the worst video game idea in five words or less"},
+{"x":false,"id":21542,"prompt":"How embarrassing for you. You just <BLANK>"},
+{"x":false,"id":21541,"prompt":"The worst mistake you could make while streaming on Twitch.tv"},
+{"x":false,"id":21540,"prompt":"The worst song to do pairs figure skating to"},
+{"x":false,"id":21539,"prompt":"What landed you in the emergency room this time?"},
+{"x":false,"id":21538,"prompt":"The worst thing to say during a job interview"},
+{"x":false,"id":21537,"prompt":"A magazine category that hasn\u2019t been invented yet"},
+{"x":false,"id":21536,"prompt":"The top 3 ingredients in garbage truck juice"},
+{"x":false,"id":21533,"prompt":"A really bad superhero power"},
+{"x":false,"id":21534,"prompt":"The worst thing to put on a pizza"},
+{"x":false,"id":21535,"prompt":"If evolution is true, then why hasn\u2019t <BLANK> evolved into <BLANK>?"},
+{"x":false,"id":22025,"prompt":"R2D2\u2019s biggest complaint"},
+{"x":false,"id":22026,"prompt":"Come up with a bad tourism slogan for the Old Faithful geyser"},
+{"x":false,"id":22017,"prompt":"The worst possible choice for the person on the new $20 bill"},
+{"x":false,"id":22023,"prompt":"A little-known lyric in the original draft of the \u201cStar-Spangled Banner\u201d"},
+{"x":false,"id":22047,"prompt":"The best thing to shoot out of a cannon"},
+{"x":false,"id":22032,"prompt":"The winners on <i>The Bachelor<\/i> get a rose. The losers should get <BLANK>"},
+{"x":false,"id":22057,"prompt":"From the creators of \u201cWhack-a-Mole\u201d comes the new game \u201c<BLANK>-a-<BLANK>\u201d"},
+{"x":false,"id":22062,"prompt":"The title of a never-released Jimmy Buffett song"},
+{"x":false,"id":21266,"prompt":"The worst thing to hear from your GPS: \u201cIn two miles, <BLANK>\u201d"},
+{"x":false,"id":21264,"prompt":"The weirdest sentence a judge could impose"},
+{"x":false,"id":21272,"prompt":"A good use for toenail clippings"},
+{"x":false,"id":21279,"prompt":"A fitting punishment for people who double-dip their chips"},
+{"x":false,"id":21251,"prompt":"America\u2019s energy crisis would be over if we made cars that ran on <BLANK>"},
+{"x":false,"id":21250,"prompt":"Something it\u2019d be fun to watch ride an escalator "},
+{"x":false,"id":21258,"prompt":"A high school superlative you don\u2019t want to win: Most Likely To <BLANK>"},
+{"x":false,"id":21261,"prompt":"A rejected title for <i>Moby Dick<\/i>"},
+{"x":false,"id":21297,"prompt":"Something you do not want to find under your hotel bed"},
+{"x":false,"id":21301,"prompt":"You know your doctor has gone insane when he tells you to make sure you <BLANK> at least once a day"},
+{"x":false,"id":21303,"prompt":"The worst part about being a Teenage Mutant Ninja Turtle"},
+{"x":false,"id":21305,"prompt":"A sign that your kid isn\u2019t good at sports"},
+{"x":false,"id":21307,"prompt":"The first sign that you\u2019re no longer cool"},
+{"x":false,"id":21281,"prompt":"A video sure to get over 150 million views on YouTube would be \u201cChickens <BLANK>\u201d"},
+{"x":false,"id":21282,"prompt":"A surprising thing to find stuck to the bottom of your shoe"},
+{"x":false,"id":21292,"prompt":"The worst thing that could follow \u201cHoney-Roasted\u201d"},
+{"x":false,"id":21295,"prompt":"Why are geese such jerks?"},
+{"x":false,"id":21335,"prompt":"A sign that you\u2019re a bad teacher"},
+{"x":false,"id":21333,"prompt":"The worst breakfast: pancakes shaped like <BLANK>"},
+{"x":false,"id":21331,"prompt":"What bears dream about all winter"},
+{"x":false,"id":21328,"prompt":"A good sign that you\u2019ve drunk too much Mt. Dew"},
+{"x":false,"id":21329,"prompt":"What\u2019s in the box? WHAT\u2019S  IN THE BOX?!"},
+{"x":false,"id":21339,"prompt":"The manliest way to start a conversation"},
+{"x":false,"id":21336,"prompt":"What the abominable snowman does when he\u2019s bored"},
+{"x":false,"id":21319,"prompt":"A good alternative for ping-pong paddles"},
+{"x":false,"id":21318,"prompt":"You know you\u2019re a chocoholic when..."},
+{"x":false,"id":21325,"prompt":"The worst reason to use a time machine"},
+{"x":false,"id":21321,"prompt":"Something you should not do while crowdsurfing"},
+{"x":false,"id":21365,"prompt":"What those bolts in Frankenstein\u2019s neck are for"},
+{"x":false,"id":21360,"prompt":"What Waldo from \u201cWhere\u2019s Waldo?\u201d says to himself in the mirror"},
+{"x":false,"id":21361,"prompt":"The worst road trip would start with someone <BLANK>"},
+{"x":false,"id":21345,"prompt":"A creepy thing to write in your email signature line"},
+{"x":false,"id":21344,"prompt":"The only five words in your obituary in the newspaper"},
+{"x":false,"id":21347,"prompt":"What\u2019s the U.S. government really hiding in Area 51?"},
+{"x":false,"id":21357,"prompt":"The worst advice an IT guy could give"},
+{"x":false,"id":21354,"prompt":"A really bad name for an apartment complex: \u201c<BLANK> Place\u201d"},
+{"x":false,"id":21132,"prompt":"What should we do with all of that plastic that won\u2019t disintegrate?"},
+{"x":false,"id":21134,"prompt":"One thing that the rich truly enjoy is diamond-encrusted <BLANK>"},
+{"x":false,"id":21135,"prompt":"The best part of turning 100 years old"},
+{"x":false,"id":21125,"prompt":"The lesser-known other way to find the Wizard of Oz: Follow the <BLANK> Road"},
+{"x":false,"id":21147,"prompt":"Forget coffee. Don\u2019t talk to me until I\u2019ve had my <BLANK>"},
+{"x":false,"id":21148,"prompt":"Odd new shampoo instructions: \u201cLather, Rinse, <BLANK>, Repeat.\u201d"},
+{"x":false,"id":21160,"prompt":"The worst magic trick"},
+{"x":false,"id":21154,"prompt":"The lost Hemingway book: <i>The Old Man and the <BLANK><\/i>"},
+{"x":false,"id":21152,"prompt":"The title of a podcast you would never ever listen to"},
+{"x":false,"id":21153,"prompt":"The name of a new, terrifying species of spider"},
+{"x":false,"id":21156,"prompt":"The most annoying co-worker would constantly <BLANK>"},
+{"x":false,"id":21182,"prompt":"A surefire way to ruin Christmas"},
+{"x":false,"id":21181,"prompt":"The name of the worst baby doll"},
+{"x":false,"id":21180,"prompt":"\u201cDon\u2019t blame me, I voted for <BLANK>.\u201d"},
+{"x":false,"id":21171,"prompt":"The name of a fast food restaurant in the Stone Age"},
+{"x":false,"id":21169,"prompt":"Dodgeball would be an even better sport if <BLANK> were allowed"},
+{"x":false,"id":21168,"prompt":"A <BLANK> a day keeps the doctor away"},
+{"x":false,"id":21175,"prompt":"What is the Abraham Lincoln statue thinking while he\u2019s sitting there in the Lincoln Memorial?"},
+{"x":false,"id":21173,"prompt":"Instead of \u201cCheese!\u201d the worst family photographer would tell you to say, \u201c<BLANK>!\u201d"},
+{"x":false,"id":21172,"prompt":"The title of a college admission essay that would definitely get rejected"},
+{"x":false,"id":21198,"prompt":"Something Big Bird will confess on his deathbed"},
+{"x":false,"id":21195,"prompt":"What you would expect Justin Bieber\u2019s line of fragrances to smell like"},
+{"x":false,"id":21189,"prompt":"The last thing you\u2019d want to find in your air ducts"},
+{"x":false,"id":21184,"prompt":"The worst college football team: The Fighting <BLANK>"},
+{"x":false,"id":21212,"prompt":"A terrible name for a dragon"},
+{"x":false,"id":21214,"prompt":"In the future, moviegoers will flock to see <i>Jurassic Park 10: <BLANK><\/i>"},
+{"x":false,"id":21209,"prompt":"The worst way to unclog a toilet"},
+{"x":false,"id":21208,"prompt":"Something that\u2019s been hiding in the background in every episode of <i>Friends<\/i>"},
+{"x":false,"id":21211,"prompt":"We should combine Minnesota and Wisconsin and call them <BLANK>"},
+{"x":false,"id":21205,"prompt":"The name of a cable network that no one watches"},
+{"x":false,"id":21206,"prompt":"If the groundhog \u201ckind of\u201d sees his shadow, it\u2019s six weeks of <BLANK>"},
+{"x":false,"id":21202,"prompt":"What\u2019s really destroying the ozone layer?"},
+{"x":false,"id":21230,"prompt":"You know you\u2019re famous when..."},
+{"x":false,"id":21228,"prompt":"The absolute worst moment for a bird to poop on you"},
+{"x":false,"id":21225,"prompt":"A weird thing for someone to frame and hang on the wall"},
+{"x":false,"id":21221,"prompt":"The best thing to yell while going over Niagara Falls in a barrel "},
+{"x":false,"id":21243,"prompt":"What you don\u2019t want to hear from the passenger next to you at the start of a 20-hour flight"},
+{"x":false,"id":21242,"prompt":"Why ducks really fly south in the winter"},
+{"x":false,"id":21241,"prompt":"Where Charlie Brown winds up at age 45"},
+{"x":false,"id":21233,"prompt":"What a frog would say to his psychiatrist"},
+{"x":false,"id":21116,"prompt":"What is the Loch Ness Monster, really?"},
+{"x":false,"id":21112,"prompt":"The Pyramids would be even more impressive if they contained <BLANK>"},
+{"x":false,"id":21111,"prompt":"What Sam Elliott probably nicknames his mustache"},
+{"x":false,"id":21110,"prompt":"The worst theme for your kid\u2019s first dance recital"},
+{"x":false,"id":21096,"prompt":"The worst combination of two actors that could possibly star in the next season of <i>True Detective<\/i> together"},
+{"x":false,"id":21102,"prompt":"It\u2019s disappointing to put together a 1,000 piece puzzle and realize it\u2019s just a picture of <BLANK>"},
+{"x":false,"id":21090,"prompt":"The name of a law firm you shouldn\u2019t hire"},
+{"x":false,"id":21092,"prompt":"The worst thing to find frozen in an ice cube"},
+{"x":false,"id":21095,"prompt":"Something you don\u2019t expect to see when you spy on your neighbors"},
+{"x":false,"id":21079,"prompt":"An experiment mice actually like having performed on them"},
+{"x":false,"id":21078,"prompt":"A double rainbow doesn\u2019t have gold at the end of it. Instead, it has <BLANK>"},
+{"x":false,"id":21068,"prompt":"The best shirt to wear next to somebody who\u2019s wearing an \u201cI\u2019m with stupid\u201d T-shirt"},
+{"x":false,"id":21050,"prompt":"The worst thing a plastic surgeon could say after he botched your surgery: \u201cI\u2019m sorry, I accidentally <BLANK>\u201d"},
+{"x":false,"id":21045,"prompt":"The worst advice your boxing coach could give you"},
+{"x":false,"id":21044,"prompt":"What an alarm clock could say that would wake you right up"},
+{"x":false,"id":21040,"prompt":"A weird thing to hear from your doctor: \u201cI\u2019m afraid you have <BLANK>\u201d"},
+{"x":false,"id":21039,"prompt":"In a shocking poll, it was discovered that three out of four Americans <BLANK>"},
+{"x":false,"id":21013,"prompt":"The most common thing you\u2019d hear if you could read people\u2019s thoughts"},
+{"x":false,"id":21005,"prompt":"The name of a hairstyle that will never catch on"},
+{"x":false,"id":20996,"prompt":"A bad name for an Italian restaurant"},
+{"x":false,"id":20992,"prompt":"A realistic, honest fast-food slogan"},
+{"x":false,"id":21328,"prompt":"A good sign that you\u2019ve drunk too much Mt. Dew"},
+{"x":false,"id":21331,"prompt":"What bears dream about all winter"},
+{"x":false,"id":21333,"prompt":"The worst breakfast: pancakes shaped like <BLANK>"},
+{"x":false,"id":21335,"prompt":"A sign that you\u2019re a bad teacher"},
+{"x":false,"id":21389,"prompt":"If a genie gives you three wishes, the best things to wish for are: 1) a billion dollars, 2) eternal life, and 3) <BLANK>"},
+{"x":false,"id":20607,"prompt":"The worst charity: Save the <BLANK>"},
+{"x":false,"id":20694,"prompt":"Little-known fact: An unaired episode of <i>The Brady Bunch<\/i> had the family dealing with <BLANK>"},
+{"x":false,"id":20703,"prompt":"The futuristic invention you can\u2019t wait to see exist"},
+{"x":false,"id":20700,"prompt":"What\u2019s really at the center of the Earth?"},
+{"x":false,"id":20677,"prompt":"Invent a new word for the toilet that sounds like it\u2019s from Shakespeare"},
+{"x":false,"id":20675,"prompt":"Safety tip! Don\u2019t eat a half hour before you <BLANK>"},
+{"x":false,"id":20685,"prompt":"The real way you can tell an alligator from a crocodile"},
+{"x":false,"id":20683,"prompt":"A very unnecessary surgery"},
+{"x":false,"id":20726,"prompt":"Survival tip! Start a fire by rubbing <BLANK>"},
+{"x":false,"id":20732,"prompt":"Helpful advice you would give to Super Mario"},
+{"x":false,"id":20733,"prompt":"In the future, scientists discover that the secret to eternal youth is <BLANK>"},
+{"x":false,"id":20730,"prompt":"Something you shouldn\u2019t use a chainsaw for"},
+{"x":false,"id":20731,"prompt":"A surprising purchase on Willy Wonka\u2019s credit card statement"},
+{"x":false,"id":20627,"prompt":"The worst album: \u201c<BLANK> Sings the Blues\u201d"},
+{"x":false,"id":20628,"prompt":"A really stupid idea for a phone app (that would still make you millions of dollars)"},
+{"x":false,"id":20629,"prompt":"The name of a new game show that sounds terrible"},
+{"x":false,"id":20638,"prompt":"The one thing you wish a politician would just say already"},
+{"x":false,"id":20639,"prompt":"A secret way to get stubborn ketchup out of the bottle"},
+{"x":false,"id":20636,"prompt":"The most surprising person to admit to being the Zodiac Killer"},
+{"x":false,"id":20614,"prompt":"A lesson that probably wouldn\u2019t be taught on <i>Sesame Street<\/i>"},
+{"x":false,"id":20619,"prompt":"Something you promise to yell if you win this game"},
+{"x":false,"id":20618,"prompt":"A creepy thing to find scribbled onto a dollar bill"},
+{"x":false,"id":20617,"prompt":"If you don\u2019t have extra money, an odd thing to use as a tip for your waiter"},
+{"x":false,"id":20621,"prompt":"The name of the next hot boy band"},
+{"x":false,"id":20620,"prompt":"A terrible name for a king"},
+{"x":false,"id":20659,"prompt":"A sure sign that a drifter has been secretly living in your house"},
+{"x":false,"id":20660,"prompt":"The name of a new U.S. state you would never visit"},
+{"x":false,"id":20661,"prompt":"The one thing that isn\u2019t better dipped in chocolate"},
+{"x":false,"id":20663,"prompt":"Like \u201cdinger,\u201d \u201cgrand salami,\u201d and \u201cjack,\u201d come up with a new slang term for a home run in baseball"},
+{"x":false,"id":20664,"prompt":"A terrible vacation idea: going to visit The Museum of <BLANK>"},
+{"x":false,"id":20667,"prompt":"A great gag gift would be an exploding <BLANK>"},
+{"x":false,"id":20668,"prompt":"The official medical term for belly button lint (probably)"},
+{"x":false,"id":20642,"prompt":"A surprising thing to hear in a nature documentary"},
+{"x":false,"id":20647,"prompt":"The years 2011 to 2020 will be remembered as \u201cThe <BLANK> Age\u201d"},
+{"x":false,"id":20646,"prompt":"An inventive way to get rid of head lice"},
+{"x":false,"id":20650,"prompt":"Little-known fact: the scariest animal in the world is the <BLANK> cobra"},
+{"x":false,"id":20655,"prompt":"A bad name for a brand of hot sauce"},
+{"x":false,"id":20813,"prompt":"An excuse to avoid riding the mechanical bull"},
+{"x":false,"id":20814,"prompt":"What Big Foot complains about to his therapist the most"},
+{"x":false,"id":20815,"prompt":"The worst warning to read on some medicine you just swallowed"},
+{"x":false,"id":20806,"prompt":"A strange poster to hang in a college dorm room"},
+{"x":false,"id":20801,"prompt":"Never pay more than $3 for <BLANK>"},
+{"x":false,"id":20825,"prompt":"The name of a really bizarre diet that just never caught on"},
+{"x":false,"id":20826,"prompt":"The most popular T-shirt slogan in Mississippi, probably"},
+{"x":false,"id":20820,"prompt":"The hit song from the Broadway show <i>Fart: The Musical<\/i>"},
+{"x":false,"id":20816,"prompt":"A ridiculous government agency that no one knows about: The Department of <BLANK>"},
+{"x":false,"id":20818,"prompt":"The best thing about being thrown into a volcano"},
+{"x":false,"id":20842,"prompt":"The world\u2019s most boring video game"},
+{"x":false,"id":20843,"prompt":"New requirement at amusement parks: \u201cYou must be this <BLANK> to ride\""},
+{"x":false,"id":20841,"prompt":"You probably shouldn\u2019t hire a moving company called <BLANK>"},
+{"x":false,"id":20836,"prompt":"The weirdest combination of three items that you could buy at the store"},
+{"x":false,"id":20837,"prompt":"The worst halftime show: The <BLANK> Dancers"},
+{"x":false,"id":20832,"prompt":"What\u2019s really in a camel\u2019s hump?"},
+{"x":false,"id":20833,"prompt":"The most obnoxious name someone could give their kid"},
+{"x":false,"id":20862,"prompt":"Something that is probably on Nicolas Cage\u2019s \u201cTo Do\u201d list"},
+{"x":false,"id":20858,"prompt":"The newest health food: <BLANK> juice"},
+{"x":false,"id":20854,"prompt":"HR would probably get the most complaints on \u201cBring your <BLANK> to work\u201d day"},
+{"x":false,"id":20852,"prompt":"A lesser-known Knight of the Round Table: Sir <BLANK>"},
+{"x":false,"id":20849,"prompt":"A Socrates quote that nobody bothered to write down"},
+{"x":false,"id":20746,"prompt":"Why is the sky blue?"},
+{"x":false,"id":20749,"prompt":"The best way to catch a leprechaun"},
+{"x":false,"id":20736,"prompt":"The worst things to juggle"},
+{"x":false,"id":20737,"prompt":"Turns out, the meaning of life is <BLANK>"},
+{"x":false,"id":20739,"prompt":"The worst tattoo to have on your forehead"},
+{"x":false,"id":20740,"prompt":"A mean text you would send to break up with a Muppet"},
+{"x":false,"id":20743,"prompt":"What really cracked the Liberty Bell?"},
+{"x":false,"id":20761,"prompt":"A weird photo to keep in your wallet"},
+{"x":false,"id":20765,"prompt":"An odd painting to hang above your bed"},
+{"x":false,"id":20752,"prompt":"A poor substitute for a necktie"},
+{"x":false,"id":20778,"prompt":"The perfect day off is just twelve straight hours of <BLANK>"},
+{"x":false,"id":20769,"prompt":"The worst Vegas casino: <BLANK> Palace"},
+{"x":false,"id":20774,"prompt":"Something awful to hold in your mouth for an hour"},
+{"x":false,"id":20772,"prompt":"A great way to start a conversation with a weird loner on the subway"},
+{"x":false,"id":20773,"prompt":"A hip, new advertising slogan for socks"},
+{"x":false,"id":20794,"prompt":"Really awful cheerleaders would yell \u201c<BLANK>!\u201d"},
+{"x":false,"id":20799,"prompt":"Why should you never turn your back on a penguin?"},
+{"x":false,"id":20785,"prompt":"The reason Pluto isn\u2019t a planet anymore"},
+{"x":false,"id":20932,"prompt":"The biggest issue facing the town of Margaritaville "},
+{"x":false,"id":20935,"prompt":"The least appetizing name for a restaurant"},
+{"x":false,"id":20928,"prompt":"Something you should not say in front of a parrot"},
+{"x":false,"id":20931,"prompt":"Something you should not put in your kid\u2019s sandbox"},
+{"x":false,"id":20939,"prompt":"What the boogeyman is afraid of"},{"x":false,"id":20949,"prompt":"A bad name for a hospital"},
+{"x":false,"id":20944,"prompt":"Something you do not want to do while standing in a police lineup"},
+{"x":false,"id":20945,"prompt":"Where\u2019s Jimmy Hoffa? "},
+{"x":false,"id":20956,"prompt":"An odd casting choice would be Clint Eastwood as <BLANK>"},
+{"x":false,"id":20958,"prompt":"After the Heimlich Maneuver, the second-best way to stop someone from choking"},
+{"x":false,"id":20955,"prompt":"A rejected safety technique for when you catch fire was to \u201cstop, drop, and <BLANK>\u201d"},
+{"x":false,"id":20974,"prompt":"The difference between Grade A beef and Grade B beef"},
+{"x":false,"id":20969,"prompt":"The weirdest room you could see in an airport would be one specifically designated for <BLANK>"},
+{"x":false,"id":20865,"prompt":"If you really want to impress the Olympic diving judges, try a dive that involves <BLANK>"},
+{"x":false,"id":20868,"prompt":"What you think the word \u201cpandiculation\u201d means"},
+{"x":false,"id":20871,"prompt":"A body of water you definitely shouldn\u2019t swim in"},
+{"x":false,"id":20873,"prompt":"Something fun to ask the old wise man on top of the mountain"},
+{"x":false,"id":20872,"prompt":"A rejected tagline for <i>Star Trek<\/i> instead of \u201cSpace: the final frontier\u201d was \u201cSpace: <BLANK>\u201d"},
+{"x":false,"id":20876,"prompt":"How would YOU fix the economy?"},
+{"x":false,"id":20890,"prompt":"The hardest part about living in a submarine"},
+{"x":false,"id":20892,"prompt":"If you really, really love something, let it <BLANK>"},
+{"x":false,"id":20895,"prompt":"A name for a really scary swamp: <BLANK> Swamp"},
+{"x":false,"id":20897,"prompt":"The name of the music playlist that will definitely put an end to the party"},
+{"x":false,"id":20900,"prompt":"A bad name for a water park"},
+{"x":false,"id":20905,"prompt":"A polite way to say \u201cbooger\u201d"},
+{"x":false,"id":20914,"prompt":"A fun outfit to dress up the statue of David in"},
+{"x":false,"id":20912,"prompt":"Kennedy\u2019s original speech said, \u201cAsk not what your country can do for you, ask <BLANK>\u201d"},
+{"x":false,"id":20913,"prompt":"What the hot trend in weddings will be in the year 2046"},
+{"x":false,"id":20921,"prompt":"Something fun to scream at a farmer\u2019s market"},
+{"x":false,"id":20925,"prompt":"Mother Teresa\u2019s deepest secret "},
+{"x":false,"id":19351,"prompt":"The most creative thing you can make entirely out of boogers"},
+{"x":false,"id":19346,"prompt":"An ill-advised outfit to wear to your first day at a new job"},
+{"x":false,"id":19353,"prompt":"Sleepwalking can be a problem but it\u2019s not as bad as sleep<BLANK>"},
+{"x":false,"id":19333,"prompt":"In the future, RoboCop actually retires from the police force and becomes Robo-<BLANK>"},
+{"x":false,"id":19335,"prompt":"What to do when your parachute fails"},
+{"x":false,"id":19330,"prompt":"Something people used to do for fun before electricity"},
+{"x":false,"id":19288,"prompt":"The most embarrassing crime to get caught committing"},
+{"x":false,"id":19291,"prompt":"The name that cavemen probably gave to diarrhea"},
+{"x":false,"id":19281,"prompt":"The worst person to share a hot tub with"},
+{"x":false,"id":19286,"prompt":"A peculiar thing to see in a Help Wanted ad would be \u201cHelp Wanted: <BLANK>\u201d"},
+{"x":false,"id":19268,"prompt":"What mustaches SHOULD be called"},
+{"x":false,"id":19322,"prompt":"The worst pizza is <BLANK>-style pizza"},
+{"x":false,"id":19324,"prompt":"A real weirdo would fall asleep to the sounds of <BLANK>"},
+{"x":false,"id":19317,"prompt":"The name of a dog food brand you probably should not buy"},
+{"x":false,"id":19299,"prompt":"Come up with a name for a generic brand of hot dogs that you probably shouldn\u2019t buy"},
+{"x":false,"id":19231,"prompt":"Everything tastes better with <BLANK>"},
+{"x":false,"id":19222,"prompt":"Life hack! Lower your heating bills by..."},
+{"x":false,"id":19223,"prompt":"The worst thing that could crawl out of your toilet"},
+{"x":false,"id":19212,"prompt":"The worst advice a doctor could give"},
+{"x":false,"id":19206,"prompt":"Something a weatherman might yell if he completely snapped during the weather forecast"},
+{"x":false,"id":19203,"prompt":"A great birthday present for your worst enemy"},
+{"x":false,"id":19250,"prompt":"The name of a painting Michelangelo was ashamed he created"},
+{"x":false,"id":19247,"prompt":"A clever thing for James Bond to say as he throws someone out of an airplane"},
+{"x":false,"id":19239,"prompt":"No one would guess this is where the treasure is buried"},
+{"x":false,"id":19235,"prompt":"The secret to a healthy head of hair"},
+{"x":false,"id":19234,"prompt":"A strange thing to read on a door mat"},
+{"x":false,"id":19233,"prompt":"The secret to a great marriage"},
+{"x":false,"id":19232,"prompt":"What really happens if you stare at the sun too long"},
+{"x":false,"id":19136,"prompt":"A prank the Supreme Court Justices probably play on each other"},
+{"x":false,"id":19137,"prompt":"What the Easter Bunny does with his free time"},
+{"x":false,"id":19140,"prompt":"A little known-perk of being U.S. president"},
+{"x":false,"id":19157,"prompt":"A horrible charity: <BLANK> for Tots"},
+{"x":false,"id":19164,"prompt":"A word that should be in the dictionary but isn\u2019t"},
+{"x":false,"id":19168,"prompt":"A really odd thing to say on your deathbed"},
+{"x":false,"id":19174,"prompt":"The Four Horsemen wouldn\u2019t be as scary if they were the Four <BLANK>men of the Apocalypse"},
+{"x":false,"id":19182,"prompt":"It\u2019s illegal to yell \u201cFire!\u201d in a crowded theater, but it should also be illegal to yell, \u201c<BLANK>!\u201d"},
+{"x":false,"id":19187,"prompt":"A good name for a pet cemetery"},
+{"x":false,"id":19190,"prompt":"A new word for people that drive too slow in the fast lane"},
+{"x":false,"id":19194,"prompt":"The perfect name for a second head that sprouts on your shoulder"},
+{"x":false,"id":19197,"prompt":"The worst material from which to make a pair of pajamas"},
+{"x":false,"id":19076,"prompt":"Queen Elizabeth\u2019s deepest, darkest secret"},
+{"x":false,"id":19075,"prompt":"Come up with a slogan for the Russian Tourism Board"},
+{"x":false,"id":19086,"prompt":"The best part about being Donald Trump"},
+{"x":false,"id":19087,"prompt":"Tip: Never eat at a place called \u201cKentucky Fried <BLANK>\u201d"},
+{"x":false,"id":19094,"prompt":"Sometimes John Travolta wildly mispronounces names. How might he wildly mispronounce his own name?"},
+{"x":false,"id":19092,"prompt":"The worst toy store: Build-A-<BLANK> Workshop"},
+{"x":false,"id":19088,"prompt":"The weirdest thing you can buy at the Vatican gift shop"},
+{"x":false,"id":19100,"prompt":"The worst invention that starts with \u201cSpray-On\u201d"},
+{"x":false,"id":19099,"prompt":"The name of a species of dinosaur you wouldn\u2019t want to meet"},
+{"x":false,"id":19098,"prompt":"Something overheard at the Last Supper"},
+{"x":false,"id":19097,"prompt":"A possible entry in Gary Busey\u2019s dream journal: \u201cTonight I dreamed <BLANK>\u201d"},
+{"x":false,"id":19104,"prompt":"Something you can make out of body hair"},
+{"x":false,"id":19106,"prompt":"The worst way to fly: <BLANK> Airlines"},
+{"x":false,"id":19112,"prompt":"So... what was that movie <i>Birdman<\/i> about anyway?"},
+{"x":false,"id":19125,"prompt":"A great pet name for a parasitic worm that lives in your ear"},
+{"x":false,"id":19127,"prompt":"An idea for Lady Gaga\u2019s next crazy outfit: a <BLANK> dress"},
+{"x":false,"id":19121,"prompt":"Little-known fact: Over the course of a lifetime, an average person accidentally eats ten <BLANK>"},
+{"x":false,"id":19123,"prompt":"Something you probably shouldn\u2019t try to sell on eBay"},
+{"x":false,"id":19133,"prompt":"The worst air freshener scent"},
+{"x":false,"id":19128,"prompt":"A terrible thing to sign on the cast of your friend\u2019s broken leg"},
+{"x":false,"id":19130,"prompt":"It would be awesome to win <i>Jeopardy<\/i> with the phrase, \u201cWhat is <BLANK>, Alex?\u201d"},
+{"x":false,"id":19017,"prompt":"A sign you probably shouldn\u2019t put up in your yard"},
+{"x":false,"id":19010,"prompt":"A bad title for a self-help book"},
+{"x":false,"id":19015,"prompt":"An unusual \u201cSpecial Skill\u201d to include on your resume"},
+{"x":false,"id":19014,"prompt":"What kittens would say if they could talk"},
+{"x":false,"id":19013,"prompt":"A strange thing to keep as a pet"},
+{"x":false,"id":19012,"prompt":"The worst thing about Canada"},
+{"x":false,"id":19033,"prompt":"You should never share <BLANK> with someone else"},
+{"x":false,"id":19026,"prompt":"The grossest thing you could find at the bottom of a swimming pool"},
+{"x":false,"id":19025,"prompt":"The sound a tree actually makes when it falls and no one is around to hear it"},
+{"x":false,"id":19030,"prompt":"You need three things to live: food, water, and <BLANK>"},
+{"x":false,"id":19049,"prompt":"A good use for toenail clippings"},
+{"x":false,"id":19048,"prompt":"What you would do with two free hours and a flamethrower"},
+{"x":false,"id":19041,"prompt":"The worst name for an SUV"},
+{"x":false,"id":19066,"prompt":"New sport idea: professional <BLANK>"},
+{"x":false,"id":19068,"prompt":"Trash talk you would hear at a chess meet"},
+{"x":false,"id":19057,"prompt":"Something you shouldn\u2019t stuff with cheese"},
+{"x":false,"id":19062,"prompt":"Something pirates probably aren\u2019t very good at"},
+{"x":false,"id":19063,"prompt":"Everyone knows there\u2019s no such thing as <BLANK>"},
+{"x":false,"id":18950,"prompt":"A completely untrue rumor about Alvin from Alvin and the Chipmunks"},
+{"x":false,"id":18974,"prompt":"You should never <BLANK> and <BLANK> at the same time"},
+{"x":false,"id":18975,"prompt":"The worst thing about being a billionaire"},
+{"x":false,"id":18970,"prompt":"Briefly describe your imaginary friend"},
+{"x":false,"id":18969,"prompt":"New movie idea: <i>The Muppets Take <BLANK><\/i>"},
+{"x":false,"id":18977,"prompt":"What you call a baby sasquatch"},
+{"x":false,"id":18976,"prompt":"What is a tree thinking all day?"},
+{"x":false,"id":19007,"prompt":"The best use for a leftover meatball"},
+{"x":false,"id":19001,"prompt":"A bad reason to call 911"},
+{"x":false,"id":18996,"prompt":"The best way to quickly blow a million dollars"},
+{"x":false,"id":18999,"prompt":"Your first decree after being named Supreme Ruler of Earth"},
+{"x":false,"id":18930,"prompt":"The worst thing to receive for trick-or-treat"},
+{"x":false,"id":18938,"prompt":"Come up with a name for a kooky ostrich who solves mysteries"},
+{"x":false,"id":18919,"prompt":"A phrase you would love to hear Morgan Freeman say"},
+{"x":false,"id":18924,"prompt":"USA! USA! America is still number one in..."},
+{"x":false,"id":18922,"prompt":"An Olympic sport that never made it: Synchronized <BLANK>"},
+{"x":false,"id":18900,"prompt":"The government should legalize..."},
+{"x":false,"id":18898,"prompt":"The first thing to do if you\u2019re attacked by a shark"},
+{"x":false,"id":18884,"prompt":"The worst thing to find growing on your neck"},
+{"x":false,"id":18881,"prompt":"A little-known fact about the Jolly Green Giant"},
+{"x":false,"id":18867,"prompt":"The perfect meal would be a <BLANK> stuffed in a <BLANK> stuffed in a <BLANK>"},
+{"x":false,"id":18874,"prompt":"What\u2019s black and white and red all over?"},
+{"x":false,"id":18877,"prompt":"New show idea: <i>America\u2019s Next Top <BLANK><\/i>"},
+{"x":false,"id":18849,"prompt":"It never ends well when you mix <BLANK> and <BLANK>"},
+{"x":false,"id":18852,"prompt":"Invent a silly British term for pooping"},
+{"x":false,"id":18856,"prompt":"The best reason to go to Australia"},
+{"x":false,"id":18862,"prompt":"The beauty pageant no one wants to see: Miss <BLANK>"},
+{"x":false,"id":18863,"prompt":"The most boring graffiti you could see in the subway"},
+{"x":false,"id":18844,"prompt":"A slogan to get everyone excited about corn"},
+{"x":false,"id":18846,"prompt":"You never forget your first <BLANK>"},
+{"x":false,"id":18818,"prompt":"Little-known fact: The human body is approximately 80% <BLANK>"},
+{"x":false,"id":18819,"prompt":"Coming soon to a theater near you: Benedict Cumberbatch is <BLANK>"},
+{"x":false,"id":18824,"prompt":"Something you shouldn\u2019t buy at a yard sale"},
+{"x":false,"id":18825,"prompt":"If we only use 10% of our brains, what\u2019s the other 90% doing?"},
+{"x":false,"id":18831,"prompt":"What you want your gravestone to read"},
+{"x":false,"id":18814,"prompt":"The worst menu item that starts with \u201cAll You Can Eat\u201d"},
+{"x":false,"id":18809,"prompt":"A sign you wouldn\u2019t want to see at a seafood restaurant"},
+{"x":false,"id":18807,"prompt":"Something fun to yell during an opera"},
+{"x":false,"id":18805,"prompt":"A group activity at a really bad summer camp"},
+{"x":false,"id":18802,"prompt":"A Girl Scouts cookie name that got rejected because it was just too ridiculous-sounding"},
+{"x":false,"id":18803,"prompt":"The least impressive Boy Scout badge"},
+{"x":false,"id":18800,"prompt":"The worst ringtone for a cell phone"},
+{"x":false,"id":18788,"prompt":"A great nickname for your armpit hair"},
+{"x":false,"id":18787,"prompt":"\u201cKnock, knock!\u201d \u201cWho\u2019s there?\u201d <BLANK>"},
+{"x":false,"id":18784,"prompt":"A Tweet from a caveman"},
+{"x":false,"id":18780,"prompt":"A message found in a bottle floating in the sea"},
+{"x":false,"id":18783,"prompt":"The worst car feature that ends with \u201cholder\u201d"},
+{"x":false,"id":18753,"prompt":"What Chewbacca has really been yelling all these years"},
+{"x":false,"id":18750,"prompt":"The most stereotypical country song title"},
+{"x":false,"id":18751,"prompt":"The best way to survive a bear attack is <BLANK>"},
+{"x":false,"id":18748,"prompt":"The worst name for a funeral home"},
+{"x":false,"id":18739,"prompt":"An angry internet comment on a pet store\u2019s website"},
+{"x":false,"id":18737,"prompt":"The worst name for a rap artist"},
+{"x":false,"id":18742,"prompt":"A rejected shape for Marshmallow Peeps"},
+{"x":false,"id":18743,"prompt":"Something that should never be \u201chomemade\u201d"},
+{"x":false,"id":18740,"prompt":"Three things MacGyver needs to make a bomb"},
+{"x":false,"id":18741,"prompt":"Another use for marshmallows"},
+{"x":false,"id":18735,"prompt":"Another use for gravy"},
+{"x":false,"id":18712,"prompt":"A great way to cure the hiccups"},
+{"x":false,"id":18699,"prompt":"An animal Noah shouldn\u2019t have saved"},
+{"x":false,"id":18700,"prompt":"The biggest secret the government keeps"},
+{"x":false,"id":18702,"prompt":"Something you wouldn\u2019t expect a Ouija board to say"},
+{"x":false,"id":18694,"prompt":"The best way to defeat terrorism is..."},
+{"x":false,"id":18661,"prompt":"Come up with a name for a salad dressing by Lindsay Lohan"},
+{"x":false,"id":18656,"prompt":"The best way to tell if a tomato is ripe"},
+{"x":false,"id":18658,"prompt":"A good post-music career for Justin Bieber"},
+{"x":false,"id":18659,"prompt":"Come up with a name for a sitcom about a bunch of wacky nuns"},
+{"x":false,"id":18669,"prompt":"A completely wrong way to spell \u201cJennifer Aniston\u201d"},
+{"x":false,"id":18675,"prompt":"The 11th Commandment: Thou shalt not..."},
+{"x":false,"id":18681,"prompt":"The best way to scare a burglar"},
+{"x":false,"id":18680,"prompt":"The worst thing to yell while a professional golfer putts"},
+{"x":false,"id":18638,"prompt":"The second thing said on the moon"},
+{"x":false,"id":18634,"prompt":"Something you can only do in a Walmart if no one\u2019s looking"},
+{"x":false,"id":18635,"prompt":"A name for a really cheap hotel"},
+{"x":false,"id":18644,"prompt":"The worst name for a mountain"},
+{"x":false,"id":18640,"prompt":"Why so serious?"},
+{"x":false,"id":18652,"prompt":"The best thing about being really dumb"},
+{"x":false,"id":18651,"prompt":"A thought that keeps Santa Claus awake at night"},
+{"x":false,"id":18595,"prompt":"The real secret to living to age 100"},
+{"x":false,"id":18598,"prompt":"What really happens if you tear off that mattress tag"},
+{"x":false,"id":18600,"prompt":"A bad first line for your presidential inauguration speech"},
+{"x":false,"id":18603,"prompt":"A fun thing to do with a bowl of pudding"},
+{"x":false,"id":18607,"prompt":"Another use for cooked spaghetti"},
+{"x":false,"id":18609,"prompt":"A weird physical way to greet someone"},
+{"x":false,"id":18611,"prompt":"The worst name for a tanning salon"},
+{"x":false,"id":18614,"prompt":"The worst word that can come before \u201cfart\u201d"},
+{"x":false,"id":18616,"prompt":"A bad substitute for a toothbrush"},
+{"x":false,"id":18621,"prompt":"A trick you shouldn\u2019t teach your dog"},
+{"x":false,"id":18566,"prompt":"The worst material with which to make a snowman"},
+{"x":false,"id":18570,"prompt":"A terrible sportscaster catchphrase for when somebody dunks a basketball"},
+{"x":false,"id":18571,"prompt":"The first thing a pig would say if it could talk"},
+{"x":false,"id":18575,"prompt":"The worst shape for an animal cracker"},
+{"x":false,"id":18573,"prompt":"A surprising job entry on Abraham Lincoln\u2019s resume"},
+{"x":false,"id":18583,"prompt":"Something you\u2019d yell to heckle the performing dolphins at Sea World"},
+{"x":false,"id":18580,"prompt":"The worst name for a \u201cbig and tall\u201d store"},
+{"x":false,"id":18590,"prompt":"The name of a shampoo for hippies"},
+{"x":false,"id":18589,"prompt":"A new name for kumquats"},
+{"x":false,"id":18542,"prompt":"An angry review you\u2019d give this game (Quiplash)"},
+{"x":false,"id":18536,"prompt":"The worst thing to wear to your court trial"},
+{"x":false,"id":18539,"prompt":"A rejected crayon color"},
+{"x":false,"id":18535,"prompt":"Graffiti you might find in a kindergarten"},
+{"x":false,"id":18530,"prompt":"The first sign that you\u2019re old"},
+{"x":false,"id":18553,"prompt":"The worst question to ask during a White House tour"},
+{"x":false,"id":18554,"prompt":"Tomorrow\u2019s news headline: \u201cScientists Are Shocked to Discover That <BLANK>\u201d"},
+{"x":false,"id":18548,"prompt":"A terrible talent to have for the Miss America Pageant"},
+{"x":false,"id":18545,"prompt":"Bad advice for new graduates"},
+{"x":false,"id":18547,"prompt":"The best way to tell if someone is dead"},
+{"x":false,"id":18510,"prompt":"A TMZ headline you really want to see"},
+{"x":false,"id":18504,"prompt":"What you hope the Mars Rover finds"},
+{"x":false,"id":18527,"prompt":"Where missing socks go"},
+{"x":false,"id":18525,"prompt":"A rejected phrase for one of those Valentine heart candies"},
+{"x":false,"id":18522,"prompt":"Something that will get you thrown out of a Wendy\u2019s"},
+{"x":false,"id":18472,"prompt":"It would be scary to read on a food package, \u201cMay contain trace elements of <BLANK>.\u201d"},
+{"x":false,"id":18467,"prompt":"A just-so-crazy-it\u2019s-brilliant business idea to pitch on <i>Shark Tank<\/i>"},
+{"x":false,"id":18468,"prompt":"A terrifying fortune cookie fortune"},
+{"x":false,"id":18480,"prompt":"Something the devil is afraid of"},
+{"x":false,"id":18483,"prompt":"CBS should air a TV show about lawyers who are also <BLANK>"},
+{"x":false,"id":18485,"prompt":"A great thing to yell before jumping out of an airplane"},
+{"x":false,"id":18452,"prompt":"A gift nobody would want: The <BLANK> of the Month Club"},
+{"x":false,"id":20442,"prompt":"A better name for the game Duck Duck Goose"},
+{"x":false,"id":20237,"prompt":"A bad way to remove unsightly chest hair"},
+{"x":false,"id":20235,"prompt":"An unusual theme for a kid\u2019s lunchbox"},
+{"x":false,"id":20287,"prompt":"What the government is hiding from the public in Area 497"},
+{"x":false,"id":20267,"prompt":"What your pancreas tests revealed"},
+{"x":false,"id":20304,"prompt":"A bad, one-word slogan for a presidential campaign"},
+{"x":false,"id":20305,"prompt":"Something you'd make a butler do the moment you hired him"},
+{"x":false,"id":20348,"prompt":"Why did the mortician cross the road?"},
+{"x":false,"id":20326,"prompt":"Something you should never try to heat in the microwave "},
+{"x":false,"id":20324,"prompt":"A surprising thing to find inside a piñata "},
+{"x":false,"id":20110,"prompt":"An alternate name for The Mona Lisa"},
+{"x":false,"id":20111,"prompt":"A reason to travel back in time to two weeks ago"},
+{"x":false,"id":20097,"prompt":"If you\u2019d never heard the term \u201cgreat white shark,\u201d what might you call it when you saw one for the first time?"},
+{"x":false,"id":20126,"prompt":"A place where you're not likely to spot Bigfoot"},
+{"x":false,"id":20125,"prompt":"Something you should never say as the captain of a bowling team"},
+{"x":false,"id":20124,"prompt":"The dumbest person in the history of all time "},
+{"x":false,"id":20121,"prompt":"Another name for the Grand Canyon"},
+{"x":false,"id":20143,"prompt":"Another name for Canada"},
+{"x":false,"id":20137,"prompt":"A bad use for clam chowder"},
+{"x":false,"id":20128,"prompt":"\"On the 147th day of Christmas, my true love gave to me...\""},
+{"x":false,"id":20129,"prompt":"The best name for an obese rapper"},
+{"x":false,"id":20159,"prompt":"It would be most awesome for Chuck Norris to fight <BLANK>"},
+{"x":false,"id":20160,"prompt":"A good puck replacement if they run out of pucks in a game of hockey"},
+{"x":false,"id":20164,"prompt":"If animals took over, an exhibit you\u2019d see at the human zoo"},
+{"x":false,"id":20187,"prompt":"A terrible wedding gift"},
+{"x":false,"id":20185,"prompt":"A street name you never see"},
+{"x":false,"id":20179,"prompt":"The first thing that pops into your mind right now"},
+{"x":false,"id":20178,"prompt":"A weapon that should be added to the game Clue"},
+{"x":false,"id":20183,"prompt":"The toy surprise in an Unhappy Meal"},
+{"x":false,"id":20201,"prompt":"Make up a word for the watery substances that come out of a ketchup bottle when you first squeeze it"},
+{"x":false,"id":20204,"prompt":"Make up a name for the space between your nostrils"},
+{"x":false,"id":20223,"prompt":"Italy\u2019s newest tourist attraction: The <BLANK>Tower of Pisa"},
+{"x":false,"id":20213,"prompt":"The worst theme for a pinball machine"},
+{"x":false,"id":19970,"prompt":"The name of Jesus' 13th apostle"},
+{"x":false,"id":19980,"prompt":"Something you don't want to find in your Christmas stocking"},
+{"x":false,"id":20006,"prompt":"A title of a self-help book for rats"},
+{"x":false,"id":20001,"prompt":"The worst thing you could rub all over your face"},
+{"x":false,"id":20009,"prompt":"George W. Bush and Dick Cheney's rap duo name"},
+{"x":false,"id":20026,"prompt":"Something you rarely see used as a car decoration"},
+{"x":false,"id":20033,"prompt":"A historical event that would make a bad theme for a restaurant"},
+{"x":false,"id":20041,"prompt":"The worst thing to try to sell door-to-door"},
+{"x":false,"id":20046,"prompt":"Something you probably shouldn\u2019t bring on a trip across the Sahara desert"},
+{"x":false,"id":20059,"prompt":"What's that stain?"},
+{"x":false,"id":20057,"prompt":"Something you'd love to smash with a wrecking ball"},
+{"x":false,"id":20067,"prompt":"A bad name for a pet goldfish"},
+{"x":false,"id":20068,"prompt":"Life would be so much better if we all lived in <BLANK>"},
+{"x":false,"id":20074,"prompt":"Something it\u2019s not a good idea to put in the overhead bin on an airplane"},
+{"x":false,"id":20081,"prompt":"A weird thing for a bank robber to demand in a hostage situation"},
+{"x":false,"id":20083,"prompt":"Something they will probably never make a series of commemorative stamps for"},
+{"x":false,"id":20091,"prompt":"A club you wish they had in high school"},
+{"x":false,"id":19902,"prompt":"The best prize you could find in a Cracker Jack box"},
+{"x":false,"id":19891,"prompt":"The worst soup flavor: Cream of <BLANK>"},
+{"x":false,"id":19888,"prompt":"A strange place to hold a family reunion"},
+{"x":false,"id":19884,"prompt":"Something you\u2019d sneak into space, if you were an astronaut"},
+{"x":false,"id":19874,"prompt":"What they really found in King Tut\u2019s tomb"},
+{"x":false,"id":19876,"prompt":"The name of that cheese shop you\u2019re going to open some day"},
+{"x":false,"id":19865,"prompt":"The liquid that would make for the worst salad dressing"},
+{"x":false,"id":19871,"prompt":"An unusual motif for a baby\u2019s nursery"},
+{"x":false,"id":19870,"prompt":"Another name for toe jam"},
+{"x":false,"id":19857,"prompt":"A better name for dandruff"},
+{"x":false,"id":19842,"prompt":"A terrible name to have if you\u2019re running for public office"},
+{"x":false,"id":19843,"prompt":"Four out of five dentists agree you should never <BLANK>"},
+{"x":false,"id":19846,"prompt":"Something that would make a creepy replacement for the horses on a merry-go-round"},
+{"x":false,"id":19967,"prompt":"The worst thing to vomit into when you suddenly need to vomit"},
+{"x":false,"id":19963,"prompt":"Make up a word that means \u201cto make up a word\u201d"},
+{"x":false,"id":19959,"prompt":"Like Plutonium or Einsteinium, what would you name the next Periodic Table element they discover?"},
+{"x":false,"id":19951,"prompt":"A bad name for a pirate"},
+{"x":false,"id":19948,"prompt":"Something fun to scream when you win in a game of bingo, other than \u201cBingo!\u201d"},
+{"x":false,"id":19949,"prompt":"A movie that should never be made into a theme park ride"},
+{"x":false,"id":19946,"prompt":"A business or service that shouldn't have a drive-through window"},
+{"x":false,"id":19926,"prompt":"Paul Bunyan\u2019s replacement for Babe The Blue Ox when he dies"},
+{"x":false,"id":19907,"prompt":"The worst flavor for a sno-cone"},
+{"x":false,"id":19774,"prompt":"What Smokey the Bear does when he\u2019s not fighting forest fires"},
+{"x":false,"id":19759,"prompt":"Combine any two words to make a fun, new made-up word"},
+{"x":false,"id":19712,"prompt":"A lesser-known ingredient in most microwave pizza pockets"},
+{"x":false,"id":19719,"prompt":"A great place to hide an Easter egg"},
+{"x":false,"id":19718,"prompt":"A trick you\u2019d like to see a poodle do"},
+{"x":false,"id":19724,"prompt":"A better name for the Washington Monument"},
+{"x":false,"id":19727,"prompt":"You never know when you\u2019re going to need insurance. You could wake up tomorrow and <BLANK>"},
+{"x":false,"id":19822,"prompt":"The worst thing to overhear during your surgery"},
+{"x":false,"id":19797,"prompt":"A bad name for a brand of bottled water"},
+{"x":false,"id":19801,"prompt":"How do you like it?"},
+{"x":false,"id":19781,"prompt":"Come up with a new dessert that contains the name of a U.S. state"},
+{"x":false,"id":19789,"prompt":"The first and second rules of Fight Club are \u201cDon\u2019t talk about Fight Club,\u201d but what\u2019s the 387th rule of Fight Club?"},
+{"x":false,"id":19787,"prompt":"A terrible food truck would be one that goes around selling only <BLANK>"},
+{"x":false,"id":19692,"prompt":"A reason to get into a fist fight with a koala bear "},
+{"x":false,"id":19690,"prompt":"Little-known fact: the fourth Wise Man gave baby Jesus the worst gift of all: <BLANK> "},
+{"x":false,"id":19691,"prompt":"A theme for a desk calendar that wouldn\u2019t sell very well "},
+{"x":false,"id":19687,"prompt":"The worst thing you could stick in a toaster "},
+{"x":false,"id":19711,"prompt":"The worst Halloween costume for a young child"},
+{"x":false,"id":19710,"prompt":"\u201cThis just in! A <BLANK> has won the election and will become the new governor of Texas.\u201d "},
+{"x":false,"id":19707,"prompt":"A better name for the human bladder"},
+{"x":false,"id":19679,"prompt":"Surprising first words for your baby to speak"},
+{"x":false,"id":19499,"prompt":"A good name for a dog country singer"},
+{"x":false,"id":18189,"prompt":"A lawn decoration sure to make the neighbors mad"},
+{"x":false,"id":18197,"prompt":"The worst thing to say when trying to adopt a pet"},
+{"x":false,"id":18205,"prompt":"Fun thing to do if locked in the mall overnight"},
+{"x":false,"id":18207,"prompt":"The worst person to receive a sponge bath from"},
+{"x":false,"id":18200,"prompt":"People wouldn\u2019t respect He-Man as much if, to gain his power, he held up his sword and shouted \u201c____________________\u201d"},
+{"x":false,"id":18210,"prompt":"Pants would be a whole lot better if they <BLANK>"},
+{"x":false,"id":18218,"prompt":"A little-known way to get gum out of your hair"},
+{"x":false,"id":18216,"prompt":"The most awesome Guinness World Record to break"},
+{"x":false,"id":18224,"prompt":"It\u2019s bad to be buried alive. It\u2019s worse to be buried alive with <BLANK>."},
+{"x":false,"id":18225,"prompt":"Something that would not work as well as skis"},
+{"x":false,"id":18239,"prompt":"What to say to get out of jury duty"},
+{"x":false,"id":18236,"prompt":"A rejected name for a ship in the U.S. Naval Fleet: the USS <BLANK>"},
+{"x":false,"id":18232,"prompt":"A rejected title for <i>The Good, The Bad and the Ugly<\/i> was <i>The Good, the Bad and the <BLANK><\/i>"},
+{"x":false,"id":18250,"prompt":"Little-known fact: The government allows peanut butter to contain up to 10% <BLANK>"},
+{"x":false,"id":18252,"prompt":"A good sign that your house is haunted"},
+{"x":false,"id":18260,"prompt":"A bad occupation for a robot to have"},
+{"x":false,"id":18263,"prompt":"A sequel to the painting \u201cDogs Playing Poker\u201d"},
+{"x":false,"id":18265,"prompt":"The Tooth Fairy\u2019s other job"},
+{"x":false,"id":18269,"prompt":"Little-known fact: A secret area in the White House is the <BLANK> room"},
+{"x":false,"id":18271,"prompt":"An invention by Thomas Edison that never caught on"},
+{"x":false,"id":18279,"prompt":"A birthday present you shouldn\u2019t get for your grandmother"},
+{"x":false,"id":18278,"prompt":"What time is it?"},
+{"x":false,"id":18281,"prompt":"Invent a Christmas tradition sure to catch on"},
+{"x":false,"id":18280,"prompt":"A short motto everyone should live by"},
+{"x":false,"id":18298,"prompt":"The best way to start your day"},
+{"x":false,"id":18296,"prompt":"A good improvement to make to Mt. Rushmore"},
+{"x":false,"id":18302,"prompt":"The worst name for a summer camp"},
+{"x":false,"id":18318,"prompt":"The first commandment in the new religion you started"},
+{"x":false,"id":18309,"prompt":"Three things are certain in life: Death, Taxes, and <BLANK>"},
+{"x":false,"id":18310,"prompt":"A faster way to get home from the Land of Oz is to click your heels three times and say <BLANK>."},
+{"x":false,"id":18307,"prompt":"Something that\u2019s made worse by adding cheese"},
+{"x":false,"id":18348,"prompt":"Which new marshmallow should Lucky Charms cereal introduce?"},
+{"x":false,"id":18345,"prompt":"The perfect song to hum on the toilet"},
+{"x":false,"id":18343,"prompt":"A word that should never follow \u201cBeef\u201d"},
+{"x":false,"id":18338,"prompt":"Something that is currently legal that should be banned"},
+{"x":false,"id":18336,"prompt":"Come up with a name for a rock band made up entirely of baby ducks"},
+{"x":false,"id":18363,"prompt":"We can all agree that <BLANK>"},
+{"x":false,"id":18355,"prompt":"Something you shouldn\u2019t buy off of Craigslist"},
+{"x":false,"id":18352,"prompt":"A bad thing to say to a cop as he writes you a speeding ticket"},
+{"x":false,"id":18377,"prompt":"How far is too far?"},
+{"x":false,"id":18381,"prompt":"If at first you don\u2019t succeed..."},
+{"x":false,"id":18369,"prompt":"The name you would give to a really mopey pig"},
+{"x":false,"id":18371,"prompt":"What robots dream about"},
+{"x":false,"id":18374,"prompt":"What really happened to Amelia Earhart"},
+{"x":false,"id":18397,"prompt":"Something you\u2019d be surprised to see come out of a pimple you pop"},
+{"x":false,"id":18398,"prompt":"Today\u2019s music needs more <BLANK>"},
+{"x":false,"id":18385,"prompt":"Finish this sentence: \u201cWhen I\u2019m rich, my mansion will have a room called The <BLANK> Room.\u201d"},
+{"x":false,"id":18390,"prompt":"The best question to ask God when you meet him"},
+{"x":false,"id":18408,"prompt":"A fun trick to play on your doctor"},
+{"x":false,"id":18414,"prompt":"A bad place for your rocket ship to crash would be The Planet of the <BLANK>"},
+{"x":false,"id":18415,"prompt":"A bad campaign slogan for a congressperson"},
+{"x":false,"id":18426,"prompt":"A unique way to escape from prison"},
+{"x":false,"id":18424,"prompt":"The next product for Matthew McConaughey to endorse"},
+{"x":false,"id":18428,"prompt":"The title of a new YouTube cat video that\u2019s sure to go viral"},
+{"x":false,"id":17942,"prompt":"Come up with the name of a country that doesn\u2019t exist"},
+{"x":false,"id":17943,"prompt":"The best way to keep warm on a cold winter night"},
+{"x":false,"id":17940,"prompt":"The real reason the dinosaurs died"},
+{"x":false,"id":17938,"prompt":"Something you should never put on an open wound"},
+{"x":false,"id":17939,"prompt":"Scientists say erosion, but we all know the Grand Canyon was actually made by <BLANK>"},
+{"x":false,"id":17937,"prompt":"The name of a font nobody would ever use"},
+{"x":false,"id":17950,"prompt":"The best thing about going to prison"},
+{"x":false,"id":17951,"prompt":"The best title for a new national anthem for the USA"},
+{"x":false,"id":17948,"prompt":"A college major you don\u2019t see at many universities"},
+{"x":false,"id":17949,"prompt":"What would make baseball more entertaining to watch?"},
+{"x":false,"id":17944,"prompt":"A little-known fact about Canada"},
+{"x":false,"id":17927,"prompt":"Name a TV drama that\u2019s about a vampire doctor"},
+{"x":false,"id":17926,"prompt":"A name for a brand of designer adult diapers"},
+{"x":false,"id":17925,"prompt":"What\u2019s actually causing global warming?"},
+{"x":false,"id":17923,"prompt":"The first thing you would do after winning the lottery"},
+{"x":false,"id":17922,"prompt":"A name for a really bad Broadway musical"},
+{"x":false,"id":17921,"prompt":"On your wedding night, it would be horrible to find out that the person you married is <BLANK>"},
+{"x":false,"id":17920,"prompt":"The Skittles flavor that just missed the cut"},
+{"x":false,"id":17935,"prompt":"What FDR meant to say was \u201cWe have nothing to fear, but <BLANK>\u201d"},
+{"x":false,"id":17934,"prompt":"A terrible name for a cruise ship"},
+{"x":false,"id":17932,"prompt":"What\u2019s the Mona Lisa smiling about?"},
+{"x":false,"id":17929,"prompt":"The crime you would commit if you could get away with it"},
+{"x":false,"id":17928,"prompt":"Something squirrels probably do when no one is looking"},
+{"x":false,"id":17973,"prompt":"Something you shouldn\u2019t get your significant other for Valentine\u2019s Day"},
+{"x":false,"id":17975,"prompt":"A dangerous thing to do while driving"},
+{"x":false,"id":17970,"prompt":"The best thing about living in an igloo"},
+{"x":false,"id":17980,"prompt":"Using only two words, a new state motto for Texas"},
+{"x":false,"id":17982,"prompt":"The hardest thing about being Batman"},
+{"x":false,"id":17977,"prompt":"Something you shouldn\u2019t wear to a job interview"},
+{"x":false,"id":17978,"prompt":"The #1 reason penguins can\u2019t fly"},
+{"x":false,"id":17956,"prompt":"The name of the reindeer Santa didn\u2019t pick to pull his sleigh"},
+{"x":false,"id":17959,"prompt":"What\u2019s the first thing you would do if you could time travel?"},
+{"x":false,"id":17953,"prompt":"What would you do if you were left alone in the White House for an hour?"},
+{"x":false,"id":17952,"prompt":"Come up with the name of book that would sell a million copies, immediately"},
+{"x":false,"id":17964,"prompt":"A not-very-scary name for a pirate"},
+{"x":false,"id":17961,"prompt":"The name of a pizza place you should never order from"},
+{"x":false,"id":18007,"prompt":"A Starbucks coffee that should never exist"},
+{"x":false,"id":18008,"prompt":"There\u2019s Gryffindor, Ravenclaw, Slytherin, and Hufflepuff, but what\u2019s the Hogwarts house few have ever heard of?"},
+{"x":false,"id":18014,"prompt":"Something you should never use as a scarf"},
+{"x":false,"id":18013,"prompt":"The worst words to say for the opening of a eulogy at a funeral"},
+{"x":false,"id":17986,"prompt":"Come up with a really bad TV show that starts with \u201cBaby\u201d"},
+{"x":false,"id":17984,"prompt":"A great way to kill time at work"},
+{"x":false,"id":17991,"prompt":"What\u2019s wrong with these kids today?"},
+{"x":false,"id":17988,"prompt":"Why does the Tower of Pisa lean?"},
+{"x":false,"id":17992,"prompt":"A great new invention that starts with \u201cAutomatic\u201d"},
+{"x":false,"id":17996,"prompt":"Come up with a really bad football penalty that begins with \u201cIntentional\u201d"},
+{"x":false,"id":18035,"prompt":"You know you\u2019re in for a bad taxi ride when <BLANK>"},
+{"x":false,"id":18040,"prompt":"The terrible fate of the snowman Olaf in a director\u2019s cut of <i>Frozen<\/i>"},
+{"x":false,"id":18041,"prompt":"Sometimes, after a long day, you just need to <BLANK>"},
+{"x":false,"id":18043,"prompt":"The worst way to spell Mississippi"},
+{"x":false,"id":18045,"prompt":"Give me one good reason why I shouldn\u2019t spank you right now"},
+{"x":false,"id":18047,"prompt":"The best pick-up line for an elderly singles mixer"},
+{"x":false,"id":18017,"prompt":"The best news you could get today"},
+{"x":false,"id":18016,"prompt":"Invent a holiday that you think everyone would enjoy"},
+{"x":false,"id":18019,"prompt":"Usually, it\u2019s bacon, lettuce and tomato, but come up with a BLT you wouldn\u2019t want to eat"},
+{"x":false,"id":18021,"prompt":"The worst thing you could stuff a bed mattress with"},
+{"x":false,"id":18023,"prompt":"A great opening line to start a conversation with a stranger at a party"},
+{"x":false,"id":18025,"prompt":"Something you would like to fill a swimming pool with"},
+{"x":false,"id":18029,"prompt":"Miley Cyrus\u2019 Wi-Fi password, possibly"},
+{"x":false,"id":18030,"prompt":"If you were allowed to name someone else\u2019s baby any weird thing you wanted, what would you name it?"},
+{"x":false,"id":18079,"prompt":"A terrible name for a clown"},
+{"x":false,"id":18077,"prompt":"Miller Lite beer would make a lot of money if they came up with a beer called Miller Lite _____"},
+{"x":false,"id":18072,"prompt":"Okay... fine! What do YOU want to talk about then?!!!"},
+{"x":false,"id":18071,"prompt":"The Katy Perry Super Bowl halftime show would have been better with <BLANK>"},
+{"x":false,"id":18069,"prompt":"Your personal catchphrase if you were on one of those <i>Real Housewives<\/i> shows"},
+{"x":false,"id":18064,"prompt":"A good fake name to use when checking into a hotel"},
+{"x":false,"id":18061,"prompt":"A vanity license plate a jerk in an expensive car would get"},
+{"x":false,"id":18056,"prompt":"The name of a canine comedy club with puppy stand-up comedians"},
+{"x":false,"id":18055,"prompt":"What\u2019s lurking under your bed when you sleep?"},
+{"x":false,"id":18052,"prompt":"Come up with a name for the most difficult yoga pose known to mankind"},
+{"x":false,"id":18050,"prompt":"One place a finger shouldn\u2019t go"},
+{"x":false,"id":18109,"prompt":"The worst job title that starts with \u201cAssistant\u201d"},
+{"x":false,"id":18111,"prompt":"The grossest thing you\u2019d put in your mouth for $18"},
+{"x":false,"id":18110,"prompt":"The last person you\u2019d consider inviting to your birthday party"},
+{"x":false,"id":18105,"prompt":"Where do you think the beef really is?"},
+{"x":false,"id":18104,"prompt":"A fun trick to play on the Pope"},
+{"x":false,"id":18107,"prompt":"Write a newspaper headline that will really catch people\u2019s attention"},
+{"x":false,"id":18106,"prompt":"Something it\u2019d be fun to throw off the Eiffel Tower"},
+{"x":false,"id":18101,"prompt":"Name the eighth dwarf, who got cut at the last minute"},
+{"x":false,"id":18103,"prompt":"Come up with the name for a new TV show with the word \u201cSpanky\u201d in it"},
+{"x":false,"id":18102,"prompt":"A good place to hide boogers"},
+{"x":false,"id":18097,"prompt":"Come up with a catchier, more marketable name for the Bible"},
+{"x":false,"id":18096,"prompt":"The best thing to use when you\u2019re out of toilet paper"},
+{"x":false,"id":18099,"prompt":"A good way to get fired"},
+{"x":false,"id":18098,"prompt":"The most presidential name you can think of (that isn\u2019t already the name of a president)"},
+{"x":false,"id":18092,"prompt":"Something you should never say to your mother"},
+{"x":false,"id":18094,"prompt":"Where\u2019s the best place to hide from the shadow monsters?"},
+{"x":false,"id":18095,"prompt":"The three ingredients in the worst smoothie ever"},
+{"x":false,"id":18088,"prompt":"Something that would make an awful hat"},
+{"x":false,"id":18089,"prompt":"How many monkeys is too many monkeys?"},
+{"x":false,"id":18090,"prompt":"Something you\u2019d be surprised to see a donkey do"},
+{"x":false,"id":18091,"prompt":"The title you\u2019d come up with if you were writing the Olympics theme song"},
+{"x":false,"id":18084,"prompt":"Name the sequel to <i>Titanic<\/i> if there were one. <i>Titanic 2: <BLANK><\/i>"},
+{"x":false,"id":18085,"prompt":"An alternate use for a banana"},
+{"x":false,"id":18086,"prompt":"What you\u2019d guess is an unadvertised ingredient in most hot dogs"},
+{"x":false,"id":18087,"prompt":"Name your new haircutting establishment"},
+{"x":false,"id":18080,"prompt":"An inappropriate thing to do at a cemetery"},
+{"x":false,"id":18081,"prompt":"Like chicken fingers or chicken poppers, a new appetizer name for your fun, theme restaurant: chicken _____"},
+{"x":false,"id":18082,"prompt":"Thing you\u2019d be most surprised to have a dentist find in your mouth"},
+{"x":false,"id":18083,"prompt":"Rename Winnie-the-Pooh to something more appropriate/descriptive"},
+{"x":false,"id":18140,"prompt":"The name of a clothing store for overweight leprechauns"},
+{"x":false,"id":18131,"prompt":"If God has a sense of humor, he welcomes people to heaven by saying, \u201c<BLANK>\u201d"},
+{"x":false,"id":18129,"prompt":"Something that would not work well as a dip for tortilla chips"},
+{"x":false,"id":18128,"prompt":"Name a new movie starring a talking goat who is president of the United States"},
+{"x":false,"id":18122,"prompt":"An item NOT found in Taylor Swift\u2019s purse"},
+{"x":false,"id":18123,"prompt":"Name a new reggae band made up entirely of chickens"},
+{"x":false,"id":18120,"prompt":"Who let the dogs out?"},
+{"x":false,"id":18121,"prompt":"What do vegans taste like?"},
+{"x":false,"id":18126,"prompt":"Make up a word that describes the sound of farting into a bowl of mac & cheese"},
+{"x":false,"id":18127,"prompt":"A new ice cream flavor that no one would ever order"},
+{"x":false,"id":18124,"prompt":"Name a children\u2019s book by someone who hates children"},
+{"x":false,"id":18125,"prompt":"The name of your new plumbing company"},
+{"x":false,"id":18114,"prompt":"The worst name for a robot"},
+{"x":false,"id":18115,"prompt":"The first names of each of your nipples"},
+{"x":false,"id":18112,"prompt":"What John Goodman\u2019s belches smell like"},
+{"x":false,"id":18113,"prompt":"The name of a new perfume by Betty White"},
+{"x":false,"id":18118,"prompt":"One thing never to do on a first date"},
+{"x":false,"id":18119,"prompt":"Ozzy Osbourne\u2019s Twitter password, probably"},
+{"x":false,"id":18116,"prompt":"The most embarrassing name for a dog"},
+{"x":false,"id":18117,"prompt":"The worst thing you could discover in your burrito"},
+{"x":false,"id":18172,"prompt":"Something you\u2019d probably find a lot of in God\u2019s refrigerator"},
+{"x":false,"id":18160,"prompt":"Brand name of a bottled water sold in the land of Oz"},
+{"x":false,"id":18163,"prompt":"The worst family secret that could come out over Thanksgiving dinner"},
+{"x":false,"id":18162,"prompt":"A fun thing to yell as a baby is being born"},
+{"x":false,"id":18167,"prompt":"The name of a toilet paper specifically designed for the Queen of England"},
+{"x":false,"id":18156,"prompt":"A terrible name for a 1930s gangster"},
+{"x":false,"id":18145,"prompt":"Something upsetting you could say to the cable guy as he installs your television service"},
+{"x":false,"id":18149,"prompt":"Come up with a name for a new beer marketed toward babies"},
+{"x":false,"id":18150,"prompt":"A terrible theme for a high school prom"},
+{"x":false,"id":17902,"prompt":"A more environment-friendly alternative to toilet paper"},
+{"x":false,"id":17903,"prompt":"What tattoo should Justin Bieber get next?"},
+{"x":false,"id":17900,"prompt":"What do kittens dream of?"},
+{"x":false,"id":17897,"prompt":"What makes hot dogs taste so good?"},
+{"x":false,"id":17892,"prompt":"A better name for France"},
+{"x":false,"id":17890,"prompt":"The worst thing to find stuck in your teeth"},
+{"x":false,"id":17888,"prompt":"The worst excuse for showing up late to work"},
+{"x":false,"id":17919,"prompt":"The worst thing for an evil witch to turn you into"},
+{"x":false,"id":17917,"prompt":"Jesus\u2019s REAL last words"},
+{"x":false,"id":17916,"prompt":"The biggest downside to living in Hell"},
+{"x":false,"id":17915,"prompt":"Everyone knows that monkeys hate <BLANK>"},
+{"x":false,"id":17913,"prompt":"Name a candle scent designed specifically for Kim Kardashian"},
+{"x":false,"id":17912,"prompt":"If a winning coach gets Gatorade dumped on his head, what should get dumped on the losing coach?"},
+{"x":false,"id":17909,"prompt":"The secret to a happy life"},
+{"x":false,"id":17908,"prompt":"You would never go on a roller coaster called <BLANK>"},
+{"x":false,"id":17906,"prompt":"What two words would passengers never want to hear a pilot say?"},
+{"x":false,"id":17905,"prompt":"The worst name for a race horse"},
+{"x":false,"id":17904,"prompt":"Come up with a three-word sequel to the book \u201cEat, Pray, Love\u201d"},
+{"x":false,"id":17885,"prompt":"You wouldn\u2019t want to share a prison cell with someone named <BLANK>"},
+{"x":false,"id":17887,"prompt":"Superman\u2019s special power that he never tells anyone about"},
+{"x":false,"id":17880,"prompt":"You shouldn\u2019t get a massage at a place called <BLANK>"},
+{"x":false,"id":17882,"prompt":"The least romantic place to propose marriage"},
+{"x":false,"id":21117,"prompt":"A rejected name for the Segway"},
+{"x":true,"id":22014,"prompt":"The most inappropriate song to hear at a kid\u2019s piano recital"},
+{"x":true,"id":21984,"prompt":"A unique way to amputate your toe"},
+{"x":true,"id":21981,"prompt":"One perk of marrying a serial killer"},
+{"x":true,"id":21965,"prompt":"What a unicorn\u2019s butt smells like"},
+{"x":true,"id":21944,"prompt":"A better name for a corset"},
+{"x":true,"id":21869,"prompt":"A sign that you\u2019re pregnant with an evil baby"},
+{"x":true,"id":21781,"prompt":"How Yogi Bear eventually meets his death"},
+{"x":true,"id":21760,"prompt":"Most people think Julius Caesar said \u201cEt tu, Brute?\u201d when he got stabbed, but what he really said was <BLANK>"},
+{"x":true,"id":21742,"prompt":"What really pisses off a ghost?"},
+{"x":true,"id":21759,"prompt":"Instead of \u201cHump Day,\u201d we should call Wednesday <BLANK>"},
+{"x":true,"id":21708,"prompt":"What Michaelangelo said as he chiseled <i>David<\/i>\u2019s penis"},
+{"x":true,"id":21717,"prompt":"The best cure for a hangover"},
+{"x":true,"id":21670,"prompt":"How do proctologists cheer themselves up?"},
+{"x":true,"id":21665,"prompt":"A disturbing thing to hear your significant other say while sleep-talking"},
+{"x":true,"id":21638,"prompt":"The weirdest place to see an image of the The Virgin Mary"},
+{"x":true,"id":21640,"prompt":"The worst thing that happened on Noah\u2019s Ark"},
+{"x":true,"id":21649,"prompt":"Bad: You\u2019re lost in the woods. Worse: You\u2019re also completely naked. Worst: And you\u2019re also <BLANK>"},
+{"x":true,"id":21661,"prompt":"How you can tell you\u2019re drinking really cheap wine"},
+{"x":true,"id":21663,"prompt":"An obscure Surgeon General warning that most people don\u2019t know about: \u201cSmoking may cause <BLANK>\u201d"},
+{"x":true,"id":22042,"prompt":"A lesser-known Medieval torture device: The <BLANK>"},
+{"x":true,"id":22034,"prompt":"How you can tell it\u2019s time to throw out a pair of underwear"},
+{"x":true,"id":21271,"prompt":"What Wild Bill Hickok named his penis, probably"},
+{"x":true,"id":21275,"prompt":"The crappiest western was <i>Gunfight at the <BLANK> Corral<\/i>"},
+{"x":true,"id":21255,"prompt":"Something you should never stuff a bra with"},
+{"x":true,"id":21263,"prompt":"The strangest new military weapon: <BLANK>-seeking missiles"},
+{"x":true,"id":21286,"prompt":"The polite thing to bring to an orgy in the suburbs"},
+{"x":true,"id":21290,"prompt":"A popular TV show title with the word \u201cpoop\u201d inserted"},
+{"x":true,"id":21337,"prompt":"Yet another practical use for placenta"},
+{"x":true,"id":21327,"prompt":"A surprising new part of the field sobriety test requires you to <BLANK> to prove you\u2019re not drunk"},
+{"x":true,"id":21320,"prompt":"A name for a sexy turtle"},
+{"x":true,"id":21346,"prompt":"What Little Bo Peep would confess if she got really drunk"},
+{"x":true,"id":21353,"prompt":"The first thought that runs through your head when a lobster clamps onto your genitals"},
+{"x":true,"id":21352,"prompt":"An inappropriate ice sculpture for a wedding reception"},
+{"x":true,"id":21203,"prompt":"The punchline to an off-color <i>Star Wars<\/i> joke"},
+{"x":true,"id":21245,"prompt":"A shocking find in Clifford the Big Red Dog\u2019s poop"},
+{"x":true,"id":21240,"prompt":"What happens when you finally make eye contact with the crazy person on the subway"},
+{"x":true,"id":21089,"prompt":"An inappropriate thing for a detective to say at a crime scene"},
+{"x":true,"id":20727,"prompt":"The one phrase the NSA is tired of watching us type into Google"},
+{"x":true,"id":20735,"prompt":"Aw screw it... just type in something dirty"},
+{"x":true,"id":20705,"prompt":"Rename any famous work of literature so that it is ruined by the word \u201cbutt\u201d"},
+{"x":true,"id":20637,"prompt":"The secret to being a great kisser"},
+{"x":true,"id":20608,"prompt":"A funny thing to write down on a form when it asks for your sex"},
+{"x":true,"id":20622,"prompt":"A poor substitute for underwear"},
+{"x":true,"id":20666,"prompt":"The worst children\u2019s board game would be \u201c<BLANK>, <BLANK> Hippos\u201d"},
+{"x":true,"id":20641,"prompt":"The worst thing to whisper during pillow talk"},
+{"x":true,"id":20643,"prompt":"Something that absolutely doesn\u2019t make you think of a penis on some level"},
+{"x":true,"id":20819,"prompt":"A good sign that your dog is really an a-hole"},
+{"x":true,"id":20850,"prompt":"The strangest reason to get a divorce"},
+{"x":true,"id":20744,"prompt":"Something inappropriate to do at the gym"},
+{"x":true,"id":20762,"prompt":"A secret ability of boobs"},
+{"x":true,"id":20797,"prompt":"The most G-rated term for an erection"},
+{"x":true,"id":20923,"prompt":"The name of a sexy new dance move"},
+{"x":true,"id":19355,"prompt":"What sperm yell as they swim"},
+{"x":true,"id":19328,"prompt":"The Old English term for \u201cvagina\u201d"},
+{"x":true,"id":19283,"prompt":"A strange side effect to hear during a drug commercial"},
+{"x":true,"id":19264,"prompt":"Another use for tampons"},
+{"x":true,"id":19327,"prompt":"The dumbest method of birth control"},
+{"x":true,"id":19315,"prompt":"The name of the website that probably gave your computer a virus"},
+{"x":true,"id":19296,"prompt":"How Garfield the cartoon cat will eventually die"},
+{"x":true,"id":19256,"prompt":"The worst slogan for an erectile dysfunction pill"},
+{"x":true,"id":19138,"prompt":"A crazy thing to find during a colonoscopy"},
+{"x":true,"id":19139,"prompt":"The worst thing you can tell the kids about the death of the family dog"},
+{"x":true,"id":19191,"prompt":"Advice: Never stick your tongue into <BLANK>"},
+{"x":true,"id":19196,"prompt":"Something a talking doll probably should NOT say when you pull the string"},
+{"x":true,"id":19084,"prompt":"A kinky weird thing that does NOT happen in 50 Shades of Grey (as far as you know)"},
+{"x":true,"id":19091,"prompt":"The biggest complaint of people in Hell"},
+{"x":true,"id":19111,"prompt":"A weirdly enticing subject line for an email in your SPAM folder"},
+{"x":true,"id":19132,"prompt":"A new, completely BS holiday that greeting card companies would make up to sell more cards"},
+{"x":true,"id":19008,"prompt":"Name the next big sexually transmitted disease"},
+{"x":true,"id":19027,"prompt":"What happens to circumcision skin"},
+{"x":true,"id":19024,"prompt":"What dogs think when they see people naked"},
+{"x":true,"id":19056,"prompt":"The title of the most boring porno ever"},
+{"x":true,"id":19061,"prompt":"Something Godzilla does when he\u2019s drunk"},
+{"x":true,"id":18955,"prompt":"A good name for an elderly nudist colony"},
+{"x":true,"id":19000,"prompt":"An inappropriate thing to say via skywriting"},
+{"x":true,"id":18997,"prompt":"A good name for a sex robot"},
+{"x":true,"id":18928,"prompt":"A cute name for hemorrhoids"},
+{"x":true,"id":18864,"prompt":"Something in a weirdo\u2019s bedroom"},
+{"x":true,"id":18876,"prompt":"The worst song to play when stripping for your lover"},
+{"x":true,"id":18830,"prompt":"A movie that could use some nudity"},
+{"x":true,"id":18791,"prompt":"Pick any city name and make it sound dirty"},
+{"x":true,"id":18778,"prompt":"An item on every pervert\u2019s grocery list"},
+{"x":true,"id":18713,"prompt":"The password to the secret, high-society sex club down the street"},
+{"x":true,"id":18692,"prompt":"You know you\u2019re really drunk when..."},
+{"x":true,"id":18668,"prompt":"What they call pooping in the Land of Oz"},
+{"x":true,"id":18667,"prompt":"What Santa does with a dead elf"},
+{"x":true,"id":18673,"prompt":"The least popular item in the Victoria\u2019s Secret catalog"},
+{"x":true,"id":18685,"prompt":"The worst way to remove pubic hair"},
+{"x":true,"id":18687,"prompt":"A Facebook status you don\u2019t want your grandparents to see"},
+{"x":true,"id":18641,"prompt":"A tourist attraction in Hell"},
+{"x":true,"id":18653,"prompt":"A new slang term for impotence"},
+{"x":true,"id":18578,"prompt":"A weird thing to find in your grandparents\u2019 bedside table"},
+{"x":true,"id":18533,"prompt":"The name of a cocktail for hillbillies"},
+{"x":true,"id":18479,"prompt":"What a dog sext message might say"},
+{"x":true,"id":20344,"prompt":"The 6,077th layer of Hell is reserved for <BLANK>"},
+{"x":true,"id":20109,"prompt":"An image that would make the Sistine Chapel's ceiling look more badass"},
+{"x":true,"id":20099,"prompt":"What deer would use for bait if they hunted hunters"},
+{"x":true,"id":20118,"prompt":"A punch line for a joke that would make children cry"},
+{"x":true,"id":20132,"prompt":"A brand name for a medication that intentionally CAUSES male impotence"},
+{"x":true,"id":20148,"prompt":"Make up a schoolyard game that children should never play at recess"},
+{"x":true,"id":20175,"prompt":"A magazine that should never have a nude centerfold"},
+{"x":true,"id":20221,"prompt":"An inappropriate theme for a set of kids\u2019 pajamas"},
+{"x":true,"id":19997,"prompt":"Another name for a rectal thermometer"},
+{"x":true,"id":20032,"prompt":"The most bitching thing you can airbrush on your van"},
+{"x":true,"id":20070,"prompt":"The Seven Deadly Sins are lust, gluttony, greed, envy, pride, wrath, and sloth. The Eighth Deadly Sin is..."},
+{"x":true,"id":19845,"prompt":"Come up with a name for a fast food chain that only serves rabbit meat"},
+{"x":true,"id":19966,"prompt":"Something fun to do with your kidney stones after you pass them"},
+{"x":true,"id":19761,"prompt":"An unusual object to bludgeon someone to death with"},
+{"x":true,"id":19765,"prompt":"The least-threatening name for a serial killer: The Boston <BLANK>"},
+{"x":true,"id":19754,"prompt":"The first inductee of the A-hole Hall of Fame "},
+{"x":true,"id":19824,"prompt":"A name for a new cereal that\u2019s for adults only"},
+{"x":true,"id":19812,"prompt":"Make up a curse word"},
+{"x":true,"id":19792,"prompt":"The celebrity you\u2019d eat first if you were a cannibal, and the side dish you\u2019d eat them with"},
+{"x":true,"id":19689,"prompt":"Santa Claus would be a bigger badass if his sleigh were driven by eight tiny\u2026"},
+{"x":true,"id":19705,"prompt":"A good name for a restaurant that serves animals with the faces still on them "},
+{"x":true,"id":19676,"prompt":"A name for a board game designed to give children nightmares "},
+{"x":true,"id":18176,"prompt":"The worst person to narrate the audiobook of <i>Fifty Shades of Grey<\/i>"},
+{"x":true,"id":18198,"prompt":"A good name for an erotic bakery"},
+{"x":true,"id":18241,"prompt":"What the Statue of Liberty is hiding beneath that robe"},
+{"x":true,"id":18243,"prompt":"There\u2019s only one time that murder is acceptable and that is when <BLANK>"},
+{"x":true,"id":18245,"prompt":"Take any well-known restaurant and slightly change its name to something inappropriate"},
+{"x":true,"id":18255,"prompt":"A catchy name for a sperm bank"},
+{"x":true,"id":18273,"prompt":"A bad place to skinny-dip"},
+{"x":true,"id":18282,"prompt":"A bad thing to yell during church"},
+{"x":true,"id":18286,"prompt":"The unsexiest thought you can have"},
+{"x":true,"id":18360,"prompt":"Take any U.S. president\u2019s name and turn it into something inappropriate"},
+{"x":true,"id":18370,"prompt":"A great name to have on a fake I.D."},
+{"x":true,"id":18418,"prompt":"The name of an all-male version of Hooters"},
+{"x":true,"id":18417,"prompt":"Two people from history that should definitely have sex"},
+{"x":true,"id":18416,"prompt":"The coolest way to die"},
+{"x":true,"id":18422,"prompt":"A little-known nickname for New Orleans"},
+{"x":true,"id":17936,"prompt":"Come up with a title for an adult version of any classic video game"},
+{"x":true,"id":17930,"prompt":"Come up with a great title for the next awkward teen sex movie"},
+{"x":true,"id":17969,"prompt":"Come up with a name for a beer made especially for monkeys"},
+{"x":true,"id":17971,"prompt":"The worst way to be murdered"},
+{"x":true,"id":17955,"prompt":"A better name for testicles"},
+{"x":true,"id":17954,"prompt":"Invent a family-friendly replacement word that you could say instead of an actual curse word"},
+{"x":true,"id":18037,"prompt":"Where do babies come from?"},
+{"x":true,"id":18031,"prompt":"A fun thing to think about during mediocre sex"},
+{"x":true,"id":18078,"prompt":"Something you should never stick up your butt"},
+{"x":true,"id":18065,"prompt":"A good catchphrase to yell every time you finish pooping"},
+{"x":true,"id":18060,"prompt":"Make up the title of a movie that is based on the first time you had sex"},
+{"x":true,"id":18057,"prompt":"A great name for a nude beach in Alaska"},
+{"x":true,"id":18048,"prompt":"A good stage name for a chimpanzee stripper"},
+{"x":true,"id":18049,"prompt":"The best place to bury all those bodies"},
+{"x":true,"id":18100,"prompt":"If we can\u2019t afford to bury or cremate you, what should we do with your body?"},
+{"x":true,"id":18093,"prompt":"Come up with a name for a new, very manly cocktail"},
+{"x":true,"id":18152,"prompt":"Make up a name for a silent-film porno from the 1920s"},
+{"x":true,"id":18153,"prompt":"Something you should not whisper to your grandmother"},
+{"x":true,"id":18147,"prompt":"The worst thing that could jump out of a bachelor party cake"},
+{"x":true,"id":17895,"prompt":"What aliens do with you after the anal probe"},
+{"x":true,"id":17914,"prompt":"You should never give alcohol to <BLANK>"},
+{"x":true,"id":17877,"prompt":"A great brand name for extra-extra-large condoms"},
+{"x":true,"id":17878,"prompt":"What the genitalia on a Tofurky is called"}
+]

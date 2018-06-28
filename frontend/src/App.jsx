@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import logo from './logo.svg';
 import Welcome from './components/welcome';
-
-import { Route, Switch} from 'react-router-dom';
+import Lobby from './components/lobby';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         </header>
 
         <Switch>
+          <Route path="/room/:code" component={Lobby} />
           <Route path="/" component={Welcome} />
         </Switch>
 

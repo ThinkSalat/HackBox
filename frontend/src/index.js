@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
+
 import './css/Master.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -13,8 +15,6 @@ import { HttpLink } from 'apollo-link-http';
 import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
-
-import { HashRouter } from 'react-router-dom';
 
 
 //send graphQL requests to this location

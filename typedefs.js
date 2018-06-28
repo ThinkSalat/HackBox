@@ -8,6 +8,7 @@ const typeDefs = `
     id: ID!
     code: String!
     numRounds: Int!
+    gameType: String!
     deck: [Card]
     players: [Player]
   }
@@ -30,7 +31,7 @@ const typeDefs = `
     updateRoom(id: ID!, code: String!): Boolean
     buildDeck(code: String!, cardType: String!, numCards: Int!): Room
     addPlayer(code: String!, username: String!): Room
-    addPlayerHand(code: String!, username: String!, numCards: Int!): Player
+    addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
   }
   type Subscription {
     joinedRoom(code: String!): Room

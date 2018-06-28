@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 //need to bind with component
 import {graphql, compose} from 'react-apollo';
 
@@ -91,7 +93,9 @@ class Welcome extends Component {
         username
       }
     })
-    // this.props.location.history.push(`/rooms/${code}`)
+
+    this.setState({code: '', username: ''});
+    this.props.history.push(`/room/${code}`)
   }
 
   removeRoom = async (room) => {
@@ -215,4 +219,4 @@ export default compose (
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),
-)(Welcome);
+)(withRouter(Welcome));
