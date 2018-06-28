@@ -60,3 +60,17 @@ export const NewPlayerSubscription = gql`
     }
   }
 `;
+
+export const NewRoomSubscription = gql`
+  subscription onCreatedRoom {
+    createdRoom {
+      id
+      code
+      players {
+        id
+        username
+        score
+      }
+    }
+  }
+`;
