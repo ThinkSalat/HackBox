@@ -20,7 +20,7 @@ const RoomSchema = new Schema({
   deck: [CardSchema],
   playerDeck: [CardSchema],
   numRounds: {type: Number, default: 3},
-  gameType: {type: String, default: "CAH"}
+  gameType: {type: String, default: "Quiplash"}
 });
 
 export const Card = mongoose.model("Card", CardSchema)
