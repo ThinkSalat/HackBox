@@ -76,6 +76,7 @@ class Welcome extends Component {
     if (!code) {
       return null;
     }
+
     
     await this.props.createRoom({
       variables: {
@@ -127,6 +128,7 @@ class Welcome extends Component {
         if (!subscriptionData.data) {
           return previous;
         }
+        // debugger;
         let newRooms = [ subscriptionData.data.createdRoom, ...previous.rooms];
 
         let result = {
