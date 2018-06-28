@@ -51,16 +51,9 @@ const resolvers = {
     },
     addPlayerHand: async (_, {code, username, numCards, cardType}) => {
       const cards = await Card.aggregate().match({ cardType }).sample(numCards).exec()
-<<<<<<< HEAD
-
-      const player = room.players.filter(player => player.username === username);
-      // const cards = Card.aggregate().match({ cardType }).sample(numCards);
-      await player.hand.concat(cards)
-=======
       return await Room.findOneAndUpdate(
         {code, "players.username": username},
         {$push: {"players.$.hand": cards}})
->>>>>>> c4850bb9c70fb1652e4398f5459455c5a03f1798
     }
   },
   Subscription: {
