@@ -5,11 +5,12 @@ const CardSchema = new Schema({
   prompt: String,
   cardType: String,
   numPrompts: Number
-})
+});
 
 const PlayerSchema = new Schema({
   username: String,
-  score: {type: Number, default: 0}
+  score: {type: Number, default: 0},
+  hand: [CardSchema]
 });
 
 const RoomSchema = new Schema({
