@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+
 import logo from './logo.svg';
 import Welcome from './components/welcome';
+import Lobby from './components/lobby';
 
 class App extends Component {
   render() {
@@ -12,7 +15,8 @@ class App extends Component {
         </header>
         <br/>
         <div>
-          <Welcome/>
+          <Route exact path='/' component={Welcome} />
+          <Route path='/room/:code' component={Lobby} />
         </div>
       </div>
     );
