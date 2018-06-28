@@ -10,7 +10,7 @@ const options = {
   endpoint: '/graphql',
   subscriptions: '/subscriptions',
   playground: '/playground',
-}
+};
 
 const server = new GraphQLServer({ typeDefs, resolvers });
 mongoose.connection.once('open', function() {

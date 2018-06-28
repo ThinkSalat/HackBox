@@ -42,6 +42,8 @@ class Welcome extends Component {
     numRounds: defaultRounds
   }
 
+  // React Class Component functions
+
   componentDidMount() {
     this.subscribeToNewRooms();
     this.subscribeToRemoveRooms();
@@ -90,15 +92,14 @@ class Welcome extends Component {
     for (let i = 0; i < 4; i++) {
       code += alpha[Math.floor(Math.random() * alpha.length)];
     }
+    // if (this.props.FindRoomQuery) return this.getRandomCode();
     return code;
   }
 
   createRoom = () => {
     let code = this.getRandomCode();
 
-    if (!code) {
-      return null;
-    }
+    if (!code) return null;
     
     this.props.createRoom({
       variables: {
