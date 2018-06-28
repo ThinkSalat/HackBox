@@ -43,6 +43,12 @@ const resolvers = {
       );
       pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
       return room;
+    },
+    addPlayerHand: async (_, {code, username, numCards}) => {
+      const room = Room.findOne({code});
+      const player = room.players.filter(player => player.username === username);
+      const cards = Card.aggregate().match({ cardType }).sample(numCards);
+      await player.hand.concat(cards)
     }
   },
   Subscription: {
