@@ -128,7 +128,6 @@ class Welcome extends Component {
         this.subscribeToNewPlayers(subscriptionData.data.createdRoom.code)
 
         return result;
-
       }
     })
   }
