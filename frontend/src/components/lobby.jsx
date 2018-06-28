@@ -7,23 +7,23 @@ import {
   RoomsQuery
 } from '../gql/gql_query';
 
+import HostScreen from './host_screen';
+import PlayerScreen from './player_screen';
+
 class Lobby extends React.Component {
 
-  leaveRoom = () => {
-    this.props.history.push('/');
+  state = {
+    stage: 'waiting'
   }
 
-  render() {
-    const {data: {loading, rooms}} = this.props;
-    
-    if (loading) {
-      return null;
-    }
+  currentRoom = () => {
+    const { rooms } = this.props.data;
+    const { code } = this.props.match.params;
+    return rooms.find(room => room.code === code);
+  }
 
-    const currentRoom = rooms.find(room => room.code === this.props.match.params.code);
-    // console.log(currentRoom);
-
-    let roomPlayers = currentRoom.players.map(player => {
+  roomPlayers = () => {
+    let players = this.currentRoom().players.map(player => {
       return (
         <li key={player.id}>
           <span role='img' aria-label='smiley'>😀</span>
@@ -32,6 +32,53 @@ class Lobby extends React.Component {
         </li>
       );
     });
+    return players;
+  }
+
+  waitingStage = () => {
+    return (
+      <div>
+        <ul className='player-list'>{this.roomPlayers()}</ul>
+        <button onClick={this.startGame}>
+          Start Game
+        </button>
+      </div>
+    );
+  }
+
+  gameStage = () => {
+    return (
+      <div>
+        <br/>
+        <HostScreen />
+        <br/>
+        <PlayerScreen />
+      </div>
+    );
+  }
+
+  leaveRoom = () => {
+    this.props.history.push('/');
+  }
+
+  startGame = () => {
+    this.setState({
+      stage: 'game'
+    })
+  }
+
+  render() {
+    const {data: {loading}} = this.props;
+    
+    if (loading) {
+      return null;
+    }
+
+    let currentRoom = this.currentRoom();
+    // console.log(currentRoom);
+    console.log(this.state);
+
+    this.roomPlayers();
 
     return (
       <div className='single-room'>
@@ -39,7 +86,9 @@ class Lobby extends React.Component {
         <button onClick={this.leaveRoom}>
           Leave Room
         </button>
-        <ul className='player-list'>{roomPlayers}</ul>
+        {
+          this.state.stage === 'waiting' ? this.waitingStage() : this.gameStage()
+        }
       </div>
     );
   }
