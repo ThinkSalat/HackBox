@@ -18,6 +18,7 @@ const typeDefs = `
     prompt: String
     cardType: String
     numPrompts: Int
+    flavorText: String
   }
   type Player {
     id: ID!

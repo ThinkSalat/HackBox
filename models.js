@@ -4,7 +4,8 @@ const CardSchema = new Schema({
   text: String,
   prompt: String,
   cardType: String,
-  numPrompts: Number
+  numPrompts: Number,
+  flavorText: String
 });
 
 const PlayerSchema = new Schema({

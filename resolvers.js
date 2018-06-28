@@ -30,7 +30,7 @@ const resolvers = {
       await Room.findByIdAndUpdate(id, { code })
       return true;
     },
-    buildDeck: async (_, {code, cardType,numCards}) => {
+    buildDeck: async (_, {code, cardType, numCards}) => {
       const deck = await Card.aggregate().match({ cardType }).sample(numCards).exec()
       return await Room.findOneAndUpdate({ code }, { $set: { deck }})
     },
