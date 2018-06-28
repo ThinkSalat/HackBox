@@ -5,7 +5,7 @@ import {ROOM} from './gql_types';
 
 export const FindRoomQuery = gql`{
   findRoom(code: $code) {
-    code
+    ${ROOM}
   }
 }
 `;

@@ -5,6 +5,7 @@ const CARD = `
   prompt
   cardType
   numPrompts
+  flavorText
 `
 
 const PLAYER = `
@@ -26,5 +27,8 @@ export const ROOM = `
   }
   players {
     ${PLAYER}
+  }
+  playerDeck {
+    ${CARD}
   }
 `
