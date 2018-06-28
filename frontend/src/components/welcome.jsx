@@ -29,7 +29,7 @@ import {
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
 
-const defaultGame = "CAH";
+const defaultGame = "Quiplash";
 const defaultRounds = 3;
 
 class Welcome extends Component {
@@ -198,8 +198,6 @@ class Welcome extends Component {
     const {data: {loading, rooms}} = this.props;
     const {username, code, gameType, numRounds} = this.state;
 
-    console.log(numRounds,gameType);
-    
     
     if (loading) {
       return null;
@@ -207,7 +205,7 @@ class Welcome extends Component {
 
     return(
 
-      <div style={{margin: '0 300px'}}>
+      <div style={{margin: '0 100px'}}>
 
         <Select
           className="select-game"
@@ -215,7 +213,7 @@ class Welcome extends Component {
           clearable={false}
           onChange={this.handleGameSelect}
           options={[
-            { value: 'QL', label: 'Quiplash' },
+            { value: 'Quiplash', label: 'Quiplash' },
             { value: 'A2A', label: 'Apples to Apples' },
             { value: 'CAH', label: 'Cards Against Humanity' },
           ]}
@@ -262,7 +260,7 @@ class Welcome extends Component {
             dense
             button
             >
-              <ListItemText primary={`${room.code}: ${room.players.length} players`} />
+              <ListItemText primary={`${room.code}: ${room.players.length} players, ${room.gameType}, ${room.numRounds}r`} />
               <button onClick={() => this.removeRoom(room)}>
                 remove
               </button>
