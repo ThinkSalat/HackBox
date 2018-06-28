@@ -83,12 +83,6 @@ class Welcome extends Component {
     this.setState({ numRounds: val });
   }
 
-  // handleNumRounds() {
-  //   return (e) => this.setState({
-  //     numRounds: e.currentTarget.value
-  //   });
-  // };
-
   getRandomCode() {
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
