@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+
 import { 
   RoomsQuery
 } from '../gql/gql_query';
@@ -37,9 +38,13 @@ class Welcome extends Component {
     this.subscribeToRemoveRooms();
   }
 
-  componentWillReceiveProps({data: {rooms}}) {
-    if (rooms && !this.state.subbed) {
-      rooms.forEach((rm) => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== '/') {
+      this.props.history.push('/');
+    }
+
+    if (nextProps.data.rooms && !this.state.subbed) {
+      nextProps.data.rooms.forEach((rm) => {
         this.subscribeToNewPlayers(rm.code)
       })
 

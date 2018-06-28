@@ -14,6 +14,8 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
+import { HashRouter } from 'react-router-dom';
+
 
 //send graphQL requests to this location
 const httpLink = new HttpLink({ 
@@ -48,7 +50,9 @@ const client = new ApolloClient({
 //make requests throughout our app through ApolloProvider
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </ApolloProvider>,
   document.getElementById('root')
 );

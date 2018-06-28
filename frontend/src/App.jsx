@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Welcome from './components/welcome';
 
+import { Route, Switch} from 'react-router-dom';
+
 class App extends Component {
   render() {
     return (
@@ -11,9 +13,11 @@ class App extends Component {
           <h1 className="App-title">Welcome to HackBox</h1>
         </header>
         <br/>
-        <div>
-          <Welcome/>
-        </div>
+
+        <Switch>
+          <Route path="/" component={Welcome} />
+        </Switch>
+
       </div>
     );
   }
