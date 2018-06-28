@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
+
 import './css/Master.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -48,7 +50,9 @@ const client = new ApolloClient({
 //make requests throughout our app through ApolloProvider
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </ApolloProvider>,
   document.getElementById('root')
 );
