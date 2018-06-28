@@ -9,6 +9,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
 
 import { 
   RoomsQuery
@@ -26,6 +29,8 @@ import {
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
 
+const defaultGame = "CAH";
+const defaultRounds = 3;
 
 class Welcome extends Component {
 
@@ -33,8 +38,8 @@ class Welcome extends Component {
     username: "",
     code: "",
     subbed: false,
-    gameType: "A2A",
-    numRounds: 5
+    gameType: defaultGame,
+    numRounds: defaultRounds
   }
 
   componentDidMount() {
@@ -61,6 +66,28 @@ class Welcome extends Component {
       [field]: e.currentTarget.value.toUpperCase()
     });
   };
+
+  handleGameSelect = (gameType) => {
+    let val = defaultGame;
+    if (gameType !== null) {
+      val = gameType.value;
+    }
+    this.setState({ gameType: val });
+  }
+
+  handleRoundsSelect = (numRounds) => {
+    let val = defaultRounds;
+    if (numRounds !== null) {
+      val = numRounds.value;
+    }
+    this.setState({ numRounds: val });
+  }
+
+  // handleNumRounds() {
+  //   return (e) => this.setState({
+  //     numRounds: e.currentTarget.value
+  //   });
+  // };
 
   getRandomCode() {
     const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -131,7 +158,6 @@ class Welcome extends Component {
         if (!subscriptionData.data) {
           return previous;
         }
-
         let newRooms = [ subscriptionData.data.createdRoom, ...previous.rooms];
 
         let result = {
@@ -170,7 +196,10 @@ class Welcome extends Component {
 
   render() {
     const {data: {loading, rooms}} = this.props;
-    const {username, code} = this.state;
+    const {username, code, gameType, numRounds} = this.state;
+
+    console.log(numRounds,gameType);
+    
     
     if (loading) {
       return null;
@@ -180,8 +209,36 @@ class Welcome extends Component {
 
       <div style={{margin: '0 300px'}}>
 
+        <Select
+          className="select-game"
+          value={gameType}
+          clearable={false}
+          onChange={this.handleGameSelect}
+          options={[
+            { value: 'QL', label: 'Quiplash' },
+            { value: 'A2A', label: 'Apples to Apples' },
+            { value: 'CAH', label: 'Cards Against Humanity' },
+          ]}
+        />
+
+        <Select
+          className="select-rounds"
+          value={numRounds}
+          clearable={false}
+          onChange={this.handleRoundsSelect}
+          options={[
+            { value: 1, label: '1' },
+            { value: 2, label: '2' },
+            { value: 3, label: '3' },
+            { value: 4, label: '4' },
+            { value: 5, label: '5' },
+          ]}
+        />
+
         <button onClick={this.createRoom}>Create Room</button>
+
         <br/>
+
         <TextField
           onChange={this.handleChange("code")}
           value={code}
