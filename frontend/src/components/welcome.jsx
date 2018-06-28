@@ -137,7 +137,6 @@ class Welcome extends Component {
     this.props.roomsQuery.subscribeToMore({
       document: RemoveRoomSubscription,
       updateQuery: (previous, { subscriptionData }) => {
-
         if (!subscriptionData.data) {
           return previous;
         }
@@ -152,7 +151,6 @@ class Welcome extends Component {
         }
 
         return result;
-
       }
     })
   }
