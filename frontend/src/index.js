@@ -16,15 +16,11 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
-let production = true;
 
-let httpUri = "http://localhost:4000/graphql";
-let wsUri = "ws://localhost:4000/subscriptions";
-
-if (production) {
-  httpUri = "https://hack-box.herokuapp/graphql";
-  wsUri = "ws://hack-box.herokuapp/subscriptions";
-}
+// let httpUri = "http://localhost:4000/graphql";
+// let wsUri = "ws://localhost:4000/subscriptions";
+let httpUri = "https://hack-box.herokuapp/graphql";
+let wsUri = "ws://hack-box.herokuapp/subscriptions";
 
 
 //send graphQL requests to this location
