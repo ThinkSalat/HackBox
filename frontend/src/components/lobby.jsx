@@ -7,52 +7,58 @@ import {
   RoomsQuery
 } from '../gql/gql_query';
 
-import HostScreen from './host_screen';
-import PlayerScreen from './player_screen';
+import Game from './game';
 
 class Lobby extends React.Component {
 
   state = {
-    stage: 'waiting'
+    gameStarted: false
   }
 
-  currentRoom = () => {
+  getCurrentRoom = () => {
     const { rooms } = this.props.data;
-    const { code } = this.props.match.params;
-    return rooms.find(room => room.code === code);
+    let room = rooms.find(room => room.code === this.props.match.params.code);
+    return room;
   }
 
-  roomPlayers = () => {
-    let players = this.currentRoom().players.map(player => {
+  showPlayers = room => {
+    if (!room) {
+      return null;
+    }
+    
+    let players = room.players.map(player => {
       return (
         <li key={player.id}>
           <span role='img' aria-label='smiley'>😀</span>
-          <h3>{player.username}</h3>
-          <p>Score: {player.score}</p>
+          <span>{player.username} </span>
+          <p>{player.score} pts</p>
         </li>
       );
     });
-    return players;
+    
+    return (
+      <ul className='player-list'>{players}</ul>
+    );
   }
 
-  waitingStage = () => {
+  waitingStage = room => {
     return (
       <div>
-        <ul className='player-list'>{this.roomPlayers()}</ul>
-        <button onClick={this.startGame}>
-          Start Game
-        </button>
+        {this.showPlayers(room)}
+        {this.toggleStartButton(room)}
       </div>
     );
   }
 
-  gameStage = () => {
+  gameStage = room => {
+    let options = {
+      ...room,
+      showPlayers: this.showPlayers(room)
+    };
+
     return (
       <div>
-        <br/>
-        <HostScreen />
-        <br/>
-        <PlayerScreen />
+        <Game options={options}/>
       </div>
     );
   }
@@ -62,33 +68,35 @@ class Lobby extends React.Component {
   }
 
   startGame = () => {
-    this.setState({
-      stage: 'game'
-    })
+    this.setState({ gameStarted: true })
+  }
+
+  toggleStartButton = room => {
+    if (room.players.length > 1) {
+      return (
+        <button onClick={this.startGame}>Start Game</button>
+      )
+    }
+  }
+
+  updateStage = room => {
+    return this.state.gameStarted ? this.gameStage(room) : this.waitingStage(room)
   }
 
   render() {
-    const {data: {loading}} = this.props;
-    
+    const { loading } = this.props.data;
     if (loading) {
       return null;
     }
 
-    let currentRoom = this.currentRoom();
-    // console.log(currentRoom);
-    console.log(this.state);
-
-    this.roomPlayers();
+    let room = this.getCurrentRoom();
+    this.showPlayers();
 
     return (
       <div className='single-room'>
-        <h2>{currentRoom.gameType}</h2>
-        <button onClick={this.leaveRoom}>
-          Leave Room
-        </button>
-        {
-          this.state.stage === 'waiting' ? this.waitingStage() : this.gameStage()
-        }
+        <h2>{room.gameType}</h2>
+        <button onClick={this.leaveRoom}>Leave Room</button>
+        {this.updateStage(room)}
       </div>
     );
   }
