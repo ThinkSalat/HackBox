@@ -43,8 +43,6 @@ class Welcome extends Component {
     numRounds: defaultRounds
   }
 
-  // React Class Component functions
-
   componentDidMount() {
     this.subscribeToNewRooms();
     this.subscribeToRemoveRooms();
