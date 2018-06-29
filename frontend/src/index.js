@@ -30,12 +30,12 @@ const httpLink = new HttpLink({
 })
 
 //subscriptions get sent through websocket connection (ws)
-const wsLink = new WebSocketLink({
-  uri: httpUri,
-  options: {
-    reconnect: true
-  }
-})
+// const wsLink = new WebSocketLink({
+//   uri: wsUri,
+//   options: {
+//     reconnect: true
+//   }
+// })
 
 //split the link depending on the type of operation
 const link = split(
@@ -43,7 +43,7 @@ const link = split(
     const { kind, operation } = getMainDefinition(query)
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
-  wsLink,
+  httpUri,
   httpLink,
 )
 
