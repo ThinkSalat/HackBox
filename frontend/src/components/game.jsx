@@ -14,6 +14,7 @@ export default class Game extends React.Component {
         <HostScreen {...options} />
         <br/>
         <PlayerScreen {...options} />
+        <br/>
       </div>
     )
   }
