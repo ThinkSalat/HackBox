@@ -1,4 +1,4 @@
-import { Room, Player, Card, Status } from './models';
+import { Room, Player, Card, Status, Answer, Response } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
 import { flattenSelections } from 'apollo-utilities';
 
@@ -66,12 +66,23 @@ const resolvers = {
         }
       )
     },
-    retrievePrompts: async (_, { code, cardType }) => {
-      const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+    retrieveAndAssignPrompts: async (_, { code, cardType }) => {
+      const room = await Room.findOne({code});
+      const { players, discard, numRounds, status } = room._doc;
+
+      const numCards = numRounds !== status.currentRound ? room.players.length : 1
+      const playerShuffles = players.concat(players); shuffleArray(playerShuffles);
+      const ids = discard.map( card => card.id);
+
+      const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
+      const promptObjects = prompts.map( prompt => new Response({prompt, players: playerShuffles.splice(0,2)}))
+      await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
+
+      return prompts;
     },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},
-       { $inc: { "players.$.score": points }})
+       { $inc: { "players.$.score": points }});
     }
   },
   Subscription: {
@@ -91,3 +102,10 @@ const resolvers = {
 }
 
 export default resolvers;
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
+  }
+}

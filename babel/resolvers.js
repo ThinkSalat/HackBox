@@ -98,8 +98,8 @@ var resolvers = {
       return removeRoom;
     }(),
     // buildDeck: async (_, {code, cardType, numCards}) => {
-    //   const deck = await Card.aggregate().match({ cardType }).sample(numCards).exec()
-    //   return await Room.findOneAndUpdate({ code }, { $set: { deck }})
+    //   const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+    //   return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     // },
     addPlayer: function () {
       var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(_, _ref7) {
@@ -241,22 +241,26 @@ var resolvers = {
 
       return updateStatus;
     }(),
-    addPlayerScore: function () {
+    retrievePrompts: function () {
       var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(_, _ref16) {
         var code = _ref16.code,
-            username = _ref16.username,
-            points = _ref16.points;
+            cardType = _ref16.cardType,
+            numCards = _ref16.numCards;
+        var room;
         return regeneratorRuntime.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
                 _context7.next = 2;
-                return _models.Room.findOneAndUpdate({ code: code, "players.username": username }, { $inc: { "players.$.score": points } });
+                return _models.Room.findOne({ code: code });
 
               case 2:
-                return _context7.abrupt('return', _context7.sent);
+                room = _context7.sent;
 
-              case 3:
+                console.log(room);
+                // add cards to discard
+
+              case 4:
               case 'end':
                 return _context7.stop();
             }
@@ -264,8 +268,37 @@ var resolvers = {
         }, _callee7, undefined);
       }));
 
-      function addPlayerScore(_x13, _x14) {
+      function retrievePrompts(_x13, _x14) {
         return _ref17.apply(this, arguments);
+      }
+
+      return retrievePrompts;
+    }(),
+    addPlayerScore: function () {
+      var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(_, _ref18) {
+        var code = _ref18.code,
+            username = _ref18.username,
+            points = _ref18.points;
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return _models.Room.findOneAndUpdate({ code: code, "players.username": username }, { $inc: { "players.$.score": points } });
+
+              case 2:
+                return _context8.abrupt('return', _context8.sent);
+
+              case 3:
+              case 'end':
+                return _context8.stop();
+            }
+          }
+        }, _callee8, undefined);
+      }));
+
+      function addPlayerScore(_x15, _x16) {
+        return _ref19.apply(this, arguments);
       }
 
       return addPlayerScore;
@@ -273,8 +306,8 @@ var resolvers = {
   },
   Subscription: {
     joinedRoom: {
-      subscribe: function subscribe(_, _ref18) {
-        var code = _ref18.code;
+      subscribe: function subscribe(_, _ref20) {
+        var code = _ref20.code;
         return pubsub.asyncIterator(JOINED_ROOM + '.' + code);
       }
     },
@@ -289,8 +322,8 @@ var resolvers = {
       }
     },
     updateStatus: {
-      subscribe: function subscribe(_, _ref19) {
-        var code = _ref19.code;
+      subscribe: function subscribe(_, _ref21) {
+        var code = _ref21.code;
         return pubsub.asyncIterator(UPDATE_STATUS + '.' + code);
       }
     }
