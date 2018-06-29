@@ -10,7 +10,8 @@ import 'react-select/dist/react-select.css';
 
 
 import { 
-  RoomsQuery
+  RoomsQuery,
+  FindRoomQuery
 } from '../gql/gql_query';
 
 import {
@@ -38,11 +39,10 @@ class Welcome extends Component {
     numRounds: defaultRounds
   }
 
-  // React Class Component functions
-
   componentDidMount() {
     this.subscribeToNewRooms();
     this.subscribeToRemoveRooms();
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -88,7 +88,7 @@ class Welcome extends Component {
     for (let i = 0; i < 4; i++) {
       code += alpha[Math.floor(Math.random() * alpha.length)];
     }
-    // if (this.props.FindRoomQuery) return this.getRandomCode();
+
     return code;
   }
 
@@ -195,6 +195,8 @@ class Welcome extends Component {
   }
 
   render() {
+
+
     const {data: {loading, rooms}} = this.props;
     const {username, code, gameType, numRounds} = this.state;
 
@@ -202,6 +204,7 @@ class Welcome extends Component {
     if (loading) {
       return null;
     }
+    
 
     return(
 
@@ -275,6 +278,15 @@ class Welcome extends Component {
 export default compose (
   graphql(RoomsQuery),
   graphql(RoomsQuery, {name: "roomsQuery"}),
+  graphql(FindRoomQuery, {
+    name: "findRoomQuery",
+    options: ownProps => {
+      const code = "test"
+      return {
+        variables: { code },
+      }
+    }
+  }),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),

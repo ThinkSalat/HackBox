@@ -3,7 +3,8 @@ import gql from 'graphql-tag';
 
 import {ROOM} from './gql_types';
 
-export const FindRoomQuery = gql`{
+export const FindRoomQuery = gql`
+query($code: String!) {
   findRoom(code: $code) {
     ${ROOM}
   }

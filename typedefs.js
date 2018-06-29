@@ -59,13 +59,12 @@ const typeDefs = `
   type Mutation {
     createRoom(code: String!, gameType: String, numRounds: Int): Room
     removeRoom(id: ID!): Boolean
-    updateRoom(id: ID!, code: String!): Boolean
+    updateRoom(code: String!, key: String!, value: String!): Boolean
     buildDeck(code: String!, cardType: String!, numCards: Int!): Room
     addPlayer(code: String!, username: String!): Room
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: Int!): Response
-    updateStatus(code: String!, status: Status ): Status
   }
   
   type Subscription {

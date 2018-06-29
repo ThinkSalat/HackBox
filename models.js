@@ -15,7 +15,7 @@ const PlayerSchema = new Schema({
 });
 
 const AnswerSchema = new Schema({
-  player: [PlayerSchema],
+  player: PlayerSchema,
   answers: [String],
   votes: [PlayerSchema]
 });

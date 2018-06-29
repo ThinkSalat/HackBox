@@ -22,7 +22,7 @@ export const ROOM = `
   code
   numRounds
   gameType
-  deck {
+  usedCards {
     ${CARD}
   }
   players {
