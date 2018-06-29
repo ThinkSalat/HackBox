@@ -73,7 +73,7 @@ const typeDefs = `
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: Int!): Response
-    updateStatus(code: String!, options: StatusOptions!): Status
+    updateStatus(code: String!, options: StatusOptions!): Room
   }
   
   type Subscription {

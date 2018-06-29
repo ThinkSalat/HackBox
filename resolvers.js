@@ -6,6 +6,7 @@ const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
 const CREATED_ROOM = 'CREATED_ROOM';
 const REMOVED_ROOM = 'REMOVED_ROOM';
+const UPDATE_STATUS = 'UPDATE_STATUS';
 
 require("babel-polyfill");
 
@@ -57,15 +58,17 @@ const resolvers = {
       // 
     },
     updateStatus: async (_, { code, options }) => {
-      const {status} = Room.findOne({code})
-      pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
-    
       return await Room.findOneAndUpdate({code},
-        { status: { $set: options } })
+        { $set: { status: options } },
+        (err, {status}) => {
+          status = status._doc
+          pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
+        }
+      )
     },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},
-       { $inc: { "players.$.score": points }}) 
+       { $inc: { "players.$.score": points }})
     }
   },
   Subscription: {
