@@ -28,7 +28,4 @@ export const ROOM = `
   players {
     ${PLAYER}
   }
-  playerDeck {
-    ${CARD}
-  }
 `

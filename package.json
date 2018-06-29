@@ -2,7 +2,7 @@
   "name": "hackbox",
   "version": "1.0.0",
   "description": "Multiplayer party game ala Apples to Apples/Cards Against Humanity/JackBox.tv",
-  "main": "index.js",
+  "main": "server/index.js",
   "dependencies": {
     "@axelspringer/graphql-google-pubsub": "^1.0.8",
     "apollo-boost": "^0.1.10",
@@ -17,6 +17,7 @@
     "babel-preset-es2015": "^6.1.4",
     "babel-preset-react": "^6.24.1",
     "babel-watch": "^2.0.7",
+    "express": "^4.16.3",
     "graphiql": "^0.11.11",
     "graphql": "^0.13.2",
     "graphql-subscriptions": "^0.5.8",
@@ -40,10 +41,14 @@
     "underscore": "^1.9.1",
     "webpack": "^4.12.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "concurrently": "^3.6.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-watch index.js --inspect"
+    "dev": "babel-watch server --inspect",
+    "s": "concurrently \"npm run dev\" \"cd frontend && npm start\"",
+    "start": "babel server -d babel && node babel/index.js"
   },
   "repository": {
     "type": "git",
