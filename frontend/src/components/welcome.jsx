@@ -113,8 +113,8 @@ class Welcome extends Component {
     }
     
     const { rooms } = this.props.data;
-    let room = rooms.filter(room => room.code === code);
-    if (!room.length) {
+    let room = rooms.find(room => room.code === code);
+    if (!room) {
       this.setState({code: "", username: ""});
       return null;
     }
