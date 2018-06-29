@@ -16,7 +16,10 @@ const options = {
 const server = new GraphQLServer({ typeDefs, resolvers });
 
 if (process.env.NODE_ENV === 'production') {
-  server.express.use(express.static("frontend/build"))
+  server.express.use(express.static("frontend/build"));
+  server.express.use("/graphql");
+  server.express.use("/subscriptions");
+  server.express.use("/playground");
 }
 
 mongoose.connection.once('open', function() {
