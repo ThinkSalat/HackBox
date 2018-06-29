@@ -12,9 +12,8 @@ const typeDefs = `
     gameType: String!
     usedCards: [Card]
     players: [Player]
-    playerDeck: [Card]
-    promptResponses: [Response]
-    status: [Status]
+    prompts: [Response]
+    status: Status
   }
   
   type Response {
@@ -31,7 +30,7 @@ const typeDefs = `
     gameStarted: Boolean!
     votingFinished: Boolean!
     allResponsesReceived: Boolean!
-    timer: Int!
+    timer: Int
   }
 
   type Answer {
@@ -55,32 +54,35 @@ const typeDefs = `
     score: Int!
     hand: [Card]
   }
+
+  input StatusOptions {
+    currentRound: Int
+    status: String
+    gameOver: Boolean
+    gameStarted: Boolean
+    votingFinished: Boolean
+    allResponsesReceived: Boolean
+    timer: Int
+  }
   
   type Mutation {
     createRoom(code: String!, gameType: String, numRounds: Int): Room
     removeRoom(id: ID!): Boolean
-    updateRoom(code: String!, key: String!, value: String!): Boolean
-    buildDeck(code: String!, cardType: String!, numCards: Int!): Room
+    retrieveCards(code: String!, numCards: Int!, cardType: String!): [Card]
     addPlayer(code: String!, username: String!): Room
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: Int!): Response
+    updateStatus(code: String!, options: StatusOptions!): Room
   }
   
   type Subscription {
     joinedRoom(code: String!): Room
     createdRoom: Room
     removedRoom: String
+    updateStatus(code: String!): Status
   }
   
 `;
 
 export default typeDefs;
-// **GAME LOGIC **
-
-// show instructions
-// create new responses
-// takes in a game code, and a prompt card
-// assign 2 random players to the response
-// create answer that will take in a game code, [text], player, responseId
-// that will add that players answer into the answers array for that player.

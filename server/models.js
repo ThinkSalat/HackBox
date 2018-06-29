@@ -21,31 +21,35 @@ const AnswerSchema = new Schema({
 });
 
 const ResponseSchema = new Schema({
-  prompt: [CardSchema],
-  answers: [AnswerSchema]
+  prompt: CardSchema,
+  answers: [AnswerSchema],
+  players: [PlayerSchema]
+});
+
+const StatusSchema = new Schema({
+  currentRound: {type: Number, default: false},
+  status: {type: String, default: "Lobby"},
+  gameOver: {type: Boolean, default: false},
+  gameStarted: {type: Boolean, default: false},
+  votingFinished: {type: Boolean, default: false},
+  allResponsesReceived: {type: Boolean, default: false},
+  timer: Number
 });
 
 const RoomSchema = new Schema({
   players: [PlayerSchema],
   code: { type: String, unique: true },
   usedCards: [CardSchema],
-  playerDeck: [CardSchema],
   numRounds: {type: Number, default: 3},
-  gameType: {type: String, default: "Quiplash"}
+  gameType: {type: String, default: "Quiplash"},
+  prompts: [ResponseSchema],
+  status: StatusSchema
 });
 
-const StatusSchema = new Schema({
-  currentRound: Number,
-  status: String,
-  gameOver: Boolean,
-  gameStarted: Boolean,
-  votingFinished: Boolean,
-  allResponsesReceived: Boolean,
-  timer: Number
-});
 
 export const Card = mongoose.model("Card", CardSchema);
 export const Player = mongoose.model("Player", PlayerSchema);
 export const Room = mongoose.model("Room", RoomSchema);
 export const Answer = mongoose.model("Answer", AnswerSchema);
 export const Response = mongoose.model("Response", ResponseSchema);
+export const Status = mongoose.model("Status", StatusSchema);
