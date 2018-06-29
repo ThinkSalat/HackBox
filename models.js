@@ -34,6 +34,16 @@ const RoomSchema = new Schema({
   gameType: {type: String, default: "Quiplash"}
 });
 
+const StatusSchema = new Schema({
+  currentRound: Number,
+  status: String,
+  gameOver: Boolean,
+  gameStarted: Boolean,
+  votingFinished: Boolean,
+  allResponsesReceived: Boolean,
+  timer: Number
+});
+
 export const Card = mongoose.model("Card", CardSchema);
 export const Player = mongoose.model("Player", PlayerSchema);
 export const Room = mongoose.model("Room", RoomSchema);
