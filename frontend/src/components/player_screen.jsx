@@ -68,8 +68,6 @@ class PlayerScreen extends React.Component {
 
   enterVotingPhase = () => {
     if (this.state.answered) {
-      console.log(this.state.answer);
-
       this.setState({
         answered: false,
         promptPhase: false,
