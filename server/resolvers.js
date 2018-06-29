@@ -75,7 +75,14 @@ const resolvers = {
       const ids = discard.map( card => card.id);
 
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-      const promptObjects = prompts.map( prompt => new Response({prompt, players: playerShuffles.splice(0,2)}))
+      let promptObjects;
+      
+      if (numCards === 1) {
+        promptObjects = [new Response({ prompt: prompts[0], players })]
+        console.log(promptObjects);
+      } else {
+        promptObjects = prompts.map( prompt => new Response({prompt, players: playerShuffles.splice(0,2)}))
+      }
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
       return prompts;
