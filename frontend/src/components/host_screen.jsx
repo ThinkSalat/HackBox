@@ -41,7 +41,7 @@ class HostScreen extends React.Component {
       }
     }
 
-    if (currentRound > this.props.options.numRounds) {
+    if (currentRound > this.props.numRounds) {
       console.log('all rounds end');
       
       //game summary
@@ -72,7 +72,7 @@ class HostScreen extends React.Component {
       answerCount: answerCount + 1
     });
     
-    if (answerCount >= this.props.options.players.length - 1) {
+    if (answerCount >= this.props.players.length - 1) {
       this.enterVotingPhase();
     }
   }
@@ -99,8 +99,8 @@ class HostScreen extends React.Component {
     
     return (
       <div>
-        <h3>Current Round: {currentRound} / {this.props.options.numRounds} </h3>
-        <h3>{`Answers Collected: ${answerCount} / ${this.props.options.players.length}`}</h3>
+        <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
+        <h3>{`Answers Collected: ${answerCount} / ${this.props.players.length}`}</h3>
         <h3>{promptPhase ? 'Prompt Phase' : 'Vote Phase'}: {clock}s</h3>
         <button onClick={this.playerAnswered}>
           Player Answer
@@ -108,7 +108,7 @@ class HostScreen extends React.Component {
         <button onClick={this.playerVoted}>
           Vote Finish
         </button>
-        {this.props.options.showPlayers}
+        {this.props.showPlayers}
       </div>
     );
   }

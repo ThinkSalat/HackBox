@@ -90,6 +90,8 @@ class Lobby extends React.Component {
     }
 
     let room = this.getCurrentRoom();
+    // console.log(room);
+    
     this.showPlayers();
 
     return (

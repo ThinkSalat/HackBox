@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HostScreen from './host_screen';
-// import PlayerScreen from './player_screen';
+import PlayerScreen from './player_screen';
 
 export default class Game extends React.Component {
 
@@ -11,7 +11,9 @@ export default class Game extends React.Component {
     return (
       <div>
         <br/>
-        <HostScreen options={options}/>
+        <HostScreen {...options} />
+        <br/>
+        <PlayerScreen {...options} />
       </div>
     )
   }
