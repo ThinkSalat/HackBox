@@ -31,7 +31,7 @@ const httpLink = new HttpLink({
 
 //subscriptions get sent through websocket connection (ws)
 const wsLink = new WebSocketLink({
-  uri: wsUri,
+  uri: httpUri,
   options: {
     reconnect: true
   }
