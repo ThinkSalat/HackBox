@@ -16,16 +16,26 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
+let production = false;
+
+let httpUri = "http://localhost:4000/graphql";
+let wsUri = "ws://localhost:4000/subscriptions";
+
+if (production) {
+  httpUri = "https://hack-box.herokuapp/graphql";
+  wsUri = "ws://hack-box.herokuapp/subscriptions";
+}
+
 
 //send graphQL requests to this location
 const httpLink = new HttpLink({ 
-  uri: `http://localhost:4000/graphql`,
+  uri: httpUri,
   credentials: 'same-origin'
 })
 
 //subscriptions get sent through websocket connection (ws)
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/subscriptions`,
+  uri: wsUri,
   options: {
     reconnect: true
   }
