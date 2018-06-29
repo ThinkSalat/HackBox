@@ -40,10 +40,13 @@
     "underscore": "^1.9.1",
     "webpack": "^4.12.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "concurrently": "^3.6.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-watch index.js --inspect"
+    "start": "babel-watch index.js --inspect",
+    "s": "concurrently \"npm start\" \"cd frontend && npm start\""
   },
   "repository": {
     "type": "git",
