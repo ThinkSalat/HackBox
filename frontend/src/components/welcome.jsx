@@ -40,8 +40,8 @@ class Welcome extends Component {
   }
 
   componentDidMount() {
-    this.subscribeToNewRooms();
-    this.subscribeToRemoveRooms();
+    // this.subscribeToNewRooms();
+    // this.subscribeToRemoveRooms();
 
   }
 
