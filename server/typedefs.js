@@ -10,7 +10,7 @@ const typeDefs = `
     code: String!
     numRounds: Int!
     gameType: String!
-    usedCards: [Card]
+    discard: [Card]
     players: [Player]
     prompts: [Response]
     status: Status

@@ -12,7 +12,7 @@ class PlayerScreen extends React.Component {
     votingPhase: false,
   }
 
-  prompts = this.props.usedCards.map(card => card.prompt);
+  prompts = this.props.discard.map(card => card.prompt);
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
