@@ -6,7 +6,7 @@ import typeDefs from './typedefs';
 import resolvers from './resolvers';
 
 const options = {
-  port: 4000,
+  port: process.env.PORT || 4000,
   endpoint: '/graphql',
   subscriptions: '/subscriptions',
   playground: '/playground',
