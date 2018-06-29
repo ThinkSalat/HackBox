@@ -22,13 +22,10 @@ export const ROOM = `
   code
   numRounds
   gameType
-  usedCards {
+  discard {
     ${CARD}
   }
   players {
     ${PLAYER}
-  }
-  playerDeck {
-    ${CARD}
   }
 `
