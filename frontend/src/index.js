@@ -43,7 +43,7 @@ const link = split(
     const { kind, operation } = getMainDefinition(query)
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
-  httpUri,
+  httpLink,
   httpLink,
 )
 
