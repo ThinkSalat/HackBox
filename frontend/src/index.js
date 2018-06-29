@@ -19,8 +19,8 @@ import { getMainDefinition } from 'apollo-utilities';
 
 // let httpUri = "http://localhost:4000/graphql";
 // let wsUri = "ws://localhost:4000/subscriptions";
-let httpUri = "https://hack-box.herokuapp/graphql";
-let wsUri = "wss://hack-box.herokuapp/subscriptions";
+let httpUri = "https://hack-box.herokuapp/";
+let wsUri = "wss://hack-box.herokuapp/";
 
 
 //send graphQL requests to this location
@@ -30,12 +30,12 @@ const httpLink = new HttpLink({
 })
 
 //subscriptions get sent through websocket connection (ws)
-// const wsLink = new WebSocketLink({
-//   uri: wsUri,
-//   options: {
-//     reconnect: true
-//   }
-// })
+const wsLink = new WebSocketLink({
+  uri: wsUri,
+  options: {
+    reconnect: true
+  }
+})
 
 //split the link depending on the type of operation
 const link = split(
@@ -43,7 +43,7 @@ const link = split(
     const { kind, operation } = getMainDefinition(query)
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
-  httpLink,
+  wsLink,
   httpLink,
 )
 

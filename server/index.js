@@ -8,8 +8,8 @@ import resolvers from './resolvers';
 
 const options = {
   port: process.env.PORT || 4000,
-  endpoint: '/graphql',
-  subscriptions: '/subscriptions',
+  endpoint: '/',
+  subscriptions: '/',
   playground: '/playground',
 };
 
