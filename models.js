@@ -14,6 +14,17 @@ const PlayerSchema = new Schema({
   hand: [CardSchema]
 });
 
+const AnswerSchema = new Schema({
+  player: [PlayerSchema],
+  answers: [String],
+  votes: [PlayerSchema]
+});
+
+const ResponseSchema = new Schema({
+  prompt: [CardSchema],
+  answers: [AnswerSchema]
+});
+
 const RoomSchema = new Schema({
   players: [PlayerSchema],
   code: { type: String, unique: true },
@@ -23,6 +34,8 @@ const RoomSchema = new Schema({
   gameType: {type: String, default: "Quiplash"}
 });
 
-export const Card = mongoose.model("Card", CardSchema)
-export const Player = mongoose.model("Player", PlayerSchema)
-export const Room = mongoose.model("Room", RoomSchema)
+export const Card = mongoose.model("Card", CardSchema);
+export const Player = mongoose.model("Player", PlayerSchema);
+export const Room = mongoose.model("Room", RoomSchema);
+export const Answer = mongoose.model("Answer", AnswerSchema);
+export const Response = mongoose.model("Response", ResponseSchema);
