@@ -30,8 +30,8 @@ const resolvers = {
       return true;
     },
     // buildDeck: async (_, {code, cardType, numCards}) => {
-    //   const deck = await Card.aggregate().match({ cardType }).sample(numCards).exec()
-    //   return await Room.findOneAndUpdate({ code }, { $set: { deck }})
+    //   const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+    //   return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     // },
     addPlayer: async (_, { code, username }) => {
       let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
@@ -65,6 +65,9 @@ const resolvers = {
           pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
         }
       )
+    },
+    retrievePrompts: async (_, { code, cardType }) => {
+      const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
     },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},

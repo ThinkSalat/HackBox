@@ -39,7 +39,7 @@ const StatusSchema = new Schema({
 const RoomSchema = new Schema({
   players: [PlayerSchema],
   code: { type: String, unique: true },
-  usedCards: [CardSchema],
+  discard: [CardSchema],
   numRounds: {type: Number, default: 3},
   gameType: {type: String, default: "Quiplash"},
   prompts: [ResponseSchema],

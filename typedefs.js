@@ -10,7 +10,7 @@ const typeDefs = `
     code: String!
     numRounds: Int!
     gameType: String!
-    usedCards: [Card]
+    discard: [Card]
     players: [Player]
     prompts: [Response]
     status: Status
@@ -74,6 +74,7 @@ const typeDefs = `
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: Int!): Response
     updateStatus(code: String!, options: StatusOptions!): Room
+    retrievePrompts(code: String!, cardType: String!): Room
   }
   
   type Subscription {
