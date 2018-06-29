@@ -82,7 +82,7 @@ const resolvers = {
       subscribe: () => pubsub.asyncIterator(REMOVED_ROOM)
     },
     updateStatus: {
-      subscribe: (_, { code }) => pusubs.asyncIterator(`${UPDATE_STATUS}.${code}`)
+      subscribe: (_, { code }) => pubsub.asyncIterator(`${UPDATE_STATUS}.${code}`)
     }
   }
 }

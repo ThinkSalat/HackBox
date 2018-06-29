@@ -80,7 +80,7 @@ const typeDefs = `
     joinedRoom(code: String!): Room
     createdRoom: Room
     removedRoom: String
-    updateStatus: Status
+    updateStatus(code: String!): Status
   }
   
 `;
