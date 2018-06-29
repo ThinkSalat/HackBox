@@ -12,9 +12,7 @@ class PlayerScreen extends React.Component {
     votingPhase: false,
   }
 
-  componentDidMount() {
-    this.prompts = this.props.deck.map(card => card.prompt);
-  }
+  prompts = this.props.deck.map(card => card.prompt);
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
@@ -25,8 +23,8 @@ class PlayerScreen extends React.Component {
   }
 
   showPrompt = () => {
+    let prompt = this.prompts.slice(-1)[0];
     if (this.state.currentRound <= this.props.numRounds) {
-      let prompt = 'some prompts';
 
       return (
         <div>
@@ -55,6 +53,8 @@ class PlayerScreen extends React.Component {
 
   enterPromptPhase = () => {
     if (this.state.voted && this.state.currentRound < this.props.numRounds) {
+      this.prompts.pop();
+
       this.setState({
         currentRound: this.state.currentRound + 1,
         answer: '',
@@ -68,6 +68,8 @@ class PlayerScreen extends React.Component {
 
   enterVotingPhase = () => {
     if (this.state.answered) {
+      console.log(this.state.answer);
+
       this.setState({
         answered: false,
         promptPhase: false,
