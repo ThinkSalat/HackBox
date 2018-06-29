@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.lobby {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  .room-option {
+    width: 200px;
+  }
+  .room-list {
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin: 10px;
+    }
+  }
+}

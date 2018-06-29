@@ -21,6 +21,8 @@ class Lobby extends React.Component {
     }
 
     const currentRoom = rooms.find(room => room.code === this.props.match.params.code);
+    // console.log(currentRoom);
+
     let roomPlayers = currentRoom.players.map(player => {
       return (
         <li key={player.id}>
@@ -33,7 +35,7 @@ class Lobby extends React.Component {
 
     return (
       <div className='single-room'>
-        <h2>Hello</h2>
+        <h2>{currentRoom.gameType}</h2>
         <button onClick={this.leaveRoom}>
           Leave Room
         </button>
