@@ -28,7 +28,7 @@ const ResponseSchema = new Schema({
 const RoomSchema = new Schema({
   players: [PlayerSchema],
   code: { type: String, unique: true },
-  deck: [CardSchema],
+  usedCards: [CardSchema],
   playerDeck: [CardSchema],
   numRounds: {type: Number, default: 3},
   gameType: {type: String, default: "Quiplash"}

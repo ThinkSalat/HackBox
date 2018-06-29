@@ -31,8 +31,8 @@ const resolvers = {
       return true;
     },
     buildDeck: async (_, {code, cardType, numCards}) => {
-      const deck = await Card.aggregate().match({ cardType }).sample(numCards).exec()
-      return await Room.findOneAndUpdate({ code }, { $set: { deck }})
+      const usedCards = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+      return await Room.findOneAndUpdate({ code }, { $set: { usedCards }})
     },
     addPlayer: async (_, { code, username }) => {
       let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
