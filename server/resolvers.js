@@ -55,7 +55,8 @@ const resolvers = {
         {$push: {"players.$.hand": cards}})
     },
     retrieveCards: async (_, {code, numCards, cardType}) => {
-      // 
+      const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+      return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
     updateStatus: async (_, { code, options }) => {
       return await Room.findOneAndUpdate({code},
