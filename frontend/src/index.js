@@ -17,10 +17,8 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
 
-let httpUri = "http://localhost:4000/graphql";
-let wsUri = "ws://localhost:4000/subscriptions";
-// let httpUri = "https://hackboxapi.herokuapp/graphql";
-// let wsUri = "wss://hackboxapi.herokuapp/subscriptions";
+let httpUri = "https://hackboxapi.herokuapp.com/graphql";
+let wsUri = "wss://hackboxapi.herokuapp.com/subscriptions";
 
 
 //send graphQL requests to this location
