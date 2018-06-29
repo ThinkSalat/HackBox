@@ -17,6 +17,7 @@
     "babel-preset-es2015": "^6.1.4",
     "babel-preset-react": "^6.24.1",
     "babel-watch": "^2.0.7",
+    "express": "^4.16.3",
     "graphiql": "^0.11.11",
     "graphql": "^0.13.2",
     "graphql-subscriptions": "^0.5.8",
