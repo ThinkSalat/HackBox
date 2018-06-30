@@ -28,12 +28,12 @@ const resolvers = {
       return true;
     },
     addPlayer: async (_, { code, username }) => {
+      let player;
       let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
       if (usernameTaken) {
         usernameTaken = "Username taken"
       } else {
         var player = new Player({ username, score: 0 })
-        
         await Room.update(
           { code }, 
           {$push: { players: player }}
@@ -58,6 +58,7 @@ const resolvers = {
       const room = await Room.findOne({code})
       const {status} = room
       pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
+      return room;
     },
     retrieveAndAssignPrompts: async (_, { code, cardType }) => {
       const room = await Room.findOne({code});

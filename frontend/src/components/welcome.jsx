@@ -25,9 +25,6 @@ import {
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
 
-import {
-  findRoomOptions
-} from '../gql_actions/query_actions';
 
 const defaultGame = "Quiplash";
 const defaultRounds = 3;
@@ -45,7 +42,6 @@ class Welcome extends Component {
   componentDidMount() {
     this.subscribeToNewRooms();
     this.subscribeToRemoveRooms();
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -123,19 +119,17 @@ class Welcome extends Component {
     }
     this.props.history.push(`/room/${code}`);
         
-    const player = this.props.addPlayer({
+    this.props.addPlayer({
       variables: {
         code,
         username
       }
-    }).then((player) => {
-        localStorage.setItem("playerId", player.data.addPlayer.id)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    
-   return player
+
+    }).then((player) =>  {
+      localStorage.setItem("playerId", player.data.addPlayer.id);
+      localStorage.setItem('roomId', code);
+    })   
+    return player
   }
 
   removeRoom = room => {
@@ -209,6 +203,8 @@ class Welcome extends Component {
     const {data: {loading, rooms}} = this.props;
     const {username, code, gameType, numRounds} = this.state;
 
+    // console.log(rooms, this.props);
+      
     
     if (loading) {
       return null;
