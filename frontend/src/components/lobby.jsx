@@ -4,8 +4,12 @@ import { withRouter } from 'react-router-dom';
 import {graphql, compose} from 'react-apollo';
 
 import { 
-  RoomsQuery
+  FindRoomQuery
 } from '../gql/gql_query';
+
+import {
+  findRoomOptions
+} from '../gql_actions/query_actions';
 
 import Game from './game';
 
@@ -13,12 +17,6 @@ class Lobby extends React.Component {
 
   state = {
     gameStarted: false
-  }
-
-  getCurrentRoom = () => {
-    const { rooms } = this.props.data;
-    let room = rooms.find(room => room.code === this.props.match.params.code);
-    return room;
   }
 
   showPlayers = room => {
@@ -84,13 +82,13 @@ class Lobby extends React.Component {
   }
 
   render() {
-    const { loading } = this.props.data;
-    if (loading) {
+
+    let room = this.props.findRoomQuery.findRoom;
+    // debugger;
+    if (!room) {
       return null;
     }
 
-    let room = this.getCurrentRoom();
-    // console.log(room);
     
     this.showPlayers();
 
@@ -105,6 +103,5 @@ class Lobby extends React.Component {
 }
 
 export default compose (
-  graphql(RoomsQuery),
-  graphql(RoomsQuery, {name: "roomsQuery"}),
+  graphql(FindRoomQuery, findRoomOptions()),
 )(withRouter(Lobby));
