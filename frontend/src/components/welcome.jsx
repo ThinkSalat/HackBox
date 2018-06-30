@@ -119,7 +119,7 @@ class Welcome extends Component {
     }
     this.props.history.push(`/room/${code}`);
         
-    this.props.addPlayer({
+    var player = this.props.addPlayer({
       variables: {
         code,
         username

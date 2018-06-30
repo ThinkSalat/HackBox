@@ -64,7 +64,7 @@ const typeDefs = `
     allResponsesReceived: Boolean
     timer: Int
   }
-  
+
   type Mutation {
     createRoom(code: String!, gameType: String, numRounds: Int): Room
     removeRoom(id: ID!): Boolean
@@ -72,7 +72,7 @@ const typeDefs = `
     addPlayer(code: String!, username: String!): Player
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
-    addAnswerToResponse(responseId: Int!): Response
+    addAnswerToResponse(responseId: Int!, code: String!, username: String!, answer: [String!]): Response
     updateStatus(code: String!, options: StatusOptions!): Room
     retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
   }

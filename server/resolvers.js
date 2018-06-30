@@ -73,6 +73,15 @@ const resolvers = {
 
       return prompts;
     },
+    addAnswerToResponse: async (_, {responseId, code, username, answer}) => {
+      let room = await Room.findOne({code})
+      let {prompts, players} = room;
+      let response = prompts.filter( response => response.id === responseId)[0]
+      let player = players.filter( pl => pl.username===username)[0]
+      let playerAnswer = new Answer({player, answer: [...answer] })
+      response.answers.push(playerAnswer)
+      return response;
+    },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},
        { $inc: { "players.$.score": points }});
