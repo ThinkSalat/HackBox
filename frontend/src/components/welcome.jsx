@@ -119,13 +119,13 @@ class Welcome extends Component {
     }
     this.props.history.push(`/room/${code}`);
         
-    const player = this.props.addPlayer({
+    this.props.addPlayer({
       variables: {
         code,
         username
       }
-    }).then((player) => localStorage.setItem("playerId", player.data.addPlayer.id))
-   return player
+    }).then((player) => localStorage.setItem("playerId",player.data.addPlayer.id))
+
   }
 
   removeRoom = room => {

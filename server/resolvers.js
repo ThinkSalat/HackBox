@@ -45,7 +45,7 @@ const resolvers = {
       }
       const room = Room.findOne({ code });
       pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room, usernameTaken })
-      return player;
+      return room;
     },
     addPlayerHand: async (_, {code, username, numCards, cardType}) => {
       const cards = await Card.aggregate().match({ cardType }).sample(numCards).exec()
