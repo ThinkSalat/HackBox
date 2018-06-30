@@ -26,6 +26,10 @@ import {
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
 
+import {
+  findRoomOptions
+} from '../gql_actions/query_actions';
+
 const defaultGame = "Quiplash";
 const defaultRounds = 3;
 
@@ -278,15 +282,7 @@ class Welcome extends Component {
 export default compose (
   graphql(RoomsQuery),
   graphql(RoomsQuery, {name: "roomsQuery"}),
-  graphql(FindRoomQuery, {
-    name: "findRoomQuery",
-    options: ownProps => {
-      const code = "test"
-      return {
-        variables: { code },
-      }
-    }
-  }),
+  graphql(FindRoomQuery, findRoomOptions("test")),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),
