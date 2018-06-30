@@ -101,9 +101,9 @@ class Welcome extends Component {
         code,
         numRounds: this.state.numRounds,
         gameType: this.state.gameType,
-        storage: localStorage.setItem('roomId', code)
       }
     });
+    localStorage.setItem('roomId', code)
   }
 
   addPlayer = () => {
@@ -120,13 +120,13 @@ class Welcome extends Component {
     }
     this.props.history.push(`/room/${code}`);
         
-    this.props.addPlayer({
+    const player = this.props.addPlayer({
       variables: {
         code,
         username
       }
-    })
-   
+    }).then((player) => localStorage.setItem("playerId", player.data.addPlayer.id))
+   return player
   }
 
   removeRoom = room => {

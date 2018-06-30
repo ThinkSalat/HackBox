@@ -104,9 +104,7 @@ var resolvers = {
       var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(_, _ref7) {
         var code = _ref7.code,
             username = _ref7.username;
-
-        var usernameTaken, _player, room;
-
+        var usernameTaken, player, room;
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -127,15 +125,15 @@ var resolvers = {
                 break;
 
               case 7:
-                _player = new _models.Player({ username: username, score: 0 });
+                player = new _models.Player({ username: username, score: 0 });
                 _context3.next = 10;
-                return _models.Room.update({ code: code }, { $push: { players: _player } });
+                return _models.Room.update({ code: code }, { $push: { players: player } });
 
               case 10:
                 room = _models.Room.findOne({ code: code });
 
                 pubsub.publish(JOINED_ROOM + '.' + code, { joinedRoom: room, usernameTaken: usernameTaken });
-                return _context3.abrupt('return', player);
+                return _context3.abrupt('return', room);
 
               case 13:
               case 'end':
