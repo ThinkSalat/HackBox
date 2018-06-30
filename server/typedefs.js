@@ -69,7 +69,7 @@ const typeDefs = `
     createRoom(code: String!, gameType: String, numRounds: Int): Room
     removeRoom(id: ID!): Boolean
     retrieveCards(code: String!, numCards: Int!, cardType: String!): [Card]
-    addPlayer(code: String!, username: String!): Room
+    addPlayer(code: String!, username: String!): Player
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: Int!): Response

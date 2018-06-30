@@ -124,7 +124,10 @@ class Welcome extends Component {
         code,
         username
       }
-    }).then((player) => localStorage.setItem("playerId",player.data.addPlayer.id))
+    }).then((player) =>  {
+      localStorage.setItem("playerId", player.data.addPlayer.id);
+      localStorage.setItem('roomId', code);
+    })
 
   }
 
@@ -199,6 +202,8 @@ class Welcome extends Component {
     const {data: {loading, rooms}} = this.props;
     const {username, code, gameType, numRounds} = this.state;
 
+    // console.log(rooms, this.props);
+      
     
     if (loading) {
       return null;
