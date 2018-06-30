@@ -8,6 +8,10 @@ import {
 } from '../gql/gql_query';
 
 import {
+  NewPlayerSubscription
+} from '../gql/gql_subscription';
+
+import {
   findRoomOptions
 } from '../gql_actions/query_actions';
 
@@ -19,11 +23,11 @@ class Lobby extends React.Component {
     gameStarted: false
   }
 
+  componentDidMount() {
+    this.subscribeToNewPlayers(this.props.match.params.code)
+  }
+
   showPlayers = room => {
-    if (!room) {
-      return null;
-    }
-    
     let players = room.players.map(player => {
       return (
         <li key={player.id}>
@@ -81,6 +85,21 @@ class Lobby extends React.Component {
     return this.state.gameStarted ? this.gameStage(room) : this.waitingStage(room)
   }
 
+
+  subscribeToNewPlayers = (code) => {
+    this.props.findRoomQuery.subscribeToMore({
+      document: NewPlayerSubscription,
+      variables: {
+        code: code
+      },
+      updateQuery: (previous, { subscriptionData }) => {
+        if (!subscriptionData.data) {
+          return previous;
+        }
+      }
+    })
+  }
+
   render() {
 
     let room = this.props.findRoomQuery.findRoom;
@@ -89,8 +108,8 @@ class Lobby extends React.Component {
       return null;
     }
 
-    
-    this.showPlayers();
+    // console.log(room);
+
 
     return (
       <div className='single-room'>

@@ -1,7 +1,7 @@
 //Will parse the query using gql
 import gql from 'graphql-tag';
 
-import {ROOM} from './gql_types';
+import {ROOM, PLAYER} from './gql_types';
 
 export const CreateRoomMutation = gql`
   mutation($code: String!, $numRounds: Int!, $gameType: String!) {
@@ -14,7 +14,7 @@ export const CreateRoomMutation = gql`
 export const AddPlayerMutation = gql`
   mutation($code: String!, $username: String!) {
     addPlayer(code: $code, username: $username) {
-      ${ROOM}
+      ${PLAYER}
     }
   }
 `;
