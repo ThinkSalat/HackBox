@@ -33,7 +33,7 @@ const StatusSchema = new Schema({
   gameStarted: {type: Boolean, default: false},
   votingFinished: {type: Boolean, default: false},
   allResponsesReceived: {type: Boolean, default: false},
-  timer: Number
+  timer: {type: Number, default: 60}
 });
 
 const RoomSchema = new Schema({

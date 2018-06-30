@@ -60,7 +60,6 @@ class Lobby extends React.Component {
         options
       }
     });
-    return this.room;
   }
 
   showPlayers = () => {

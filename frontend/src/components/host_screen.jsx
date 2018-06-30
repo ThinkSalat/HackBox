@@ -1,5 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+//need to bind with component
+import {graphql, compose} from 'react-apollo';
+
+import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 class HostScreen extends React.Component {
 
@@ -95,13 +99,19 @@ class HostScreen extends React.Component {
   }
   
   render() {
-    let { answerCount, currentRound, clock, promptPhase } = this.state;
+    let { 
+      // allResponsesReceived, 
+      currentRound, 
+      // gameOver, 
+      // timer, 
+      // votingFinished 
+    } = this.props.status;
     
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
-        <h3>{`Answers Collected: ${answerCount} / ${this.props.players.length}`}</h3>
-        <h3>{promptPhase ? 'Prompt Phase' : 'Vote Phase'}: {clock}s</h3>
+        <h3>{`Answers Collected: ${this.state.answerCount} / ${this.props.players.length}`}</h3>
+        <h3>Timer: {this.state.clock}s</h3>
         <button onClick={this.playerAnswered}>
           Player Answer
         </button>
@@ -114,4 +124,6 @@ class HostScreen extends React.Component {
   }
 }
 
-export default withRouter(HostScreen);
+export default compose (
+  graphql(UpdateStatusMutation, {name: 'updateStatus'}),
+)(withRouter(HostScreen));

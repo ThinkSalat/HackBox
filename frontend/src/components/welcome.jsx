@@ -93,8 +93,8 @@ class Welcome extends Component {
 
   createRoom = () => {
     let code = this.getRandomCode();
-
     if (!code) return null;
+    
     this.props.createRoom({
       variables: {
         code,
@@ -105,7 +105,7 @@ class Welcome extends Component {
     localStorage.setItem('roomId', code)
   }
 
-  addPlayer = async () => {
+  addPlayer = () => {
     let { code, username} = this.state;
     if (!code || !username) {
       return null;
