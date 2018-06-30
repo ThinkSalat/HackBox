@@ -7,7 +7,6 @@ const JOINED_ROOM = 'JOINED_ROOM';
 const CREATED_ROOM = 'CREATED_ROOM';
 const REMOVED_ROOM = 'REMOVED_ROOM';
 const UPDATE_STATUS = 'UPDATE_STATUS';
-
 require("babel-polyfill");
 
 const resolvers = { 

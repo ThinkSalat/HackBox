@@ -17,7 +17,6 @@ var JOINED_ROOM = 'JOINED_ROOM';
 var CREATED_ROOM = 'CREATED_ROOM';
 var REMOVED_ROOM = 'REMOVED_ROOM';
 var UPDATE_STATUS = 'UPDATE_STATUS';
-
 require("babel-polyfill");
 
 var resolvers = {
@@ -105,7 +104,9 @@ var resolvers = {
       var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(_, _ref7) {
         var code = _ref7.code,
             username = _ref7.username;
-        var usernameTaken, player, room;
+
+        var usernameTaken, _player, room;
+
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -126,15 +127,15 @@ var resolvers = {
                 break;
 
               case 7:
-                player = new _models.Player({ username: username, score: 0 });
+                _player = new _models.Player({ username: username, score: 0 });
                 _context3.next = 10;
-                return _models.Room.update({ code: code }, { $push: { players: player } });
+                return _models.Room.update({ code: code }, { $push: { players: _player } });
 
               case 10:
                 room = _models.Room.findOne({ code: code });
 
                 pubsub.publish(JOINED_ROOM + '.' + code, { joinedRoom: room, usernameTaken: usernameTaken });
-                return _context3.abrupt('return', room);
+                return _context3.abrupt('return', player);
 
               case 13:
               case 'end':
@@ -191,10 +192,23 @@ var resolvers = {
         var code = _ref11.code,
             numCards = _ref11.numCards,
             cardType = _ref11.cardType;
+        var discard;
         return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
+                _context5.next = 2;
+                return _models.Card.aggregate().match({ cardType: cardType }).sample(numCards).exec();
+
+              case 2:
+                discard = _context5.sent;
+                _context5.next = 5;
+                return _models.Room.findOneAndUpdate({ code: code }, { $set: { discard: discard } });
+
+              case 5:
+                return _context5.abrupt('return', _context5.sent);
+
+              case 6:
               case 'end':
                 return _context5.stop();
             }

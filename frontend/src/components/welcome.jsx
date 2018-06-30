@@ -96,18 +96,18 @@ class Welcome extends Component {
     let code = this.getRandomCode();
 
     if (!code) return null;
-    
     this.props.createRoom({
       variables: {
         code,
         numRounds: this.state.numRounds,
-        gameType: this.state.gameType
+        gameType: this.state.gameType,
+        storage: localStorage.setItem('roomId', code)
       }
     });
   }
 
   addPlayer = () => {
-    let { code, username } = this.state;
+    let { code, username} = this.state;
     if (!code || !username) {
       return null;
     }
@@ -118,15 +118,15 @@ class Welcome extends Component {
       this.setState({code: "", username: ""});
       return null;
     }
-
     this.props.history.push(`/room/${code}`);
-    
+        
     this.props.addPlayer({
       variables: {
         code,
         username
       }
     })
+   
   }
 
   removeRoom = room => {
