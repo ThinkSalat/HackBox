@@ -29,10 +29,6 @@ const resolvers = {
       pubsub.publish(REMOVED_ROOM, { removedRoom: id })
       return true;
     },
-    // buildDeck: async (_, {code, cardType, numCards}) => {
-    //   const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
-    //   return await Room.findOneAndUpdate({ code }, { $set: { discard }})
-    // },
     addPlayer: async (_, { code, username }) => {
       let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
       if (usernameTaken) {
@@ -54,9 +50,6 @@ const resolvers = {
         {code, "players.username": username},
         {$push: {"players.$.hand": cards}})
     },
-    retrieveCards: async (_, {code, numCards, cardType}) => {
-      // 
-    },
     updateStatus: async (_, { code, options }) => {
       return await Room.findOneAndUpdate({code},
         { $set: { status: options } },
@@ -71,18 +64,12 @@ const resolvers = {
       const { players, discard, numRounds, status } = room._doc;
 
       const numCards = numRounds !== status.currentRound ? room.players.length : 1
-      const playerShuffles = players.concat(players); shuffleArray(playerShuffles);
+      let playerShuffles = players.concat(players); shuffleArray(playerShuffles);
       const ids = discard.map( card => card.id);
 
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-      let promptObjects;
-      
-      if (numCards === 1) {
-        promptObjects = [new Response({ prompt: prompts[0], players })]
-        console.log(promptObjects);
-      } else {
-        promptObjects = prompts.map( prompt => new Response({prompt, players: playerShuffles.splice(0,2)}))
-      }
+      let promptObjects = getPromptsObject(playerShuffles, numCards, prompts);
+
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
       return prompts;
@@ -110,9 +97,29 @@ const resolvers = {
 
 export default resolvers;
 
+const getPromptsObject = (playerShuffles, numCards, prompts) => {
+  let promptObjects;
+  if (numCards === 1) {
+    promptObjects = [new Response({ prompt: prompts[0], players })]
+  } else {
+    promptObjects = prompts.map( prompt => {
+      const players = []
+      players.push(playerShuffles.pop());
+      const arr = playerShuffles.filter( pl => !players.includes(pl))
+      players.push(arr.pop())
+      if (playerShuffles.includes(players[0])) {
+        arr.push(players[0])
+      }
+      playerShuffles = arr;
+      return new Response({ prompt, players })
+    })
+  }
+  return promptObjects;
+}
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
+      [array[i], array[j]] = [array[j], array[i]];
   }
 }
