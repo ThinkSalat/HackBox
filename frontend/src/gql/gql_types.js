@@ -8,7 +8,7 @@ const CARD = `
   flavorText
 `
 
-const PLAYER = `
+export const PLAYER = `
   id
   username
   score
