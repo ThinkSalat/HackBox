@@ -1,5 +1,5 @@
 
-const CARD = `
+export const CARD = `
   id
   text
   prompt

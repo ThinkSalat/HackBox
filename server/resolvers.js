@@ -33,7 +33,7 @@ const resolvers = {
       if (usernameTaken) {
         usernameTaken = "Username taken"
       } else {
-        player = new Player({ username, score: 0 });
+        var player = new Player({ username, score: 0 })
         await Room.update(
           { code }, 
           {$push: { players: player }}

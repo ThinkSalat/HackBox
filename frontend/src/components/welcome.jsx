@@ -105,7 +105,7 @@ class Welcome extends Component {
     localStorage.setItem('roomId', code)
   }
 
-  addPlayer = () => {
+  addPlayer = async () => {
     let { code, username} = this.state;
     if (!code || !username) {
       return null;
@@ -124,11 +124,12 @@ class Welcome extends Component {
         code,
         username
       }
+
     }).then((player) =>  {
       localStorage.setItem("playerId", player.data.addPlayer.id);
       localStorage.setItem('roomId', code);
-    })
-
+    })   
+    return player
   }
 
   removeRoom = room => {
