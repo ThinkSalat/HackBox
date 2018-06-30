@@ -28,7 +28,6 @@ const resolvers = {
       return true;
     },
     addPlayer: async (_, { code, username }) => {
-      let player;
       let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
       if (usernameTaken) {
         usernameTaken = "Username taken"
