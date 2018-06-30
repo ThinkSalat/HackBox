@@ -61,11 +61,10 @@ const resolvers = {
       const { players, discard, numRounds, status } = room._doc;
 
       const numCards = numRounds !== status.currentRound ? room.players.length : 1
-      let playerShuffles = players.concat(players); shuffleArray(playerShuffles);
       const ids = discard.map( card => card.id);
 
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-      let promptObjects = getPromptsObject(playerShuffles, numCards, prompts);
+      let promptObjects = getPromptsObject(players, numCards, prompts);
 
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
@@ -94,7 +93,8 @@ const resolvers = {
 
 export default resolvers;
 
-// const getPromptsObject = (playerShuffles, numCards, prompts) => {
+// const getPromptsObject = (players, numCards, prompts) => {
+  // let playerShuffles = players.concat(players); shuffleArray(playerShuffles);
 //   let promptObjects;
 //   if (numCards === 1) {
 //     promptObjects = [new Response({ prompt: prompts[0], players })]
@@ -113,7 +113,8 @@ export default resolvers;
 //   }
 //   return promptObjects;
 // }
-const getPromptsObject = (playerShuffles, numCards, prompts) => {
+const getPromptsObject = (players, numCards, prompts) => {
+  let playerShuffles = players.concat(players); shuffleArray(playerShuffles);
   let promptObjects;
   if (numCards === 1) {
     promptObjects = [new Response({ prompt: prompts[0], players })]
