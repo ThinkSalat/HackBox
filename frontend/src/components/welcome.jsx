@@ -10,8 +10,7 @@ import 'react-select/dist/react-select.css';
 
 
 import { 
-  RoomsQuery,
-  FindRoomQuery
+  RoomsQuery
 } from '../gql/gql_query';
 
 import {
@@ -25,6 +24,10 @@ import {
   NewRoomSubscription,
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
+
+import {
+  findRoomOptions
+} from '../gql_actions/query_actions';
 
 const defaultGame = "Quiplash";
 const defaultRounds = 3;
@@ -96,18 +99,18 @@ class Welcome extends Component {
     let code = this.getRandomCode();
 
     if (!code) return null;
-    
     this.props.createRoom({
       variables: {
         code,
         numRounds: this.state.numRounds,
-        gameType: this.state.gameType
+        gameType: this.state.gameType,
       }
     });
+    localStorage.setItem('roomId', code)
   }
 
   addPlayer = () => {
-    let { code, username } = this.state;
+    let { code, username} = this.state;
     if (!code || !username) {
       return null;
     }
@@ -118,15 +121,15 @@ class Welcome extends Component {
       this.setState({code: "", username: ""});
       return null;
     }
-
     this.props.history.push(`/room/${code}`);
-    
-    this.props.addPlayer({
+        
+    const player = this.props.addPlayer({
       variables: {
         code,
         username
       }
-    })
+    }).then((player) => localStorage.setItem("playerId", player.data.addPlayer.id))
+   return player
   }
 
   removeRoom = room => {
@@ -278,15 +281,6 @@ class Welcome extends Component {
 export default compose (
   graphql(RoomsQuery),
   graphql(RoomsQuery, {name: "roomsQuery"}),
-  graphql(FindRoomQuery, {
-    name: "findRoomQuery",
-    options: ownProps => {
-      const code = "test"
-      return {
-        variables: { code },
-      }
-    }
-  }),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),

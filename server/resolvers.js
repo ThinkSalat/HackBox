@@ -6,7 +6,6 @@ const JOINED_ROOM = 'JOINED_ROOM';
 const CREATED_ROOM = 'CREATED_ROOM';
 const REMOVED_ROOM = 'REMOVED_ROOM';
 const UPDATE_STATUS = 'UPDATE_STATUS';
-
 require("babel-polyfill");
 
 const resolvers = { 
@@ -41,13 +40,17 @@ const resolvers = {
       }
       const room = Room.findOne({ code });
       pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room, usernameTaken })
-      return room;
+      return player;
     },
     addPlayerHand: async (_, {code, username, numCards, cardType}) => {
       const cards = await Card.aggregate().match({ cardType }).sample(numCards).exec()
       return await Room.findOneAndUpdate(
         {code, "players.username": username},
         {$push: {"players.$.hand": cards}})
+    },
+    retrieveCards: async (_, {code, numCards, cardType}) => {
+      const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
+      return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
     updateStatus: async (_, { code, options }) => {
       await Room.findOneAndUpdate({code}, { $set: { status: options } })
