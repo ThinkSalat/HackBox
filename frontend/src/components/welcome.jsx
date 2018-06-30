@@ -10,8 +10,7 @@ import 'react-select/dist/react-select.css';
 
 
 import { 
-  RoomsQuery,
-  FindRoomQuery
+  RoomsQuery
 } from '../gql/gql_query';
 
 import {
@@ -282,7 +281,6 @@ class Welcome extends Component {
 export default compose (
   graphql(RoomsQuery),
   graphql(RoomsQuery, {name: "roomsQuery"}),
-  graphql(FindRoomQuery, findRoomOptions("test")),
   graphql(CreateRoomMutation, {name: "createRoom"}),
   graphql(RemoveRoomMutation, {name: "removeRoom"}),
   graphql(AddPlayerMutation, {name: "addPlayer"}),
