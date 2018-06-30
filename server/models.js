@@ -46,7 +46,6 @@ const RoomSchema = new Schema({
   status: StatusSchema
 });
 
-
 export const Card = mongoose.model("Card", CardSchema);
 export const Player = mongoose.model("Player", PlayerSchema);
 export const Room = mongoose.model("Room", RoomSchema);

@@ -85,6 +85,21 @@ const resolvers = {
       await Room.findOneAndUpdate({code, "prompts._id": responseId}, {$push: { "prompts.$.answers": playerAnswer}})
       return response;
     },
+    addVoteToAnswer: async (_, { code, username, answerId, responseId}) => {
+      let room = await Room.findOne({code})
+      let {prompts, players} = room;
+      let player = players.filter( pl => pl.username===username)[0]
+      let prompt = prompts.filter( p => p.id === responseId)[0];
+      let answer = prompt.answers.filter( a => a.id === answerId)[0]
+
+      answer.votes.push(player)
+
+      await Room.findOneAndUpdate({ code, "prompts._id": responseId},
+      { $set: { "prompts.$.answers": answer}}
+    )
+
+
+    },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},
        { $inc: { "players.$.score": points }});
