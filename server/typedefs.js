@@ -1,10 +1,9 @@
 const typeDefs = `
   type Query {
-    rooms: [Room],
-    findRoom(code: String): Room,
+    rooms: [Room]
+    findRoom(code: String): Room
     findCards(cardType: String!, numCards: Int!): [Card]
   }
-  
   type Room {
     id: ID
     code: String!
@@ -75,6 +74,7 @@ const typeDefs = `
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
     updateStatus(code: String!, options: StatusOptions!): Room
     retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
+    addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
   }
   
   type Subscription {
