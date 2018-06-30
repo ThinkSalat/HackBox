@@ -113,7 +113,7 @@ class Lobby extends React.Component {
   }
 
   startGame = () => {
-    this.updateStatus({gameStarted: true, currentRound: 99});
+    this.updateStatus({gameStarted: true});
   }
   
   updateStage = () => {

@@ -24,12 +24,12 @@ const typeDefs = `
   }
 
   type Status {
-    currentRound: Int!
-    status: String!
-    gameOver: Boolean!
-    gameStarted: Boolean!
-    votingFinished: Boolean!
-    allResponsesReceived: Boolean!
+    currentRound: Int
+    status: String
+    gameOver: Boolean
+    gameStarted: Boolean
+    votingFinished: Boolean
+    allResponsesReceived: Boolean
     timer: Int
   }
 

@@ -9,16 +9,28 @@ class HostScreen extends React.Component {
 
   state = {
     answerCount: 0,
-    currentRound: 1,
-    clock: 60,
     promptPhase: true,
     votingPhase: false,
   }
+  
+  updateStatus = (options) => {
+    let code = this.props.code;
+    this.props.updateStatus({
+      variables: {
+        code,
+        options
+      }
+    });
+  }
 
   clock = () => {
-    this.clock = setInterval(() => this.setState({
-      clock: this.state.clock - 1
-    }), 1000);
+    this.clock = setInterval(() => {
+      this.updateStatus({
+        gameStarted: true,
+        currentRound: this.props.status.currentRound + 1,
+        timer: this.props.status.timer - 1
+      });
+    }, 1000);
   }
 
   componentDidMount() {
@@ -103,7 +115,7 @@ class HostScreen extends React.Component {
       // allResponsesReceived, 
       currentRound, 
       // gameOver, 
-      // timer, 
+      timer, 
       // votingFinished 
     } = this.props.status;
     
@@ -111,7 +123,7 @@ class HostScreen extends React.Component {
       <div>
         <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
         <h3>{`Answers Collected: ${this.state.answerCount} / ${this.props.players.length}`}</h3>
-        <h3>Timer: {this.state.clock}s</h3>
+        <h3>Timer: {timer}s</h3>
         <button onClick={this.playerAnswered}>
           Player Answer
         </button>
