@@ -54,18 +54,12 @@ const resolvers = {
       return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
     updateStatus: async (_, { code, options }) => {
-<<<<<<< HEAD
-
-      room = await Room.findOne({code})
-      const {status} = room
-=======
       let room = await Room.findOne({code})
       let {status} = room._doc;
       status = merge({},status._doc, options)
       await Room.findOneAndUpdate({code}, { $set: { status } })
       room = await Room.findOne({code})
       status = room.status
->>>>>>> master
       pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
       return room;
     },
