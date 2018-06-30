@@ -1,9 +1,9 @@
 
-export const findRoomOptions = (code) => {
+export const findRoomOptions = () => {
   return {
     name: "findRoomQuery",
     options: ownProps => {
-      code = code ? code : ownProps.match.params.code;
+      let code = ownProps.match.params.code;
       return {
         variables: { code },
       }

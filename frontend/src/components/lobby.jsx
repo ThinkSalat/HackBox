@@ -20,10 +20,6 @@ class Lobby extends React.Component {
   }
 
   showPlayers = room => {
-    if (!room) {
-      return null;
-    }
-    
     let players = room.players.map(player => {
       return (
         <li key={player.id}>
@@ -88,9 +84,6 @@ class Lobby extends React.Component {
     if (!room) {
       return null;
     }
-
-    
-    this.showPlayers();
 
     return (
       <div className='single-room'>

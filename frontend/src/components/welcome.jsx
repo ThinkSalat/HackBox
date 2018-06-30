@@ -25,9 +25,6 @@ import {
   RemoveRoomSubscription
 } from '../gql/gql_subscription';
 
-import {
-  findRoomOptions
-} from '../gql_actions/query_actions';
 
 const defaultGame = "Quiplash";
 const defaultRounds = 3;
@@ -45,7 +42,6 @@ class Welcome extends Component {
   componentDidMount() {
     this.subscribeToNewRooms();
     this.subscribeToRemoveRooms();
-
   }
 
   componentWillReceiveProps(nextProps) {
