@@ -18,6 +18,7 @@ const typeDefs = `
   type Response {
     id: ID!
     prompt: Card!
+    roundNumber: Int!
     answers: [Answer]
     players: [Player]
   }
@@ -73,7 +74,7 @@ const typeDefs = `
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
     updateStatus(code: String!, options: StatusOptions!): Room
-    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
+    retrieveAndAssignPrompts(code: String!, cardType: String!, roundNumber: Int!): [Card]
     addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
   }
   
