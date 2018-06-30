@@ -3,10 +3,10 @@ import { PubSub, withFilter } from 'graphql-subscriptions';
 import merge from 'lodash/merge'
 
 const pubsub = new PubSub();
-const JOINED_ROOM = 'JOINED_ROOM';
-const CREATED_ROOM = 'CREATED_ROOM';
-const REMOVED_ROOM = 'REMOVED_ROOM';
-const UPDATE_STATUS = 'UPDATE_STATUS';
+const JOINED_ROOM = 'JOINED_ROOM',
+  CREATED_ROOM = 'CREATED_ROOM',
+  REMOVED_ROOM = 'REMOVED_ROOM',
+  UPDATE_STATUS = 'UPDATE_STATUS';
 require("babel-polyfill");
 
 const resolvers = { 
