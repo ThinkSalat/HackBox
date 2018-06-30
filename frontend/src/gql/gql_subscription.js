@@ -1,7 +1,7 @@
 //Will parse the query using gql
 import gql from 'graphql-tag';
 
-import {ROOM} from './gql_types';
+import {ROOM, STATUS} from './gql_types';
 
 export const NewPlayerSubscription = gql`
   subscription onJoinedRoom($code: String!){
@@ -22,5 +22,13 @@ export const NewRoomSubscription = gql`
 export const RemoveRoomSubscription = gql`
   subscription onRemovedRoom {
     removedRoom
+  }
+`;
+
+export const UpdateStatusSubscription = gql`
+  subscription onUpdateStatus($code: String!) {
+    updateStatus(code: $code) {
+      ${STATUS}
+    }
   }
 `;
