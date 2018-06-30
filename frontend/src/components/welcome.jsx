@@ -105,7 +105,7 @@ class Welcome extends Component {
     localStorage.setItem('roomId', code)
   }
 
-  addPlayer = async () => {
+  addPlayer = () => {
     let { code, username} = this.state;
     if (!code || !username) {
       return null;
@@ -119,7 +119,7 @@ class Welcome extends Component {
     }
     this.props.history.push(`/room/${code}`);
         
-    var player = this.props.addPlayer({
+    this.props.addPlayer({
       variables: {
         code,
         username
@@ -128,8 +128,7 @@ class Welcome extends Component {
     }).then((player) =>  {
       localStorage.setItem("playerId", player.data.addPlayer.id);
       localStorage.setItem('roomId', code);
-    })   
-    return player
+    })
   }
 
   removeRoom = room => {

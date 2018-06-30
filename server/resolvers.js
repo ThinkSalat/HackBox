@@ -53,8 +53,8 @@ const resolvers = {
       return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
     updateStatus: async (_, { code, options }) => {
-      await Room.findOneAndUpdate({code}, { $set: { status: options } })
-      const room = await Room.findOne({code})
+
+      room = await Room.findOne({code})
       const {status} = room
       pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
       return room;
