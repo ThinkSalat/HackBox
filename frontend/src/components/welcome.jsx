@@ -18,12 +18,17 @@ import {
   AddPlayerMutation,
   RemoveRoomMutation
 } from '../gql/gql_mutation';
+import {
+  createRoom,
+  addPlayer,
+  removeRoom
+} from '../gql_actions/mutation_actions';
 
 import {
-  NewPlayerSubscription,
-  NewRoomSubscription,
-  RemoveRoomSubscription
-} from '../gql/gql_subscription';
+  subscribeToNewPlayers,
+  subscribeToNewRooms,
+  subscribeToRemoveRooms
+} from '../gql_actions/subscription_actions';
 
 
 const defaultGame = "Quiplash";
@@ -40,8 +45,8 @@ class Welcome extends Component {
   }
 
   componentDidMount() {
-    this.subscribeToNewRooms();
-    this.subscribeToRemoveRooms();
+    subscribeToNewRooms(this.props.roomsQuery);
+    subscribeToRemoveRooms(this.props.roomsQuery);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,7 +56,7 @@ class Welcome extends Component {
 
     if (nextProps.data.rooms && !this.state.subbed) {
       nextProps.data.rooms.forEach((rm) => {
-        this.subscribeToNewPlayers(rm.code)
+        subscribeToNewPlayers(this.props.roomsQuery, rm.code)
       })
 
       this.setState({subbed: true});
@@ -80,136 +85,16 @@ class Welcome extends Component {
     this.setState({ numRounds: val });
   }
 
-  getRandomCode() {
-    const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      code += alpha[Math.floor(Math.random() * alpha.length)];
-    }
-
-    return code;
-  }
-
-  createRoom = () => {
-    let code = this.getRandomCode();
-
-    if (!code) return null;
-    this.props.createRoom({
-      variables: {
-        code,
-        numRounds: this.state.numRounds,
-        gameType: this.state.gameType,
-      }
-    });
-    localStorage.setItem('roomId', code)
-  }
-
-  addPlayer = () => {
-    let { code, username} = this.state;
-    if (!code || !username) {
-      return null;
-    }
-    
-    const { rooms } = this.props.data;
-    let room = rooms.find(room => room.code === code);
-    if (!room) {
-      this.setState({code: "", username: ""});
-      return null;
-    }
-    this.props.history.push(`/room/${code}`);
-        
-    this.props.addPlayer({
-      variables: {
-        code,
-        username
-      }
-
-    }).then((player) =>  {
-      localStorage.setItem("playerId", player.data.addPlayer.id);
-      localStorage.setItem('roomId', code);
-    })
-  }
-
-  removeRoom = room => {
-    this.props.removeRoom({
-      variables: {
-        id: room.id
-      }
-    })
-  }
-
-  subscribeToNewPlayers = (code) => {
-    this.props.roomsQuery.subscribeToMore({
-      document: NewPlayerSubscription,
-      variables: {
-        code: code
-      },
-      updateQuery: (previous, { subscriptionData }) => {
-        if (!subscriptionData.data) {
-          return previous;
-        }
-      }
-    })
-  }
-
-  subscribeToNewRooms = () => {
-    this.props.roomsQuery.subscribeToMore({
-      document: NewRoomSubscription,
-      updateQuery: (previous, { subscriptionData }) => {
-        if (!subscriptionData.data) {
-          return previous;
-        }
-        let newRooms = [ subscriptionData.data.createdRoom, ...previous.rooms];
-
-        let result = {
-          ...previous,
-          rooms: newRooms
-        }
-
-        this.subscribeToNewPlayers(subscriptionData.data.createdRoom.code)
-
-        return result;
-      }
-    })
-  }
-
-  subscribeToRemoveRooms = () => {
-    this.props.roomsQuery.subscribeToMore({
-      document: RemoveRoomSubscription,
-      updateQuery: (previous, { subscriptionData }) => {
-        if (!subscriptionData.data) {
-          return previous;
-        }
-
-        let newRooms = previous.rooms.filter((rm) => {
-          return subscriptionData.data.removedRoom !== rm.id
-        })
-
-        let result = {
-          ...previous,
-          rooms: newRooms
-        }
-
-        return result;
-      }
-    })
-  }
-
   render() {
-
 
     const {data: {loading, rooms}} = this.props;
     const {username, code, gameType, numRounds} = this.state;
-
-    // console.log(rooms, this.props);
       
     
     if (loading) {
       return null;
     }
     
-
     return(
 
       <div className='lobby'>
@@ -243,7 +128,7 @@ class Welcome extends Component {
         </div>
 
         <br/>
-        <button onClick={this.createRoom}>Create Room</button>
+        <button onClick={() => createRoom(this.state, this.props)}>Create Room</button>
 
         <TextField
           onChange={this.handleChange("code")}
@@ -259,7 +144,7 @@ class Welcome extends Component {
         />
 
         <br/>
-        <button onClick={() => this.addPlayer(code, username)}>Join Room</button>
+        <button onClick={() => addPlayer(this)}>Join Room</button>
 
         <ul className='room-list'>
           {rooms.map(room => (
@@ -267,7 +152,7 @@ class Welcome extends Component {
               <li onClick={() => this.props.history.push(`/room/${room.code}`)}>
                 {`${room.code}: ${room.players.length} players, ${room.gameType}, ${room.numRounds} rounds`}
               </li>
-              <button onClick={() => this.removeRoom(room)}>
+              <button onClick={() => removeRoom(this.props, room)}>
                 remove
               </button>
             </div>
