@@ -1,5 +1,6 @@
 import { Room, Player, Card, Status, Answer, Response } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
+import merge from 'lodash/merge'
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
@@ -53,9 +54,18 @@ const resolvers = {
       return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
     updateStatus: async (_, { code, options }) => {
+<<<<<<< HEAD
 
       room = await Room.findOne({code})
       const {status} = room
+=======
+      let room = await Room.findOne({code})
+      let {status} = room._doc;
+      status = merge({},status._doc, options)
+      await Room.findOneAndUpdate({code}, { $set: { status } })
+      room = await Room.findOne({code})
+      status = room.status
+>>>>>>> master
       pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
       return room;
     },
@@ -84,6 +94,21 @@ const resolvers = {
       response.answers.push(playerAnswer)
       await Room.findOneAndUpdate({code, "prompts._id": responseId}, {$push: { "prompts.$.answers": playerAnswer}})
       return response;
+    },
+    addVoteToAnswer: async (_, { code, username, answerId, responseId}) => {
+      let room = await Room.findOne({code})
+      let {prompts, players} = room;
+      let player = players.filter( pl => pl.username===username)[0]
+      let prompt = prompts.filter( p => p.id === responseId)[0];
+      let answer = prompt.answers.filter( a => a.id === answerId)[0]
+
+      answer.votes.push(player)
+
+      await Room.findOneAndUpdate({ code, "prompts._id": responseId},
+      { $set: { "prompts.$.answers": answer}}
+    )
+
+
     },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},
