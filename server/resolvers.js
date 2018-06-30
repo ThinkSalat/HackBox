@@ -1,6 +1,6 @@
 import { Room, Player, Card, Status, Answer, Response } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
-import { flattenSelections } from 'apollo-utilities';
+import { flattenSelections, assign } from 'apollo-utilities';
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
@@ -51,13 +51,10 @@ const resolvers = {
         {$push: {"players.$.hand": cards}})
     },
     updateStatus: async (_, { code, options }) => {
-      return await Room.findOneAndUpdate({code},
-        { $set: { status: options } },
-        (err, {status}) => {
-          status = status._doc
-          pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
-        }
-      )
+      await Room.findOneAndUpdate({code}, { $set: { status: options } })
+      const room = await Room.findOne({code})
+      const {status} = room
+      pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
     },
     retrieveAndAssignPrompts: async (_, { code, cardType }) => {
       const room = await Room.findOne({code});
@@ -97,6 +94,25 @@ const resolvers = {
 
 export default resolvers;
 
+// const getPromptsObject = (playerShuffles, numCards, prompts) => {
+//   let promptObjects;
+//   if (numCards === 1) {
+//     promptObjects = [new Response({ prompt: prompts[0], players })]
+//   } else {
+//     promptObjects = prompts.map( prompt => {
+//       const players = []
+//       players.push(playerShuffles.pop());
+//       const arr = playerShuffles.filter( pl => !players.includes(pl))
+//       players.push(arr.pop())
+//       if (playerShuffles.includes(players[0])) {
+//         arr.push(players[0])
+//       }
+//       playerShuffles = arr;
+//       return new Response({ prompt, players })
+//     })
+//   }
+//   return promptObjects;
+// }
 const getPromptsObject = (playerShuffles, numCards, prompts) => {
   let promptObjects;
   if (numCards === 1) {
