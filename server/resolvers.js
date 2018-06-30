@@ -1,5 +1,6 @@
 import { Room, Player, Card, Status, Answer, Response } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
+import merge from 'lodash/merge'
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
@@ -53,9 +54,12 @@ const resolvers = {
       return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
     updateStatus: async (_, { code, options }) => {
-      await Room.findOneAndUpdate({code}, { $set: { status: options } })
-      const room = await Room.findOne({code})
-      const {status} = room
+      let room = await Room.findOne({code})
+      let {status} = room._doc;
+      status = merge({},status._doc, options)
+      await Room.findOneAndUpdate({code}, { $set: { status } })
+      room = await Room.findOne({code})
+      status = room.status
       pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
       return room;
     },
