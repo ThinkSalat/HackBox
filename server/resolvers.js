@@ -32,7 +32,7 @@ const resolvers = {
       if (usernameTaken) {
         usernameTaken = "Username taken"
       } else {
-        const player = new Player({ username, score: 0 });
+        var player = new Player({ username, score: 0 });
         await Room.update(
           { code }, 
           {$push: { players: player }}
@@ -95,50 +95,32 @@ const resolvers = {
 
 export default resolvers;
 
-// const getPromptsObject = (players, numCards, prompts) => {
-  // let playerShuffles = players.concat(players); shuffleArray(playerShuffles);
-//   let promptObjects;
-//   if (numCards === 1) {
-//     promptObjects = [new Response({ prompt: prompts[0], players })]
-//   } else {
-//     promptObjects = prompts.map( prompt => {
-//       const players = []
-//       players.push(playerShuffles.pop());
-//       const arr = playerShuffles.filter( pl => !players.includes(pl))
-//       players.push(arr.pop())
-//       if (playerShuffles.includes(players[0])) {
-//         arr.push(players[0])
-//       }
-//       playerShuffles = arr;
-//       return new Response({ prompt, players })
-//     })
-//   }
-//   return promptObjects;
-// }
-const getPromptsObject = (players, numCards, prompts) => {
-  let playerShuffles = players.concat(players); shuffleArray(playerShuffles);
+const getPromptsObject = (rcvdPlayers, numCards, prompts) => {
   let promptObjects;
+  let playerMatchups = buildMatchups(rcvdPlayers);
+
   if (numCards === 1) {
-    promptObjects = [new Response({ prompt: prompts[0], players })]
+    promptObjects = [new Response({ prompt: prompts[0], players: rcvdPlayers })]
   } else {
     promptObjects = prompts.map( prompt => {
-      const players = []
-      players.push(playerShuffles.pop());
-      const arr = playerShuffles.filter( pl => !players.includes(pl))
-      players.push(arr.pop())
-      if (playerShuffles.includes(players[0])) {
-        arr.push(players[0])
-      }
-      playerShuffles = arr;
+      const players = playerMatchups.pop()
       return new Response({ prompt, players })
     })
   }
   return promptObjects;
 }
 
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-  }
+const buildMatchups = players => {
+  const matchups = []
+  const offset = (Math.floor(Math.random() * players.length-1) + 1 )
+  players.forEach(pl => matchups.push([pl]))
+  matchups.forEach( (plArr,i) => {
+    let pOffset = (i+offset) % players.length;
+    if (pOffset === 0 || pOffset === players.length) {
+      pOffset  += 1
+    }
+    plArr.push(players[pOffset])
+  })
+
+  return matchups;
 }
