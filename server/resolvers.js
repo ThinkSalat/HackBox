@@ -1,6 +1,5 @@
 import { Room, Player, Card, Status, Answer, Response } from './models';
 import { PubSub, withFilter } from 'graphql-subscriptions';
-import { flattenSelections, assign } from 'apollo-utilities';
 
 const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM';
