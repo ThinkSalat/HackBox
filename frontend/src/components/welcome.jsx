@@ -102,7 +102,9 @@ class Welcome extends Component {
         gameType: this.state.gameType,
       }
     });
-    localStorage.setItem('roomId', code)
+    localStorage.setItem("roomId", code)
+    localStorage.setItem("isHost", true)
+    localStorage.setItem("isPlayer", false)
   }
 
   addPlayer = async () => {
@@ -126,8 +128,12 @@ class Welcome extends Component {
       }
 
     }).then((player) =>  {
+      // player.data.addPlayer.id ? localStorage.setItem("isPlayer", true) : localStorage.setItem("isGame", true);
       localStorage.setItem("playerId", player.data.addPlayer.id);
       localStorage.setItem('roomId', code);
+      localStorage.setItem("isPlayer", true)
+      localStorage.setItem("isHost", false)
+      localStorage.setItem("inGame", true)
     })   
     return player
   }
