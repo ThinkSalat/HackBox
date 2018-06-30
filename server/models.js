@@ -27,7 +27,7 @@ const ResponseSchema = new Schema({
 });
 
 const StatusSchema = new Schema({
-  currentRound: {type: Number, default: false},
+  currentRound: {type: Number, default: 1},
   status: {type: String, default: "Lobby"},
   gameOver: {type: Boolean, default: false},
   gameStarted: {type: Boolean, default: false},

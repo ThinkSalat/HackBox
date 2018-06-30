@@ -3,17 +3,13 @@ import { withRouter } from 'react-router-dom';
 //need to bind with component
 import {graphql, compose} from 'react-apollo';
 
-import { 
-  FindRoomQuery
-} from '../gql/gql_query';
+import { FindRoomQuery } from '../gql/gql_query';
+import { findRoomOptions } from '../gql_actions/query_actions';
 
 import {
-  NewPlayerSubscription
+  NewPlayerSubscription,
+  UpdateStatusSubscription
 } from '../gql/gql_subscription';
-
-import {
-  findRoomOptions
-} from '../gql_actions/query_actions';
 
 import Game from './game';
 
@@ -24,7 +20,18 @@ class Lobby extends React.Component {
   }
 
   componentDidMount() {
-    this.subscribeToNewPlayers(this.props.match.params.code)
+    let {code} = this.props.match.params;
+    
+    this.subscribeToNewPlayers(code)
+    this.subscribeToRoomStatus(code, {
+      currentRound: 1,
+      status: 'Lobby',
+      gameOver: false,
+      gameStarted: false,
+      votingFinished: false,
+      allResponsesReceived: false,
+      timer: 60
+    })
   }
 
   showPlayers = room => {
@@ -91,6 +98,21 @@ class Lobby extends React.Component {
       document: NewPlayerSubscription,
       variables: {
         code: code
+      },
+      updateQuery: (previous, { subscriptionData }) => {
+        if (!subscriptionData.data) {
+          return previous;
+        }
+      }
+    })
+  }
+
+  subscribeToRoomStatus = (code, options) => {
+    this.props.findRoomQuery.subscribeToMore({
+      document: UpdateStatusSubscription,
+      variables: {
+        code,
+        options
       },
       updateQuery: (previous, { subscriptionData }) => {
         if (!subscriptionData.data) {
