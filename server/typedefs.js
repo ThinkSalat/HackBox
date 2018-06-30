@@ -74,6 +74,7 @@ const typeDefs = `
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: Int!): Response
     updateStatus(code: String!, options: StatusOptions!): Room
+    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
   }
   
   type Subscription {
