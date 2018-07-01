@@ -11,7 +11,8 @@ span, article, footer, select, time, small {
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  list-style: none; }
 
 ul {
   list-style: none; }
