@@ -28,12 +28,12 @@ const ResponseSchema = new Schema({
 
 const StatusSchema = new Schema({
   currentRound: {type: Number, default: 1},
+  timer: {type: Number, default: 60},
   status: {type: String, default: "Lobby"},
   gameOver: {type: Boolean, default: false},
   gameStarted: {type: Boolean, default: false},
-  votingFinished: {type: Boolean, default: false},
-  allResponsesReceived: {type: Boolean, default: false},
-  timer: {type: Number, default: 60}
+  answerPhase: {type: Boolean, default: false},
+  votePhase: {type: Boolean, default: false},
 });
 
 const RoomSchema = new Schema({

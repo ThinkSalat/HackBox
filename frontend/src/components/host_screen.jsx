@@ -6,12 +6,6 @@ import {graphql, compose} from 'react-apollo';
 import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 class HostScreen extends React.Component {
-
-  state = {
-    answerCount: 0,
-    promptPhase: true,
-    votingPhase: false,
-  }
   
   updateStatus = (options) => {
     let code = this.props.code;
@@ -25,11 +19,7 @@ class HostScreen extends React.Component {
 
   clock = () => {
     this.clock = setInterval(() => {
-      this.updateStatus({
-        gameStarted: true,
-        currentRound: this.props.status.currentRound + 1,
-        timer: this.props.status.timer - 1
-      });
+      this.updateStatus({ timer: this.props.status.timer - 1 });
     }, 1000);
   }
 
@@ -46,89 +36,71 @@ class HostScreen extends React.Component {
   }
 
   updateProgress = () => {
-    let { currentRound, clock, promptPhase, votingPhase } = this.state;
+    let { 
+      currentRound, 
+      timer, 
+      answerPhase,
+      votePhase,
+    } = this.props.status;
 
-    if (clock === 0) {
-      if (promptPhase) {
-        this.enterVotingPhase();
-      } 
-      if (votingPhase) {
-        this.enterPromptPhase();
-      }
+    if (timer === 0) {
+      if (answerPhase) this.enterVotePhase();
+      if (votePhase) this.enterAnswerPhase();
     }
 
     if (currentRound > this.props.numRounds) {
-      console.log('all rounds end');
-      
-      //game summary
-      console.log('score tally, decalre winner');
-
-      //delete room subscription
-      console.log('game over, delete room, back to lobby');
-
+      this.updateStatus({ 
+        gameOver: true, 
+        gameStarted: false 
+      });
       this.props.history.push('/');
     }
   }
 
-  enterVotingPhase = () => {    
-    this.setState({
-      clock: 15,
-      promptPhase: false,
-      votingPhase: true,
+  allVoted = () => {
+    if (this.props.status.votePhase) {
+      this.enterAnswerPhase();
+    }
+  }
+
+  allAnswered = () => {
+    if (this.props.status.answerPhase) {
+      this.enterVotePhase();
+    }
+  }
+
+  enterAnswerPhase = () => {
+    this.updateStatus({
+      currentRound: this.props.status.currentRound + 1,
+      timer: 60,
+      answerPhase: true,
+      votePhase: false,
     });
   }
 
-  playerAnswered = () => {
-    let { answerCount, promptPhase } = this.state;
-    if (!promptPhase) {
-      return null;
-    }
-
-    this.setState({
-      answerCount: answerCount + 1
-    });
-    
-    if (answerCount >= this.props.players.length - 1) {
-      this.enterVotingPhase();
-    }
-  }
-
-  enterPromptPhase = () => {    
-    this.setState({
-      currentRound: this.state.currentRound + 1,
-      clock: 60,
-      answerCount: 0,
-      promptPhase: true,
-      votingPhase: false,
-    })
-  }
-
-  playerVoted = () => {
-    if (!this.state.votingPhase) {
-      return null;
-    }
-    this.enterPromptPhase();
+  enterVotePhase = () => {
+    this.updateStatus({
+      timer: 15,
+      answerPhase: false,
+      votePhase: true,
+    }); 
   }
   
   render() {
-    let { 
-      // allResponsesReceived, 
+    let {  
       currentRound, 
-      // gameOver, 
-      timer, 
-      // votingFinished 
+      timer,
     } = this.props.status;
     
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
-        <h3>{`Answers Collected: ${this.state.answerCount} / ${this.props.players.length}`}</h3>
         <h3>Timer: {timer}s</h3>
-        <button onClick={this.playerAnswered}>
-          Player Answer
+        <button onClick={this.allAnswered}>
+          All Answered
         </button>
-        <button onClick={this.playerVoted}>
-          Vote Finish
+        <button onClick={this.allVoted}>
+          All Voted
         </button>
         {this.props.showPlayers}
       </div>

@@ -24,12 +24,14 @@ const typeDefs = `
 
   type Status {
     currentRound: Int
+    timer: Int
     status: String
     gameOver: Boolean
     gameStarted: Boolean
-    votingFinished: Boolean
-    allResponsesReceived: Boolean
-    timer: Int
+    answerPhase: Boolean
+    votePhase: Boolean
+    allAnswered: Boolean
+    allVoted: Boolean
   }
 
   type Answer {
@@ -56,12 +58,12 @@ const typeDefs = `
 
   input StatusOptions {
     currentRound: Int
+    timer: Int
     status: String
     gameOver: Boolean
     gameStarted: Boolean
-    votingFinished: Boolean
-    allResponsesReceived: Boolean
-    timer: Int
+    answerPhase: Boolean
+    votePhase: Boolean
   }
 
   type Mutation {
