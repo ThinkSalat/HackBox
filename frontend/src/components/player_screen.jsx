@@ -9,6 +9,7 @@ import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
 import { 
   UpdateStatusMutation,
   AddAnswerToResponseMutation,
+  AddVoteToAnswerMutation,
 } from '../gql/gql_mutation';
 
 class PlayerScreen extends React.Component {
@@ -41,6 +42,16 @@ class PlayerScreen extends React.Component {
       }
     });
   }
+  
+  addVote = (answerId, responseId) => {
+    let code = this.room.code;
+    let username = localStorage.playerId;
+    this.props.addVote({
+      variables: {
+        code, username, answerId, responseId
+      }
+    });
+  }
 
   submit = e => {
     e.preventDefault();
@@ -48,7 +59,7 @@ class PlayerScreen extends React.Component {
     this.setState({ answer: ''});
   }
 
-  answered = e => {
+  updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
   }
 
@@ -57,7 +68,7 @@ class PlayerScreen extends React.Component {
       <div>
         <form onSubmit={this.submit}>
           <input 
-            onChange={this.answered}
+            onChange={this.updateAnswer}
             value={this.state.answer}
             placeholder='Answer here'/>
         </form>
@@ -68,11 +79,16 @@ class PlayerScreen extends React.Component {
   vote = () => {
     return (
       <div>
-        <h3>Vote your favorite response!</h3>
-        <button onClick={this.voted}>Response A</button>
-        <button onClick={this.voted}>Response B</button>
+        <h3>Vote your favorite answer!</h3>
+        <button onClick={this.voted}>Answer A</button>
+        <button onClick={this.voted}>Answer B</button>
       </div>
     );
+  }
+
+  voted = e => {
+    e.preventDefault();
+    // this.addVote(answerId, responseId);
   }
 
   render() {
@@ -105,6 +121,7 @@ class PlayerScreen extends React.Component {
         <h3>Timer: {timer}s</h3>
         {prompts}
         {this.answer()}
+        {this.vote()}
       </div>
     );
   }
@@ -122,4 +139,5 @@ export default compose (
   }),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
   graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),
+  graphql(AddVoteToAnswerMutation, {name: 'addVote'}),
 )(withRouter(PlayerScreen));
