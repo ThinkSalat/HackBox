@@ -28,9 +28,9 @@ export const createRoom = (state, props) => {
     }
   });
   localStorage.setItem('roomId', code)
-  localStorage.setItem("isPlayer", false);
-  localStorage.setItem("isHost", true);
-  localStorage.setItem("inGame", true);
+  localStorage.setItem("isPlayer", false)
+  localStorage.setItem("isHost", true)
+  localStorage.setItem("inGame", true)
 }
 
 
