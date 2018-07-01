@@ -53,16 +53,7 @@ const resolvers = {
       const discard = await Card.aggregate().match({ cardType }).sample(numCards).exec()
       return await Room.findOneAndUpdate({ code }, { $set: { discard }})
     },
-    updateStatus: async (_, { code, options }) => {
-      let room = await Room.findOne({code})
-      let {status} = room._doc;
-      status = merge({},status._doc, options)
-      await Room.findOneAndUpdate({code}, { $set: { status } })
-      room = await Room.findOne({code})
-      status = room.status
-      pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
-      return room;
-    },
+    updateStatus: (_, { code, options }) => updateStatus(code, options),
     retrieveAndAssignPrompts: async (_, { code, cardType, roundNumber }) => {
       const room = await Room.findOne({code});
       const { players, discard, numRounds, status } = room._doc;
@@ -82,17 +73,19 @@ const resolvers = {
       let {prompts, players, status} = room;
       let response = prompts.filter( response => response.id === responseId)[0]
       let player = players.filter( pl => pl.username===username)[0]
-      let {roundNumber} = status;
-      console.log(roundNumber);
+      let {currentRound} = status;
+
       if(response.answers.map( a => a.player.id).includes(player.id)) return response;
       let playerAnswer = new Answer({player, answers })
       response.answers.push(playerAnswer)
       await Room.findOneAndUpdate({code, "prompts._id": responseId}, {$push: { "prompts.$.answers": playerAnswer}})
 
-      const promptsForRound = prompts.filter(reponse => response.roundNumber === roundNumber)
+      const promptsForRound = prompts.filter(res => res.roundNumber === currentRound)
       if (allPlayersAnswered(promptsForRound, players)) {
         // fire off allPlayersAnswered subscription
         // fire off playerAnsweredAllPrompts subscription
+        updateStatus(code, {allResponsesReceived: true})
+
       } else if (playerAnsweredAllPrompts(promptsForRound, player)) {
         // fire off playerAnsweredAllPrompts subscription
       }
@@ -111,12 +104,16 @@ const resolvers = {
 
       await Room.findOneAndUpdate({ code, "prompts._id": responseId},
       { $set: { "prompts.$.answers": answer}}
-    )
-    const promptsForRound = prompts.filter(reponse => response.roundNumber === roundNumber)
-    if (allVotescast(prompts)) {
-      // fire subscription for allVotesCast
-    }
+      )
 
+      // send sub for finishing voting if voting over
+      const promptsForRound = prompts.filter(res => res.roundNumber === roundNumber)
+      if (allVotescast(prompts)) {
+        // fire subscription for allVotesCast
+        updateStatus(code, {votingFinished: true})
+      }
+
+      return answer
     },
     addPlayerScore: async(_, {code, username, points}) => {
       return await Room.findOneAndUpdate({ code, "players.username": username},
@@ -141,8 +138,18 @@ const resolvers = {
 
 export default resolvers;
 
+const updateStatus = async (code, options) => {
+  let room = await Room.findOne({code})
+  let {status} = room._doc;
+  status = merge({},status._doc, options)
+  await Room.findOneAndUpdate({code}, { $set: { status } })
+  room = await Room.findOne({code})
+  status = room.status
+  pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
+  return room;
+}
+
 const getPromptsObject = (rcvdPlayers, numCards, prompts, roundNumber) => {
-  console.log(roundNumber);
   let promptObjects;
   let playerMatchups = buildMatchups(rcvdPlayers);
 
@@ -173,7 +180,12 @@ const buildMatchups = players => {
 }
 
 const allPlayersAnswered = (prompts, players) => {
-
+  for (let i = 0; i < prompts.length; i++) {
+    if (prompts[i].answers.length < 2) {
+      return false
+    }
+  }
+  return true
 }
 
 const playerAnsweredAllPrompts = (prompts, player) => {
