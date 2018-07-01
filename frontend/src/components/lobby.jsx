@@ -13,6 +13,10 @@ import {
   subscribeToRoomStatus
 } from '../gql_actions/subscription_actions';
 
+import {
+  showPlayers
+} from '../util/util';
+
 import Game from './game';
 
 class Lobby extends React.Component {
@@ -34,21 +38,21 @@ class Lobby extends React.Component {
     });
   }
 
-  showPlayers = () => {
-    let players = this.room.players.map(player => {
-      return (
-        <li key={player.id}>
-          <span role='img' aria-label='smiley'>😀</span>
-          <span>{player.username} </span>
-          <p>{player.score} pts</p>
-        </li>
-      );
-    });
+  // showPlayers = () => {
+  //   let players = this.room.players.map(player => {
+  //     return (
+  //       <li key={player.id}>
+  //         <span role='img' aria-label='smiley'>😀</span>
+  //         <span>{player.username} </span>
+  //         <p>{player.score} pts</p>
+  //       </li>
+  //     );
+  //   });
     
-    return (
-      <ul className='player-list'>{players}</ul>
-    );
-  }
+  //   return (
+  //     <ul className='player-list'>{players}</ul>
+  //   );
+  // }
   
   toggleStartButton = () => {
     if (localStorage.roomId !== this.room.code) {
@@ -65,21 +69,21 @@ class Lobby extends React.Component {
   waitingStage = () => {
     return (
       <div>
-        {this.showPlayers()}
+        {showPlayers(this.room.players)}
         {this.toggleStartButton()}
       </div>
     );
   }
 
   gameStage = () => {
-    let options = {
-      ...this.room,
-      showPlayers: this.showPlayers()
-    };
+    // let options = {
+    //   ...this.room,
+    //   showPlayers: this.showPlayers()
+    // };
 
     return (
       <div>
-        <Game options={options}/>
+        <Game />
       </div>
     );
   }

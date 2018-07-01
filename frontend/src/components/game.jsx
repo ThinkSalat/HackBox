@@ -3,24 +3,27 @@ import React from 'react';
 import HostScreen from './host_screen';
 import PlayerScreen from './player_screen';
 
-export default class Game extends React.Component {
+import { withRouter } from 'react-router-dom';
+
+class Game extends React.Component {
 
   showScreen = () => {
-    let { options } = this.props;
+    // let { options } = this.props;
 
-    if (localStorage.roomId !== options.code) {
+    if (localStorage.roomId !== this.props.match.params.code) {
       return <h2>The game in this room has started.</h2>;
     }
 
     if (localStorage.isHost === 'true') {
-      return <HostScreen {...options} />;
+      return <HostScreen />;
     }
     if (localStorage.isPlayer === 'true') {
-      return <PlayerScreen {...options} />;
+      return <PlayerScreen />;
     }
   }
 
   render() {
+
     return (
       <div>
         {this.showScreen()}
@@ -28,3 +31,5 @@ export default class Game extends React.Component {
     )
   }
 }
+
+export default withRouter(Game);

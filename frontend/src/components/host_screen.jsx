@@ -12,13 +12,16 @@ import {
   subscribeToRoomStatus
 } from '../gql_actions/subscription_actions';
 
+import {
+  showPlayers
+} from '../util/util';
 
 class HostScreen extends React.Component {
 
   componentDidMount() {
     this.clock();
     let {code} = this.props.match.params;
-    // subscribeToRoomStatus(this.props.findRoomQuery, code)
+    subscribeToRoomStatus(this.props.findRoomQuery, code)
   }
 
   componentWillUnmount() {
@@ -30,7 +33,7 @@ class HostScreen extends React.Component {
   }
   
   updateStatus = (options) => {
-    let code = this.props.code;
+    let code = this.room.code;
     this.props.updateStatus({
       variables: {
         code,
@@ -41,7 +44,7 @@ class HostScreen extends React.Component {
 
   clock = () => {
     this.clock = setInterval(() => {
-      this.updateStatus({ timer: this.props.status.timer - 1 });
+      this.updateStatus({ timer: this.room.status.timer - 1 });
     }, 1000);
   }
 
@@ -52,14 +55,14 @@ class HostScreen extends React.Component {
       timer, 
       answerPhase,
       votePhase,
-    } = this.props.status;
+    } = this.room.status;
 
     if (timer === 0) {
       if (answerPhase) this.enterVotePhase();
       if (votePhase) this.enterAnswerPhase();
     }
 
-    if (currentRound > this.props.numRounds) {
+    if (currentRound > this.room.numRounds) {
       this.updateStatus({ 
         gameOver: true, 
         gameStarted: false 
@@ -70,18 +73,18 @@ class HostScreen extends React.Component {
   }
 
   allVoted = () => {
-    if (this.props.status.votePhase) {
+    if (this.room.status.votePhase) {
       this.updateStatus({
         votePhase: false,
         answerPhase: true,
-        currentRound: this.props.status.currentRound + 1,
+        currentRound: this.room.status.currentRound + 1,
         timer: 60,
       });
     }
   }
 
   allAnswered = () => {
-    if (this.props.status.answerPhase) {
+    if (this.room.status.answerPhase) {
       this.updateStatus({
         answerPhase: false,
         votePhase: true,
@@ -91,14 +94,20 @@ class HostScreen extends React.Component {
   }
   
   render() {
+
+    this.room = this.props.findRoomQuery.findRoom;
+    if (!this.room) {
+      return null;
+    }
+
     let {  
       currentRound, 
       timer,
-    } = this.props.status;
+    } = this.room.status;
     
     return (
       <div>
-        <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
+        <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
         <button onClick={this.allAnswered}>
           All Answered
@@ -106,13 +115,13 @@ class HostScreen extends React.Component {
         <button onClick={this.allVoted}>
           All Voted
         </button>
-        {this.props.showPlayers}
+        {showPlayers(this.room.players)}
       </div>
     );
   }
 }
 
 export default compose (
-  // graphql(FindRoomQuery, findRoomOptions()),
+  graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
 )(withRouter(HostScreen));
