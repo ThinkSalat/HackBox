@@ -21,22 +21,11 @@ import Game from './game';
 
 class Lobby extends React.Component {
 
-  state = {
-    render: false
-  }
-
 
   componentDidMount() {
     let {code} = this.props.match.params;
     subscribeToNewPlayers(this.props.findRoomQuery, code)
     subscribeToRoomStatus(this.props.findRoomQuery, code)
-  }
-  componentWillReceiveProps(nextProps) {
-    // debugger;
-  }
-
-  componentDidUpdate() {
-    // debugger;
   }
   
   updateStatus = (options) => {
@@ -48,22 +37,6 @@ class Lobby extends React.Component {
       }
     });
   }
-
-  // showPlayers = () => {
-  //   let players = this.room.players.map(player => {
-  //     return (
-  //       <li key={player.id}>
-  //         <span role='img' aria-label='smiley'>😀</span>
-  //         <span>{player.username} </span>
-  //         <p>{player.score} pts</p>
-  //       </li>
-  //     );
-  //   });
-    
-  //   return (
-  //     <ul className='player-list'>{players}</ul>
-  //   );
-  // }
   
   toggleStartButton = () => {
     if (localStorage.roomId !== this.room.code) {
@@ -78,7 +51,6 @@ class Lobby extends React.Component {
   }
 
   waitingStage = () => {
-    // debugger;
     return (
       <div>
         {showPlayers(this.room.players)}
@@ -97,8 +69,6 @@ class Lobby extends React.Component {
 
   leaveRoom = () => {
     this.props.history.push('/');
-    // localStorage.clear();
-    window.location.reload();
   }
 
   startGame = () => {

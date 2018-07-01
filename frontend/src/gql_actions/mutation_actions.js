@@ -35,7 +35,7 @@ export const createRoom = (state, props) => {
 
 
 
-export const addPlayer = async (ctx) => {
+export const addPlayer = (ctx) => {
   let { code, username} = ctx.state;
   if (!code || !username) {
     return null;
@@ -56,8 +56,9 @@ export const addPlayer = async (ctx) => {
       return null;
     }
   }
+  ctx.props.history.push(`/room/${code}`);
 
-  await ctx.props.addPlayer({
+  ctx.props.addPlayer({
     variables: {
       code,
       username
@@ -71,7 +72,6 @@ export const addPlayer = async (ctx) => {
     localStorage.setItem("inGame", true);
   })
 
-  ctx.props.history.push(`/room/${code}`);
 }
 
 
