@@ -49,6 +49,8 @@ export const STATUS = `
   gameStarted
   answerPhase
   votePhase
+  allAnswered
+  allVoted
 `;
 
 export const ROOM = `

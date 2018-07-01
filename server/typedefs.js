@@ -65,6 +65,8 @@ const typeDefs = `
     gameStarted: Boolean
     answerPhase: Boolean
     votePhase: Boolean
+    allAnswered: Boolean
+    allVoted: Boolean
   }
 
   type Mutation {
