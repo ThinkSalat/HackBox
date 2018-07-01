@@ -32,7 +32,6 @@ class Lobby extends React.Component {
         options
       }
     });
-    return this.room;
   }
 
   showPlayers = () => {
@@ -86,10 +85,17 @@ class Lobby extends React.Component {
   }
 
   startGame = () => {
-    this.updateStatus({gameStarted: true});
+    this.updateStatus({
+      gameStarted: true,
+      answerPhase: true
+    });
   }
   
   updateStage = () => {
+    if (this.room.status.gameOver) {
+      return <h2>The game in this room has ended.</h2>;
+    }
+
     return this.room.status.gameStarted ? this.gameStage() : this.waitingStage()
   }
 

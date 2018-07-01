@@ -18,18 +18,21 @@ const typeDefs = `
   type Response {
     id: ID!
     prompt: Card!
+    roundNumber: Int!
     answers: [Answer]
     players: [Player]
   }
 
   type Status {
-    currentRound: Int!
-    status: String!
-    gameOver: Boolean!
-    gameStarted: Boolean!
-    votingFinished: Boolean!
-    allResponsesReceived: Boolean!
+    currentRound: Int
     timer: Int
+    status: String
+    gameOver: Boolean
+    gameStarted: Boolean
+    answerPhase: Boolean
+    votePhase: Boolean
+    allAnswered: Boolean
+    allVoted: Boolean
   }
 
   type Answer {
@@ -56,12 +59,14 @@ const typeDefs = `
 
   input StatusOptions {
     currentRound: Int
+    timer: Int
     status: String
     gameOver: Boolean
     gameStarted: Boolean
-    votingFinished: Boolean
-    allResponsesReceived: Boolean
-    timer: Int
+    answerPhase: Boolean
+    votePhase: Boolean
+    allAnswered: Boolean
+    allVoted: Boolean
   }
 
   type Mutation {
@@ -73,7 +78,7 @@ const typeDefs = `
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
     updateStatus(code: String!, options: StatusOptions!): Room
-    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
+    retrieveAndAssignPrompts(code: String!, cardType: String!, roundNumber: Int!): [Card]
     addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
   }
   
