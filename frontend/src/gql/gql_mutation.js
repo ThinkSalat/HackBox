@@ -1,7 +1,7 @@
 //Will parse the query using gql
 import gql from 'graphql-tag';
 
-import {ROOM, PLAYER} from './gql_types';
+import {ROOM, PLAYER, CARD, RESPONSE, ANSWER} from './gql_types';
 
 export const CreateRoomMutation = gql`
   mutation($code: String!, $numRounds: Int!, $gameType: String!) {
@@ -33,3 +33,28 @@ export const UpdateStatusMutation = gql`
     }
   }
 `;
+
+export const RetrieveAndAssignPromptsMutation = gql`
+  mutation($code: String!, $cardType: String!) {
+    retrieveAndAssignPrompts(code: $code, cardType: $cardType) {
+      ${CARD}
+    }
+  }
+`;
+
+export const AddAnswerToResponseMutation = gql`
+  mutation($responseId: String!, $code: String!, $username: String!, $answers: String!) {
+    addAnswerToResponse(responseId: $responseId, code: $code, username: $username, answers: $answers) {
+      ${RESPONSE}
+    }
+  }
+`;
+
+export const AddVoteToAnswerMutation = gql`
+  mutation($code: String!, $username: String!, $answerId: String!, $responseId: String!) {
+    addVoteToAnswer(code: $code, username: $username, answerId: $answerId, responseId: $responseId) {
+      ${ANSWER}
+    }
+  }
+`;
+

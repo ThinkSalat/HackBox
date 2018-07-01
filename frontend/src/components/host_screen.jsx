@@ -1,22 +1,23 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-//need to bind with component
 import {graphql, compose} from 'react-apollo';
-
-import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 import { FindRoomQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
+import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
 
-import {
-  subscribeToRoomStatus
-} from '../gql_actions/subscription_actions';
+import { 
+  UpdateStatusMutation,
+  RetrieveAndAssignPromptsMutation,
+} from '../gql/gql_mutation';
 
-import {
-  showPlayers
-} from '../util/util';
+import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
+
+  state = {
+    currentRound: 0
+  }
 
   componentDidMount() {
     this.clock();
@@ -30,6 +31,14 @@ class HostScreen extends React.Component {
 
   componentDidUpdate() {
     this.updateProgress();
+    let {currentRound} = this.state;
+    let nextRound = this.room.status.currentRound;
+    console.log(currentRound, nextRound, currentRound < nextRound);
+    
+    if (currentRound < nextRound) {
+      this.setState({ currentRound: nextRound})
+      this.retrieveAndAssignPrompts();
+    }
   }
   
   updateStatus = (options) => {
@@ -38,6 +47,17 @@ class HostScreen extends React.Component {
       variables: {
         code,
         options
+      }
+    });
+  }
+
+  retrieveAndAssignPrompts = () => {
+    let { code, gameType } = this.room;
+    let cardType = gameType;
+    this.props.retrieveAndAssignPrompts({
+      variables: {
+        code,
+        cardType
       }
     });
   }
@@ -73,7 +93,7 @@ class HostScreen extends React.Component {
   }
 
   allVoted = () => {
-    if (this.room.status.votePhase) {
+    if (this.room.status.allVoted) {
       this.updateStatus({
         votePhase: false,
         answerPhase: true,
@@ -84,7 +104,7 @@ class HostScreen extends React.Component {
   }
 
   allAnswered = () => {
-    if (this.room.status.answerPhase) {
+    if (this.room.status.allAnswered) {
       this.updateStatus({
         answerPhase: false,
         votePhase: true,
@@ -99,23 +119,21 @@ class HostScreen extends React.Component {
     if (!this.room) {
       return null;
     }
-    // debugger;
 
     let {  
       currentRound, 
       timer,
+      allAnswered,
+      allVoted,
     } = this.room.status;
     
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        <button onClick={this.allAnswered}>
-          All Answered
-        </button>
-        <button onClick={this.allVoted}>
-          All Voted
-        </button>
+        <h3>Prompts in room: {this.room.prompts.length}</h3>
+        <h3>All Answered: {allAnswered.toString()}</h3>
+        <h3>All Voted: {allVoted.toString()}</h3>
         {showPlayers(this.room.players)}
       </div>
     );
@@ -125,4 +143,5 @@ class HostScreen extends React.Component {
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
+  graphql(RetrieveAndAssignPromptsMutation, {name: 'retrieveAndAssignPrompts'}),
 )(withRouter(HostScreen));

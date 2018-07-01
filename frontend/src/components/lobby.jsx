@@ -52,12 +52,16 @@ class Lobby extends React.Component {
     }
   }
 
-  waitingStage = () => {
-    if (localStorage.isPlayer) {
-      return <Instructions />
+  toggleInstructions = () => {
+    if (localStorage.roomId === this.room.code) {
+      return <Instructions />;
     }
+  }
+
+  waitingStage = () => {
     return (
       <div>
+        {this.toggleInstructions()}
         {showPlayers(this.room.players)}
         {this.toggleStartButton()}
       </div>

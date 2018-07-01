@@ -87,7 +87,7 @@ class Welcome extends Component {
   }
 
   render() {
-
+    
     const {data: {loading, rooms}} = this.props;
     const {username, code, gameType, numRounds} = this.state;
       
