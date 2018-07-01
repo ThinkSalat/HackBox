@@ -79,29 +79,43 @@ const resolvers = {
     },
     addAnswerToResponse: async (_, {responseId, code, username, answers}) => {
       let room = await Room.findOne({code})
-      let {prompts, players} = room;
+      let {prompts, players, status} = room;
       let response = prompts.filter( response => response.id === responseId)[0]
       let player = players.filter( pl => pl.username===username)[0]
-
+      let {roundNumber} = status;
+      console.log(roundNumber);
       if(response.answers.map( a => a.player.id).includes(player.id)) return response;
       let playerAnswer = new Answer({player, answers })
       response.answers.push(playerAnswer)
       await Room.findOneAndUpdate({code, "prompts._id": responseId}, {$push: { "prompts.$.answers": playerAnswer}})
+
+      const promptsForRound = prompts.filter(reponse => response.roundNumber === roundNumber)
+      if (allPlayersAnswered(promptsForRound, players)) {
+        // fire off allPlayersAnswered subscription
+        // fire off playerAnsweredAllPrompts subscription
+      } else if (playerAnsweredAllPrompts(promptsForRound, player)) {
+        // fire off playerAnsweredAllPrompts subscription
+      }
+
       return response;
     },
     addVoteToAnswer: async (_, { code, username, answerId, responseId}) => {
       let room = await Room.findOne({code})
-      let {prompts, players} = room;
+      let {prompts, players, status} = room;
       let player = players.filter( pl => pl.username===username)[0]
       let prompt = prompts.filter( p => p.id === responseId)[0];
       let answer = prompt.answers.filter( a => a.id === answerId)[0]
+      let {roundNumber} = status;
 
       answer.votes.push(player)
 
       await Room.findOneAndUpdate({ code, "prompts._id": responseId},
       { $set: { "prompts.$.answers": answer}}
     )
-
+    const promptsForRound = prompts.filter(reponse => response.roundNumber === roundNumber)
+    if (allVotescast(prompts)) {
+      // fire subscription for allVotesCast
+    }
 
     },
     addPlayerScore: async(_, {code, username, points}) => {
@@ -156,4 +170,16 @@ const buildMatchups = players => {
   })
 
   return matchups;
+}
+
+const allPlayersAnswered = (prompts, players) => {
+
+}
+
+const playerAnsweredAllPrompts = (prompts, player) => {
+
+}
+
+const allVotescast = (prompts) => {
+
 }
