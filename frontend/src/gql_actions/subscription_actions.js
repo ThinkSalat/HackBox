@@ -12,7 +12,6 @@ export const subscribeToNewPlayers = (query, code) => {
       code: code
     },
     updateQuery: (previous, { subscriptionData }) => {
-      // debugger;
       if (!subscriptionData.data) {
         return previous;
       }
