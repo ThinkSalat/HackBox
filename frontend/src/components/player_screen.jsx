@@ -10,7 +10,7 @@ import {
   findRoomOptions,
   retrievePromptsOptions
  } from '../gql_actions/query_actions';
- 
+
 import { 
   subscribeToRoomStatus,
   subscribeToReceivePrompts
@@ -103,18 +103,21 @@ class PlayerScreen extends React.Component {
   }
 
   render() {
-    let {data: {loading, retrievePlayerPrompts}} = this.props;
     this.room = this.props.findRoomQuery.findRoom;
-    if (!this.room || loading) {
+    let prompts = this.props.retrievePromptsQuery.retrievePlayerPrompts;
+    
+    debugger;
+    if (!this.room || !this.prompts) {
       return null;
     }
+    // let {data: {retrievePlayerPrompts}} = this.props;
 
     let { 
       currentRound, 
       timer, 
     } = this.room.status;
 
-    let prompts = retrievePlayerPrompts;
+    // let prompts = retrievePlayerPrompts;
     prompts = prompts.map(card => {
       return <li key={card.id}>{card.prompt}</li>
     });
@@ -141,6 +144,14 @@ class PlayerScreen extends React.Component {
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
   graphql(RetrievePromptsQuery, retrievePromptsOptions()),
+  // graphql(RetrievePromptsQuery, {
+  //   options: {
+  //     variables: {
+  //       code: localStorage.roomId,
+  //       username: localStorage.username
+  //     }
+  //   }
+  // }),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
   graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),
   graphql(AddVoteToAnswerMutation, {name: 'addVote'}),

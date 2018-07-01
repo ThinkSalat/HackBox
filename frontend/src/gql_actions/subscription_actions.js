@@ -106,6 +106,8 @@ export const subscribeToReceivePrompts = (query, code, username) => {
 
       // let newStatus = subscriptionData.data.updateStatus;
 
+//retrievePlayerPrompts
+
       // let result = {
       //   ...previous,
       //   findRoom: {
