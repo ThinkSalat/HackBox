@@ -28,6 +28,9 @@ export const createRoom = (state, props) => {
     }
   });
   localStorage.setItem('roomId', code)
+  localStorage.setItem("isPlayer", false);
+  localStorage.setItem("isHost", true);
+  localStorage.setItem("inGame", true);
 }
 
 
@@ -44,6 +47,16 @@ export const addPlayer = (ctx) => {
     ctx.setState({code: "", username: ""});
     return null;
   }
+  for (let i = 0; i < room.players.length; i++) {
+    if (room.players[i].username === username) {
+      ctx.setState({
+        error: "Username Taken",
+        username: ""
+      })
+      return null;
+    }
+  }
+
   ctx.props.history.push(`/room/${code}`);
       
   ctx.props.addPlayer({
@@ -55,9 +68,9 @@ export const addPlayer = (ctx) => {
   }).then((player) =>  {
     localStorage.setItem("playerId", player.data.addPlayer.id);
     localStorage.setItem('roomId', code);
-    localStorage.setItem("isPlayer", true)
-    localStorage.setItem("isHost", false)
-    localStorage.setItem("inGame", true)
+    localStorage.setItem("isPlayer", true);
+    localStorage.setItem("isHost", false);
+    localStorage.setItem("inGame", true);
   })
 }
 

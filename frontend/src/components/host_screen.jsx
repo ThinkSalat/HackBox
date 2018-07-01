@@ -5,7 +5,29 @@ import {graphql, compose} from 'react-apollo';
 
 import { UpdateStatusMutation } from '../gql/gql_mutation';
 
+import { FindRoomQuery } from '../gql/gql_query';
+import { findRoomOptions } from '../gql_actions/query_actions';
+
+import {
+  subscribeToRoomStatus
+} from '../gql_actions/subscription_actions';
+
+
 class HostScreen extends React.Component {
+
+  componentDidMount() {
+    this.clock();
+    let {code} = this.props.match.params;
+    // subscribeToRoomStatus(this.props.findRoomQuery, code)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.clock);
+  }
+
+  componentDidUpdate() {
+    this.updateProgress();
+  }
   
   updateStatus = (options) => {
     let code = this.props.code;
@@ -23,17 +45,6 @@ class HostScreen extends React.Component {
     }, 1000);
   }
 
-  componentDidMount() {
-    this.clock();
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.clock);
-  }
-
-  componentDidUpdate() {
-    this.updateProgress();
-  }
 
   updateProgress = () => {
     let { 
@@ -53,6 +64,7 @@ class HostScreen extends React.Component {
         gameOver: true, 
         gameStarted: false 
       });
+
       this.props.history.push('/');
     }
   }
@@ -101,5 +113,6 @@ class HostScreen extends React.Component {
 }
 
 export default compose (
+  // graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
 )(withRouter(HostScreen));

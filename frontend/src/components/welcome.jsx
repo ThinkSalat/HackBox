@@ -41,7 +41,8 @@ class Welcome extends Component {
     code: "",
     subbed: false,
     gameType: defaultGame,
-    numRounds: defaultRounds
+    numRounds: defaultRounds,
+    error: "Username"
   }
 
   componentDidMount() {
@@ -139,7 +140,7 @@ class Welcome extends Component {
         <TextField
           onChange={this.handleChange("username")}
           value={username}
-          label="Username"
+          label={this.state.error}
           inputProps={{ maxLength: 12 }}
         />
 
