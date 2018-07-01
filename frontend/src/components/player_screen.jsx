@@ -34,7 +34,7 @@ class PlayerScreen extends React.Component {
   
   addAnswer = (responseId) => {
     let code = this.room.code;
-    let username = localStorage.playerId;
+    let username = localStorage.username;
     let answers = this.state.answer;
     this.props.addAnswer({
       variables: {
@@ -45,7 +45,7 @@ class PlayerScreen extends React.Component {
   
   addVote = (answerId, responseId) => {
     let code = this.room.code;
-    let username = localStorage.playerId;
+    let username = localStorage.username;
     this.props.addVote({
       variables: {
         code, username, answerId, responseId
@@ -133,7 +133,7 @@ export default compose (
     options: {
       variables: {
         code: localStorage.roomId,
-        username: localStorage.playerId
+        username: localStorage.username
       }
     }
   }),
