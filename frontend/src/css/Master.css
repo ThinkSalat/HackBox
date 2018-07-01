@@ -11,7 +11,8 @@ span, article, footer, select, time, small {
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  list-style: none; }
 
 ul {
   list-style: none; }
@@ -86,6 +87,8 @@ button {
   justify-content: center; }
   .single-room .player-list li {
     margin: 0 20px; }
+.single-room .prompt-list {
+  list-style: none; }
 
 .instruction-greeting {
   text-transform: capitalize; }
