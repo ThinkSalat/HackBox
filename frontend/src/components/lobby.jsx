@@ -51,6 +51,10 @@ class Lobby extends React.Component {
   }
   
   toggleStartButton = () => {
+    if (localStorage.roomId !== this.room.code) {
+      return null;
+    }
+
     if (localStorage.isHost === 'true' && this.room.players.length > 1) {
       return (
         <button onClick={this.startGame}>Start Game</button>
