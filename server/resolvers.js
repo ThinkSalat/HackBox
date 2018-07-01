@@ -14,6 +14,15 @@ const resolvers = {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
     findCards: (_, { cardType, numCards }) => Card.aggregate().match({ cardType }).sample(numCards),
+    retrievePlayerPrompts: async (_, {code, username}) => {
+      let room = await Room.findOne({code})
+      let {prompts, players, status: { currentRound }} = room;
+      let player = players.filter( pl => pl.username===username)[0]
+      console.log(player);
+      console.log(prompts.map(p => p.players.map(pl=>pl.id).includes(player.id)));
+      console.log(prompts.filter( response => response.roundNumber === currentRound && response.players.includes(player)).map( response=> response.prompt));
+      return prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
+    }
   },
   Mutation: {
     createRoom: async (_, { code, numRounds, gameType }) => {

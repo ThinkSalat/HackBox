@@ -3,6 +3,7 @@ const typeDefs = `
     rooms: [Room]
     findRoom(code: String): Room
     findCards(cardType: String!, numCards: Int!): [Card]
+    retrievePlayerPrompts(code: String!, username: String!): [Card]
   }
   type Room {
     id: ID
