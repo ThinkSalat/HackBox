@@ -1,5 +1,5 @@
 import { Room, Player, Card, Status, Answer, Response } from './models';
-import { PubSub, withFilter } from 'graphql-subscriptions';
+import { PubSub } from 'graphql-subscriptions';
 import merge from 'lodash/merge'
 
 const pubsub = new PubSub();
@@ -19,7 +19,7 @@ const resolvers = {
     retrievePlayerPrompts: async (_, {code, username}) => {
       let room = await Room.findOne({code})
       let {prompts, players, status: { currentRound }} = room;
-      let player = players.filter( pl => pl.username===username)[0]
+      let player = players.find( pl => pl.username===username);
       return prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
     }
   },
@@ -61,7 +61,7 @@ const resolvers = {
       const {currentRound} = status;
       const numCards = numRounds !== status.currentRound ? room.players.length : 1
       const ids = discard.map( card => card.id);
-
+      
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
       let promptObjects = getPromptsObject(players, numCards, prompts, currentRound);
 
@@ -72,8 +72,8 @@ const resolvers = {
     addAnswerToResponse: async (_, {responseId, code, username, answers}) => {
       let room = await Room.findOne({code})
       let {prompts, players, status} = room;
-      let response = prompts.filter( response => response.id === responseId)[0]
-      let player = players.filter( pl => pl.username===username)[0]
+      let response = prompts.find( response => response.id === responseId)
+      let player = players.find( pl => pl.username===username)
       let {currentRound} = status;
 
       if(response.answers.map( a => a.player.id).includes(player.id)) return response;
@@ -97,9 +97,9 @@ const resolvers = {
     addVoteToAnswer: async (_, { code, username, answerId, responseId}) => {
       let room = await Room.findOne({code})
       let {prompts, players, status} = room;
-      let player = players.filter( pl => pl.username===username)[0]
-      let prompt = prompts.filter( p => p.id === responseId)[0];
-      let answer = prompt.answers.filter( a => a.id === answerId)[0]
+      let player = players.find( pl => pl.username===username)
+      let prompt = prompts.find( p => p.id === responseId)
+      let answer = prompt.answers.find( a => a.id === answerId)
       let {roundNumber} = status;
 
       answer.votes.push(player)

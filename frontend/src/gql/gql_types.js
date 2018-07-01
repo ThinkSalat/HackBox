@@ -30,6 +30,7 @@ export const ANSWER = `
 
 export const RESPONSE = `
   id
+  roundNumber
   prompt {
     ${CARD}
   }

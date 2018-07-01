@@ -1,151 +1,127 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-//need to bind with component
 import {graphql, compose} from 'react-apollo';
 
-import { UpdateStatusMutation } from '../gql/gql_mutation';
-
-import { FindRoomQuery } from '../gql/gql_query';
+import { FindRoomQuery, RetrievePromptsQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
+import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
 
-import {
-  subscribeToRoomStatus
-} from '../gql_actions/subscription_actions';
+import { 
+  UpdateStatusMutation,
+  AddAnswerToResponseMutation,
+  AddVoteToAnswerMutation,
+} from '../gql/gql_mutation';
 
 class PlayerScreen extends React.Component {
 
   state = {
-    answer: '',
-    answered: false,
-    voted: false,
-    currentRound: 1,
-    promptPhase: true,
-    votingPhase: false,
+    answer: ''
   }
 
   componentDidMount() {
-    // debugger;
-    let {code} = this.props.match.params;
-    subscribeToRoomStatus(this.props.findRoomQuery, code)
+    subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
   }
 
+  updateStatus = (options) => {
+    let code = this.room.code;
+    this.props.updateStatus({
+      variables: {
+        code,
+        options
+      }
+    });
+  }
   
+  addAnswer = (responseId) => {
+    let code = this.room.code;
+    let username = localStorage.username;
+    let answers = this.state.answer;
+    this.props.addAnswer({
+      variables: {
+        responseId, code, username, answers
+      }
+    });
+  }
+  
+  addVote = (answerId, responseId) => {
+    let code = this.room.code;
+    let username = localStorage.username;
+    this.props.addVote({
+      variables: {
+        code, username, answerId, responseId
+      }
+    });
+  }
+
+  submit = e => {
+    e.preventDefault();
+    // this.addAnswer(responseId);
+    this.setState({ answer: ''});
+  }
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
   }
 
-  submit = field => {
-    return e => this.setState({ [field]: true });
-  }
-
-  showPrompt = () => {
-    let prompt = this.prompts.slice(-1)[0];
-    if (this.state.currentRound <= this.room.numRounds) {
-
-      return (
-        <div>
-          <h3>{prompt}</h3>
-          <input 
-            style={{fontSize: '20px'}} 
-            placeholder='Your answer is...'
-            onChange={this.updateAnswer}
-            value={this.state.answer}
-          />
-          <button onClick={this.submit('answered')}>OK</button>
-        </div>
-      );
-    }
-  }
-
-  waiting = () => {
-    return (
-      <h3>Sit back and relax.</h3>
-    );
-  }
-
-  promptPhase = () => {
-    return this.state.answered ? this.waiting() : this.showPrompt();
-  }
-
-  enterPromptPhase = () => {
-    if (this.state.voted && this.state.currentRound < this.room.numRounds) {
-      this.prompts.pop();
-
-      this.setState({
-        currentRound: this.state.currentRound + 1,
-        answer: '',
-        answered: false,
-        voted: false, 
-        promptPhase: true,
-        votingPhase: false,
-      });
-    } 
-  }
-
-  enterVotingPhase = () => {
-    if (this.state.answered) {
-      this.setState({
-        answered: false,
-        promptPhase: false,
-        votingPhase: true
-      });
-    } 
-  }
-
-  votingPhase = () => {
-    return this.state.voted ? this.waiting() : this.voteAnswer();
-  }
-
-  voteAnswer = () => {
+  answer = () => { 
     return (
       <div>
-        <h3>Which one is better?</h3>
-        <button onClick={this.submit('voted')}>Answer A</button>
-        <button onClick={this.submit('voted')}>Answer B</button>
+        <form onSubmit={this.submit}>
+          <input 
+            onChange={this.updateAnswer}
+            value={this.state.answer}
+            placeholder='Answer here'/>
+        </form>
       </div>
     );
   }
 
-  updatePhase = () => {
-    let { promptPhase, votingPhase } = this.state;
-    if (promptPhase) {
-      return this.promptPhase();
-    }
-    if (votingPhase) {
-      return this.votingPhase();
-    }
+  vote = () => {
+    return (
+      <div>
+        <h3>Vote your favorite answer!</h3>
+        <button onClick={this.voted}>Answer A</button>
+        <button onClick={this.voted}>Answer B</button>
+      </div>
+    );
+  }
+
+  voted = e => {
+    e.preventDefault();
+    // this.addVote(answerId, responseId);
   }
 
   render() {
-
+    let {data: {loading, retrievePlayerPrompts}} = this.props;
     this.room = this.props.findRoomQuery.findRoom;
-    if (!this.room) {
+    if (!this.room || loading) {
       return null;
     }
 
-    this.prompts = this.room.discard.map(card => card.prompt);
-
-    // debugger;
-
     let { 
-      // allResponsesReceived, 
       currentRound, 
-      // gameOver, 
       timer, 
-      // votingFinished 
     } = this.room.status;
 
-    let { promptPhase } = this.state;
+    let prompts = retrievePlayerPrompts;
+    prompts = prompts.map(card => {
+      return <li key={card.id}>{card.prompt}</li>
+    });
+
+    // let num = this.room.players.length;
+    // let prompts = this.room.prompts.slice((currentRound-1)*num, num * currentRound);
+    // prompts = prompts.map(res => {
+    //   return <li key={res.id}>{res.prompt.prompt}</li>;
+    // });
+    prompts = <ul className='prompt-list'>{prompts}</ul>;
 
     return (
       <div>
-        <h3>Timer: {timer}s</h3>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
-        <h3>{promptPhase ? 'Prompt Phase' : 'Vote Phase'}</h3>
-        {this.updatePhase()}
-        <button onClick={this.enterPromptPhase}>Prompt Phase</button>
-        <button onClick={this.enterVotingPhase}>Vote Phase</button>
+        <h3>Timer: {timer}s</h3>
+        {prompts}
+        {this.answer()}
+        {this.vote()}
       </div>
     );
   }
@@ -153,5 +129,15 @@ class PlayerScreen extends React.Component {
 
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
+  graphql(RetrievePromptsQuery, {
+    options: {
+      variables: {
+        code: localStorage.roomId,
+        username: localStorage.username
+      }
+    }
+  }),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
+  graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),
+  graphql(AddVoteToAnswerMutation, {name: 'addVote'}),
 )(withRouter(PlayerScreen));
