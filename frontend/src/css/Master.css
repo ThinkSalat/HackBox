@@ -48,3 +48,7 @@ body {
     margin: 0 20px; }
 
 /*# sourceMappingURL=Master.css.map */
+
+.instruction-greeting {
+  text-transform: capitalize;
+}

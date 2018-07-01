@@ -18,6 +18,8 @@ import {
 } from '../util/util';
 
 import Game from './game';
+import Instructions from './instructions'
+
 
 class Lobby extends React.Component {
 
@@ -51,6 +53,9 @@ class Lobby extends React.Component {
   }
 
   waitingStage = () => {
+    if (localStorage.isPlayer) {
+      return <Instructions />
+    }
     return (
       <div>
         {showPlayers(this.room.players)}
