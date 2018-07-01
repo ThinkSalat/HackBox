@@ -89,7 +89,8 @@ const typeDefs = `
     createdRoom: Room
     removedRoom: String
     updateStatus(code: String!): Status
-    playerSubmitted(username: String!, code: String!): Player
+    playerSubmitted(code: String!): Player
+    receivePrompts(code: String!): [Card]
   }
   
 `;

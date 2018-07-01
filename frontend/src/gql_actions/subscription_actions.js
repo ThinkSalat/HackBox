@@ -2,7 +2,8 @@ import {
   NewPlayerSubscription,
   NewRoomSubscription,
   RemoveRoomSubscription,
-  UpdateStatusSubscription
+  UpdateStatusSubscription,
+  ReceivePromptsSubscription
 } from '../gql/gql_subscription';
 
 export const subscribeToNewPlayers = (query, code) => {
@@ -85,6 +86,35 @@ export const subscribeToRoomStatus = (query, code) => {
       }
 
       return result;
+
+    }
+  })
+}
+
+export const subscribeToReceivePrompts = (query, code) => {
+  query.subscribeToMore({
+    document: ReceivePromptsSubscription,
+    variables: {
+      code
+    },
+    updateQuery: (previous, { subscriptionData }) => {
+      if (!subscriptionData.data) {
+        return previous;
+      }
+
+      debugger;
+
+      // let newStatus = subscriptionData.data.updateStatus;
+
+      // let result = {
+      //   ...previous,
+      //   findRoom: {
+      //     ...previous.findRoom,
+      //     status: newStatus
+      //   }
+      // }
+
+      // return result;
 
     }
   })

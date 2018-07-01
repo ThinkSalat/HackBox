@@ -8,6 +8,7 @@ const JOINED_ROOM = 'JOINED_ROOM',
   REMOVED_ROOM = 'REMOVED_ROOM',
   UPDATE_STATUS = 'UPDATE_STATUS',
   SUBMITTED = 'SUBMITTED';
+  RECEIVE_PROMPTS = 'RECEIVE_PROMPTS';
 
 require("babel-polyfill");
 
@@ -67,6 +68,8 @@ const resolvers = {
 
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
+      pubsub.publish(`${RECEIVE_PROMPTS}.${code}`, { receivePrompts: prompts })
+
       return prompts;
     },
     addAnswerToResponse: async (_, {responseId, code, username, answers}) => {
@@ -85,11 +88,11 @@ const resolvers = {
       const isLastRound = (status.currentRound === room.numRounds)
       const promptsForRound = prompts.filter(res => res.roundNumber === currentRound)
       if (allPlayersAnswered(promptsForRound, players, isLastRound)) {
-        pubsub.publish(`${player.username}.${SUBMITTED}.${code}`, { playerSubmitted: player })
+        pubsub.publish(`${SUBMITTED}.${code}`, { playerSubmitted: player })
         updateStatus(code, {allAnswered: true})
       } 
       if (playerAnsweredAllPrompts(promptsForRound, player) || isLastRound) {
-        pubsub.publish(`${player.username}.${SUBMITTED}.${code}`, { playerSubmitted: player })
+        pubsub.publish(`${SUBMITTED}.${code}`, { playerSubmitted: player })
       } 
 
       return response;
@@ -137,7 +140,10 @@ const resolvers = {
       subscribe: (_, { code }) => pubsub.asyncIterator(`${UPDATE_STATUS}.${code}`)
     },
     playerSubmitted: {
-      subscribe: (_, {username, code}) => pubsub.asyncIterator(`${username}.${SUBMITTED}.${code}`)
+      subscribe: (_, {code}) => pubsub.asyncIterator(`${SUBMITTED}.${code}`)
+    },
+    receivePrompts: {
+      subscribe: (_, {code}) => pubsub.asyncIterator(`${RECEIVE_PROMPTS}.${code}`)
     }
   }
 }

@@ -4,7 +4,10 @@ import {graphql, compose} from 'react-apollo';
 
 import { FindRoomQuery, RetrievePromptsQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
-import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
+import { 
+  subscribeToRoomStatus,
+  subscribeToReceivePrompts
+ } from '../gql_actions/subscription_actions';
 
 import { 
   UpdateStatusMutation,
@@ -20,6 +23,7 @@ class PlayerScreen extends React.Component {
 
   componentDidMount() {
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
+    subscribeToReceivePrompts(this.props.findRoomQuery, this.room.code);
   }
 
   updateStatus = (options) => {
