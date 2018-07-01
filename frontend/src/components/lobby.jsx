@@ -9,9 +9,9 @@ import { findRoomOptions } from '../gql_actions/query_actions';
 import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 import {
-  NewPlayerSubscription,
-  UpdateStatusSubscription
-} from '../gql/gql_subscription';
+  subscribeToNewPlayers,
+  subscribeToRoomStatus
+} from '../gql_actions/subscription_actions';
 
 import Game from './game';
 
@@ -20,36 +20,8 @@ class Lobby extends React.Component {
   componentDidMount() {
     let {code} = this.props.match.params;
     
-    this.subscribeToNewPlayers(code)
-    this.subscribeToRoomStatus(code)
-  }
-
-  subscribeToNewPlayers = (code) => {
-    this.props.findRoomQuery.subscribeToMore({
-      document: NewPlayerSubscription,
-      variables: {
-        code: code
-      },
-      updateQuery: (previous, { subscriptionData }) => {
-        if (!subscriptionData.data) {
-          return previous;
-        }
-      }
-    })
-  }
-
-  subscribeToRoomStatus = code => {
-    this.props.findRoomQuery.subscribeToMore({
-      document: UpdateStatusSubscription,
-      variables: {
-        code
-      },
-      updateQuery: (previous, { subscriptionData }) => {
-        if (!subscriptionData.data) {
-          return previous;
-        }
-      }
-    })
+    subscribeToNewPlayers(this.props.findRoomQuery, code)
+    subscribeToRoomStatus(this.props.findRoomQuery, code)
   }
   
   updateStatus = (options) => {
@@ -60,7 +32,6 @@ class Lobby extends React.Component {
         options
       }
     });
-    return this.room;
   }
 
   showPlayers = () => {
@@ -80,7 +51,11 @@ class Lobby extends React.Component {
   }
   
   toggleStartButton = () => {
-    if (this.room.players.length > 1) {
+    if (localStorage.roomId !== this.room.code) {
+      return null;
+    }
+
+    if (localStorage.isHost === 'true' && this.room.players.length > 1) {
       return (
         <button onClick={this.startGame}>Start Game</button>
       )
@@ -114,10 +89,17 @@ class Lobby extends React.Component {
   }
 
   startGame = () => {
-    this.updateStatus({gameStarted: true});
+    this.updateStatus({
+      gameStarted: true,
+      answerPhase: true
+    });
   }
   
   updateStage = () => {
+    if (this.room.status.gameOver) {
+      return <h2>The game in this room has ended.</h2>;
+    }
+
     return this.room.status.gameStarted ? this.gameStage() : this.waitingStage()
   }
 
@@ -127,8 +109,6 @@ class Lobby extends React.Component {
     if (!this.room) {
       return null;
     }
-
-    // console.log(this.room);
 
     return (
       <div className='single-room'>

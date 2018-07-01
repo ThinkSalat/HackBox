@@ -1,5 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+//need to bind with component
+import {graphql, compose} from 'react-apollo';
+
+import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 class PlayerScreen extends React.Component {
 
@@ -10,6 +14,10 @@ class PlayerScreen extends React.Component {
     currentRound: 1,
     promptPhase: true,
     votingPhase: false,
+  }
+
+  componentDidMount() {
+    
   }
 
   prompts = this.props.discard.map(card => card.prompt);
@@ -101,7 +109,15 @@ class PlayerScreen extends React.Component {
   }
 
   render() {
-    let { currentRound, promptPhase } = this.state;
+    let { 
+      // allResponsesReceived, 
+      currentRound, 
+      // gameOver, 
+      // timer, 
+      // votingFinished 
+    } = this.props.status;
+
+    let { promptPhase } = this.state;
 
     return (
       <div>
@@ -115,4 +131,6 @@ class PlayerScreen extends React.Component {
   }
 }
 
-export default withRouter(PlayerScreen);
+export default compose (
+  graphql(UpdateStatusMutation, {name: 'updateStatus'}),
+)(withRouter(PlayerScreen));

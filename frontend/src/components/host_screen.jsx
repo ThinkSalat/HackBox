@@ -1,20 +1,26 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+//need to bind with component
+import {graphql, compose} from 'react-apollo';
+
+import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 class HostScreen extends React.Component {
-
-  state = {
-    answerCount: 0,
-    currentRound: 1,
-    clock: 60,
-    promptPhase: true,
-    votingPhase: false,
+  
+  updateStatus = (options) => {
+    let code = this.props.code;
+    this.props.updateStatus({
+      variables: {
+        code,
+        options
+      }
+    });
   }
 
   clock = () => {
-    this.clock = setInterval(() => this.setState({
-      clock: this.state.clock - 1
-    }), 1000);
+    this.clock = setInterval(() => {
+      this.updateStatus({ timer: this.props.status.timer - 1 });
+    }, 1000);
   }
 
   componentDidMount() {
@@ -30,83 +36,63 @@ class HostScreen extends React.Component {
   }
 
   updateProgress = () => {
-    let { currentRound, clock, promptPhase, votingPhase } = this.state;
+    let { 
+      currentRound, 
+      timer, 
+      answerPhase,
+      votePhase,
+    } = this.props.status;
 
-    if (clock === 0) {
-      if (promptPhase) {
-        this.enterVotingPhase();
-      } 
-      if (votingPhase) {
-        this.enterPromptPhase();
-      }
+    if (timer === 0) {
+      if (answerPhase) this.enterVotePhase();
+      if (votePhase) this.enterAnswerPhase();
     }
 
     if (currentRound > this.props.numRounds) {
-      console.log('all rounds end');
-      
-      //game summary
-      console.log('score tally, decalre winner');
-
-      //delete room subscription
-      console.log('game over, delete room, back to lobby');
-
+      this.updateStatus({ 
+        gameOver: true, 
+        gameStarted: false 
+      });
       this.props.history.push('/');
     }
   }
 
-  enterVotingPhase = () => {    
-    this.setState({
-      clock: 15,
-      promptPhase: false,
-      votingPhase: true,
-    });
-  }
-
-  playerAnswered = () => {
-    let { answerCount, promptPhase } = this.state;
-    if (!promptPhase) {
-      return null;
-    }
-
-    this.setState({
-      answerCount: answerCount + 1
-    });
-    
-    if (answerCount >= this.props.players.length - 1) {
-      this.enterVotingPhase();
+  allVoted = () => {
+    if (this.props.status.votePhase) {
+      this.updateStatus({
+        votePhase: false,
+        answerPhase: true,
+        currentRound: this.props.status.currentRound + 1,
+        timer: 60,
+      });
     }
   }
 
-  enterPromptPhase = () => {    
-    this.setState({
-      currentRound: this.state.currentRound + 1,
-      clock: 60,
-      answerCount: 0,
-      promptPhase: true,
-      votingPhase: false,
-    })
-  }
-
-  playerVoted = () => {
-    if (!this.state.votingPhase) {
-      return null;
+  allAnswered = () => {
+    if (this.props.status.answerPhase) {
+      this.updateStatus({
+        answerPhase: false,
+        votePhase: true,
+        timer: 15,
+      }); 
     }
-    this.enterPromptPhase();
   }
   
   render() {
-    let { answerCount, currentRound, clock, promptPhase } = this.state;
+    let {  
+      currentRound, 
+      timer,
+    } = this.props.status;
     
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
-        <h3>{`Answers Collected: ${answerCount} / ${this.props.players.length}`}</h3>
-        <h3>{promptPhase ? 'Prompt Phase' : 'Vote Phase'}: {clock}s</h3>
-        <button onClick={this.playerAnswered}>
-          Player Answer
+        <h3>Timer: {timer}s</h3>
+        <button onClick={this.allAnswered}>
+          All Answered
         </button>
-        <button onClick={this.playerVoted}>
-          Vote Finish
+        <button onClick={this.allVoted}>
+          All Voted
         </button>
         {this.props.showPlayers}
       </div>
@@ -114,4 +100,6 @@ class HostScreen extends React.Component {
   }
 }
 
-export default withRouter(HostScreen);
+export default compose (
+  graphql(UpdateStatusMutation, {name: 'updateStatus'}),
+)(withRouter(HostScreen));

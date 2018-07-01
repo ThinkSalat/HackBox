@@ -43,12 +43,14 @@ export const RESPONSE = `
 
 export const STATUS = `
   currentRound
+  timer
   status
   gameOver
   gameStarted
-  votingFinished
-  allResponsesReceived
-  timer
+  answerPhase
+  votePhase
+  allAnswered
+  allVoted
 `;
 
 export const ROOM = `
