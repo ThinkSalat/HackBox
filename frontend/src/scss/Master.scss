@@ -2,6 +2,9 @@
 // sass --watch src/scss/Master.scss:src/css/Master.css
 
 @import "main/variables";
-@import "main/index";
+@import "main/reset";
 @import "main/App";
-@import "main/room";
+
+@import "main/welcome";
+@import "main/lobby";
+@import "main/instructions";
