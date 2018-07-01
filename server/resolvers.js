@@ -80,13 +80,15 @@ const resolvers = {
       response.answers.push(playerAnswer)
       await Room.findOneAndUpdate({code, "prompts._id": responseId}, {$push: { "prompts.$.answers": playerAnswer}})
 
+      // send sub if all players ansered
+      const isLastRound = (status.currentRound === room.numRounds)
       const promptsForRound = prompts.filter(res => res.roundNumber === currentRound)
-      if (allPlayersAnswered(promptsForRound, players)) {
+      if (allPlayersAnswered(promptsForRound, players, isLastRound)) {
         // fire off allPlayersAnswered subscription
         // fire off playerAnsweredAllPrompts subscription
         updateStatus(code, {allResponsesReceived: true})
 
-      } else if (playerAnsweredAllPrompts(promptsForRound, player)) {
+      } else if (playerAnsweredAllPrompts(promptsForRound, player, isLastRound)) {
         // fire off playerAnsweredAllPrompts subscription
       }
 
@@ -107,8 +109,9 @@ const resolvers = {
       )
 
       // send sub for finishing voting if voting over
+      const isLastRound = (status.currentRound === room.numRounds)
       const promptsForRound = prompts.filter(res => res.roundNumber === roundNumber)
-      if (allVotescast(prompts)) {
+      if (allVotesCast(prompts, isLastRound, players)) {
         // fire subscription for allVotesCast
         updateStatus(code, {votingFinished: true})
       }
@@ -165,6 +168,9 @@ const getPromptsObject = (rcvdPlayers, numCards, prompts, roundNumber) => {
 }
 
 const buildMatchups = players => {
+  if (players.length === 3) {
+    return [[players[0], players[1]], [players[1],players[2]], [players[2], players[0]]]
+  }
   const matchups = []
   const offset = (Math.floor(Math.random() * players.length-1) + 1 )
   players.forEach(pl => matchups.push([pl]))
@@ -175,23 +181,42 @@ const buildMatchups = players => {
     }
     plArr.push(players[pOffset])
   })
-
   return matchups;
 }
 
-const allPlayersAnswered = (prompts, players) => {
+const allPlayersAnswered = (prompts, players, isLastRound) => {
   for (let i = 0; i < prompts.length; i++) {
     if (prompts[i].answers.length < 2) {
       return false
     }
   }
-  return true
+  if (!isLastRound) {
+    return true;
+  } else {
+    if (prompts[0].answers.length === players.length) {
+      return true
+    } else {
+      return false
+    }
+  }
+
 }
 
-const playerAnsweredAllPrompts = (prompts, player) => {
+const playerAnsweredAllPrompts = (prompts, player, isLastRound) => {
 
 }
 
-const allVotescast = (prompts) => {
-
+const allVotesCast = (prompts, isLastRound, players) => {
+  let answers = []
+  let totalVoteCount = 0
+  prompts.forEach( prompt => answers = answers.concat(prompt.answers))
+  for (let i = 0; i < answers.length; i++) {
+    totalVoteCount += answers[i].votes.length
+  }
+  if (!isLastRound) {
+    console.log('here', totalVoteCount, players.length);
+    return totalVoteCount === players.length * 2 ? true : false
+  } else {
+    return totalVoteCount === players.length * 3 ? true: false
+  }
 }
