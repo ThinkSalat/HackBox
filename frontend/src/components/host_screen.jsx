@@ -15,6 +15,10 @@ import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
 
+  state = {
+    currentRound: 0
+  }
+
   componentDidMount() {
     this.clock();
     let {code} = this.props.match.params;
@@ -27,6 +31,14 @@ class HostScreen extends React.Component {
 
   componentDidUpdate() {
     this.updateProgress();
+    let {currentRound} = this.state;
+    let nextRound = this.room.status.currentRound;
+    console.log(currentRound, nextRound, currentRound < nextRound);
+    
+    if (currentRound < nextRound) {
+      this.setState({ currentRound: nextRound})
+      this.retrieveAndAssignPrompts();
+    }
   }
   
   updateStatus = (options) => {
@@ -81,7 +93,7 @@ class HostScreen extends React.Component {
   }
 
   allVoted = () => {
-    if (this.room.status.votePhase) {
+    if (this.room.status.allVoted) {
       this.updateStatus({
         votePhase: false,
         answerPhase: true,
@@ -92,7 +104,7 @@ class HostScreen extends React.Component {
   }
 
   allAnswered = () => {
-    if (this.room.status.answerPhase) {
+    if (this.room.status.allAnswered) {
       this.updateStatus({
         answerPhase: false,
         votePhase: true,
@@ -111,6 +123,8 @@ class HostScreen extends React.Component {
     let {  
       currentRound, 
       timer,
+      allAnswered,
+      allVoted,
     } = this.room.status;
     
     return (
@@ -118,10 +132,8 @@ class HostScreen extends React.Component {
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
         <h3>Prompts in room: {this.room.prompts.length}</h3>
-
-        <button onClick={() => this.retrieveAndAssignPrompts()}>Retrieve and Assign</button>
-        <button onClick={this.allAnswered}>All Answered</button>
-        <button onClick={this.allVoted}>All Voted</button>
+        <h3>All Answered: {allAnswered.toString()}</h3>
+        <h3>All Voted: {allVoted.toString()}</h3>
         {showPlayers(this.room.players)}
       </div>
     );
