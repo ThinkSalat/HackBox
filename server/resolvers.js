@@ -6,7 +6,9 @@ const pubsub = new PubSub();
 const JOINED_ROOM = 'JOINED_ROOM',
   CREATED_ROOM = 'CREATED_ROOM',
   REMOVED_ROOM = 'REMOVED_ROOM',
-  UPDATE_STATUS = 'UPDATE_STATUS';
+  UPDATE_STATUS = 'UPDATE_STATUS',
+  SUBMITTED = 'SUBMITTED';
+
 require("babel-polyfill");
 
 const resolvers = { 
@@ -14,6 +16,12 @@ const resolvers = {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
     findCards: (_, { cardType, numCards }) => Card.aggregate().match({ cardType }).sample(numCards),
+    retrievePlayerPrompts: async (_, {code, username}) => {
+      let room = await Room.findOne({code})
+      let {prompts, players, status: { currentRound }} = room;
+      let player = players.filter( pl => pl.username===username)[0]
+      return prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
+    }
   },
   Mutation: {
     createRoom: async (_, { code, numRounds, gameType }) => {
@@ -47,15 +55,15 @@ const resolvers = {
         {$push: {"players.$.hand": cards}})
     },
     updateStatus: (_, { code, options }) => updateStatus(code, options),
-    retrieveAndAssignPrompts: async (_, { code, cardType, roundNumber }) => {
+    retrieveAndAssignPrompts: async (_, { code, cardType }) => {
       const room = await Room.findOne({code});
-      const { players, discard, numRounds, status } = room._doc;
-
+      const { players, discard, numRounds, status} = room._doc;
+      const {currentRound} = status;
       const numCards = numRounds !== status.currentRound ? room.players.length : 1
       const ids = discard.map( card => card.id);
 
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-      let promptObjects = getPromptsObject(players, numCards, prompts, roundNumber);
+      let promptObjects = getPromptsObject(players, numCards, prompts, currentRound);
 
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
@@ -77,13 +85,12 @@ const resolvers = {
       const isLastRound = (status.currentRound === room.numRounds)
       const promptsForRound = prompts.filter(res => res.roundNumber === currentRound)
       if (allPlayersAnswered(promptsForRound, players, isLastRound)) {
-        // fire off allPlayersAnswered subscription
-        // fire off playerAnsweredAllPrompts subscription
+        pubsub.publish(`${player.username}.${SUBMITTED}.${code}`, { playerSubmitted: player })
         updateStatus(code, {allAnswered: true})
-
-      } else if (playerAnsweredAllPrompts(promptsForRound, player, isLastRound)) {
-        // fire off playerAnsweredAllPrompts subscription
-      }
+      } 
+      if (playerAnsweredAllPrompts(promptsForRound, player) || isLastRound) {
+        pubsub.publish(`${player.username}.${SUBMITTED}.${code}`, { playerSubmitted: player })
+      } 
 
       return response;
     },
@@ -128,6 +135,9 @@ const resolvers = {
     },
     updateStatus: {
       subscribe: (_, { code }) => pubsub.asyncIterator(`${UPDATE_STATUS}.${code}`)
+    },
+    playerSubmitted: {
+      subscribe: (_, {username, code}) => pubsub.asyncIterator(`${username}.${SUBMITTED}.${code}`)
     }
   }
 }
@@ -195,8 +205,11 @@ const allPlayersAnswered = (prompts, players, isLastRound) => {
 
 }
 
-const playerAnsweredAllPrompts = (prompts, player, isLastRound) => {
-
+const playerAnsweredAllPrompts = (prompts, player) => {
+   let answers = prompts.filter( response => response.players.map(pl=>pl.id).includes(player.id)).map( response => response.answers)
+   answers = [].concat.apply([], answers)
+    answers = answers.filter( ans => ans.player.id === player.id)
+   return (answers.length === 2);
 }
 
 const allVotesCast = (prompts, isLastRound, players) => {
@@ -207,7 +220,6 @@ const allVotesCast = (prompts, isLastRound, players) => {
     totalVoteCount += answers[i].votes.length
   }
   if (!isLastRound) {
-    console.log('here', totalVoteCount, players.length);
     return totalVoteCount === players.length * 2 ? true : false
   } else {
     return totalVoteCount === players.length * 3 ? true: false

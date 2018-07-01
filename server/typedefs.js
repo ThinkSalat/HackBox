@@ -3,6 +3,7 @@ const typeDefs = `
     rooms: [Room]
     findRoom(code: String): Room
     findCards(cardType: String!, numCards: Int!): [Card]
+    retrievePlayerPrompts(code: String!, username: String!): [Card]
   }
   type Room {
     id: ID
@@ -78,7 +79,7 @@ const typeDefs = `
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
     updateStatus(code: String!, options: StatusOptions!): Room
-    retrieveAndAssignPrompts(code: String!, cardType: String!, roundNumber: Int!): [Card]
+    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
     addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
   }
   
@@ -87,6 +88,7 @@ const typeDefs = `
     createdRoom: Room
     removedRoom: String
     updateStatus(code: String!): Status
+    playerSubmitted(username: String!, code: String!): Player
   }
   
 `;
