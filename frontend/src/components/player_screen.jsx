@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {graphql, compose} from 'react-apollo';
 
-import { FindRoomQuery } from '../gql/gql_query';
+import { FindRoomQuery, RetrievePromptsQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
 import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
 
@@ -59,22 +59,30 @@ class PlayerScreen extends React.Component {
   }
 
   render() {
+    let {data: {loading, retrievePlayerPrompts}} = this.props;
     this.room = this.props.findRoomQuery.findRoom;
-    if (!this.room) {
+    if (loading) {
       return null;
     }
-
-    // this.prompts = this.room.discard.map(card => card.prompt);
 
     let { 
       currentRound, 
       timer, 
     } = this.room.status;
 
+    // debugger
+    
+    let prompts = retrievePlayerPrompts.slice((currentRound-1)*2, currentRound*2);
+    prompts = prompts.map(card => {
+      return <li key={card.id}>{card.prompt}</li>;
+    });
+    prompts = <ul className='prompt-list'>{prompts}</ul>;
+
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
+        {prompts}
         {this.updatePhase()}
       </div>
     );
@@ -83,5 +91,13 @@ class PlayerScreen extends React.Component {
 
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
+  graphql(RetrievePromptsQuery, {
+    options: { 
+      variables: {
+        code: localStorage.roomId, 
+        id: localStorage.playerId
+      }
+    }
+  }),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
 )(withRouter(PlayerScreen));

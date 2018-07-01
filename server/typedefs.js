@@ -3,7 +3,7 @@ const typeDefs = `
     rooms: [Room]
     findRoom(code: String): Room
     findCards(cardType: String!, numCards: Int!): [Card]
-    retrievePlayerPrompts(code: String!, username: String!): [Card]
+    retrievePlayerPrompts(code: String!, id: String!): [Card]
   }
   type Room {
     id: ID
@@ -43,7 +43,7 @@ const typeDefs = `
     votes: [Player]
   }
   type Card {
-    id: ID!
+    id: ID
     text: String
     prompt: String
     cardType: String
@@ -73,13 +73,13 @@ const typeDefs = `
   type Mutation {
     createRoom(code: String!, gameType: String, numRounds: Int): Room
     removeRoom(id: ID!): Boolean
-    retrieveCards(code: String!, numCards: Int!, cardType: String!): [Card]
     addPlayer(code: String!, username: String!): Player
+    
+    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
     updateStatus(code: String!, options: StatusOptions!): Room
-    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
     addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
   }
   

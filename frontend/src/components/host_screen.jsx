@@ -1,20 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-//need to bind with component
 import {graphql, compose} from 'react-apollo';
-
-import { UpdateStatusMutation } from '../gql/gql_mutation';
 
 import { FindRoomQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
+import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
 
-import {
-  subscribeToRoomStatus
-} from '../gql_actions/subscription_actions';
+import { 
+  UpdateStatusMutation,
+  RetrieveAndAssignPromptsMutation,
+} from '../gql/gql_mutation';
 
-import {
-  showPlayers
-} from '../util/util';
+import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
 
@@ -38,6 +35,17 @@ class HostScreen extends React.Component {
       variables: {
         code,
         options
+      }
+    });
+  }
+
+  retrieveAndAssignPrompts = () => {
+    let { code, gameType } = this.room;
+    let cardType = gameType;
+    this.props.retrieveAndAssignPrompts({
+      variables: {
+        code,
+        cardType
       }
     });
   }
@@ -99,7 +107,6 @@ class HostScreen extends React.Component {
     if (!this.room) {
       return null;
     }
-    // debugger;
 
     let {  
       currentRound, 
@@ -110,12 +117,10 @@ class HostScreen extends React.Component {
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        <button onClick={this.allAnswered}>
-          All Answered
-        </button>
-        <button onClick={this.allVoted}>
-          All Voted
-        </button>
+
+        <button onClick={() => this.retrieveAndAssignPrompts()}>Retrieve and Assign</button>
+        <button onClick={this.allAnswered}>All Answered</button>
+        <button onClick={this.allVoted}>All Voted</button>
         {showPlayers(this.room.players)}
       </div>
     );
@@ -125,4 +130,5 @@ class HostScreen extends React.Component {
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
+  graphql(RetrieveAndAssignPromptsMutation, {name: 'retrieveAndAssignPrompts'}),
 )(withRouter(HostScreen));

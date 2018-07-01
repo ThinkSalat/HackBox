@@ -16,10 +16,10 @@ const resolvers = {
     rooms: () => Room.find(),
     findRoom: (_, { code }) => Room.findOne({ code }),
     findCards: (_, { cardType, numCards }) => Card.aggregate().match({ cardType }).sample(numCards),
-    retrievePlayerPrompts: async (_, {code, username}) => {
+    retrievePlayerPrompts: async (_, {code, id}) => {
       let room = await Room.findOne({code})
       let {prompts, players, status: { currentRound }} = room;
-      let player = players.filter( pl => pl.username===username)[0]
+      let player = players.filter( pl => pl.id===id)[0]
       return prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
     }
   },
@@ -61,7 +61,7 @@ const resolvers = {
       const {currentRound} = status;
       const numCards = numRounds !== status.currentRound ? room.players.length : 1
       const ids = discard.map( card => card.id);
-
+      
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
       let promptObjects = getPromptsObject(players, numCards, prompts, currentRound);
 
