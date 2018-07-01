@@ -118,12 +118,10 @@ class Lobby extends React.Component {
   render() {
 
     this.room = this.props.findRoomQuery.findRoom;
-    // debugger;
+
     if (!this.room) {
       return null;
     }
-
-    debugger;
 
     return (
       <div className='single-room'>
