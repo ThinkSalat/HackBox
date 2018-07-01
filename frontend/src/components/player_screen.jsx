@@ -112,6 +112,8 @@ class PlayerScreen extends React.Component {
     }
     // let {data: {retrievePlayerPrompts}} = this.props;
 
+    debugger;
+
     let { 
       currentRound, 
       timer, 
@@ -143,7 +145,6 @@ class PlayerScreen extends React.Component {
 
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
-  graphql(RetrievePromptsQuery, retrievePromptsOptions()),
   // graphql(RetrievePromptsQuery, {
   //   options: {
   //     variables: {
@@ -152,6 +153,7 @@ export default compose (
   //     }
   //   }
   // }),
+  graphql(RetrievePromptsQuery, retrievePromptsOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
   graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),
   graphql(AddVoteToAnswerMutation, {name: 'addVote'}),

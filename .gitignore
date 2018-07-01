@@ -32,3 +32,4 @@ bundle.js.map
 npm-debug.log
 
 babel/
+prompts/
