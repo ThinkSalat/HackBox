@@ -1,7 +1,8 @@
 import {
   NewPlayerSubscription,
   NewRoomSubscription,
-  RemoveRoomSubscription
+  RemoveRoomSubscription,
+  UpdateStatusSubscription
 } from '../gql/gql_subscription';
 
 export const subscribeToNewPlayers = (query, code) => {
@@ -57,6 +58,21 @@ export const subscribeToRemoveRooms = (query) => {
       }
 
       return result;
+    }
+  })
+}
+
+
+export const subscribeToRoomStatus = (query, code) => {
+  query.subscribeToMore({
+    document: UpdateStatusSubscription,
+    variables: {
+      code
+    },
+    updateQuery: (previous, { subscriptionData }) => {
+      if (!subscriptionData.data) {
+        return previous;
+      }
     }
   })
 }
