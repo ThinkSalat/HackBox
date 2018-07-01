@@ -73,6 +73,19 @@ export const subscribeToRoomStatus = (query, code) => {
       if (!subscriptionData.data) {
         return previous;
       }
+
+      let newStatus = subscriptionData.data.updateStatus;
+
+      let result = {
+        ...previous,
+        findRoom: {
+          ...previous.findRoom,
+          status: newStatus
+        }
+      }
+
+      return result;
+
     }
   })
 }

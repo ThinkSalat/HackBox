@@ -5,6 +5,13 @@ import {graphql, compose} from 'react-apollo';
 
 import { UpdateStatusMutation } from '../gql/gql_mutation';
 
+import { FindRoomQuery } from '../gql/gql_query';
+import { findRoomOptions } from '../gql_actions/query_actions';
+
+import {
+  subscribeToRoomStatus
+} from '../gql_actions/subscription_actions';
+
 class PlayerScreen extends React.Component {
 
   state = {
@@ -17,10 +24,12 @@ class PlayerScreen extends React.Component {
   }
 
   componentDidMount() {
-    
+    // debugger;
+    let {code} = this.props.match.params;
+    subscribeToRoomStatus(this.props.findRoomQuery, code)
   }
 
-  prompts = this.props.discard.map(card => card.prompt);
+  
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
@@ -32,7 +41,7 @@ class PlayerScreen extends React.Component {
 
   showPrompt = () => {
     let prompt = this.prompts.slice(-1)[0];
-    if (this.state.currentRound <= this.props.numRounds) {
+    if (this.state.currentRound <= this.room.numRounds) {
 
       return (
         <div>
@@ -60,7 +69,7 @@ class PlayerScreen extends React.Component {
   }
 
   enterPromptPhase = () => {
-    if (this.state.voted && this.state.currentRound < this.props.numRounds) {
+    if (this.state.voted && this.state.currentRound < this.room.numRounds) {
       this.prompts.pop();
 
       this.setState({
@@ -109,19 +118,30 @@ class PlayerScreen extends React.Component {
   }
 
   render() {
+
+    this.room = this.props.findRoomQuery.findRoom;
+    if (!this.room) {
+      return null;
+    }
+
+    this.prompts = this.room.discard.map(card => card.prompt);
+
+    // debugger;
+
     let { 
       // allResponsesReceived, 
       currentRound, 
       // gameOver, 
-      // timer, 
+      timer, 
       // votingFinished 
-    } = this.props.status;
+    } = this.room.status;
 
     let { promptPhase } = this.state;
 
     return (
       <div>
-        <h3>Current Round: {currentRound} / {this.props.numRounds} </h3>
+        <h3>Timer: {timer}s</h3>
+        <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>{promptPhase ? 'Prompt Phase' : 'Vote Phase'}</h3>
         {this.updatePhase()}
         <button onClick={this.enterPromptPhase}>Prompt Phase</button>
@@ -132,5 +152,6 @@ class PlayerScreen extends React.Component {
 }
 
 export default compose (
+  graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
 )(withRouter(PlayerScreen));

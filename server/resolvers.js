@@ -37,18 +37,15 @@ const resolvers = {
       return true;
     },
     addPlayer: async (_, { code, username }) => {
-      let usernameTaken = await Room.findOne({code, "players.username": username}).exec();
-      if (usernameTaken) {
-        usernameTaken = "Username taken"
-      } else {
-        var player = new Player({ username, score: 0 });
-        await Room.update(
-          { code }, 
-          {$push: { players: player }}
-        );
-      }
+      let player = new Player({ username });
+      await Room.update(
+        { code }, 
+        {$push: { players: player }}
+      );
+  
       const room = Room.findOne({ code });
-      pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room, usernameTaken })
+      pubsub.publish(`${JOINED_ROOM}.${code}`, { joinedRoom: room })
+      
       return player;
     },
     addPlayerHand: async (_, {code, username, numCards, cardType}) => {
