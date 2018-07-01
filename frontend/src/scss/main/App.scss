@@ -1,18 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Wendy+One');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+//   font-family: 'Indie Flower', cursive; use for player answers
+//   font-family: 'Wendy One', sans-serif; use for prompts
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #EDEDED;
+color: steelblue;
+}
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
+  font-family: 'Wendy One', sans-serif;
+
   height: 200px;
   padding: 20px;
-  color: white;
+  color: steelblue;
+  background-image: url('https://t4.ftcdn.net/jpg/00/99/18/85/240_F_99188502_DtGX9G7KqeQ80FrfEjugS1SWSXRxFDzJ.jpg');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  background-position-y: 40px;
 }
 
 .App-title {
@@ -26,4 +37,19 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+button {
+  border: none;
+  color: cornsilk;
+  padding: 15px 20px 15px 20px;
+  background-color: rgba(188, 204, 82, 0.712);
+  border-radius: 4px;
+  &:hover {
+    background-color: #BCCC52;
+  }
+  &:active {
+    background-color: rgb(134, 148, 46);
+  }
 }
