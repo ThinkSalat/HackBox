@@ -25,6 +25,7 @@ const typeDefs = `
   }
 
   type Status {
+    id: ID!
     currentRound: Int
     timer: Int
     status: String
@@ -75,11 +76,11 @@ const typeDefs = `
     removeRoom(id: ID!): Boolean
     addPlayer(code: String!, username: String!): Player
     
+    updateStatus(code: String!, options: StatusOptions!): Room
     retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
     addPlayerHand(code: String!, username: String!, numCards: Int!, cardType: String!): Room
     addPlayerScore(code: String!, username: String!, points: Int!): Room
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
-    updateStatus(code: String!, options: StatusOptions!): Room
     addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
   }
   
