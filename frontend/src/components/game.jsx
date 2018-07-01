@@ -12,12 +12,13 @@ export default class Game extends React.Component {
       return <h2>The game in this room has started.</h2>;
     }
 
-    if (localStorage.isHost === 'true') {
-      return <HostScreen {...options} />;
-    }
-    if (localStorage.isPlayer === 'true') {
-      return <PlayerScreen {...options} />;
-    } 
+    return (
+      <div>
+        <HostScreen {...options}/>
+        <br/>
+        <PlayerScreen {...options}/>
+      </div>
+    )
   }
 
   render() {
