@@ -33,7 +33,7 @@ class HostScreen extends React.Component {
     this.updateProgress();
     let {currentRound} = this.state;
     let nextRound = this.room.status.currentRound;
-    console.log(currentRound, nextRound, currentRound < nextRound);
+    // console.log(currentRound, nextRound, currentRound < nextRound);
     
     if (currentRound < nextRound) {
       this.setState({ currentRound: nextRound})

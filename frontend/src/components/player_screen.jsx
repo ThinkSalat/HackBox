@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import {graphql, compose} from 'react-apollo';
 
 import { FindRoomQuery, RetrievePromptsQuery } from '../gql/gql_query';
-import { findRoomOptions } from '../gql_actions/query_actions';
+import { findRoomOptions, retrievePromptsOptions } from '../gql_actions/query_actions';
 import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
 
 import { 
@@ -98,6 +98,8 @@ class PlayerScreen extends React.Component {
       return null;
     }
 
+    debugger;
+
     let { 
       currentRound, 
       timer, 
@@ -129,14 +131,15 @@ class PlayerScreen extends React.Component {
 
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
-  graphql(RetrievePromptsQuery, {
-    options: {
-      variables: {
-        code: localStorage.roomId,
-        username: localStorage.username
-      }
-    }
-  }),
+  // graphql(RetrievePromptsQuery, {
+  //   options: {
+  //     variables: {
+  //       code: localStorage.roomId,
+  //       username: localStorage.username
+  //     }
+  //   }
+  // }),
+  graphql(RetrievePromptsQuery, retrievePromptsOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
   graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),
   graphql(AddVoteToAnswerMutation, {name: 'addVote'}),

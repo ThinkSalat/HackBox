@@ -11,12 +11,8 @@ span, article, footer, select, time, small {
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
-<<<<<<< HEAD
-  box-sizing: inherit; }
-=======
   box-sizing: inherit;
   list-style: none; }
->>>>>>> 908e03ccec9a2ec9ee28883bbfefa60d920252fd
 
 ul {
   list-style: none; }
