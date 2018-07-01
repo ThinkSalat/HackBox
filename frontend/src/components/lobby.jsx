@@ -39,7 +39,7 @@ class Lobby extends React.Component {
       }
     });
   }
-  
+
   toggleStartButton = () => {
     if (localStorage.roomId !== this.room.code) {
       return null;
