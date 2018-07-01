@@ -77,6 +77,7 @@ class Lobby extends React.Component {
   }
 
   leaveRoom = () => {
+    localStorage.clear();
     this.props.history.push('/');
   }
 
