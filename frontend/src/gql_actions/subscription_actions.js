@@ -91,7 +91,7 @@ export const subscribeToRoomStatus = (query, code) => {
   })
 }
 
-export const subscribeToReceivePrompts = (query, code) => {
+export const subscribeToReceivePrompts = (query, code, username) => {
   query.subscribeToMore({
     document: ReceivePromptsSubscription,
     variables: {
