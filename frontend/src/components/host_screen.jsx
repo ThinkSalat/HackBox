@@ -117,6 +117,7 @@ class HostScreen extends React.Component {
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
+        <h3>Prompts in room: {this.room.prompts.length}</h3>
 
         <button onClick={() => this.retrieveAndAssignPrompts()}>Retrieve and Assign</button>
         <button onClick={this.allAnswered}>All Answered</button>

@@ -19,8 +19,8 @@ export const RoomsQuery = gql`{
 `;
 
 export const RetrievePromptsQuery = gql`
-  query($code: String!, $id: String!) {
-    retrievePlayerPrompts(code: $code, id: $id) {
+  query($code: String!, $username: String!) {
+    retrievePlayerPrompts(code: $code, username: $username) {
       ${CARD}
     }
   }

@@ -65,7 +65,7 @@ export const addPlayer = (ctx) => {
     }
     
   }).then((player) =>  {
-    localStorage.setItem("playerId", player.data.addPlayer.id);
+    localStorage.setItem("playerId", player.data.addPlayer.username);
     localStorage.setItem('roomId', code);
     localStorage.setItem("isPlayer", true);
     localStorage.setItem("isHost", false);
