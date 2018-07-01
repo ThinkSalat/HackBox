@@ -22,6 +22,7 @@ const AnswerSchema = new Schema({
 
 const ResponseSchema = new Schema({
   prompt: CardSchema,
+  roundNumber: Number,
   answers: [AnswerSchema],
   players: [PlayerSchema]
 });

@@ -3,10 +3,10 @@ import { PubSub, withFilter } from 'graphql-subscriptions';
 import merge from 'lodash/merge'
 
 const pubsub = new PubSub();
-const JOINED_ROOM = 'JOINED_ROOM';
-const CREATED_ROOM = 'CREATED_ROOM';
-const REMOVED_ROOM = 'REMOVED_ROOM';
-const UPDATE_STATUS = 'UPDATE_STATUS';
+const JOINED_ROOM = 'JOINED_ROOM',
+  CREATED_ROOM = 'CREATED_ROOM',
+  REMOVED_ROOM = 'REMOVED_ROOM',
+  UPDATE_STATUS = 'UPDATE_STATUS';
 require("babel-polyfill");
 
 const resolvers = { 
@@ -63,7 +63,7 @@ const resolvers = {
       pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
       return room;
     },
-    retrieveAndAssignPrompts: async (_, { code, cardType }) => {
+    retrieveAndAssignPrompts: async (_, { code, cardType, roundNumber }) => {
       const room = await Room.findOne({code});
       const { players, discard, numRounds, status } = room._doc;
 
@@ -71,7 +71,7 @@ const resolvers = {
       const ids = discard.map( card => card.id);
 
       const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-      let promptObjects = getPromptsObject(players, numCards, prompts);
+      let promptObjects = getPromptsObject(players, numCards, prompts, roundNumber);
 
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
@@ -127,16 +127,17 @@ const resolvers = {
 
 export default resolvers;
 
-const getPromptsObject = (rcvdPlayers, numCards, prompts) => {
+const getPromptsObject = (rcvdPlayers, numCards, prompts, roundNumber) => {
+  console.log(roundNumber);
   let promptObjects;
   let playerMatchups = buildMatchups(rcvdPlayers);
 
   if (numCards === 1) {
-    promptObjects = [new Response({ prompt: prompts[0], players: rcvdPlayers })]
+    promptObjects = [new Response({ prompt: prompts[0], players: rcvdPlayers, roundNumber })]
   } else {
     promptObjects = prompts.map( prompt => {
       const players = playerMatchups.pop()
-      return new Response({ prompt, players })
+      return new Response({ prompt, players, roundNumber })
     })
   }
   return promptObjects;
