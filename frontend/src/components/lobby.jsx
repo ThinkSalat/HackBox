@@ -51,6 +51,15 @@ class Lobby extends React.Component {
   }
 
   waitingStage = () => {
+    if (localStorage.isPlayer) {
+      return (
+        <div>
+        players username at top of screens
+        
+        instructiosn with screenshots/gif captures here
+        </div>
+      )
+    }
     return (
       <div>
         {showPlayers(this.room.players)}
