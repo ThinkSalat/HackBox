@@ -82,7 +82,7 @@ const resolvers = {
       if (allPlayersAnswered(promptsForRound, players, isLastRound)) {
         // fire off allPlayersAnswered subscription
         // fire off playerAnsweredAllPrompts subscription
-        updateStatus(code, {allResponsesReceived: true})
+        updateStatus(code, {allAnswered: true})
 
       } else if (playerAnsweredAllPrompts(promptsForRound, player, isLastRound)) {
         // fire off playerAnsweredAllPrompts subscription
@@ -109,7 +109,7 @@ const resolvers = {
       const promptsForRound = prompts.filter(res => res.roundNumber === roundNumber)
       if (allVotesCast(prompts, isLastRound, players)) {
         // fire subscription for allVotesCast
-        updateStatus(code, {votingFinished: true})
+        updateStatus(code, {allVoted: true})
       }
 
       return answer
