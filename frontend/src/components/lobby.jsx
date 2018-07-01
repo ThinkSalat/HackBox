@@ -21,11 +21,22 @@ import Game from './game';
 
 class Lobby extends React.Component {
 
+  state = {
+    render: false
+  }
+
+
   componentDidMount() {
     let {code} = this.props.match.params;
-    
     subscribeToNewPlayers(this.props.findRoomQuery, code)
     subscribeToRoomStatus(this.props.findRoomQuery, code)
+  }
+  componentWillReceiveProps(nextProps) {
+    // debugger;
+  }
+
+  componentDidUpdate() {
+    // debugger;
   }
   
   updateStatus = (options) => {
@@ -67,6 +78,7 @@ class Lobby extends React.Component {
   }
 
   waitingStage = () => {
+    // debugger;
     return (
       <div>
         {showPlayers(this.room.players)}
@@ -76,11 +88,6 @@ class Lobby extends React.Component {
   }
 
   gameStage = () => {
-    // let options = {
-    //   ...this.room,
-    //   showPlayers: this.showPlayers()
-    // };
-
     return (
       <div>
         <Game />
@@ -89,6 +96,7 @@ class Lobby extends React.Component {
   }
 
   leaveRoom = () => {
+    // localStorage.clear();
     this.props.history.push('/');
   }
 
@@ -110,9 +118,12 @@ class Lobby extends React.Component {
   render() {
 
     this.room = this.props.findRoomQuery.findRoom;
+    // debugger;
     if (!this.room) {
       return null;
     }
+
+    debugger;
 
     return (
       <div className='single-room'>

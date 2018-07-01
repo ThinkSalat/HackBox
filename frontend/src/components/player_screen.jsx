@@ -24,11 +24,12 @@ class PlayerScreen extends React.Component {
   }
 
   componentDidMount() {
+    // debugger;
     let {code} = this.props.match.params;
     subscribeToRoomStatus(this.props.findRoomQuery, code)
   }
 
-  prompts = this.room.discard.map(card => card.prompt);
+  
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
@@ -123,11 +124,15 @@ class PlayerScreen extends React.Component {
       return null;
     }
 
+    this.prompts = this.room.discard.map(card => card.prompt);
+
+    // debugger;
+
     let { 
       // allResponsesReceived, 
       currentRound, 
       // gameOver, 
-      // timer, 
+      timer, 
       // votingFinished 
     } = this.room.status;
 
@@ -135,6 +140,7 @@ class PlayerScreen extends React.Component {
 
     return (
       <div>
+        <h3>Timer: {timer}s</h3>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>{promptPhase ? 'Prompt Phase' : 'Vote Phase'}</h3>
         {this.updatePhase()}

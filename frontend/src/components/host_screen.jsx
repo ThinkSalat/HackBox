@@ -58,8 +58,8 @@ class HostScreen extends React.Component {
     } = this.room.status;
 
     if (timer === 0) {
-      if (answerPhase) this.enterVotePhase();
-      if (votePhase) this.enterAnswerPhase();
+      if (answerPhase) this.allAnswered();
+      if (votePhase) this.allVoted();
     }
 
     if (currentRound > this.room.numRounds) {
@@ -99,6 +99,7 @@ class HostScreen extends React.Component {
     if (!this.room) {
       return null;
     }
+    // debugger;
 
     let {  
       currentRound, 
