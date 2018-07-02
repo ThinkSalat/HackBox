@@ -15,11 +15,12 @@ import {
 class PlayerScreen extends React.Component {
 
   state = {
-    answer: ''
+    answer: '',
   }
 
   componentDidMount() {
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
+    // this.showModal();
   }
 
   updateStatus = (options) => {
@@ -90,6 +91,8 @@ class PlayerScreen extends React.Component {
     e.preventDefault();
     // this.addVote(answerId, responseId);
   }
+
+  
 
   render() {
     let {data: {loading, retrievePlayerPrompts}} = this.props;

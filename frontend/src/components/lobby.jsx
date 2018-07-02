@@ -18,16 +18,20 @@ import {
 } from '../util/util';
 
 import Game from './game';
-import Instructions from './instructions'
 
+import {Modal} from './modal';
 
 class Lobby extends React.Component {
-
+  
+  state = {
+    show: true
+  }
 
   componentDidMount() {
     let {code} = this.props.match.params;
     subscribeToNewPlayers(this.props.findRoomQuery, code)
     subscribeToRoomStatus(this.props.findRoomQuery, code)
+    this.showModal();
   }
   
   updateStatus = (options) => {
@@ -52,16 +56,10 @@ class Lobby extends React.Component {
     }
   }
 
-  toggleInstructions = () => {
-    if (localStorage.roomId === this.room.code) {
-      return <Instructions />;
-    }
-  }
 
   waitingStage = () => {
     return (
       <div>
-        {this.toggleInstructions()}
         {showPlayers(this.room.players)}
         {this.toggleStartButton()}
       </div>
@@ -95,6 +93,13 @@ class Lobby extends React.Component {
     return this.room.status.gameStarted ? this.gameStage() : this.waitingStage()
   }
 
+  showModal = () => {
+    this.setState({ show: true })
+  }
+  hideModal = () => {
+    this.setState({ show: false })
+  }
+
   render() {
 
     this.room = this.props.findRoomQuery.findRoom;
@@ -103,11 +108,26 @@ class Lobby extends React.Component {
       return null;
     }
 
+    if (this.state.show) {
+      return (
+        <div className='single-room'>
+          <h2>{this.room.gameType}</h2>
+          <button onClick={this.leaveRoom}>Leave Room</button>
+          {this.updateStage()}
+
+          <Modal show={this.state.show} handleClose={this.hideModal} />
+        </div>
+      );
+      } 
+
     return (
       <div className='single-room'>
         <h2>{this.room.gameType}</h2>
         <button onClick={this.leaveRoom}>Leave Room</button>
+        <br/>
+        <button onClick={this.showModal}>Instructions</button>
         {this.updateStage()}
+
       </div>
     );
   }
