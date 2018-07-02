@@ -3,7 +3,7 @@ const typeDefs = `
     rooms: [Room]
     findRoom(code: String): Room
     findCards(cardType: String!, numCards: Int!): [Card]
-    retrievePlayerPrompts(code: String!, username: String!): [Card]
+    retrievePlayerPrompts(code: String!, username: String!): [Response]
   }
   type Room {
     id: ID
@@ -77,7 +77,7 @@ const typeDefs = `
     addPlayer(code: String!, username: String!): Player
     
     updateStatus(code: String!, options: StatusOptions!): Room
-    retrieveAndAssignPrompts(code: String!, cardType: String!): [Card]
+    retrieveAndAssignPrompts(code: String!, cardType: String!): [Response]
     addAnswerToResponse(responseId: String!, code: String!, username: String!, answers: [String!]): Response
     addVoteToAnswer(code: String!, username: String!, answerId: String!, responseId: String!): Answer
     addPlayerScore(code: String!, username: String!, points: Int!): Room
