@@ -117,13 +117,13 @@ class PlayerScreen extends React.Component {
   render() {
     this.room = this.props.findRoomQuery.findRoom;
 
-    let reses = this.props.retrievePromptsQuery.retrievePlayerPrompts
+    let responses = this.props.retrievePromptsQuery.retrievePlayerPrompts
     
-    if (!this.room || !reses) {
+    if (!this.room || !responses) {
       return null;
     }
 
-    let cards = reses.map((res) => {
+    let cards = responses.map((res) => {
       return res.prompt
     });
     
@@ -134,18 +134,18 @@ class PlayerScreen extends React.Component {
       timer, 
     } = this.room.status;
 
-    this.resIds = cards.map(card => this.room.prompts.find(res => res.prompt.prompt === card.prompt).id)
+    this.resIds = responses.map(res => res.id)
 
-    cards = cards.map(card => {
-      return <li key={card.id}>{card.prompt}</li>
+    responses = responses.map(res => {
+      return <li key={res.id}>{res.prompt.prompt}</li>
     });
-    cards = <ul className='prompt-list'>{cards}</ul>;
+    responses = <ul className='prompt-list'>{responses}</ul>;
 
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        {this.answer(cards)}
+        {this.answer(responses)}
       </div>
     );
   }

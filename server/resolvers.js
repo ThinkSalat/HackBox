@@ -110,7 +110,6 @@ const resolvers = {
       const isLastRound = (status.currentRound === room.numRounds)
       const promptsForRound = prompts.filter(res => res.roundNumber === roundNumber)
       if (allVotesCast(prompts, isLastRound, players)) {
-        // fire subscription for allVotesCast
         updateStatus(code, {allVoted: true})
       }
 
