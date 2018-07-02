@@ -75,7 +75,6 @@ class PlayerScreen extends React.Component {
         {cards}
         <br />
         <form onSubmit={e => this.submit(e)}>
-
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
@@ -106,7 +105,7 @@ class PlayerScreen extends React.Component {
 
     return (
       <ul className="voting-form">
-        {voteForms.map( vf => <li>{vf}</li>)}
+        {voteForms.map( (vf, i) => <li key={i}>{vf}</li>)}
       </ul>
     );
   }

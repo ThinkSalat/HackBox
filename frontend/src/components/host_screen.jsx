@@ -81,24 +81,20 @@ class HostScreen extends React.Component {
   }
 
   enterAnswerPhase = () => {
-    if (this.room.status.allVoted) {
-      updateStatus(this.props, this.room.code, {
-        votePhase: false,
-        answerPhase: true,
-        currentRound: this.room.status.currentRound + 1,
-        timer: 60,
-      });
-    }
+    updateStatus(this.props, this.room.code, {
+      votePhase: false,
+      answerPhase: true,
+      currentRound: this.room.status.currentRound + 1,
+      timer: 10,
+    });
   }
 
   enterVotePhase = () => {
-    if (this.room.status.allAnswered) {
-      updateStatus(this.props, this.room.code, {
-        answerPhase: false,
-        votePhase: true,
-        timer: 60,
-      }); 
-    }
+    updateStatus(this.props, this.room.code, {
+      answerPhase: false,
+      votePhase: true,
+      timer: 10,
+    }); 
   }
   
   render() {
