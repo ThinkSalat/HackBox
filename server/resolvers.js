@@ -153,8 +153,11 @@ const updateStatus = async (code, options) => {
   room = await Room.findOne({code})
   status = room.status
   pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
+  console.log(options, options.currentRound);
 
   if (options.currentRound) {
+    console.log("inside");
+    
     players.forEach( async (p) => {
       let username = p.username;
 

@@ -20,7 +20,6 @@ export const retrievePromptsOptions = () => {
   return {
     name: "retrievePromptsQuery",
     options: ownProps => {
-      debugger;
       return {
         variables: {
           code: localStorage.roomId,

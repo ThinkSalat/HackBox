@@ -32,6 +32,7 @@ class PlayerScreen extends React.Component {
   componentDidMount() {
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
     subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
+
     // this.showModal();
   }
 
