@@ -129,7 +129,7 @@ class Welcome extends Component {
         </div>
 
         <br/>
-        <button onClick={() => createRoom(this.state, this.props)}>Create Room</button>
+        <button onClick={() => createRoom(this.state, this.props)}>Create Game</button>
 
         <TextField
           onChange={this.handleChange("code")}
