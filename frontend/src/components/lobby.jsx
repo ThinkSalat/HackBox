@@ -22,11 +22,16 @@ import Game from './game';
 import {Modal} from './modal';
 
 class Lobby extends React.Component {
-  
+  constructor(props){
+    super(props)
+    this.room = this.props.findRoomQuery.findRoom;
+    if (!this.room) {
+      this.props.history.push("/")
+    }
+  }
   state = {
     show: false
   }
-
   componentDidMount() {
     let {code} = this.props.match.params;
     subscribeToNewPlayers(this.props.findRoomQuery, code)
