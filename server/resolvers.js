@@ -153,12 +153,12 @@ const updateStatus = async (code, options) => {
   room = await Room.findOne({code})
   status = room.status
   pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
-  publishPrompts(code, options);
+  publishPrompts(code, options, players);
 
   return room;
 }
 
-const publishPrompts = (code, options) => {
+const publishPrompts = (code, options, players) => {
   if (options.currentRound) {
     players.forEach( async (p) => {
       let username = p.username;

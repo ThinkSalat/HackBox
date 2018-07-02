@@ -16,9 +16,7 @@ import {
 import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
-
-  state = {initFetch: true}
-
+  
   componentDidMount() {
     this.clock();
     let {code} = this.props.match.params;

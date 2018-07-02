@@ -63,7 +63,8 @@ class PlayerScreen extends React.Component {
     });
   }
 
-  submit = () => {
+  submit = (e) => {
+    e.preventDefault();
     let {answerCount} = this.state;
     let responseId = this.resIds[answerCount];
     this.addAnswer(responseId);
@@ -82,7 +83,7 @@ class PlayerScreen extends React.Component {
     return (
       <div>
         {cards}
-        <form onSubmit={() => this.submit()}>
+        <form onSubmit={(e) => this.submit(e)}>
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
