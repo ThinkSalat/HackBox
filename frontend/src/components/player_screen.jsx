@@ -63,7 +63,8 @@ class PlayerScreen extends React.Component {
     });
   }
 
-  submit = () => {
+  submit = (e) => {
+    e.preventDefault();
     let {answerCount} = this.state;
     let responseId = this.resIds[answerCount];
     this.addAnswer(responseId);
@@ -82,7 +83,7 @@ class PlayerScreen extends React.Component {
     return (
       <div>
         {cards}
-        <form onSubmit={() => this.submit()}>
+        <form onSubmit={(e) => this.submit(e)}>
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
@@ -120,12 +121,6 @@ class PlayerScreen extends React.Component {
       return null;
     }
 
-    // let cards = responses.map((res) => {
-    //   return res.prompt
-    // });
-    
-    // debugger;
-
     let { 
       currentRound, 
       timer, 
@@ -133,16 +128,16 @@ class PlayerScreen extends React.Component {
 
     this.resIds = responses.map(res => res.id)
 
-    responses = responses.map(res => {
+    let cards = responses.map(res => {
       return <li key={res.id}>{res.prompt.prompt}</li>
     });
-    responses = <ul className='prompt-list'>{responses}</ul>;
+    cards = <ul className='prompt-list'>{cards}</ul>;
 
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        {this.answer(responses)}
+        {this.answer(cards)}
       </div>
     );
   }
