@@ -153,11 +153,14 @@ const updateStatus = async (code, options) => {
   room = await Room.findOne({code})
   status = room.status
   pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
-  console.log(options, options.currentRound);
+  publishPrompts(code, options);
 
+  return room;
+}
+
+const publishPrompts = (code, options) => {
   if (options.currentRound) {
-    console.log("inside");
-    
+    console.log('here');
     players.forEach( async (p) => {
       let username = p.username;
 
@@ -166,14 +169,10 @@ const updateStatus = async (code, options) => {
       let player = players.find( pl => pl.username===username);
       let reses = prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id))
 
-      //.map( response=> response.prompt)
-
       pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: reses })
     
     })
   }
-
-  return room;
 }
 
 const getPrompts = async (code, cardType, roundNumber) =>{
