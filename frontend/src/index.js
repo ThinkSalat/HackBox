@@ -19,6 +19,8 @@ import { getMainDefinition } from 'apollo-utilities';
 
 let httpUri = "http://localhost:4000/graphql";
 let wsUri = "ws://localhost:4000/subscriptions";
+// let httpUri = "http://192.168.0.54:4000/graphql";
+// let wsUri = "ws://192.168.0.54:4000/subscriptions";
 // let httpUri = "https://hack-box.herokuapp.com/graphql";
 // let wsUri = "wss://hack-box.herokuapp.com/subscriptions";
 

@@ -20,27 +20,19 @@ class HostScreen extends React.Component {
   componentDidMount() {
     this.clock();
     let {code} = this.props.match.params;
-    subscribeToRoomStatus(this.props.findRoomQuery, code)
+    subscribeToRoomStatus(this.props.findRoomQuery, code);
+
+    if (!this.room.prompts.length) {
+      this.retrieveAndAssignPrompts();
+    }
   }
 
   componentWillUnmount() {
     clearInterval(this.clock);
   }
 
-  componentDidUpdate = async (prev) => {
+  componentDidUpdate = (prev) => {
     this.updateProgress();
-
-    let {currentRound} = prev.findRoomQuery.findRoom.status;
-    let nextRound = this.room.status.currentRound;
-    let promptNum = this.room.prompts.length;
-    if (!promptNum && this.state.initFetch) {
-      this.setState({ initFetch: false});
-      this.retrieveAndAssignPrompts();
-    } else {
-      if (currentRound < nextRound) {
-        this.retrieveAndAssignPrompts();
-      }
-    }
   }
   
   updateStatus = (options) => {

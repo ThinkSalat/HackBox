@@ -2,9 +2,19 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {graphql, compose} from 'react-apollo';
 
-import { FindRoomQuery, RetrievePromptsQuery } from '../gql/gql_query';
-import { findRoomOptions } from '../gql_actions/query_actions';
-import { subscribeToRoomStatus } from '../gql_actions/subscription_actions';
+import { 
+  FindRoomQuery, 
+  RetrievePromptsQuery 
+} from '../gql/gql_query';
+import { 
+  findRoomOptions,
+  retrievePromptsOptions
+ } from '../gql_actions/query_actions';
+
+import { 
+  subscribeToRoomStatus,
+  subscribeToReceivePrompts
+ } from '../gql_actions/subscription_actions';
 
 import { 
   UpdateStatusMutation,
@@ -21,6 +31,8 @@ class PlayerScreen extends React.Component {
 
   componentDidMount() {
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
+    subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
+
     // this.showModal();
   }
 
@@ -104,21 +116,25 @@ class PlayerScreen extends React.Component {
   }
 
   render() {
-    let {data: {loading, retrievePlayerPrompts}} = this.props;
     this.room = this.props.findRoomQuery.findRoom;
-    if (!this.room || loading) {
+
+    let responses = this.props.retrievePromptsQuery.retrievePlayerPrompts
+    
+    if (!this.room || !responses) {
       return null;
     }
+
+    let cards = responses.map((res) => {
+      return res.prompt
+    });
+    
+    // debugger;
 
     let { 
       currentRound, 
       timer, 
     } = this.room.status;
 
-    let responses = retrievePlayerPrompts;
-    if (!responses) {
-      return null;
-    }
     this.resIds = responses.map(res => res.id)
 
     responses = responses.map(res => {
@@ -138,14 +154,7 @@ class PlayerScreen extends React.Component {
 
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
-  graphql(RetrievePromptsQuery, {
-    options: {
-      variables: {
-        code: localStorage.roomId,
-        username: localStorage.username
-      }
-    }
-  }),
+  graphql(RetrievePromptsQuery, retrievePromptsOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
   graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),
   graphql(AddVoteToAnswerMutation, {name: 'addVote'}),

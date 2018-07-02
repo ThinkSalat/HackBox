@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-
 import Welcome from './components/welcome';
 import Lobby from './components/lobby';
 

@@ -7,7 +7,8 @@ const JOINED_ROOM = 'JOINED_ROOM',
   CREATED_ROOM = 'CREATED_ROOM',
   REMOVED_ROOM = 'REMOVED_ROOM',
   UPDATE_STATUS = 'UPDATE_STATUS',
-  SUBMITTED = 'SUBMITTED';
+  SUBMITTED = 'SUBMITTED',
+  RECEIVE_PROMPTS = 'RECEIVE_PROMPTS';
 
 require("babel-polyfill");
 
@@ -82,11 +83,11 @@ const resolvers = {
       const isLastRound = (status.currentRound === room.numRounds)
       const promptsForRound = prompts.filter(res => res.roundNumber === currentRound)
       if (allPlayersAnswered(promptsForRound, players, isLastRound)) {
-        pubsub.publish(`${player.username}.${SUBMITTED}.${code}`, { playerSubmitted: player })
+        pubsub.publish(`${SUBMITTED}.${code}`, { playerSubmitted: player })
         updateStatus(code, {allAnswered: true})
       } 
       if (playerAnsweredAllPrompts(promptsForRound, player) || isLastRound) {
-        pubsub.publish(`${player.username}.${SUBMITTED}.${code}`, { playerSubmitted: player })
+        pubsub.publish(`${SUBMITTED}.${code}`, { playerSubmitted: player })
       } 
 
       return response;
@@ -133,21 +134,45 @@ const resolvers = {
       subscribe: (_, { code }) => pubsub.asyncIterator(`${UPDATE_STATUS}.${code}`)
     },
     playerSubmitted: {
-      subscribe: (_, {username, code}) => pubsub.asyncIterator(`${username}.${SUBMITTED}.${code}`)
+      subscribe: (_, {code}) => pubsub.asyncIterator(`${SUBMITTED}.${code}`)
+    },
+    receivePrompts: {
+      subscribe: (_, {code, username}) => pubsub.asyncIterator(`${username}.${RECEIVE_PROMPTS}.${code}`)
     }
   }
 }
 
 export default resolvers;
 
+
 const updateStatus = async (code, options) => {
   let room = await Room.findOne({code})
-  let {status} = room._doc;
+  let {status, players} = room._doc;
   status = merge({},status._doc, options)
   await Room.findOneAndUpdate({code}, { $set: { status } })
   room = await Room.findOne({code})
   status = room.status
   pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
+  console.log(options, options.currentRound);
+
+  if (options.currentRound) {
+    console.log("inside");
+    
+    players.forEach( async (p) => {
+      let username = p.username;
+
+      let room = await Room.findOne({code})
+      let {prompts, players, status: { currentRound }} = room;
+      let player = players.find( pl => pl.username===username);
+      let reses = prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id))
+
+      //.map( response=> response.prompt)
+
+      pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: reses })
+    
+    })
+  }
+
   return room;
 }
 
@@ -235,3 +260,4 @@ const allVotesCast = (prompts, isLastRound, players) => {
     return totalVoteCount === players.length * 3 ? true: false
   }
 }
+
