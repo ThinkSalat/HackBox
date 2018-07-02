@@ -16,7 +16,7 @@ import {
 import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
-  
+
   componentDidMount() {
     this.clock();
     let {code} = this.props.match.params;
@@ -59,11 +59,15 @@ class HostScreen extends React.Component {
       timer, 
       answerPhase,
       votePhase,
+      allAnswered,
+      allVoted,
     } = this.room.status;
 
-    if (timer === 0) {
-      if (answerPhase) this.allAnswered();
-      if (votePhase) this.allVoted();
+    if ((allAnswered || timer <= 0) && answerPhase) {
+      this.enterVotePhase();
+    }
+    if ((allVoted || timer <= 0) && votePhase) {
+      this.enterAnswerPhase();
     }
 
     if (currentRound > this.room.numRounds) {
@@ -76,25 +80,21 @@ class HostScreen extends React.Component {
     }
   }
 
-  allVoted = () => {
-    if (this.room.status.allVoted) {
-      updateStatus(this.props, this.room.code, {
-        votePhase: false,
-        answerPhase: true,
-        currentRound: this.room.status.currentRound + 1,
-        timer: 60,
-      });
-    }
+  enterAnswerPhase = () => {
+    updateStatus(this.props, this.room.code, {
+      votePhase: false,
+      answerPhase: true,
+      currentRound: this.room.status.currentRound + 1,
+      timer: 10,
+    });
   }
 
-  allAnswered = () => {
-    if (this.room.status.allAnswered) {
-      updateStatus(this.props, this.room.code, {
-        answerPhase: false,
-        votePhase: true,
-        timer: 15,
-      }); 
-    }
+  enterVotePhase = () => {
+    updateStatus(this.props, this.room.code, {
+      answerPhase: false,
+      votePhase: true,
+      timer: 10,
+    }); 
   }
   
   render() {

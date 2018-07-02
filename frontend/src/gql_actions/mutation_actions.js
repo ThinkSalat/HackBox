@@ -16,11 +16,11 @@ const getRandomCode = (props) => {
   return code;
 }
 
-export const createRoom = (state, props) => {
+export const createRoom = async (state, props) => {
   let code = getRandomCode(props);
 
   if (!code) return null;
-  props.createRoom({
+  await props.createRoom({
     variables: {
       code,
       numRounds: state.numRounds,
@@ -31,12 +31,15 @@ export const createRoom = (state, props) => {
   localStorage.setItem("isPlayer", false)
   localStorage.setItem("isHost", true)
   localStorage.setItem("inGame", true)
+
+  props.history.push(`room/${code}`)
 }
 
 
 
-export const addPlayer = (ctx) => {
-  let { code, username} = ctx.state;
+export const addPlayer = (ctx, roomCode) => {
+  let {username} = ctx.state;
+  let code = roomCode ? roomCode : ctx.state.code;
   if (!code || !username) {
     return null;
   }

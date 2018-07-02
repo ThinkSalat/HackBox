@@ -52,18 +52,8 @@ class PlayerScreen extends React.Component {
       }
     });
   }
-  
-  addVote = (answerId, responseId) => {
-    let code = this.room.code;
-    let username = localStorage.username;
-    this.props.addVote({
-      variables: {
-        code, username, answerId, responseId
-      }
-    });
-  }
 
-  submit = (e) => {
+  submit = e => {
     e.preventDefault();
     let {answerCount} = this.state;
     let responseId = this.resIds[answerCount];
@@ -83,7 +73,8 @@ class PlayerScreen extends React.Component {
     return (
       <div>
         {cards}
-        <form onSubmit={(e) => this.submit(e)}>
+        <br />
+        <form onSubmit={e => this.submit(e)}>
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
@@ -93,28 +84,80 @@ class PlayerScreen extends React.Component {
     );
   }
 
+  addVote = (answerId, responseId) => {
+    let code = this.room.code;
+    let username = localStorage.username;
+    this.props.addVote({
+      variables: {
+        code, username, answerId, responseId
+      }
+    });
+  }
+
   vote = () => {
+    let voteForms = [];
+    
+   this.currentRoundPrompts().forEach( res => {
+      if (!this.isPlayerPrompt(res)){
+       voteForms.push(this.voteForm(res))
+      }
+    });
+
     return (
-      <div>
-        <h3>Vote your favorite answer!</h3>
-        <button onClick={this.voted}>Answer A</button>
-        <button onClick={this.voted}>Answer B</button>
-      </div>
+      <ul className="voting-form">
+        {voteForms.map( (vf, i) => <li key={i}>{vf}</li>)}
+      </ul>
     );
   }
 
-  voted = e => {
+  isPlayerPrompt = res => (
+    // res.answers.some( ans => ans.player.id === localStorage.playerId)
+    res.players.map(p=>p.id).includes(localStorage.playerId)
+  )
+
+  currentRoundPrompts = () => (
+    this.room.prompts.filter(resp => resp.roundNumber === this.room.status.currentRound)
+  )
+
+  voteForm = ( res ) => { 
+    return(
+    <div>
+      <h3>Vote your favorite answer!</h3>
+      <button onClick={e => this.voted(e, res.answers[0].id, res.id )}>
+        {res.answers[0].answers[0]}
+      </button>
+      <button onClick={e => this.voted(e, res.answers[1].id, res.id )}>
+        {res.answers[0].answers[1]}
+      </button>
+    </div>
+  )}
+
+  voted = (e, answerId, responseId) => {
     e.preventDefault();
-    // this.addVote(answerId, responseId);
+    this.addVote(answerId, responseId);
   }
 
   waiting = () => {
     return <h3>Sit back and relax, waiting for other players...</h3>;
   }
 
+  updatePhase = () => {
+    let { 
+      answerPhase,
+      votePhase,
+    } = this.room.status;
+
+    if (answerPhase) {
+      return this.answer(this.cards);
+    }
+    if (votePhase) {
+      return this.vote();
+    }
+
+  }
+
   render() {
     this.room = this.props.findRoomQuery.findRoom;
-
     let responses = this.props.retrievePromptsQuery.retrievePlayerPrompts
     
     if (!this.room || !responses) {
@@ -131,13 +174,14 @@ class PlayerScreen extends React.Component {
     let cards = responses.map(res => {
       return <li key={res.id}>{res.prompt.prompt}</li>
     });
-    cards = <ul className='prompt-list'>{cards}</ul>;
+
+    this.cards = <ul className='prompt-list'>{cards}</ul>;
 
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        {this.answer(cards)}
+        {this.updatePhase()}
       </div>
     );
   }
