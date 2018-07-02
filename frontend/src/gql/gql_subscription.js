@@ -1,7 +1,7 @@
 //Will parse the query using gql
 import gql from 'graphql-tag';
 
-import {ROOM, STATUS, CARD} from './gql_types';
+import {ROOM, STATUS, RESPONSE} from './gql_types';
 
 export const NewPlayerSubscription = gql`
   subscription onJoinedRoom($code: String!){
@@ -36,7 +36,7 @@ export const UpdateStatusSubscription = gql`
 export const ReceivePromptsSubscription = gql`
   subscription onreceivePrompts($code: String!, $username: String!) {
     receivePrompts(code: $code, username: $username) {
-      ${CARD}
+      ${RESPONSE}
     }
   }
 `;

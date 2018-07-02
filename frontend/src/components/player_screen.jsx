@@ -116,12 +116,16 @@ class PlayerScreen extends React.Component {
 
   render() {
     this.room = this.props.findRoomQuery.findRoom;
-    // let prompts = this.props.findRoomQuery.findRoom.prompts;
-    let cards = this.props.retrievePromptsQuery.retrievePlayerPrompts;
+
+    let reses = this.props.retrievePromptsQuery.retrievePlayerPrompts
     
-    if (!this.room || !cards) {
+    if (!this.room || !reses) {
       return null;
     }
+
+    let cards = reses.map((res) => {
+      return res.prompt
+    });
     
     // debugger;
 

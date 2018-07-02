@@ -148,12 +148,29 @@ export default resolvers;
 
 const updateStatus = async (code, options) => {
   let room = await Room.findOne({code})
-  let {status} = room._doc;
+  let {status, players} = room._doc;
   status = merge({},status._doc, options)
   await Room.findOneAndUpdate({code}, { $set: { status } })
   room = await Room.findOne({code})
   status = room.status
   pubsub.publish(`${UPDATE_STATUS}.${code}`, { updateStatus: status})
+
+  if (options.currentRound) {
+    players.forEach( async (p) => {
+      let username = p.username;
+
+      let room = await Room.findOne({code})
+      let {prompts, players, status: { currentRound }} = room;
+      let player = players.find( pl => pl.username===username);
+      let reses = prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id))
+
+      //.map( response=> response.prompt)
+
+      pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: reses })
+    
+    })
+  }
+
   return room;
 }
 
@@ -242,30 +259,3 @@ const allVotesCast = (prompts, isLastRound, players) => {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-players.forEach( async (p) => {
-  let username = p.username;
-  let room = await Room.findOne({code})
-  let {prompts, players, status: { currentRound }} = room;
-  let player = players.find( pl => pl.username===username);
-  let cards =  prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
-
-  pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: cards })
-})
-
-
-return prompts;
