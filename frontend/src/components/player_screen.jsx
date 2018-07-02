@@ -15,13 +15,11 @@ import {
 class PlayerScreen extends React.Component {
 
   state = {
-    answer: ''
+    answer: '',
+    answerCount: 0
   }
 
   componentDidMount() {
-    if (!localStorage.answerCount) {
-      localStorage.setItem('answerCount', 0);
-    }
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
   }
 
@@ -57,11 +55,10 @@ class PlayerScreen extends React.Component {
   }
 
   submit = () => {
-    let answerCount = parseInt(localStorage.answerCount);
+    let {answerCount} = this.state;
     let responseId = this.resIds[answerCount];
     this.addAnswer(responseId);
-    this.setState({ answer: '' });
-    localStorage.setItem("answerCount", answerCount + 1)
+    this.setState({ answer: '', answerCount: answerCount + 1 });
   }
 
   updateAnswer = e => {
@@ -69,7 +66,9 @@ class PlayerScreen extends React.Component {
   }
 
   answer = (cards) => { 
-    this.answered();
+    if (this.state.answerCount >= 2) {
+      return this.waiting();
+    }
 
     return (
       <div>
@@ -82,12 +81,6 @@ class PlayerScreen extends React.Component {
         </form>
       </div>
     );
-  }
-
-  answered = () => {
-    if (localStorage.answerCount === '2') {
-      return this.waiting();
-    }
   }
 
   vote = () => {
