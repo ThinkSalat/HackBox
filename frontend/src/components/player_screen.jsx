@@ -21,6 +21,7 @@ class PlayerScreen extends React.Component {
 
   componentDidMount() {
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
+    // this.showModal();
   }
 
   updateStatus = (options) => {
