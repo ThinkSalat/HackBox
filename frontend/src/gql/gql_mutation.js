@@ -43,7 +43,7 @@ export const RetrieveAndAssignPromptsMutation = gql`
 `;
 
 export const AddAnswerToResponseMutation = gql`
-  mutation($responseId: String!, $code: String!, $username: String!, $answers: String!) {
+  mutation($responseId: String!, $code: String!, $username: String!, $answers: [String!]) {
     addAnswerToResponse(responseId: $responseId, code: $code, username: $username, answers: $answers) {
       ${RESPONSE}
     }
