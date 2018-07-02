@@ -37,7 +37,7 @@ export const UpdateStatusMutation = gql`
 export const RetrieveAndAssignPromptsMutation = gql`
   mutation($code: String!, $cardType: String!) {
     retrieveAndAssignPrompts(code: $code, cardType: $cardType) {
-      ${CARD}
+      ${RESPONSE}
     }
   }
 `;
