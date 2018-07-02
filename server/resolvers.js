@@ -21,7 +21,7 @@ const resolvers = {
       let room = await Room.findOne({code})
       let {prompts, players, status: { currentRound }} = room;
       let player = players.find( pl => pl.username===username);
-      return prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
+      return prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id))
     }
   },
   Mutation: {
@@ -58,28 +58,14 @@ const resolvers = {
     updateStatus: (_, { code, options }) => updateStatus(code, options),
     retrieveAndAssignPrompts: async (_, { code, cardType }) => {
       const room = await Room.findOne({code});
-      const { players, discard, numRounds, status} = room._doc;
-      const {currentRound} = status;
-      const numCards = numRounds !== status.currentRound ? room.players.length : 1
-      const ids = discard.map( card => card.id);
-      
-      const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-      let promptObjects = getPromptsObject(players, numCards, prompts, currentRound);
 
-      await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
-
-      players.forEach( async (p) => {
-        let username = p.username;
-        let room = await Room.findOne({code})
-        let {prompts, players, status: { currentRound }} = room;
-        let player = players.find( pl => pl.username===username);
-        let cards =  prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
-
-        pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: cards })
-      })
-
-
-      return prompts;
+      const {numRounds} = room._doc;
+      let prompts = [], test
+      for (let currentRound = 1; currentRound <= numRounds; currentRound++) {
+        test = await getPrompts(code, cardType, currentRound)
+        prompts = prompts.concat(test)
+      }
+      return prompts
     },
     addAnswerToResponse: async (_, {responseId, code, username, answers}) => {
       let room = await Room.findOne({code})
@@ -171,6 +157,20 @@ const updateStatus = async (code, options) => {
   return room;
 }
 
+const getPrompts = async (code, cardType, roundNumber) =>{
+  const room = await Room.findOne({code});
+  const { players, discard, numRounds} = room._doc;
+  const numCards = numRounds !== roundNumber ? room.players.length : 1
+  const ids = discard.map( card => card.id);
+  
+  const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
+  let promptObjects = getPromptsObject(players, numCards, prompts, roundNumber);
+
+  await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
+
+  return promptObjects;
+}
+
 const getPromptsObject = (rcvdPlayers, numCards, prompts, roundNumber) => {
   let promptObjects;
   let playerMatchups = buildMatchups(rcvdPlayers);
@@ -241,3 +241,31 @@ const allVotesCast = (prompts, isLastRound, players) => {
     return totalVoteCount === players.length * 3 ? true: false
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+players.forEach( async (p) => {
+  let username = p.username;
+  let room = await Room.findOne({code})
+  let {prompts, players, status: { currentRound }} = room;
+  let player = players.find( pl => pl.username===username);
+  let cards =  prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
+
+  pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: cards })
+})
+
+
+return prompts;

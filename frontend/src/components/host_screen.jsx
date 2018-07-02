@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {graphql, compose} from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 
 import { FindRoomQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
@@ -15,30 +15,34 @@ import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
 
-  state = {
-    currentRound: 0
-  }
+  state = {initFetch: true}
 
   componentDidMount() {
     this.clock();
     let {code} = this.props.match.params;
-    subscribeToRoomStatus(this.props.findRoomQuery, code)
+    subscribeToRoomStatus(this.props.findRoomQuery, code);
+
+    this.retrieveAndAssignPrompts();
   }
 
   componentWillUnmount() {
     clearInterval(this.clock);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate = (prev) => {
     this.updateProgress();
-    let {currentRound} = this.state;
-    let nextRound = this.room.status.currentRound;
-    // console.log(currentRound, nextRound, currentRound < nextRound);
-    
-    if (currentRound < nextRound) {
-      this.setState({ currentRound: nextRound})
-      this.retrieveAndAssignPrompts();
-    }
+
+    // let {currentRound} = prev.findRoomQuery.findRoom.status;
+    // let nextRound = this.room.status.currentRound;
+    // let promptNum = this.room.prompts.length;
+    // if (!promptNum && this.state.initFetch) {
+    //   this.setState({ initFetch: false});
+    //   this.retrieveAndAssignPrompts();
+    // } else {
+    //   if (currentRound < nextRound) {
+    //     this.retrieveAndAssignPrompts();
+    //   }
+    // }
   }
   
   updateStatus = (options) => {
@@ -143,5 +147,5 @@ class HostScreen extends React.Component {
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
-  graphql(RetrieveAndAssignPromptsMutation, {name: 'retrieveAndAssignPrompts'}),
+  graphql(RetrieveAndAssignPromptsMutation, {name: 'retrieveAndAssignPrompts'})
 )(withRouter(HostScreen));
