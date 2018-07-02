@@ -60,7 +60,7 @@ const resolvers = {
 
       const {numRounds} = room._doc;
       let prompts = [], test
-      for (let currentRound = 0; currentRound < numRounds; currentRound++) {
+      for (let currentRound = 1; currentRound < numRounds; currentRound++) {
         test = await getPrompts(code, cardType, currentRound)
         prompts = prompts.concat(test)
       }
