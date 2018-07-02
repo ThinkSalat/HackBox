@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to HackBox</h1>
+          <h1 className="App-title"> <span id='hack'>Hack</span> <span id='box'>Box</span></h1>
         </header>
 
         <Switch>
