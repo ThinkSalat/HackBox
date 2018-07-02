@@ -36,16 +36,6 @@ class HostScreen extends React.Component {
   componentDidUpdate = (prev) => {
     this.updateProgress();
   }
-  
-  // updateStatus = (options) => {
-  //   let code = this.room.code;
-  //   this.props.updateStatus({
-  //     variables: {
-  //       code,
-  //       options
-  //     }
-  //   });
-  // }
 
   retrieveAndAssignPrompts = () => {
     let { code, gameType } = this.room;

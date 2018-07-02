@@ -33,25 +33,14 @@ class PlayerScreen extends React.Component {
     answerCount: 0
   }
 
-  componentDidMount() {
+  async componentDidMount() {
 
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
-    subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
-
+    await subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
+    
     updateStatus(this.props, this.room.code, {currentRound: this.room.status.currentRound});
 
-    // this.showModal();
   }
-
-  // updateStatus = (options) => {
-  //   let code = this.room.code;
-  //   this.props.updateStatus({
-  //     variables: {
-  //       code,
-  //       options
-  //     }
-  //   });
-  // }
   
   addAnswer = (responseId) => {
     let code = this.room.code;
@@ -131,9 +120,9 @@ class PlayerScreen extends React.Component {
       return null;
     }
 
-    let cards = responses.map((res) => {
-      return res.prompt
-    });
+    // let cards = responses.map((res) => {
+    //   return res.prompt
+    // });
     
     // debugger;
 
