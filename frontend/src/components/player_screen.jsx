@@ -19,6 +19,9 @@ class PlayerScreen extends React.Component {
   }
 
   componentDidMount() {
+    if (!localStorage.answerCount) {
+      localStorage.setItem('answerCount', 0);
+    }
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
   }
 
@@ -54,17 +57,23 @@ class PlayerScreen extends React.Component {
   }
 
   submit = () => {
-    this.addAnswer(this.resIds.shift());
-    this.setState({ answer: ''});
+    let answerCount = parseInt(localStorage.answerCount);
+    let responseId = this.resIds[answerCount];
+    this.addAnswer(responseId);
+    this.setState({ answer: '' });
+    localStorage.setItem("answerCount", answerCount + 1)
   }
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
   }
 
-  answer = () => { 
+  answer = (cards) => { 
+    this.answered();
+
     return (
       <div>
+        {cards}
         <form onSubmit={() => this.submit()}>
           <input 
             onChange={this.updateAnswer}
@@ -73,6 +82,12 @@ class PlayerScreen extends React.Component {
         </form>
       </div>
     );
+  }
+
+  answered = () => {
+    if (localStorage.answerCount === '2') {
+      return this.waiting();
+    }
   }
 
   vote = () => {
@@ -88,6 +103,10 @@ class PlayerScreen extends React.Component {
   voted = e => {
     e.preventDefault();
     // this.addVote(answerId, responseId);
+  }
+
+  waiting = () => {
+    return <h3>Sit back and relax, waiting for other players...</h3>;
   }
 
   render() {
@@ -107,7 +126,7 @@ class PlayerScreen extends React.Component {
       return null;
     }
     this.resIds = cards.map(card => this.room.prompts.find(res => res.prompt.prompt === card.prompt).id)
-    // debugger
+
     cards = cards.map(card => {
       return <li key={card.id}>{card.prompt}</li>
     });
@@ -117,9 +136,7 @@ class PlayerScreen extends React.Component {
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        {cards}
-        {this.answer()}
-        {this.vote()}
+        {this.answer(cards)}
       </div>
     );
   }
