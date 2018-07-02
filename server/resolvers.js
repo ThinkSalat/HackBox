@@ -160,7 +160,6 @@ const updateStatus = async (code, options) => {
 
 const publishPrompts = (code, options) => {
   if (options.currentRound) {
-    console.log('here');
     players.forEach( async (p) => {
       let username = p.username;
 
