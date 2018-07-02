@@ -61,7 +61,7 @@ const resolvers = {
       const {numRounds} = room._doc;
       let prompts = [], test
       for (let currentRound = 0; currentRound < numRounds; currentRound++) {
-        test = await testing(code, cardType)
+        test = await getPrompts(code, cardType, currentRound)
         prompts = prompts.concat(test)
       }
       return prompts
@@ -152,15 +152,14 @@ const updateStatus = async (code, options) => {
   return room;
 }
 
-const testing = async (code, cardType) =>{
+const getPrompts = async (code, cardType, roundNumber) =>{
   const room = await Room.findOne({code});
-  const { players, discard, numRounds, status} = room._doc;
-  const {currentRound} = status;
-  const numCards = numRounds !== status.currentRound ? room.players.length : 1
+  const { players, discard, numRounds} = room._doc;
+  const numCards = numRounds !== roundNumber ? room.players.length : 1
   const ids = discard.map( card => card.id);
   
   const prompts = await Card.aggregate().match({ cardType, id: {$nin: ids } }).sample(numCards).exec()
-  let promptObjects = getPromptsObject(players, numCards, prompts, currentRound);
+  let promptObjects = getPromptsObject(players, numCards, prompts, roundNumber);
 
   await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
