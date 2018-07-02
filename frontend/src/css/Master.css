@@ -57,13 +57,26 @@ body {
 
 .App-header {
   font-family: 'Wendy One', sans-serif;
-  height: 200px;
+  height: 151px;
   padding: 20px;
   color: steelblue;
   background-image: url("https://t4.ftcdn.net/jpg/00/99/18/85/240_F_99188502_DtGX9G7KqeQ80FrfEjugS1SWSXRxFDzJ.jpg");
   background-repeat: no-repeat;
-  background-position-y: 40px;
-  background-position: center 40px; }
+  background-position: center -9px; }
+
+span#hack {
+  position: relative;
+  top: 29px;
+  right: 2px;
+  color: #EDEDED;
+  font-size: 23px; }
+
+span#box {
+  position: relative;
+  top: 39px;
+  left: 9px;
+  font-size: 29px;
+  color: #EDEDED; }
 
 .App-title {
   font-size: 1.5em; }
@@ -80,10 +93,10 @@ button {
   border: none;
   color: cornsilk;
   padding: 15px 20px 15px 20px;
-  background-color: rgba(188, 204, 82, 0.712);
+  background-color: #BCCC52;
   border-radius: 4px; }
   button:hover {
-    background-color: #BCCC52; }
+    background-color: rgba(188, 204, 82, 0.712); }
   button:active {
     background-color: #86942e; }
 
