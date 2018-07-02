@@ -1,10 +1,15 @@
 .single-room {
+  position: relative;
   .player-list {
     list-style: none;
     display: flex;
     flex-flow: wrap;
     justify-content: center;
-
+    background-color: aquamarine;
+    position: relative;
+    // top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     li {
       margin: 0 20px;
     }
@@ -12,5 +17,6 @@
 
   .prompt-list {
     list-style: none;
+    font-family: 'Wendy One', sans-serif;
   }
 }
