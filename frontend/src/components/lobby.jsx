@@ -25,9 +25,9 @@ class Lobby extends React.Component {
   constructor(props){
     super(props)
     this.room = this.props.findRoomQuery.findRoom;
-    if (!this.room) {
-      this.props.history.push("/")
-    }
+    // if (!this.room) {
+    //   this.props.history.push("/")
+    // }
   }
   state = {
     show: false
