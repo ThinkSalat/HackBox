@@ -75,6 +75,7 @@ class PlayerScreen extends React.Component {
         {cards}
         <br />
         <form onSubmit={e => this.submit(e)}>
+
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
@@ -174,6 +175,7 @@ class PlayerScreen extends React.Component {
     let cards = responses.map(res => {
       return <li key={res.id}>{res.prompt.prompt}</li>
     });
+
     this.cards = <ul className='prompt-list'>{cards}</ul>;
 
     return (
