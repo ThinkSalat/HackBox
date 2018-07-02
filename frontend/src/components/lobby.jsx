@@ -24,14 +24,14 @@ import {Modal} from './modal';
 class Lobby extends React.Component {
   
   state = {
-    show: true
+    show: false
   }
 
   componentDidMount() {
     let {code} = this.props.match.params;
     subscribeToNewPlayers(this.props.findRoomQuery, code)
     subscribeToRoomStatus(this.props.findRoomQuery, code)
-    this.showModal();
+    this.hideModal();
   }
   
   updateStatus = (options) => {
