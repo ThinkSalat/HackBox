@@ -22,6 +22,10 @@ import {
   AddVoteToAnswerMutation,
 } from '../gql/gql_mutation';
 
+import {
+  updateStatus
+} from '../gql_actions/mutation_actions';
+
 class PlayerScreen extends React.Component {
 
   state = {
@@ -30,21 +34,24 @@ class PlayerScreen extends React.Component {
   }
 
   componentDidMount() {
+
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
     subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
+
+    updateStatus(this.props, this.room.code, {currentRound: this.room.status.currentRound});
 
     // this.showModal();
   }
 
-  updateStatus = (options) => {
-    let code = this.room.code;
-    this.props.updateStatus({
-      variables: {
-        code,
-        options
-      }
-    });
-  }
+  // updateStatus = (options) => {
+  //   let code = this.room.code;
+  //   this.props.updateStatus({
+  //     variables: {
+  //       code,
+  //       options
+  //     }
+  //   });
+  // }
   
   addAnswer = (responseId) => {
     let code = this.room.code;

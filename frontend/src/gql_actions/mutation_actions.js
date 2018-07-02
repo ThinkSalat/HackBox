@@ -83,3 +83,12 @@ export const removeRoom = (props, room) => {
     }
   })
 }
+
+export const updateStatus = (props, code, options) => {
+  props.updateStatus({
+    variables: {
+      code,
+      options
+    }
+  });
+}
