@@ -35,7 +35,7 @@ class PlayerScreen extends React.Component {
   addAnswer = (responseId) => {
     let code = this.room.code;
     let username = localStorage.username;
-    let answers = this.state.answer;
+    let answers = [this.state.answer];
     this.props.addAnswer({
       variables: {
         responseId, code, username, answers
@@ -53,9 +53,8 @@ class PlayerScreen extends React.Component {
     });
   }
 
-  submit = e => {
-    e.preventDefault();
-    // this.addAnswer(responseId);
+  submit = () => {
+    this.addAnswer(this.resIds.shift());
     this.setState({ answer: ''});
   }
 
@@ -66,7 +65,7 @@ class PlayerScreen extends React.Component {
   answer = () => { 
     return (
       <div>
-        <form onSubmit={this.submit}>
+        <form onSubmit={() => this.submit()}>
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
@@ -103,23 +102,22 @@ class PlayerScreen extends React.Component {
       timer, 
     } = this.room.status;
 
-    let prompts = retrievePlayerPrompts;
-    prompts = prompts.map(card => {
+    let cards = retrievePlayerPrompts;
+    if (!cards) {
+      return null;
+    }
+    this.resIds = cards.map(card => this.room.prompts.find(res => res.prompt.prompt === card.prompt).id)
+    // debugger
+    cards = cards.map(card => {
       return <li key={card.id}>{card.prompt}</li>
     });
-
-    // let num = this.room.players.length;
-    // let prompts = this.room.prompts.slice((currentRound-1)*num, num * currentRound);
-    // prompts = prompts.map(res => {
-    //   return <li key={res.id}>{res.prompt.prompt}</li>;
-    // });
-    prompts = <ul className='prompt-list'>{prompts}</ul>;
+    cards = <ul className='prompt-list'>{cards}</ul>;
 
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        {prompts}
+        {cards}
         {this.answer()}
         {this.vote()}
       </div>
