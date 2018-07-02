@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import {graphql, compose} from 'react-apollo';
 
 import TextField from '@material-ui/core/TextField';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+// import Select from 'react-select';
+// import 'react-select/dist/react-select.css';
 
 
 import { 
@@ -70,26 +70,10 @@ class Welcome extends Component {
     });
   };
 
-  handleGameSelect = (gameType) => {
-    let val = defaultGame;
-    if (gameType !== null) {
-      val = gameType.value;
-    }
-    this.setState({ gameType: val });
-  }
-
-  handleRoundsSelect = (numRounds) => {
-    let val = defaultRounds;
-    if (numRounds !== null) {
-      val = numRounds.value;
-    }
-    this.setState({ numRounds: val });
-  }
-
   render() {
     
     const {data: {loading, rooms}} = this.props;
-    const {username, code, gameType, numRounds} = this.state;
+    const {username, code} = this.state;
       
     
     if (loading) {
@@ -99,34 +83,6 @@ class Welcome extends Component {
     return(
 
       <div className='lobby'>
-
-        <div className='room-option'>
-          <Select
-            className="select-game"
-            value={gameType}
-            clearable={false}
-            onChange={this.handleGameSelect}
-            options={[
-              { value: 'Quiplash', label: 'Quiplash' },
-              { value: 'A2A', label: 'Apples to Apples' },
-              { value: 'CAH', label: 'Cards Against Humanity' },
-            ]}
-          />
-
-          <Select
-            className="select-rounds"
-            value={numRounds}
-            clearable={false}
-            onChange={this.handleRoundsSelect}
-            options={[
-              { value: 1, label: '1' },
-              { value: 2, label: '2' },
-              { value: 3, label: '3' },
-              { value: 4, label: '4' },
-              { value: 5, label: '5' },
-            ]}
-          />
-        </div>
 
         <br/>
         <button onClick={() => createRoom(this.state, this.props)}>Create Game</button>
@@ -150,7 +106,7 @@ class Welcome extends Component {
         <ul className='room-list'>
           {rooms.map(room => (
             <div key={room.id}>
-              <li onClick={() => this.props.history.push(`/room/${room.code}`)}>
+              <li onClick={() => addPlayer(this, room.code)}>
                 {`${room.code}: ${room.players.length} players, ${room.gameType}, ${room.numRounds} rounds`}
               </li>
               <button onClick={() => removeRoom(this.props, room)}>
