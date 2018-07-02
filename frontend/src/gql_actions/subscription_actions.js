@@ -110,7 +110,7 @@ export const subscribeToReceivePrompts = (query, code, username) => {
         retrievePlayerPrompts: newPrompts
       }
 
-      debugger;
+      // debugger;
       return result;
 
     }

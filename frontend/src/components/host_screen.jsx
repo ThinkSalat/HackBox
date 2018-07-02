@@ -22,7 +22,9 @@ class HostScreen extends React.Component {
     let {code} = this.props.match.params;
     subscribeToRoomStatus(this.props.findRoomQuery, code);
 
-    this.retrieveAndAssignPrompts();
+    if (!this.room.prompts.length) {
+      this.retrieveAndAssignPrompts();
+    }
   }
 
   componentWillUnmount() {
@@ -31,18 +33,6 @@ class HostScreen extends React.Component {
 
   componentDidUpdate = (prev) => {
     this.updateProgress();
-
-    // let {currentRound} = prev.findRoomQuery.findRoom.status;
-    // let nextRound = this.room.status.currentRound;
-    // let promptNum = this.room.prompts.length;
-    // if (!promptNum && this.state.initFetch) {
-    //   this.setState({ initFetch: false});
-    //   this.retrieveAndAssignPrompts();
-    // } else {
-    //   if (currentRound < nextRound) {
-    //     this.retrieveAndAssignPrompts();
-    //   }
-    // }
   }
   
   updateStatus = (options) => {

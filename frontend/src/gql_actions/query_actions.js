@@ -17,13 +17,15 @@ export const findRoomOptions = () => {
 };
 
 export const retrievePromptsOptions = () => {
-  // debugger;
   return {
     name: "retrievePromptsQuery",
-    options: {
-      variables: {
-        code: localStorage.roomId,
-        username: localStorage.username 
+    options: ownProps => {
+      debugger;
+      return {
+        variables: {
+          code: localStorage.roomId,
+          username: localStorage.username 
+        }
       }
     }
   }
