@@ -96,9 +96,34 @@ class HostScreen extends React.Component {
       timer: 10,
     }); 
   }
-  
-  render() {
 
+  gameStats = room => {
+    let {  
+      currentRound, 
+      timer,
+      allAnswered,
+      allVoted,
+      status
+    } = room.status;
+    
+    return(
+    <div>
+      <h3>Current Round: {currentRound} / {room.numRounds} </h3>
+      <h3>Timer: {timer}s</h3>
+      <h3>Prompts in room: {room.prompts.length}</h3>
+      <h3>All Answered: {allAnswered.toString()}</h3>
+      <h3>All Voted: {allVoted.toString()}</h3>
+      {showPlayers(room.players)}
+    </div>
+  )}
+
+  voting = room => {
+    return(
+      'ji'
+    )
+  }
+
+  render() {
     this.room = this.props.findRoomQuery.findRoom;
     if (!this.room) {
       return null;
@@ -109,18 +134,15 @@ class HostScreen extends React.Component {
       timer,
       allAnswered,
       allVoted,
+      status
     } = this.room.status;
     
-    return (
-      <div>
-        <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
-        <h3>Timer: {timer}s</h3>
-        <h3>Prompts in room: {this.room.prompts.length}</h3>
-        <h3>All Answered: {allAnswered.toString()}</h3>
-        <h3>All Voted: {allVoted.toString()}</h3>
-        {showPlayers(this.room.players)}
-      </div>
-    );
+    switch (status) {
+      case 'Lobby':
+        return this.gameStats(this.room);
+      default:
+        return this.gameStats(this.room);
+    }
   }
 }
 
