@@ -104,22 +104,21 @@ class PlayerScreen extends React.Component {
 
   render() {
     this.room = this.props.findRoomQuery.findRoom;
+    // let prompts = this.props.findRoomQuery.findRoom.prompts;
     let prompts = this.props.retrievePromptsQuery.retrievePlayerPrompts;
     
-    debugger;
-    if (!this.room || !this.prompts) {
+    if (!this.room || !prompts) {
       return null;
     }
-    // let {data: {retrievePlayerPrompts}} = this.props;
+    
+    // debugger;
 
-    debugger;
 
     let { 
       currentRound, 
       timer, 
     } = this.room.status;
 
-    // let prompts = retrievePlayerPrompts;
     prompts = prompts.map(card => {
       return <li key={card.id}>{card.prompt}</li>
     });
@@ -145,14 +144,6 @@ class PlayerScreen extends React.Component {
 
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
-  // graphql(RetrievePromptsQuery, {
-  //   options: {
-  //     variables: {
-  //       code: localStorage.roomId,
-  //       username: localStorage.username
-  //     }
-  //   }
-  // }),
   graphql(RetrievePromptsQuery, retrievePromptsOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
   graphql(AddAnswerToResponseMutation, {name: 'addAnswer'}),

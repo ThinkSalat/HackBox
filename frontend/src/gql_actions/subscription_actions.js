@@ -95,28 +95,23 @@ export const subscribeToReceivePrompts = (query, code, username) => {
   query.subscribeToMore({
     document: ReceivePromptsSubscription,
     variables: {
-      code
+      code,
+      username
     },
     updateQuery: (previous, { subscriptionData }) => {
       if (!subscriptionData.data) {
         return previous;
       }
 
-      debugger;
+      let newPrompts = subscriptionData.data.receivePrompts
+      
+      let result = {
+        ...previous,
+        retrievePlayerPrompts: newPrompts
+      }
 
-      // let newStatus = subscriptionData.data.updateStatus;
-
-//retrievePlayerPrompts
-
-      // let result = {
-      //   ...previous,
-      //   findRoom: {
-      //     ...previous.findRoom,
-      //     status: newStatus
-      //   }
-      // }
-
-      // return result;
+      // debugger;
+      return result;
 
     }
   })

@@ -90,7 +90,7 @@ const typeDefs = `
     removedRoom: String
     updateStatus(code: String!): Status
     playerSubmitted(code: String!): Player
-    receivePrompts(code: String!): [Card]
+    receivePrompts(code: String!, username: String!): [Card]
   }
   
 `;

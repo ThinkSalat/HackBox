@@ -68,7 +68,16 @@ const resolvers = {
 
       await Room.findOneAndUpdate({code}, {$push: { discard: prompts, prompts: promptObjects}})
 
-      pubsub.publish(`${RECEIVE_PROMPTS}.${code}`, { receivePrompts: prompts })
+      players.forEach( async (p) => {
+        let username = p.username;
+        let room = await Room.findOne({code})
+        let {prompts, players, status: { currentRound }} = room;
+        let player = players.find( pl => pl.username===username);
+        let cards =  prompts.filter( response => response.roundNumber === currentRound && response.players.map(pl=>pl.id).includes(player.id)).map( response=> response.prompt)
+
+        pubsub.publish(`${username}.${RECEIVE_PROMPTS}.${code}`, { receivePrompts: cards })
+      })
+
 
       return prompts;
     },
@@ -143,12 +152,13 @@ const resolvers = {
       subscribe: (_, {code}) => pubsub.asyncIterator(`${SUBMITTED}.${code}`)
     },
     receivePrompts: {
-      subscribe: (_, {code}) => pubsub.asyncIterator(`${RECEIVE_PROMPTS}.${code}`)
+      subscribe: (_, {code, username}) => pubsub.asyncIterator(`${username}.${RECEIVE_PROMPTS}.${code}`)
     }
   }
 }
 
 export default resolvers;
+
 
 const updateStatus = async (code, options) => {
   let room = await Room.findOne({code})

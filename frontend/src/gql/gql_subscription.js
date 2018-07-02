@@ -34,8 +34,8 @@ export const UpdateStatusSubscription = gql`
 `;
 
 export const ReceivePromptsSubscription = gql`
-  subscription onreceivePrompts($code: String!) {
-    receivePrompts(code: $code) {
+  subscription onreceivePrompts($code: String!, $username: String!) {
+    receivePrompts(code: $code, username: $username) {
       ${CARD}
     }
   }

@@ -17,6 +17,7 @@ export const findRoomOptions = () => {
 };
 
 export const retrievePromptsOptions = () => {
+  // debugger;
   return {
     name: "retrievePromptsQuery",
     options: {
