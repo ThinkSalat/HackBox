@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import {graphql, compose} from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 
 import { FindRoomQuery } from '../gql/gql_query';
 import { findRoomOptions } from '../gql_actions/query_actions';
@@ -145,5 +145,5 @@ class HostScreen extends React.Component {
 export default compose (
   graphql(FindRoomQuery, findRoomOptions()),
   graphql(UpdateStatusMutation, {name: 'updateStatus'}),
-  graphql(RetrieveAndAssignPromptsMutation, {name: 'retrieveAndAssignPrompts'}),
+  graphql(RetrieveAndAssignPromptsMutation, {name: 'retrieveAndAssignPrompts'})
 )(withRouter(HostScreen));
