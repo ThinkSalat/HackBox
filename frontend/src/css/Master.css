@@ -147,12 +147,19 @@ button {
   height: auto;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 7px; }
 
 .display-block {
   display: block; }
 
 .display-none {
   display: none; }
+
+.howtoplay {
+  font-size: 24px;
+  text-decoration: underline;
+  color: black; }
 
 /*# sourceMappingURL=Master.css.map */
