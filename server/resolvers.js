@@ -70,7 +70,6 @@ const resolvers = {
       return prompts;
     },
     addAnswerToResponse: async (_, {responseId, code, username, answers}) => {
-      debugger
       let room = await Room.findOne({code})
       let {prompts, players, status} = room;
       let response = prompts.find( response => response.id === responseId)
