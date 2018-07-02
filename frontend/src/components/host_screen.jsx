@@ -15,9 +15,7 @@ import { showPlayers } from '../util/util';
 
 class HostScreen extends React.Component {
 
-  state = {
-    currentRound: 0
-  }
+  state = {initFetch: true}
 
   componentDidMount() {
     this.clock();
@@ -29,15 +27,19 @@ class HostScreen extends React.Component {
     clearInterval(this.clock);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate = async (prev) => {
     this.updateProgress();
-    let {currentRound} = this.state;
+
+    let {currentRound} = prev.findRoomQuery.findRoom.status;
     let nextRound = this.room.status.currentRound;
-    console.log(currentRound, nextRound, currentRound < nextRound);
-    
-    if (currentRound < nextRound) {
-      this.setState({ currentRound: nextRound})
+    let promptNum = this.room.prompts.length;
+    if (!promptNum && this.state.initFetch) {
+      this.setState({ initFetch: false});
       this.retrieveAndAssignPrompts();
+    } else {
+      if (currentRound < nextRound) {
+        this.retrieveAndAssignPrompts();
+      }
     }
   }
   

@@ -43,7 +43,7 @@ class Lobby extends React.Component {
       }
     });
   }
-  
+
   toggleStartButton = () => {
     if (localStorage.roomId !== this.room.code) {
       return null;
@@ -75,6 +75,7 @@ class Lobby extends React.Component {
   }
 
   leaveRoom = () => {
+    localStorage.clear();
     this.props.history.push('/');
   }
 

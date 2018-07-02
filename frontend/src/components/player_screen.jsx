@@ -16,6 +16,7 @@ class PlayerScreen extends React.Component {
 
   state = {
     answer: '',
+    answerCount: 0
   }
 
   componentDidMount() {
@@ -36,7 +37,7 @@ class PlayerScreen extends React.Component {
   addAnswer = (responseId) => {
     let code = this.room.code;
     let username = localStorage.username;
-    let answers = this.state.answer;
+    let answers = [this.state.answer];
     this.props.addAnswer({
       variables: {
         responseId, code, username, answers
@@ -54,20 +55,26 @@ class PlayerScreen extends React.Component {
     });
   }
 
-  submit = e => {
-    e.preventDefault();
-    // this.addAnswer(responseId);
-    this.setState({ answer: ''});
+  submit = () => {
+    let {answerCount} = this.state;
+    let responseId = this.resIds[answerCount];
+    this.addAnswer(responseId);
+    this.setState({ answer: '', answerCount: answerCount + 1 });
   }
 
   updateAnswer = e => {
     this.setState({ answer: e.currentTarget.value });
   }
 
-  answer = () => { 
+  answer = (cards) => { 
+    if (this.state.answerCount >= 2) {
+      return this.waiting();
+    }
+
     return (
       <div>
-        <form onSubmit={this.submit}>
+        {cards}
+        <form onSubmit={() => this.submit()}>
           <input 
             onChange={this.updateAnswer}
             value={this.state.answer}
@@ -92,7 +99,9 @@ class PlayerScreen extends React.Component {
     // this.addVote(answerId, responseId);
   }
 
-  
+  waiting = () => {
+    return <h3>Sit back and relax, waiting for other players...</h3>;
+  }
 
   render() {
     let {data: {loading, retrievePlayerPrompts}} = this.props;
@@ -106,25 +115,22 @@ class PlayerScreen extends React.Component {
       timer, 
     } = this.room.status;
 
-    let prompts = retrievePlayerPrompts;
-    prompts = prompts.map(card => {
+    let cards = retrievePlayerPrompts;
+    if (!cards) {
+      return null;
+    }
+    this.resIds = cards.map(card => this.room.prompts.find(res => res.prompt.prompt === card.prompt).id)
+
+    cards = cards.map(card => {
       return <li key={card.id}>{card.prompt}</li>
     });
-
-    // let num = this.room.players.length;
-    // let prompts = this.room.prompts.slice((currentRound-1)*num, num * currentRound);
-    // prompts = prompts.map(res => {
-    //   return <li key={res.id}>{res.prompt.prompt}</li>;
-    // });
-    prompts = <ul className='prompt-list'>{prompts}</ul>;
+    cards = <ul className='prompt-list'>{cards}</ul>;
 
     return (
       <div>
         <h3>Current Round: {currentRound} / {this.room.numRounds} </h3>
         <h3>Timer: {timer}s</h3>
-        {prompts}
-        {this.answer()}
-        {this.vote()}
+        {this.answer(cards)}
       </div>
     );
   }
