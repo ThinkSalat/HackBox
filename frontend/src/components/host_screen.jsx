@@ -75,7 +75,7 @@ class HostScreen extends React.Component {
         gameOver: true, 
         gameStarted: false 
       });
-
+      // show game end screen instead with option to leave or restart game
       this.props.history.push('/');
     }
   }
@@ -85,7 +85,7 @@ class HostScreen extends React.Component {
       votePhase: false,
       answerPhase: true,
       currentRound: this.room.status.currentRound + 1,
-      timer: 10,
+      timer: 1000,
     });
   }
 
@@ -93,7 +93,7 @@ class HostScreen extends React.Component {
     updateStatus(this.props, this.room.code, {
       answerPhase: false,
       votePhase: true,
-      timer: 10,
+      timer: 1000,
     }); 
   }
 

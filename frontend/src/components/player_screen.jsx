@@ -27,19 +27,16 @@ import {
 } from '../gql_actions/mutation_actions';
 
 class PlayerScreen extends React.Component {
-
   state = {
     answer: '',
     answerCount: 0
   }
 
   async componentDidMount() {
-
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
     await subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
     
     updateStatus(this.props, this.room.code, {currentRound: this.room.status.currentRound});
-
   }
   
   addAnswer = (responseId) => {
@@ -120,6 +117,9 @@ class PlayerScreen extends React.Component {
   )
 
   voteForm = ( res ) => { 
+    if (!res.answers[0]) {
+      return null;
+    }
     return(
     <div>
       <h3>Vote your favorite answer!</h3>
@@ -127,7 +127,7 @@ class PlayerScreen extends React.Component {
         {res.answers[0].answers[0]}
       </button>
       <button onClick={e => this.voted(e, res.answers[1].id, res.id )}>
-        {res.answers[0].answers[1]}
+        {res.answers[1].answers[0]}
       </button>
     </div>
   )}
