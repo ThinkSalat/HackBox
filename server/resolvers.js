@@ -203,20 +203,21 @@ const getPromptsObject = (rcvdPlayers, numCards, prompts, roundNumber) => {
 }
 
 const buildMatchups = players => {
-  // if (players.length === 3) {
-  //   return [[players[0], players[1]], [players[1],players[2]], [players[2], players[0]]]
-  // }
   const matchups = []
   let offset = 0;
+
+  // set offset
   while (offset <= 0 || offset === players.length) {
     offset = (Math.floor(Math.random() * players.length - 2) + 1 )
   } 
+
+  // add offset to index and modulo against length to match player agsinst their pair
   players.forEach(pl => matchups.push([pl]))
   matchups.forEach( (plArr,i) => {
     let pOffset = (i+offset) % players.length;
-    console.log(pOffset);
     plArr.push(players[pOffset])
   })
+  
   return matchups;
 }
 
