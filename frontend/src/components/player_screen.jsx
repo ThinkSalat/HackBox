@@ -122,7 +122,8 @@ class PlayerScreen extends React.Component {
     }
     return(
     <div>
-      <h3>Vote your favorite answer!</h3>
+      <h3>{res.prompt.prompt}</h3>
+      <h2>Vote on your favorite answer!</h2>
       <button onClick={e => this.voted(e, res.answers[0].id, res.id )}>
         {res.answers[0].answers[0]}
       </button>
