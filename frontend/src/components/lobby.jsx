@@ -24,7 +24,7 @@ import {Modal} from './modal';
 class Lobby extends React.Component {
   constructor(props){
     super(props)
-    this.room = this.props.findRoomQuery.findRoom;
+    // this.room = this.props.findRoomQuery.findRoom;
     // if (!this.room) {
     //   this.props.history.push("/")
     // }

@@ -16,11 +16,11 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
-// let ip = 'localhost';
-// let httpUri = `http://${ip}:4000/graphql`;
-// let wsUri = `ws://${ip}:4000/subscriptions`;
-let httpUri = "https://hack-box.herokuapp.com/graphql";
-let wsUri = "wss://hack-box.herokuapp.com/subscriptions";
+let ip = 'localhost';
+let httpUri = `http://${ip}:4000/graphql`;
+let wsUri = `ws://${ip}:4000/subscriptions`;
+// let httpUri = "https://hack-box.herokuapp.com/graphql";
+// let wsUri = "wss://hack-box.herokuapp.com/subscriptions";
 
 
 //send graphQL requests to this location
@@ -63,4 +63,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// registerServiceWorker();
+registerServiceWorker();
