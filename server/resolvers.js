@@ -98,18 +98,17 @@ const resolvers = {
       let player = players.find( pl => pl.username===username)
       let prompt = prompts.find( p => p.id === responseId)
       let answer = prompt.answers.find( a => a.id === answerId)
-      let {roundNumber} = status;
-
+      let {currentRound} = status;
       answer.votes.push(player)
 
       await Room.findOneAndUpdate({ code, "prompts._id": responseId},
-      { $set: { "prompts.$.answers": answer}}
+        { $set: { "prompts.$.answers": answer}}
       )
 
       // send sub for finishing voting if voting over
-      const isLastRound = (status.currentRound === room.numRounds)
-      const promptsForRound = prompts.filter(res => res.roundNumber === roundNumber)
-      if (allVotesCast(prompts, isLastRound, players)) {
+      const isLastRound = currentRound === room.numRounds
+      const promptsForRound = prompts.filter(res => res.roundNumber === currentRound)
+      if (allVotesCast(promptsForRound, isLastRound, players)) {
         updateStatus(code, {allVoted: true})
       }
 
@@ -204,19 +203,21 @@ const getPromptsObject = (rcvdPlayers, numCards, prompts, roundNumber) => {
 }
 
 const buildMatchups = players => {
-  if (players.length === 3) {
-    return [[players[0], players[1]], [players[1],players[2]], [players[2], players[0]]]
-  }
   const matchups = []
-  const offset = (Math.floor(Math.random() * players.length-1) + 1 )
+  let offset = 0;
+
+  // set offset
+  while (offset <= 0 || offset === players.length) {
+    offset = (Math.floor(Math.random() * players.length - 2) + 1 )
+  } 
+
+  // add offset to index and modulo against length to match player agsinst their pair
   players.forEach(pl => matchups.push([pl]))
   matchups.forEach( (plArr,i) => {
     let pOffset = (i+offset) % players.length;
-    if (pOffset === 0 || pOffset === players.length) {
-      pOffset  += 1
-    }
     plArr.push(players[pOffset])
   })
+  
   return matchups;
 }
 
@@ -246,14 +247,15 @@ const playerAnsweredAllPrompts = (prompts, player) => {
 }
 
 const allVotesCast = (prompts, isLastRound, players) => {
+  const roundPrompts = prompts
   let answers = []
   let totalVoteCount = 0
-  prompts.forEach( prompt => answers = answers.concat(prompt.answers))
+  roundPrompts.forEach( prompt => answers = answers.concat(prompt.answers))
   for (let i = 0; i < answers.length; i++) {
     totalVoteCount += answers[i].votes.length
   }
   if (!isLastRound) {
-    return totalVoteCount === players.length * 2 ? true : false
+    return totalVoteCount === ((players.length * roundPrompts.length) - (players.length * 2))  ? true : false
   } else {
     return totalVoteCount === players.length * 3 ? true: false
   }

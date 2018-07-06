@@ -29,7 +29,7 @@ const ResponseSchema = new Schema({
 
 const StatusSchema = new Schema({
   currentRound: {type: Number, default: 1},
-  timer: {type: Number, default: 60},
+  timer: {type: Number, default: 600},
   status: {type: String, default: "Lobby"},
   gameOver: {type: Boolean, default: false},
   gameStarted: {type: Boolean, default: false},
