@@ -93,7 +93,6 @@ class PlayerScreen extends React.Component {
   }
 
   vote = () => {
-    debugger
     if (this.state.voteCount > this.room.players.length) {
       return this.waiting();
     }
