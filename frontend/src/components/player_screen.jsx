@@ -29,7 +29,8 @@ import {
 class PlayerScreen extends React.Component {
   state = {
     answer: '',
-    answerCount: 0
+    answerCount: 0,
+    voteCount: 0
   }
 
   async componentDidMount() {
@@ -63,7 +64,7 @@ class PlayerScreen extends React.Component {
   }
 
   answer = (cards) => { 
-    if (this.state.answerCount >= 2) {
+    if (this.state.answerCount > 1) {
       return this.waiting();
     }
 
@@ -92,6 +93,11 @@ class PlayerScreen extends React.Component {
   }
 
   vote = () => {
+    debugger
+    if (this.state.voteCount > this.room.players.length) {
+      return this.waiting();
+    }
+
     let voteForms = [];
     
    this.currentRoundPrompts().forEach( res => {
@@ -135,6 +141,7 @@ class PlayerScreen extends React.Component {
 
   voted = (e, answerId, responseId) => {
     e.preventDefault();
+    this.setState({ voteCount: this.state.voteCount + 1})
     this.addVote(answerId, responseId);
   }
 
