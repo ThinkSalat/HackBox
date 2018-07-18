@@ -47,7 +47,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "babel-watch server --inspect",
-    "s": "concurrently \"npm run dev\" \"cd frontend && npm start\"",
+    "s": "concurrently \"npm run dev\" \"cd frontend && npm run watch-css\" \"cd frontend && npm start\"",
     "start": "babel server -d babel && node babel/index.js"
   },
   "repository": {
