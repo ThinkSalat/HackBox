@@ -82,6 +82,7 @@ class HostScreen extends React.Component {
 
   enterAnswerPhase = () => {
     updateStatus(this.props, this.room.code, {
+      allVoted: false,
       votePhase: false,
       answerPhase: true,
       currentRound: this.room.status.currentRound + 1,
@@ -91,6 +92,7 @@ class HostScreen extends React.Component {
 
   enterVotePhase = () => {
     updateStatus(this.props, this.room.code, {
+      allAnswered: false,
       answerPhase: false,
       votePhase: true,
       timer: 1000,
