@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {storage} from '../util/util'
 import HostScreen from './host_screen';
 import PlayerScreen from './player_screen';
 
@@ -10,14 +11,14 @@ class Game extends React.Component {
   showScreen = () => {
     // let { options } = this.props;
 
-    if (localStorage.roomId !== this.props.match.params.code) {
+    if (storage().roomId !== this.props.match.params.code) {
       return <h2>The game in this room has started.</h2>;
     }
 
-    if (localStorage.isHost === 'true') {
+    if (storage().isHost === 'true') {
       return <HostScreen />;
     }
-    if (localStorage.isPlayer === 'true') {
+    if (storage().isPlayer === 'true') {
       return <PlayerScreen />;
     }
   }

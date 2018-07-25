@@ -1,3 +1,4 @@
+import {storage} from '../util/util'
 
 export const findRoomOptions = () => {
   return {
@@ -5,7 +6,7 @@ export const findRoomOptions = () => {
     options: ownProps => {
       let code;
       if (!ownProps.match) {
-        code = localStorage.roomId;
+        code = storage().roomId;
       } else {
         code = ownProps.match.params.code;
       }
@@ -22,8 +23,8 @@ export const retrievePromptsOptions = () => {
     options: ownProps => {
       return {
         variables: {
-          code: localStorage.roomId,
-          username: localStorage.username 
+          code: storage().roomId,
+          username: storage().username 
         }
       }
     }

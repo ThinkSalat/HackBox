@@ -63,4 +63,17 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+//hot module loading
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    ReactDOM.render(
+      <ApolloProvider client={client}>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </ApolloProvider>,
+    document.getElementById('root'))
+  })
+}
+
 registerServiceWorker();

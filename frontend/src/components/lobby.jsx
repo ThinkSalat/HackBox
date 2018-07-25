@@ -1,4 +1,5 @@
 import React from 'react';
+import {storage} from '../util/util'
 import { withRouter } from 'react-router-dom';
 //need to bind with component
 import {graphql, compose} from 'react-apollo';
@@ -50,11 +51,11 @@ class Lobby extends React.Component {
   }
 
   toggleStartButton = () => {
-    if (localStorage.roomId !== this.room.code) {
+    if (storage().roomId !== this.room.code) {
       return null;
     }
 
-    if (localStorage.isHost === 'true' && this.room.players.length > 1) {
+    if (storage().isHost === 'true' && this.room.players.length > 1) {
       return (
         <button onClick={this.startGame}>Start Game</button>
       )
@@ -80,7 +81,7 @@ class Lobby extends React.Component {
   }
 
   leaveRoom = () => {
-    localStorage.clear();
+    storage().clear();
     this.props.history.push('/');
   }
 

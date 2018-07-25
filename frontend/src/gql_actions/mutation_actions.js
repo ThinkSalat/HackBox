@@ -1,3 +1,4 @@
+import {storage} from '../util/util'
 
 const getRandomCode = (props) => {
   const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -27,10 +28,10 @@ export const createRoom = async (state, props) => {
       gameType: state.gameType,
     }
   });
-  localStorage.setItem('roomId', code)
-  localStorage.setItem("isPlayer", false)
-  localStorage.setItem("isHost", true)
-  localStorage.setItem("inGame", true)
+  storage().setItem('roomId', code)
+  storage().setItem("isPlayer", false)
+  storage().setItem("isHost", true)
+  storage().setItem("inGame", true)
 
   props.history.push(`room/${code}`)
 }
@@ -68,12 +69,12 @@ export const addPlayer = (ctx, roomCode) => {
     }
     
   }).then((player) =>  {
-    localStorage.setItem("playerId", player.data.addPlayer.id);
-    localStorage.setItem("username", player.data.addPlayer.username);
-    localStorage.setItem('roomId', code);
-    localStorage.setItem("isPlayer", true);
-    localStorage.setItem("isHost", false);
-    localStorage.setItem("inGame", true);
+    storage().setItem("playerId", player.data.addPlayer.id);
+    storage().setItem("username", player.data.addPlayer.username);
+    storage().setItem('roomId', code);
+    storage().setItem("isPlayer", true);
+    storage().setItem("isHost", false);
+    storage().setItem("inGame", true);
   })
 
 }

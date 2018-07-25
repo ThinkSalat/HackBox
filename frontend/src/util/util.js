@@ -1,5 +1,15 @@
 import React from 'react';
 
+const dev = true;
+
+export const storage = () => {
+  if (dev) {
+    return window.sessionStorage;
+  } else {
+    return window.localStorage;
+  }
+}
+
 export const showPlayers = (plyrs) => {
   let players = plyrs.map(player => {
     return (

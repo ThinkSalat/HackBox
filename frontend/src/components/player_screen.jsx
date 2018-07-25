@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {graphql, compose} from 'react-apollo';
 
+import {storage} from '../util/util'
+
 import { 
   FindRoomQuery, 
   RetrievePromptsQuery 
@@ -35,14 +37,14 @@ class PlayerScreen extends React.Component {
 
   async componentDidMount() {
     subscribeToRoomStatus(this.props.findRoomQuery, this.room.code);
-    await subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, localStorage.username);
+    await subscribeToReceivePrompts(this.props.retrievePromptsQuery, this.room.code, storage().username);
     
     updateStatus(this.props, this.room.code, {currentRound: this.room.status.currentRound});
   }
   
   addAnswer = (responseId) => {
     let code = this.room.code;
-    let username = localStorage.username;
+    let username = storage().username;
     let answers = [this.state.answer];
     this.props.addAnswer({
       variables: {
@@ -84,7 +86,7 @@ class PlayerScreen extends React.Component {
 
   addVote = (answerId, responseId) => {
     let code = this.room.code;
-    let username = localStorage.username;
+    let username = storage().username;
     this.props.addVote({
       variables: {
         code, username, answerId, responseId
@@ -113,8 +115,8 @@ class PlayerScreen extends React.Component {
   }
 
   isPlayerPrompt = res => (
-    // res.answers.some( ans => ans.player.id === localStorage.playerId)
-    res.players.map(p=>p.id).includes(localStorage.playerId)
+    // res.answers.some( ans => ans.player.id === storage().playerId)
+    res.players.map(p=>p.id).includes(storage().playerId)
   )
 
   currentRoundPrompts = () => (
