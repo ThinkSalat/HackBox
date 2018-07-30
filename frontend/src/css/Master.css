@@ -89,6 +89,7 @@ span#box {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
 button {
   border: none;
   color: cornsilk;
@@ -110,7 +111,7 @@ button {
     list-style: none; }
     .lobby .room-list li {
       display: inline-block;
-      margin: 10px; }
+      margin: 20px; }
 
 .single-room {
   position: relative; }
@@ -161,5 +162,3 @@ button {
   font-size: 24px;
   text-decoration: underline;
   color: black; }
-
-/*# sourceMappingURL=Master.css.map */

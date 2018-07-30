@@ -16,10 +16,13 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
+// react hot loading (true HMR that preserves state)
+import { AppContainer } from 'react-hot-loader'
+
 let ip = 'localhost';
 let httpUri = `http://${ip}:4000/graphql`;
 let wsUri = `ws://${ip}:4000/subscriptions`;
-// let httpUri = "https://hack-box.herokuap`p.com/graphql";
+// let httpUri = "https://hack-box.herokuapp.com/graphql";
 // let wsUri = "wss://hack-box.herokuapp.com/subscriptions";
 
 
@@ -54,15 +57,27 @@ const client = new ApolloClient({
 })
 
 //make requests throughout our app through ApolloProvider
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </ApolloProvider>,
-  document.getElementById('root')
-);
+const render = () => {
+  ReactDOM.render(
+    <ApolloProvider client={client}>
+      <HashRouter>
+        <AppContainer>
+          <App />
+        </AppContainer>
+      </HashRouter>
+    </ApolloProvider>,
+    document.getElementById('root')
+  );
+}
 
+//initial render
+render()
 
+//hot module loading
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    render()
+  })
+}
 
 registerServiceWorker();

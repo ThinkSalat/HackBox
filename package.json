@@ -28,14 +28,6 @@
     "lodash": "^4.17.10",
     "mongoose": "^5.1.6",
     "mongoose-simple-random": "^0.4.1",
-    "react": "^16.4.1",
-    "react-apollo": "^2.1.6",
-    "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
     "request": "^2.65.0",
     "subscriptions-transport-ws": "^0.9.11",
     "underscore": "^1.9.1",
@@ -47,7 +39,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "babel-watch server --inspect",
-    "s": "concurrently \"npm run dev\" \"cd frontend && npm start\"",
+    "s": "concurrently \"npm run dev\" \"cd frontend && npm run watch-css\" \"cd frontend && npm start\"",
     "start": "babel server -d babel && node babel/index.js"
   },
   "repository": {
