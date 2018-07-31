@@ -54,6 +54,7 @@ class HostScreen extends React.Component {
 
 
   updateProgress = () => {
+    // console.log('updating progress', this.room.status);
     let { 
       currentRound, 
       timer, 
@@ -99,14 +100,44 @@ class HostScreen extends React.Component {
     }); 
   }
 
+  showVotePrompts() {
+    let prompts = this.room.prompts.filter(resp => resp.roundNumber === this.room.status.currentRound)
+    prompts = prompts.map( prompt => {
+      let answers = prompt.answers.map( ans => (
+        <li><ul className='prompt-answers'>
+          <li>
+            <span>{ans.answers[0]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            
+            <span>Score: {ans.votes.length * 200}</span>
+          </li>
+        </ul></li>
+      ))
+      return(
+        <li>
+          <h3>{prompt.prompt.prompt}</h3>
+          <ul>{answers}</ul>
+        </li>
+      )
+    })
+    return (
+      <ul>
+        {prompts}
+      </ul>
+    )
+  }
+
   gameStats = room => {
     let {  
       currentRound, 
       timer,
       allAnswered,
       allVoted,
+      votePhase,
       status
-    } = room.status;
+    } = this.room.status;
+
+      let showPrompts;
+      if (votePhase)  showPrompts = this.showVotePrompts();
     
     return(
     <div>
@@ -116,14 +147,9 @@ class HostScreen extends React.Component {
       <h3>All Answered: {allAnswered.toString()}</h3>
       <h3>All Voted: {allVoted.toString()}</h3>
       {showPlayers(room.players)}
+      {showPrompts}
     </div>
   )}
-
-  voting = room => {
-    return(
-      'ji'
-    )
-  }
 
   render() {
     this.room = this.props.findRoomQuery.findRoom;
@@ -139,12 +165,7 @@ class HostScreen extends React.Component {
       status
     } = this.room.status;
     
-    switch (status) {
-      case 'Lobby':
-        return this.gameStats(this.room);
-      default:
-        return this.gameStats(this.room);
-    }
+    return this.gameStats(this.room);
   }
 }
 
