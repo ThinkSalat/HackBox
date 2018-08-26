@@ -157,14 +157,6 @@ class HostScreen extends React.Component {
       return null;
     }
 
-    let {  
-      currentRound, 
-      timer,
-      allAnswered,
-      allVoted,
-      status
-    } = this.room.status;
-    
     return this.gameStats(this.room);
   }
 }
